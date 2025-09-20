@@ -7,6 +7,7 @@ import Team from './components/Team';
 import Redes from './components/Redes';
 import Videos from './components/Videos';
 import Juegos from './components/Juegos';
+import Pagos from './components/Pagos';
 import './App.css';
 
 const App = () => {
@@ -34,6 +35,8 @@ const App = () => {
                 return <Redes />;
             case 'videos':
                 return <Videos />;
+            case 'pagos':
+                return <Pagos />;
             default:
                 return <Home setView={setView} />;
         }

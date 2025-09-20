@@ -7,9 +7,15 @@ import {
     TeamIcon, 
     LinkIcon, 
     SparklesIcon, 
-    VideoIcon 
+    VideoIcon
 } from '../icons/Icons';
 
+const CreditCardIcon = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+        <line x1="1" y1="10" x2="23" y2="10"/>
+    </svg>
+);
 const Navbar = ({ view, setView }) => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isExperiencesMenuOpen, setExperiencesMenuOpen] = useState(false);
@@ -21,6 +27,7 @@ const Navbar = ({ view, setView }) => {
         { name: 'Juegos y AR', view: 'juegos', icon: <GamepadIcon className="mr-2"/> },
         { name: 'Libros', view: 'libros', icon: <BookIcon className="mr-2"/> },
         { name: 'Equipo', view: 'team', icon: <TeamIcon className="mr-2"/> },
+        { name: 'Apoyar', view: 'pagos', icon: <CreditCardIcon className="mr-2"/> },
         { name: 'Redes', view: 'redes', icon: <LinkIcon className="mr-2"/> },
     ];
 
