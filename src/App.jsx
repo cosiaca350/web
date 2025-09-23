@@ -35,8 +35,6 @@ const App = () => {
                 return <Redes />;
             case 'videos':
                 return <Videos />;
-            case 'pagos':
-                return <Pagos />;
             default:
                 return <Home setView={setView} />;
         }

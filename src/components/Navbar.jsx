@@ -27,7 +27,6 @@ const Navbar = ({ view, setView }) => {
         { name: 'Juegos y AR', view: 'juegos', icon: <GamepadIcon className="mr-2"/> },
         { name: 'Libros', view: 'libros', icon: <BookIcon className="mr-2"/> },
         { name: 'Equipo', view: 'team', icon: <TeamIcon className="mr-2"/> },
-        { name: 'Apoyar', view: 'pagos', icon: <CreditCardIcon className="mr-2"/> },
         { name: 'Redes', view: 'redes', icon: <LinkIcon className="mr-2"/> },
     ];
 
