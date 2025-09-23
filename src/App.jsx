@@ -7,7 +7,6 @@ import Team from './components/Team';
 import Redes from './components/Redes';
 import Videos from './components/Videos';
 import Juegos from './components/Juegos';
-import Pagos from './components/Pagos';
 import './App.css';
 
 const App = () => {
