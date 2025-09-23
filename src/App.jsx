@@ -40,12 +40,12 @@ const App = () => {
     };
 
     return (
-        <div className="min-h-screen bg-stone-900 text-gray-100 font-sans flex flex-col">
+        <div className="min-h-screen bg-cosiaca-cream text-cosiaca-brown font-montserrat flex flex-col">
             <Navbar view={view} setView={setView} />
             <main className="flex-1 container mx-auto p-4 md:p-8">
                 {renderContent()}
             </main>
-            <footer className="p-4 text-center text-gray-400 border-t border-stone-800">
+            <footer className="p-4 text-center text-cosiaca-brown/60 border-t border-cosiaca-beige">
                 <p>© 2024 Cosiaca 350. Todos los derechos reservados. Un proyecto de Nucleo Colectivo.</p>
             </footer>
         </div>

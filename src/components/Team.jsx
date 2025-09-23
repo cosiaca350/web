@@ -20,25 +20,25 @@ const Team = () => {
     ];
 
     return (
-        <div className="animate-fade-in max-w-5xl mx-auto text-gray-300 space-y-12">
+        <div className="animate-fade-in max-w-5xl mx-auto text-cosiaca-brown space-y-12">
             <header className="text-center">
-                <h1 className="text-4xl md:text-5xl font-bold font-serif text-yellow-400">Nuestro Equipo</h1>
-                <p className="text-xl mt-2 text-gray-400">Los artífices detrás de la Re-evolución de Cosiaca.</p>
+                <h1 className="text-4xl md:text-5xl font-bold font-serif text-cosiaca-red">Nuestro Equipo</h1>
+                <p className="text-xl mt-2 text-cosiaca-brown/70">Los artífices detrás de la Re-evolución de Cosiaca.</p>
             </header>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {teamMembers.map(member => (
                     <div 
                         key={member.name} 
-                        className="bg-stone-800 text-center p-6 rounded-xl shadow-lg border border-stone-700 hover:shadow-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300"
+                        className="bg-cosiaca-beige/30 text-center p-6 rounded-xl shadow-lg border border-cosiaca-beige hover:shadow-cosiaca-red/20 hover:border-cosiaca-red/50 transition-all duration-300"
                     >
                         <img 
                             src={member.img} 
                             alt={`Foto de ${member.name}`} 
-                            className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-stone-600 object-cover" 
+                            className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-cosiaca-beige object-cover" 
                         />
-                        <h3 className="text-xl font-bold text-yellow-300">{member.name}</h3>
-                        <p className="text-gray-400">{member.role}</p>
+                        <h3 className="text-xl font-bold text-cosiaca-red">{member.name}</h3>
+                        <p className="text-cosiaca-brown/70">{member.role}</p>
                     </div>
                 ))}
             </div>

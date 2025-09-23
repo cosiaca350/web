@@ -111,18 +111,18 @@ const Juegos = () => {
     };
     
     return (
-        <div className="animate-fade-in max-w-2xl mx-auto bg-stone-900 rounded-3xl shadow-xl w-full overflow-hidden transition-all duration-300">
-            <div className="p-6 md:p-8 text-center bg-gradient-to-r from-yellow-500 to-amber-600 text-white">
+        <div className="animate-fade-in max-w-2xl mx-auto bg-cosiaca-cream rounded-3xl shadow-xl w-full overflow-hidden transition-all duration-300 border border-cosiaca-beige">
+            <div className="p-6 md:p-8 text-center bg-gradient-to-r from-cosiaca-red to-cosiaca-red-dark text-white">
                 <h1 className="text-3xl font-bold tracking-tight font-serif">Juegos y AR</h1>
                 <p className="mt-2 text-lg opacity-90">¡Humor, conocimiento y rima paisa!</p>
             </div>
 
-            <div className="flex border-b border-stone-800 bg-stone-800">
+            <div className="flex border-b border-cosiaca-beige bg-cosiaca-beige">
                 <button
                     className={`flex-1 py-4 text-center font-bold text-sm focus:outline-none transition-colors duration-300 transform ${
                         activeTab === 'trivia' 
-                            ? 'bg-yellow-400 text-gray-900 shadow-md scale-105' 
-                            : 'text-gray-400 hover:bg-stone-700'
+                            ? 'bg-cosiaca-red text-white shadow-md scale-105' 
+                            : 'text-cosiaca-brown hover:bg-cosiaca-cream'
                     }`}
                     onClick={() => setActiveTab('trivia')}
                 >
@@ -131,8 +131,8 @@ const Juegos = () => {
                 <button
                     className={`flex-1 py-4 text-center font-bold text-sm focus:outline-none transition-colors duration-300 transform ${
                         activeTab === 'standup' 
-                            ? 'bg-yellow-400 text-gray-900 shadow-md scale-105' 
-                            : 'text-gray-400 hover:bg-stone-700'
+                            ? 'bg-cosiaca-red text-white shadow-md scale-105' 
+                            : 'text-cosiaca-brown hover:bg-cosiaca-cream'
                     }`}
                     onClick={() => setActiveTab('standup')}
                 >
@@ -141,8 +141,8 @@ const Juegos = () => {
                 <button
                     className={`flex-1 py-4 text-center font-bold text-sm focus:outline-none transition-colors duration-300 transform ${
                         activeTab === 'trovas' 
-                            ? 'bg-yellow-400 text-gray-900 shadow-md scale-105' 
-                            : 'text-gray-400 hover:bg-stone-700'
+                            ? 'bg-cosiaca-red text-white shadow-md scale-105' 
+                            : 'text-cosiaca-brown hover:bg-cosiaca-cream'
                     }`}
                     onClick={() => setActiveTab('trovas')}
                 >
@@ -150,14 +150,14 @@ const Juegos = () => {
                 </button>
             </div>
 
-            <div className="p-6 md:p-8 bg-stone-900">
+            <div className="p-6 md:p-8 bg-cosiaca-cream">
                 {/* Trivia Content */}
                 {activeTab === 'trivia' && (
                     <div className="space-y-6 animate-fade-in">
                         {currentQuestionIndex < triviaQuestions.length ? (
                             <>
-                                <div className="bg-stone-800 text-gray-100 p-6 rounded-xl shadow-inner border border-stone-700">
-                                    <p className="text-sm font-semibold text-yellow-400 mb-2">
+                                <div className="bg-cosiaca-beige text-cosiaca-brown p-6 rounded-xl shadow-inner border border-cosiaca-beige">
+                                    <p className="text-sm font-semibold text-cosiaca-red mb-2">
                                         Puntuación: {triviaScore}
                                     </p>
                                     <p className="text-lg md:text-xl font-bold">
@@ -175,10 +175,10 @@ const Juegos = () => {
                                                 font-semibold text-center
                                                 ${selectedAnswer === option
                                                     ? (isCorrect ? 'bg-emerald-500 text-white' : 'bg-red-500 text-white')
-                                                    : 'bg-stone-700 text-gray-200 hover:bg-stone-600'
+                                                    : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
                                                 }
                                                 ${selectedAnswer !== null ? 'opacity-80' : ''}
-                                                focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-stone-900
+                                                focus:outline-none focus:ring-2 focus:ring-cosiaca-red focus:ring-offset-2 focus:ring-offset-cosiaca-cream
                                             `}
                                         >
                                             {option}
@@ -195,11 +195,11 @@ const Juegos = () => {
                                     ))}
                                 </div>
                                 {feedbackMessage && (
-                                    <div className="bg-stone-800 text-gray-200 p-6 rounded-xl shadow-lg border border-yellow-400/50 mt-4 animate-fade-in">
+                                    <div className="bg-cosiaca-beige text-cosiaca-brown p-6 rounded-xl shadow-lg border border-cosiaca-red/50 mt-4 animate-fade-in">
                                         <div className="flex items-start space-x-3">
-                                            <BotIcon className="w-8 h-8 text-yellow-400 flex-shrink-0" />
+                                            <BotIcon className="w-8 h-8 text-cosiaca-red flex-shrink-0" />
                                             <div>
-                                                <p className="font-bold text-yellow-300 mb-1">Cosiaca te cuenta:</p>
+                                                <p className="font-bold text-cosiaca-red mb-1">Cosiaca te cuenta:</p>
                                                 <p className="italic">{feedbackMessage}</p>
                                             </div>
                                         </div>
@@ -208,16 +208,16 @@ const Juegos = () => {
                             </>
                         ) : (
                             <div className="text-center space-y-4">
-                                <div className="bg-stone-800 p-8 rounded-xl shadow-lg border border-stone-700">
-                                    <h3 className="text-2xl font-serif text-yellow-300 mb-2">¡Trivia Terminada!</h3>
-                                    <p className="text-xl text-yellow-100">Tu puntuación final es:</p>
-                                    <p className="text-4xl font-bold mt-2 text-yellow-400">
+                                <div className="bg-cosiaca-beige p-8 rounded-xl shadow-lg border border-cosiaca-beige">
+                                    <h3 className="text-2xl font-serif text-cosiaca-red mb-2">¡Trivia Terminada!</h3>
+                                    <p className="text-xl text-cosiaca-brown">Tu puntuación final es:</p>
+                                    <p className="text-4xl font-bold mt-2 text-cosiaca-red">
                                         {triviaScore} de {triviaQuestions.length}
                                     </p>
                                 </div>
                                 <button
                                     onClick={resetTrivia}
-                                    className="w-full bg-yellow-400 text-gray-900 font-bold py-3 rounded-xl shadow-lg hover:bg-yellow-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2"
+                                    className="w-full bg-cosiaca-red text-white font-bold py-3 rounded-xl shadow-lg hover:bg-cosiaca-red-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-cosiaca-red focus:ring-offset-2"
                                 >
                                     Volver a Jugar
                                 </button>
@@ -229,15 +229,15 @@ const Juegos = () => {
                 {/* Stand Up Content */}
                 {activeTab === 'standup' && (
                     <div className="text-center space-y-8 animate-fade-in">
-                        <div className="bg-stone-800 rounded-xl p-8 shadow-inner border border-stone-700">
-                            <h3 className="text-3xl font-serif text-yellow-300 mb-4">El Chiste de Cosiaca</h3>
-                            <p className="text-xl md:text-2xl font-semibold italic text-yellow-100 leading-relaxed">
+                        <div className="bg-cosiaca-beige rounded-xl p-8 shadow-inner border border-cosiaca-beige">
+                            <h3 className="text-3xl font-serif text-cosiaca-red mb-4">El Chiste de Cosiaca</h3>
+                            <p className="text-xl md:text-2xl font-semibold italic text-cosiaca-brown leading-relaxed">
                                 {currentJoke}
                             </p>
                         </div>
                         <button
                             onClick={() => setCurrentJoke(getRandomJoke())}
-                            className="w-full bg-yellow-400 text-gray-900 font-bold py-3 rounded-xl shadow-lg hover:bg-yellow-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2"
+                            className="w-full bg-cosiaca-red text-white font-bold py-3 rounded-xl shadow-lg hover:bg-cosiaca-red-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-cosiaca-red focus:ring-offset-2"
                         >
                             Nuevo Chiste
                         </button>
@@ -247,16 +247,16 @@ const Juegos = () => {
                 {/* Trovas Content */}
                 {activeTab === 'trovas' && (
                     <div className="text-center space-y-8 animate-fade-in">
-                        <div className="bg-stone-800 rounded-xl p-8 shadow-inner border border-stone-700">
-                            <h3 className="text-3xl font-serif text-yellow-300 mb-4">La Trova Paisa</h3>
+                        <div className="bg-cosiaca-beige rounded-xl p-8 shadow-inner border border-cosiaca-beige">
+                            <h3 className="text-3xl font-serif text-cosiaca-red mb-4">La Trova Paisa</h3>
                             <p 
-                                className="text-xl md:text-2xl font-semibold leading-relaxed text-yellow-100" 
+                                className="text-xl md:text-2xl font-semibold leading-relaxed text-cosiaca-brown" 
                                 dangerouslySetInnerHTML={{ __html: currentTrova }}
                             />
                         </div>
                         <button
                             onClick={() => setCurrentTrova(getRandomTrova())}
-                            className="w-full bg-yellow-400 text-gray-900 font-bold py-3 rounded-xl shadow-lg hover:bg-yellow-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2"
+                            className="w-full bg-cosiaca-red text-white font-bold py-3 rounded-xl shadow-lg hover:bg-cosiaca-red-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-cosiaca-red focus:ring-offset-2"
                         >
                             Otra Trova
                         </button>

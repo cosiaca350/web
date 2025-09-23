@@ -31,27 +31,27 @@ const Home = ({ setView }) => {
 
     return (
         <div className="animate-fade-in space-y-16">
-            <div className="relative bg-gray-900 rounded-lg overflow-hidden shadow-2xl min-h-[60vh] flex items-center justify-center text-center">
+            <div className="relative bg-cosiaca-brown rounded-lg overflow-hidden shadow-2xl min-h-[60vh] flex items-center justify-center text-center">
                 <img 
                     src="https://images.pexels.com/photos/1386604/pexels-photo-1386604.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
                     alt="Vista panorámica de Medellín" 
                     className="absolute inset-0 w-full h-full object-cover opacity-20" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-cosiaca-brown via-cosiaca-brown/40 to-transparent"></div>
                 <div className="relative z-10 p-8">
-                    <h2 className="text-4xl md:text-6xl font-bold text-white font-serif shadow-lg animate-fade-in-up">
+                    <h2 className="text-4xl md:text-6xl font-black text-white font-montserrat shadow-lg animate-fade-in-up">
                         COSIACA 350
-                        <span className="text-lg md:text-2xl font-montserrat block mt-2">
+                        <span className="text-lg md:text-2xl font-montserrat font-normal block mt-2">
                             / UN VIAJE INMERSIVO A LA HISTORIA DE MEDELLÍN
                         </span>
                     </h2>
-                    <p className="text-lg md:text-xl text-yellow-200 mt-4 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+                    <p className="text-lg md:text-xl text-cosiaca-yellow mt-4 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
                         PROPUESTA TRANSMEDIA PARA LA CELEBRACIÓN DE LOS 350 AÑOS DE MEDELLÍN
                     </p>
-                    <p className="text-sm md:text-base text-yellow-300 mt-2 italic animate-fade-in-up" style={{animationDelay: '0.4s'}}>
+                    <p className="text-sm md:text-base text-cosiaca-yellow/80 mt-2 italic animate-fade-in-up" style={{animationDelay: '0.4s'}}>
                         ESTÍMULO A LA CREACIÓN DE UNA OBRA ARTÍSTICA: CELEBRACIÓN DE LOS 350 AÑOS DE MEDELLÍN
                     </p>
-                    <p className="text-sm md:text-base text-yellow-300 mt-2 italic animate-fade-in-up" style={{animationDelay: '0.6s'}}>
+                    <p className="text-sm md:text-base text-cosiaca-yellow/80 mt-2 italic animate-fade-in-up" style={{animationDelay: '0.6s'}}>
                         Proyecto beneficiado de las Convocatorias de Fomento y Estímulos para el Arte y la Cultura 2025. 
                         Secretaría de Cultura Ciudadana de Medellín.
                     </p>
@@ -59,10 +59,10 @@ const Home = ({ setView }) => {
             </div>
             
             <div className="max-w-4xl mx-auto text-center">
-                <h3 className="text-3xl font-bold font-serif text-yellow-400 mb-4">
+                <h3 className="text-3xl font-bold font-serif text-cosiaca-red mb-4">
                     "Contar la historia para vivirla riendo"
                 </h3>
-                <p className="text-lg text-gray-300">
+                <p className="text-lg text-cosiaca-brown/80">
                     En el marco de la conmemoración de los 350 años de la fundación de Medellín, presentamos **Cosiaca 350**, 
                     una propuesta artística transmedia que dialoga con la historia, la identidad y el futuro de la ciudad. 
                     El proyecto rinde homenaje a Medellín integrando narrativa histórica y tecnología interactiva, 
@@ -71,23 +71,23 @@ const Home = ({ setView }) => {
                 </p>
                 <button 
                     onClick={() => setView('proyecto')} 
-                    className="mt-8 bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-yellow-300 transition-transform transform hover:scale-105 shadow-lg text-lg"
+                    className="mt-8 bg-cosiaca-red text-white font-bold py-3 px-8 rounded-full hover:bg-cosiaca-red-dark transition-transform transform hover:scale-105 shadow-lg text-lg"
                 >
                     Conocer el Proyecto a Fondo
                 </button>
             </div>
 
-            <section className="max-w-4xl mx-auto text-center bg-stone-800/50 p-8 rounded-lg shadow-xl border border-stone-700">
-                <h3 className="text-3xl font-bold font-serif text-yellow-400 mb-4">
+            <section className="max-w-4xl mx-auto text-center bg-cosiaca-beige/50 p-8 rounded-lg shadow-xl border border-cosiaca-beige">
+                <h3 className="text-3xl font-bold font-serif text-cosiaca-red mb-4">
                     ✨ El Chismecito Histórico de Cosiaca ✨
                 </h3>
-                <p className="text-lg text-gray-200 mb-6">
+                <p className="text-lg text-cosiaca-brown mb-6">
                     ¿Quieres escuchar un dato curioso y divertido de la historia de Medellín, contado por el mismísimo Cosiaca? 
                     ¡Dale al botón!
                 </p>
                 <button 
                     onClick={handleGenerateFact} 
-                    className="bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-yellow-300 transition-transform transform hover:scale-105 shadow-lg text-lg flex items-center justify-center mx-auto" 
+                    className="bg-cosiaca-red text-white font-bold py-3 px-8 rounded-full hover:bg-cosiaca-red-dark transition-transform transform hover:scale-105 shadow-lg text-lg flex items-center justify-center mx-auto" 
                     disabled={isLoadingFact}
                 >
                     {isLoadingFact ? (
@@ -103,9 +103,9 @@ const Home = ({ setView }) => {
                     )}
                 </button>
                 {historicalFact && (
-                    <div className="mt-8 p-6 bg-stone-700 rounded-lg text-gray-100 italic text-left relative">
+                    <div className="mt-8 p-6 bg-cosiaca-cream rounded-lg text-cosiaca-brown italic text-left relative border border-cosiaca-beige">
                         <p className="text-lg leading-relaxed">"{historicalFact}"</p>
-                        <div className="absolute top-0 right-0 -mt-3 -mr-3 bg-yellow-400 text-gray-900 rounded-full p-2 shadow-md">
+                        <div className="absolute top-0 right-0 -mt-3 -mr-3 bg-cosiaca-red text-white rounded-full p-2 shadow-md">
                             <BotIcon className="w-6 h-6" />
                         </div>
                     </div>
