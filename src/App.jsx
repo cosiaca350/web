@@ -7,6 +7,10 @@ import Team from './components/Team';
 import Redes from './components/Redes';
 import Videos from './components/Videos';
 import Juegos from './components/Juegos';
+import Podcast from './components/Podcast';
+import Timeline from './components/Timeline';
+import Archivo from './components/Archivo';
+import PlanTrabajo from './components/PlanTrabajo';
 import './App.css';
 
 const App = () => {
@@ -26,6 +30,14 @@ const App = () => {
                 return <Proyecto />;
             case 'juegos':
                 return <Juegos />;
+            case 'podcast':
+                return <Podcast />;
+            case 'timeline':
+                return <Timeline />;
+            case 'archivo':
+                return <Archivo />;
+            case 'plan':
+                return <PlanTrabajo />;
             case 'libros':
                 return user ? <Libros /> : <div className="text-center text-gray-400 mt-20">Cargando...</div>;
             case 'team':

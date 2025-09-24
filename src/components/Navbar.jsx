@@ -7,7 +7,8 @@ import {
     TeamIcon, 
     LinkIcon, 
     SparklesIcon, 
-    VideoIcon
+    VideoIcon,
+    PodcastIcon
 } from '../icons/Icons';
 
 const CreditCardIcon = (props) => (
@@ -17,6 +18,30 @@ const CreditCardIcon = (props) => (
     </svg>
 );
 const Navbar = ({ view, setView }) => {
+const TimelineIcon = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12,6 12,12 16,14"/>
+    </svg>
+);
+
+const ArchiveIcon = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+        <polyline points="21,8 21,21 3,21 3,8"/>
+        <rect x="1" y="3" width="22" height="5"/>
+        <line x1="10" y1="12" x2="14" y2="12"/>
+    </svg>
+);
+
+const PlanIcon = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14,2 14,8 20,8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+        <polyline points="10,9 9,9 8,9"/>
+    </svg>
+);
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isExperiencesMenuOpen, setExperiencesMenuOpen] = useState(false);
     const experiencesRef = useRef(null);
@@ -24,8 +49,12 @@ const Navbar = ({ view, setView }) => {
     const mainLinks = [
         { name: 'Inicio', view: 'home', icon: <HomeIcon className="mr-2"/> },
         { name: 'El Proyecto', view: 'proyecto', icon: <ProjectIcon className="mr-2"/> },
-        { name: 'Juegos y AR', view: 'juegos', icon: <GamepadIcon className="mr-2"/> },
-        { name: 'Libros', view: 'libros', icon: <BookIcon className="mr-2"/> },
+        { name: 'Experiencias', view: 'juegos', icon: <GamepadIcon className="mr-2"/> },
+        { name: 'Podcast Histórico', view: 'podcast', icon: <PodcastIcon className="mr-2"/> },
+        { name: 'Libro', view: 'libros', icon: <BookIcon className="mr-2"/> },
+        { name: 'Línea de Tiempo', view: 'timeline', icon: <TimelineIcon className="mr-2"/> },
+        { name: 'Archivo', view: 'archivo', icon: <ArchiveIcon className="mr-2"/> },
+        { name: 'Plan de Trabajo', view: 'plan', icon: <PlanIcon className="mr-2"/> },
         { name: 'Equipo', view: 'team', icon: <TeamIcon className="mr-2"/> },
         { name: 'Redes', view: 'redes', icon: <LinkIcon className="mr-2"/> },
     ];
@@ -76,7 +105,7 @@ const Navbar = ({ view, setView }) => {
                                 isExperiencesMenuOpen ? 'bg-cosiaca-beige' : 'hover:bg-cosiaca-beige'
                             }`}
                         >
-                            <SparklesIcon className="mr-2"/> Experiencias
+                            <SparklesIcon className="mr-2"/> Más Contenido
                         </button>
                         {isExperiencesMenuOpen && (
                             <div className="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-cosiaca-cream ring-1 ring-cosiaca-beige ring-opacity-50">
