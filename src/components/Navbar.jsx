@@ -49,9 +49,9 @@ const PlanIcon = (props) => (
     const mainLinks = [
         { name: 'Inicio', view: 'home', icon: <HomeIcon className="mr-2"/> },
         { name: 'El Proyecto', view: 'proyecto', icon: <ProjectIcon className="mr-2"/> },
-        { name: 'Experiencias', view: 'juegos', icon: <GamepadIcon className="mr-2"/> },
+        { name: 'Juegos y AR', view: 'juegos', icon: <GamepadIcon className="mr-2"/> },
         { name: 'Podcast Histórico', view: 'podcast', icon: <PodcastIcon className="mr-2"/> },
-        { name: 'Libro', view: 'libros', icon: <BookIcon className="mr-2"/> },
+        { name: 'Libros', view: 'libros', icon: <BookIcon className="mr-2"/> },
         { name: 'Línea de Tiempo', view: 'timeline', icon: <TimelineIcon className="mr-2"/> },
         { name: 'Archivo', view: 'archivo', icon: <ArchiveIcon className="mr-2"/> },
         { name: 'Plan de Trabajo', view: 'plan', icon: <PlanIcon className="mr-2"/> },
@@ -105,7 +105,7 @@ const PlanIcon = (props) => (
                                 isExperiencesMenuOpen ? 'bg-cosiaca-beige' : 'hover:bg-cosiaca-beige'
                             }`}
                         >
-                            <SparklesIcon className="mr-2"/> Más Contenido
+                            <SparklesIcon className="mr-2"/> Experiencias
                         </button>
                         {isExperiencesMenuOpen && (
                             <div className="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-cosiaca-cream ring-1 ring-cosiaca-beige ring-opacity-50">

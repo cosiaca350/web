@@ -32,14 +32,6 @@ const Podcast = () => {
         },
         {
             id: 4,
-            title: "Saludo de Cosiaca",
-            description: "El mítico personaje nos da la bienvenida a este viaje por la historia de Medellín con su característico humor paisa.",
-            duration: "3:15",
-            audioFile: "/AUDIOS_historias/SALUDO_cosiaca.mp3",
-            image: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=400"
-        },
-        {
-            id: 5,
             title: "De la Violencia a la Esperanza",
             description: "Un episodio emotivo sobre cómo Medellín superó sus momentos más difíciles y se transformó en ciudad de innovación.",
             duration: "18:45",
@@ -47,7 +39,7 @@ const Podcast = () => {
             image: "https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
-            id: 6,
+            id: 5,
             title: "La Verraquera Arriera",
             description: "Historias de los arrieros antioqueños y su papel fundamental en el desarrollo económico de la región.",
             duration: "14:10",
@@ -55,12 +47,28 @@ const Podcast = () => {
             image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
-            id: 7,
+            id: 6,
             title: "Sobre la Medellín de Hoy",
             description: "Reflexiones de Cosiaca sobre la Medellín moderna, sus logros y desafíos en el siglo XXI.",
             duration: "16:30",
             audioFile: "/AUDIOS_historias/Sobre la Medellín de hoy.mp3",
             image: "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=400"
+        },
+        {
+            id: 7,
+            title: "Saludo de Cosiaca",
+            description: "El mítico personaje nos da la bienvenida a este viaje por la historia de Medellín con su característico humor paisa.",
+            duration: "3:15",
+            audioFile: "/AUDIOS_historias/SALUDO_cosiaca.mp3",
+            image: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=400"
+        },
+        {
+            id: 8,
+            title: "Cosiaca el Culebreo",
+            description: "Una historia divertida sobre las travesuras y picardías del personaje más querido de Antioquia.",
+            duration: "12:45",
+            audioFile: "/AUDIOS_historias/Cosiaca el culebreo.mp3",
+            image: "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=400"
         }
     ];
 
