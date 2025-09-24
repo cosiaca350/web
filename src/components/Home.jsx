@@ -59,10 +59,10 @@ const Home = ({ setView }) => {
             </div>
             
             <div className="max-w-4xl mx-auto text-center">
-                <h3 className="text-3xl font-bold font-serif text-cosiaca-red mb-4">
+                <h3 className="text-3xl font-bold font-serif text-cosiaca-brown mb-4">
                     "Contar la historia para vivirla riendo"
                 </h3>
-                <p className="text-lg text-cosiaca-brown/80">
+                <p className="text-lg text-cosiaca-brown-light/80">
                     En el marco de la conmemoración de los 350 años de la fundación de Medellín, presentamos **Cosiaca 350**, 
                     una propuesta artística transmedia que dialoga con la historia, la identidad y el futuro de la ciudad. 
                     El proyecto rinde homenaje a Medellín integrando narrativa histórica y tecnología interactiva, 
@@ -78,10 +78,10 @@ const Home = ({ setView }) => {
             </div>
 
             <section className="max-w-4xl mx-auto text-center bg-cosiaca-beige/50 p-8 rounded-lg shadow-xl border border-cosiaca-beige">
-                <h3 className="text-3xl font-bold font-serif text-cosiaca-red mb-4">
+                <h3 className="text-3xl font-bold font-serif text-cosiaca-brown mb-4">
                     ✨ El Chismecito Histórico de Cosiaca ✨
                 </h3>
-                <p className="text-lg text-cosiaca-brown mb-6">
+                <p className="text-lg text-cosiaca-brown-light mb-6">
                     ¿Quieres escuchar un dato curioso y divertido de la historia de Medellín, contado por el mismísimo Cosiaca? 
                     ¡Dale al botón!
                 </p>
@@ -103,7 +103,7 @@ const Home = ({ setView }) => {
                     )}
                 </button>
                 {historicalFact && (
-                    <div className="mt-8 p-6 bg-cosiaca-cream rounded-lg text-cosiaca-brown italic text-left relative border border-cosiaca-beige">
+                    <div className="mt-8 p-6 bg-cosiaca-cream rounded-lg text-cosiaca-brown-light italic text-left relative border border-cosiaca-beige">
                         <p className="text-lg leading-relaxed">"{historicalFact}"</p>
                         <div className="absolute top-0 right-0 -mt-3 -mr-3 bg-cosiaca-red text-white rounded-full p-2 shadow-md">
                             <BotIcon className="w-6 h-6" />

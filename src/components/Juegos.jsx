@@ -209,7 +209,7 @@ const Juegos = () => {
                         ) : (
                             <div className="text-center space-y-4">
                                 <div className="bg-cosiaca-beige p-8 rounded-xl shadow-lg border border-cosiaca-beige">
-                                    <h3 className="text-2xl font-serif text-cosiaca-red mb-2">¡Trivia Terminada!</h3>
+                                    <h3 className="text-2xl font-serif text-cosiaca-brown mb-2">¡Trivia Terminada!</h3>
                                     <p className="text-xl text-cosiaca-brown">Tu puntuación final es:</p>
                                     <p className="text-4xl font-bold mt-2 text-cosiaca-red">
                                         {triviaScore} de {triviaQuestions.length}
@@ -230,7 +230,7 @@ const Juegos = () => {
                 {activeTab === 'standup' && (
                     <div className="text-center space-y-8 animate-fade-in">
                         <div className="bg-cosiaca-beige rounded-xl p-8 shadow-inner border border-cosiaca-beige">
-                            <h3 className="text-3xl font-serif text-cosiaca-red mb-4">El Chiste de Cosiaca</h3>
+                            <h3 className="text-3xl font-serif text-cosiaca-brown mb-4">El Chiste de Cosiaca</h3>
                             <p className="text-xl md:text-2xl font-semibold italic text-cosiaca-brown leading-relaxed">
                                 {currentJoke}
                             </p>
@@ -248,7 +248,7 @@ const Juegos = () => {
                 {activeTab === 'trovas' && (
                     <div className="text-center space-y-8 animate-fade-in">
                         <div className="bg-cosiaca-beige rounded-xl p-8 shadow-inner border border-cosiaca-beige">
-                            <h3 className="text-3xl font-serif text-cosiaca-red mb-4">La Trova Paisa</h3>
+                            <h3 className="text-3xl font-serif text-cosiaca-brown mb-4">La Trova Paisa</h3>
                             <p 
                                 className="text-xl md:text-2xl font-semibold leading-relaxed text-cosiaca-brown" 
                                 dangerouslySetInnerHTML={{ __html: currentTrova }}

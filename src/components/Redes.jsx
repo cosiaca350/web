@@ -4,15 +4,15 @@ import { TikTokIcon, InstagramIcon, FacebookIcon, YoutubeIcon } from '../icons/I
 const Redes = () => {
     return (
         <div className="animate-fade-in max-w-3xl mx-auto text-center text-cosiaca-brown space-y-8">
-            <h1 className="text-4xl md:text-5xl font-bold font-serif text-cosiaca-red">
+            <h1 className="text-4xl md:text-5xl font-bold font-serif text-cosiaca-brown">
                 🔗 Redes Sociales y Contacto
             </h1>
-            <p className="text-xl text-cosiaca-brown/70">
+            <p className="text-xl text-cosiaca-brown-light/70">
                 Síguenos y mantente al tanto de todas las novedades de Cosiaca 350.
             </p>
             
             <div className="bg-cosiaca-beige/30 p-8 rounded-lg shadow-xl border border-cosiaca-beige">
-                <p className="text-lg mb-6 text-cosiaca-brown">
+                <p className="text-lg mb-6 text-cosiaca-brown-light">
                     Conéctate con nosotros a través de nuestras plataformas digitales. 
                     ¡La historia de Medellín te espera con un toque de humor y picardía!
                 </p>
@@ -53,8 +53,8 @@ const Redes = () => {
                 </div>
                 
                 <div className="mt-8">
-                    <h3 className="text-2xl font-semibold font-serif text-cosiaca-red mb-4">📧 Contacto Directo</h3>
-                    <div className="flex flex-col items-center space-y-2 text-cosiaca-brown">
+                    <h3 className="text-2xl font-semibold font-serif text-cosiaca-brown mb-4">📧 Contacto Directo</h3>
+                    <div className="flex flex-col items-center space-y-2 text-cosiaca-brown-light">
                         <a 
                             href="mailto:nucleo.colectivo.art@gmail.com" 
                             className="hover:text-cosiaca-red transition-colors"

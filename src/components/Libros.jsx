@@ -4,10 +4,10 @@ const Libros = () => {
     return (
         <div className="animate-fade-in max-w-4xl mx-auto text-cosiaca-brown space-y-8">
             <header className="text-center">
-                <h1 className="text-4xl md:text-5xl font-bold font-serif text-cosiaca-red">
+                <h1 className="text-4xl md:text-5xl font-bold font-serif text-cosiaca-brown">
                     📖 Libros: La Base Narrativa
                 </h1>
-                <p className="text-xl mt-2 text-cosiaca-brown/70">La crónica que inspira nuestro universo transmedia.</p>
+                <p className="text-xl mt-2 text-cosiaca-brown-light/70">La crónica que inspira nuestro universo transmedia.</p>
             </header>
             
             <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige md:flex md:items-center md:space-x-8">
@@ -17,7 +17,7 @@ const Libros = () => {
                     className="w-full md:w-1/3 rounded-lg shadow-lg mb-6 md:mb-0" 
                 />
                 <div className="md:w-2/3">
-                    <h2 className="text-3xl font-serif text-cosiaca-red mb-4">
+                    <h2 className="text-3xl font-serif text-cosiaca-brown mb-4">
                         "País de Cosiacas, ciegos y puritanos"
                     </h2>
                     <p className="text-lg mb-4">

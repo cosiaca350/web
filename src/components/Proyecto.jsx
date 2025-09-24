@@ -4,14 +4,14 @@ const Proyecto = () => {
     return (
         <div className="animate-fade-in space-y-12 max-w-5xl mx-auto text-cosiaca-brown">
             <header className="text-center">
-                <h1 className="text-4xl md:text-5xl font-bold font-serif text-cosiaca-red">
+                <h1 className="text-4xl md:text-5xl font-bold font-serif text-cosiaca-brown">
                     El Proyecto: Cosiaca 350
                 </h1>
-                <p className="text-xl mt-2 text-cosiaca-brown/70">Un Viaje Inmersivo a la Historia de Medellín</p>
+                <p className="text-xl mt-2 text-cosiaca-brown-light/70">Un Viaje Inmersivo a la Historia de Medellín</p>
             </header>
             
             <section className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige">
-                <h2 className="text-3xl font-serif text-cosiaca-red mb-4 border-b-2 border-cosiaca-red/20 pb-2">
+                <h2 className="text-3xl font-serif text-cosiaca-brown mb-4 border-b-2 border-cosiaca-brown/20 pb-2">
                     💡 Introducción y Concepto General
                 </h2>
                 <p className="mb-4">
@@ -31,40 +31,40 @@ const Proyecto = () => {
             </section>
             
             <section className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige">
-                <h2 className="text-3xl font-serif text-cosiaca-red mb-4 border-b-2 border-cosiaca-red/20 pb-2">
+                <h2 className="text-3xl font-serif text-cosiaca-brown mb-4 border-b-2 border-cosiaca-brown/20 pb-2">
                     🌌 Componentes Transmedia
                 </h2>
                 <div className="grid md:grid-cols-2 gap-6">
                     <div className="bg-cosiaca-cream/50 p-6 rounded-lg border border-cosiaca-beige">
-                        <h4 className="font-bold text-xl text-cosiaca-red mb-2">Plataforma Web Interactiva</h4>
-                        <p className="text-cosiaca-brown/80">
+                        <h4 className="font-bold text-xl text-cosiaca-brown mb-2">Plataforma Web Interactiva</h4>
+                        <p className="text-cosiaca-brown-light/80">
                             Sitio web a modo de museo virtual donde convergen todos los contenidos, con narrativas, 
                             líneas de tiempo y galerías audiovisuales.
                         </p>
                     </div>
                     <div className="bg-cosiaca-cream/50 p-6 rounded-lg border border-cosiaca-beige">
-                        <h4 className="font-bold text-xl text-cosiaca-red mb-2">CosiacaBot</h4>
-                        <p className="text-cosiaca-brown/80">
+                        <h4 className="font-bold text-xl text-cosiaca-brown mb-2">CosiacaBot</h4>
+                        <p className="text-cosiaca-brown-light/80">
                             Asistente virtual con la personalidad de Cosiaca que permite a los usuarios "conversar" 
                             con este personaje histórico.
                         </p>
                     </div>
                     <div className="bg-cosiaca-cream/50 p-6 rounded-lg border border-cosiaca-beige">
-                        <h4 className="font-bold text-xl text-cosiaca-red mb-2">Videos Históricos con IA</h4>
-                        <p className="text-cosiaca-brown/80">
+                        <h4 className="font-bold text-xl text-cosiaca-brown mb-2">Videos Históricos con IA</h4>
+                        <p className="text-cosiaca-brown-light/80">
                             Micro-videos que recrean escenas y personajes históricos de Medellín usando técnicas 
                             de inteligencia artificial.
                         </p>
                     </div>
                     <div className="bg-cosiaca-cream/50 p-6 rounded-lg border border-cosiaca-beige">
-                        <h4 className="font-bold text-xl text-cosiaca-red mb-2">Crónica Novelada</h4>
-                        <p className="text-cosiaca-brown/80">
+                        <h4 className="font-bold text-xl text-cosiaca-brown mb-2">Crónica Novelada</h4>
+                        <p className="text-cosiaca-brown-light/80">
                             "País de Cosiacas, ciegos y puritanos", libro que sienta la base narrativa del proyecto.
                         </p>
                     </div>
                     <div className="bg-cosiaca-cream/50 p-6 rounded-lg border border-cosiaca-beige">
-                        <h4 className="font-bold text-xl text-cosiaca-red mb-2">Difusión en Redes Sociales</h4>
-                        <p className="text-cosiaca-brown/80">
+                        <h4 className="font-bold text-xl text-cosiaca-brown mb-2">Difusión en Redes Sociales</h4>
+                        <p className="text-cosiaca-brown-light/80">
                             Campaña digital en TikTok, Instagram, y YouTube para promocionar el contenido y 
                             fomentar la participación.
                         </p>
@@ -73,7 +73,7 @@ const Proyecto = () => {
             </section>
             
             <section className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige">
-                <h2 className="text-3xl font-serif text-cosiaca-red mb-4 border-b-2 border-cosiaca-red/20 pb-2">
+                <h2 className="text-3xl font-serif text-cosiaca-brown mb-4 border-b-2 border-cosiaca-brown/20 pb-2">
                     🔍 Inspiración y Fuentes
                 </h2>
                 <p className="mb-4">
