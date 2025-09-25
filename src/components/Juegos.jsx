@@ -204,20 +204,19 @@ const Juegos = () => {
                                 </div>
                                 {feedbackMessage && (
                                     <div className="bg-cosiaca-beige text-cosiaca-brown p-6 rounded-xl shadow-lg border border-cosiaca-red/50 mt-4 animate-fade-in">
-                                <div className="bg-white text-cosiaca-brown p-6 rounded-xl shadow-lg border border-cosiaca-red/50 mt-4 animate-fade-in">
+                                        <div className="flex items-start space-x-3">
                                             <BotIcon className="w-8 h-8 text-cosiaca-red flex-shrink-0" />
                                             <div>
                                                 <p className="font-bold text-cosiaca-red mb-1">Cosiaca te cuenta:</p>
                                                 <p className="italic">{feedbackMessage}</p>
                                             </div>
                                         </div>
-                                                : 'bg-white text-cosiaca-brown hover:bg-cosiaca-beige border border-cosiaca-beige'
+                                    </div>
                                 )}
                             </>
                         ) : (
                             <div className="text-center space-y-4">
-                                <div className="bg-cosiaca-beige p-8 rounded-xl shadow-lg border border-cosiaca-beige">
-                            <div className="bg-white p-8 rounded-xl shadow-lg border border-cosiaca-beige">
+                                <div className="bg-white p-8 rounded-xl shadow-lg border border-cosiaca-beige">
                                     <p className="text-xl text-cosiaca-brown">Tu puntuación final es:</p>
                                     <p className="text-4xl font-bold mt-2 text-cosiaca-red">
                                         {triviaScore} de {triviaQuestions.length}
@@ -237,8 +236,7 @@ const Juegos = () => {
                 {/* Stand Up Content */}
                 {activeTab === 'standup' && (
                     <div className="text-center space-y-8 animate-fade-in">
-                        <div className="bg-cosiaca-beige rounded-xl p-8 shadow-inner border border-cosiaca-beige">
-                    <div className="bg-white rounded-xl p-8 shadow-inner border border-cosiaca-beige">
+                        <div className="bg-white rounded-xl p-8 shadow-inner border border-cosiaca-beige">
                             <p className="text-xl md:text-2xl font-semibold italic text-cosiaca-brown leading-relaxed">
                                 {currentJoke}
                             </p>
@@ -255,8 +253,7 @@ const Juegos = () => {
                 {/* Trovas Content */}
                 {activeTab === 'trovas' && (
                     <div className="text-center space-y-8 animate-fade-in">
-                        <div className="bg-cosiaca-beige rounded-xl p-8 shadow-inner border border-cosiaca-beige">
-                    <div className="bg-white rounded-xl p-8 shadow-inner border border-cosiaca-beige">
+                        <div className="bg-white rounded-xl p-8 shadow-inner border border-cosiaca-beige">
                             <p 
                                 className="text-xl md:text-2xl font-semibold leading-relaxed text-cosiaca-brown" 
                                 dangerouslySetInnerHTML={{ __html: currentTrova }}
@@ -270,7 +267,6 @@ const Juegos = () => {
                         </button>
                     </div>
                 )}
-            </div>
                 </div>
             </div>
         </div>
