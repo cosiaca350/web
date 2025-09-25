@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import ConstructionPage from './components/ConstructionPage';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Proyecto from './components/Proyecto';
@@ -16,11 +17,20 @@ import './App.css';
 const App = () => {
     const [view, setView] = useState('home');
     const [user, setUser] = useState(null);
+    const [showConstruction, setShowConstruction] = useState(true);
 
     useEffect(() => {
         // Simulate user authentication for demo purposes
         setUser({ uid: 'demo-user' });
     }, []);
+
+    const handleEnterSite = () => {
+        setShowConstruction(false);
+    };
+
+    if (showConstruction) {
+        return <ConstructionPage onEnter={handleEnterSite} />;
+    }
 
     const renderContent = () => {
         switch (view) {
