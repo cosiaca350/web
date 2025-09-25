@@ -111,46 +111,54 @@ const Juegos = () => {
     };
     
     return (
-        <div className="animate-fade-in max-w-2xl mx-auto bg-cosiaca-cream rounded-3xl shadow-xl w-full overflow-hidden transition-all duration-300 border border-cosiaca-beige">
-            <div className="p-6 md:p-8 text-center bg-gradient-to-r from-cosiaca-red to-cosiaca-red-dark text-white">
-                <h1 className="text-3xl font-bold tracking-tight font-serif">Juegos y AR</h1>
-                <p className="mt-2 text-lg opacity-90">¡Humor, conocimiento y rima paisa!</p>
-            </div>
+        <div className="animate-fade-in max-w-4xl mx-auto text-cosiaca-brown space-y-8">
+            <header className="text-center">
+                <h1 className="text-4xl md:text-5xl font-bold font-serif text-cosiaca-brown">
+                    🎮 Juegos y AR
+                </h1>
+                <p className="text-xl mt-2 text-cosiaca-brown-light/70">¡Humor, conocimiento y rima paisa!</p>
+            </header>
+            
+            <div className="bg-cosiaca-brown rounded-3xl shadow-xl w-full overflow-hidden transition-all duration-300 border border-cosiaca-beige">
+                <div className="p-6 md:p-8 text-center bg-gradient-to-r from-cosiaca-red to-cosiaca-red-dark text-white">
+                    <h2 className="text-3xl font-bold tracking-tight font-serif">Experiencias Interactivas</h2>
+                    <p className="mt-2 text-lg opacity-90">Aprende jugando con Cosiaca</p>
+                </div>
 
-            <div className="flex border-b border-cosiaca-beige bg-cosiaca-beige">
-                <button
-                    className={`flex-1 py-4 text-center font-bold text-sm focus:outline-none transition-colors duration-300 transform ${
-                        activeTab === 'trivia' 
-                            ? 'bg-cosiaca-red text-white shadow-md scale-105' 
-                            : 'text-cosiaca-brown hover:bg-cosiaca-cream'
-                    }`}
-                    onClick={() => setActiveTab('trivia')}
-                >
-                    Trivia
-                </button>
-                <button
-                    className={`flex-1 py-4 text-center font-bold text-sm focus:outline-none transition-colors duration-300 transform ${
-                        activeTab === 'standup' 
-                            ? 'bg-cosiaca-red text-white shadow-md scale-105' 
-                            : 'text-cosiaca-brown hover:bg-cosiaca-cream'
-                    }`}
-                    onClick={() => setActiveTab('standup')}
-                >
-                    Stand Up
-                </button>
-                <button
-                    className={`flex-1 py-4 text-center font-bold text-sm focus:outline-none transition-colors duration-300 transform ${
-                        activeTab === 'trovas' 
-                            ? 'bg-cosiaca-red text-white shadow-md scale-105' 
-                            : 'text-cosiaca-brown hover:bg-cosiaca-cream'
-                    }`}
-                    onClick={() => setActiveTab('trovas')}
-                >
-                    Trovas
-                </button>
-            </div>
+                <div className="flex border-b border-cosiaca-beige bg-cosiaca-brown">
+                    <button
+                        className={`flex-1 py-4 text-center font-bold text-sm focus:outline-none transition-colors duration-300 transform ${
+                            activeTab === 'trivia' 
+                                ? 'bg-cosiaca-red text-white shadow-md scale-105' 
+                                : 'text-cosiaca-cream hover:bg-cosiaca-brown/70'
+                        }`}
+                        onClick={() => setActiveTab('trivia')}
+                    >
+                        Trivia
+                    </button>
+                    <button
+                        className={`flex-1 py-4 text-center font-bold text-sm focus:outline-none transition-colors duration-300 transform ${
+                            activeTab === 'standup' 
+                                ? 'bg-cosiaca-red text-white shadow-md scale-105' 
+                                : 'text-cosiaca-cream hover:bg-cosiaca-brown/70'
+                        }`}
+                        onClick={() => setActiveTab('standup')}
+                    >
+                        Stand Up
+                    </button>
+                    <button
+                        className={`flex-1 py-4 text-center font-bold text-sm focus:outline-none transition-colors duration-300 transform ${
+                            activeTab === 'trovas' 
+                                ? 'bg-cosiaca-red text-white shadow-md scale-105' 
+                                : 'text-cosiaca-cream hover:bg-cosiaca-brown/70'
+                        }`}
+                        onClick={() => setActiveTab('trovas')}
+                    >
+                        Trovas
+                    </button>
+                </div>
 
-            <div className="p-6 md:p-8 bg-cosiaca-cream">
+                <div className="p-6 md:p-8 bg-cosiaca-cream">
                 {/* Trivia Content */}
                 {activeTab === 'trivia' && (
                     <div className="space-y-6 animate-fade-in">
@@ -196,20 +204,20 @@ const Juegos = () => {
                                 </div>
                                 {feedbackMessage && (
                                     <div className="bg-cosiaca-beige text-cosiaca-brown p-6 rounded-xl shadow-lg border border-cosiaca-red/50 mt-4 animate-fade-in">
-                                        <div className="flex items-start space-x-3">
+                                <div className="bg-white text-cosiaca-brown p-6 rounded-xl shadow-lg border border-cosiaca-red/50 mt-4 animate-fade-in">
                                             <BotIcon className="w-8 h-8 text-cosiaca-red flex-shrink-0" />
                                             <div>
                                                 <p className="font-bold text-cosiaca-red mb-1">Cosiaca te cuenta:</p>
                                                 <p className="italic">{feedbackMessage}</p>
                                             </div>
                                         </div>
-                                    </div>
+                                                : 'bg-white text-cosiaca-brown hover:bg-cosiaca-beige border border-cosiaca-beige'
                                 )}
                             </>
                         ) : (
                             <div className="text-center space-y-4">
                                 <div className="bg-cosiaca-beige p-8 rounded-xl shadow-lg border border-cosiaca-beige">
-                                    <h3 className="text-2xl font-serif text-cosiaca-brown mb-2">¡Trivia Terminada!</h3>
+                            <div className="bg-white p-8 rounded-xl shadow-lg border border-cosiaca-beige">
                                     <p className="text-xl text-cosiaca-brown">Tu puntuación final es:</p>
                                     <p className="text-4xl font-bold mt-2 text-cosiaca-red">
                                         {triviaScore} de {triviaQuestions.length}
@@ -230,7 +238,7 @@ const Juegos = () => {
                 {activeTab === 'standup' && (
                     <div className="text-center space-y-8 animate-fade-in">
                         <div className="bg-cosiaca-beige rounded-xl p-8 shadow-inner border border-cosiaca-beige">
-                            <h3 className="text-3xl font-serif text-cosiaca-brown mb-4">El Chiste de Cosiaca</h3>
+                    <div className="bg-white rounded-xl p-8 shadow-inner border border-cosiaca-beige">
                             <p className="text-xl md:text-2xl font-semibold italic text-cosiaca-brown leading-relaxed">
                                 {currentJoke}
                             </p>
@@ -248,7 +256,7 @@ const Juegos = () => {
                 {activeTab === 'trovas' && (
                     <div className="text-center space-y-8 animate-fade-in">
                         <div className="bg-cosiaca-beige rounded-xl p-8 shadow-inner border border-cosiaca-beige">
-                            <h3 className="text-3xl font-serif text-cosiaca-brown mb-4">La Trova Paisa</h3>
+                    <div className="bg-white rounded-xl p-8 shadow-inner border border-cosiaca-beige">
                             <p 
                                 className="text-xl md:text-2xl font-semibold leading-relaxed text-cosiaca-brown" 
                                 dangerouslySetInnerHTML={{ __html: currentTrova }}
@@ -262,6 +270,8 @@ const Juegos = () => {
                         </button>
                     </div>
                 )}
+            </div>
+                </div>
             </div>
         </div>
     );
