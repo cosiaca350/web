@@ -183,7 +183,7 @@ const Juegos = () => {
                                                 font-semibold text-center
                                                 ${selectedAnswer === option
                                                     ? (isCorrect ? 'bg-emerald-500 text-white' : 'bg-red-500 text-white')
-                                                    : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
+                                                    : 'bg-white text-cosiaca-brown hover:bg-cosiaca-beige border border-cosiaca-beige'
                                                 }
                                                 ${selectedAnswer !== null ? 'opacity-80' : ''}
                                                 focus:outline-none focus:ring-2 focus:ring-cosiaca-red focus:ring-offset-2 focus:ring-offset-cosiaca-cream
