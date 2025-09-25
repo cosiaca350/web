@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BotIcon, CheckCircleIcon, XCircleIcon, SparklesIcon } from '../icons/Icons';
+import AdvancedTrivia from './AdvancedTrivia';
 
 const Juegos = () => {
     const [activeTab, setActiveTab] = useState('trivia');
@@ -211,107 +212,8 @@ const Juegos = () => {
 
             {/* Trivia Content */}
             {activeTab === 'trivia' && (
-                <div className="bg-white rounded-3xl shadow-2xl p-8 border border-cosiaca-beige animate-fade-in">
-                    <div className="text-center mb-8">
-                        <h3 className="text-3xl font-bold font-serif text-cosiaca-brown mb-2">
-                            🧠 Trivia Histórica de Medellín
-                        </h3>
-                        <p className="text-lg text-cosiaca-brown/70">
-                            Pon a prueba tus conocimientos sobre los 350 años de historia de nuestra bella ciudad
-                        </p>
-                    </div>
-
-                    {currentQuestionIndex < triviaQuestions.length ? (
-                        <div className="space-y-6">
-                            <div className="bg-cosiaca-beige/50 text-cosiaca-brown p-6 rounded-xl border border-cosiaca-beige">
-                                <div className="flex justify-between items-center mb-4">
-                                    <p className="text-sm font-semibold text-cosiaca-red">
-                                        Pregunta {currentQuestionIndex + 1} de {triviaQuestions.length}
-                                    </p>
-                                    <p className="text-sm font-semibold text-cosiaca-red">
-                                        Puntuación: {triviaScore}
-                                    </p>
-                                </div>
-                                <p className="text-lg md:text-xl font-bold">
-                                    {triviaQuestions[currentQuestionIndex].question}
-                                </p>
-                            </div>
-                            
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {triviaQuestions[currentQuestionIndex].options.map((option, index) => (
-                                    <button
-                                        key={index}
-                                        onClick={() => handleAnswer(option)}
-                                        disabled={selectedAnswer !== null}
-                                        className={`
-                                            w-full py-4 px-4 rounded-xl shadow-sm transition-all duration-300
-                                            font-semibold text-center border-2
-                                            ${selectedAnswer === option
-                                                ? (isCorrect ? 'bg-emerald-500 text-white border-emerald-600' : 'bg-red-500 text-white border-red-600')
-                                                : selectedAnswer !== null && option === triviaQuestions[currentQuestionIndex].correctAnswer
-                                                ? 'bg-emerald-500 text-white border-emerald-600'
-                                                : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70 border-cosiaca-beige hover:border-cosiaca-red'
-                                            }
-                                            ${selectedAnswer !== null ? 'cursor-not-allowed' : 'cursor-pointer hover:scale-105'}
-                                            focus:outline-none focus:ring-2 focus:ring-cosiaca-red focus:ring-offset-2
-                                        `}
-                                    >
-                                        {option}
-                                        {selectedAnswer === option && (
-                                            <span className="ml-2">
-                                                {isCorrect ? (
-                                                    <CheckCircleIcon className="inline-block w-5 h-5" />
-                                                ) : (
-                                                    <XCircleIcon className="inline-block w-5 h-5" />
-                                                )}
-                                            </span>
-                                        )}
-                                    </button>
-                                ))}
-                            </div>
-
-                            {showFeedback && feedbackMessage && (
-                                <div className="bg-cosiaca-cream p-6 rounded-xl shadow-lg border-2 border-cosiaca-red/50 animate-fade-in">
-                                    <div className="flex items-start space-x-3">
-                                        <BotIcon className="w-8 h-8 text-cosiaca-red flex-shrink-0 mt-1" />
-                                        <div>
-                                            <p className="font-bold text-cosiaca-red mb-2">Cosiaca te cuenta:</p>
-                                            <p className="italic text-cosiaca-brown leading-relaxed">{feedbackMessage}</p>
-                                        </div>
-                                    </div>
-                                    <div className="mt-6 text-center">
-                                        <button
-                                            onClick={nextQuestion}
-                                            className="bg-cosiaca-red text-white font-bold py-3 px-8 rounded-full hover:bg-cosiaca-red-dark transition-all duration-300 transform hover:scale-105 shadow-lg"
-                                        >
-                                            Siguiente Pregunta →
-                                        </button>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    ) : (
-                        <div className="text-center space-y-6">
-                            <div className="bg-cosiaca-beige/50 p-8 rounded-xl border border-cosiaca-beige">
-                                <h4 className="text-2xl font-bold text-cosiaca-brown mb-4">¡Trivia Completada!</h4>
-                                <p className="text-xl text-cosiaca-brown mb-2">Tu puntuación final:</p>
-                                <p className="text-5xl font-bold text-cosiaca-red mb-4">
-                                    {triviaScore} / {triviaQuestions.length}
-                                </p>
-                                <p className="text-lg text-cosiaca-brown/70">
-                                    {triviaScore === triviaQuestions.length ? "¡Perfecto! Eres un verdadero experto en historia paisa." :
-                                     triviaScore >= 3 ? "¡Muy bien! Conoces bastante sobre Medellín." :
-                                     "¡No te preocupes! Sigue aprendiendo sobre nuestra bella ciudad."}
-                                </p>
-                            </div>
-                            <button
-                                onClick={resetTrivia}
-                                className="bg-cosiaca-red text-white font-bold py-3 px-8 rounded-full hover:bg-cosiaca-red-dark transition-all duration-300 transform hover:scale-105 shadow-lg"
-                            >
-                                🔄 Volver a Jugar
-                            </button>
-                        </div>
-                    )}
+                <div className="animate-fade-in">
+                    <AdvancedTrivia />
                 </div>
             )}
             
