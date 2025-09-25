@@ -68,7 +68,16 @@ const App = () => {
                 {renderContent()}
             </main>
             <footer className="p-4 text-center text-cosiaca-brown/60 border-t border-cosiaca-beige">
-                <p>© 2024 Cosiaca 350. Todos los derechos reservados. Un proyecto de Nucleo Colectivo.</p>
+            <footer className="bg-cafe-oscuro p-6 text-center text-cosiaca-cream border-t border-cafe-medio">
+                <div className="max-w-4xl mx-auto">
+                    <p className="text-lg font-medium mb-2">© 2024 Cosiaca 350 - Un Viaje Inmersivo a la Historia de Medellín</p>
+                    <p className="text-cosiaca-cream/80 mb-4">Todos los derechos reservados. Un proyecto de <strong>Núcleo Colectivo</strong></p>
+                    <div className="text-sm text-cosiaca-cream/70">
+                        <p>Propuesta transmedia para la celebración de los 350 años de Medellín</p>
+                        <p>Proyecto beneficiado de las Convocatorias de Fomento y Estímulos para el Arte y la Cultura 2025</p>
+                        <p>Secretaría de Cultura Ciudadana de Medellín</p>
+                    </div>
+                </div>
             </footer>
         </div>
     );

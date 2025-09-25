@@ -9,7 +9,7 @@
   font-weight: 400;
 
   color-scheme: light;
-  color: #3D2914;
+  color: #2C1810;
   background-color: #F5F1E8;
 
   font-synthesis: none;
@@ -39,12 +39,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D32F2F;
+  background: #8B4513;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #B71C1C;
+  background: #654321;
 }
 
 /* Smooth scrolling */

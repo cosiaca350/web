@@ -77,9 +77,9 @@ const PlanIcon = (props) => (
     }, [experiencesRef]);
 
     return (
-        <nav className="bg-cosiaca-cream/95 backdrop-blur-lg text-cosiaca-brown p-4 sticky top-0 z-50 border-b border-cosiaca-beige shadow-lg">
+        <nav className="bg-cafe-oscuro backdrop-blur-lg text-cosiaca-cream p-4 sticky top-0 z-50 border-b border-cafe-oscuro shadow-lg">
             <div className="container mx-auto flex justify-between items-center">
-                <h1 className="text-2xl font-bold font-serif tracking-wider cursor-pointer text-cosiaca-red" onClick={() => setView('home')}>
+                <h1 className="text-2xl font-bold font-serif tracking-wider cursor-pointer text-cosiaca-cream" onClick={() => setView('home')}>
                     🤠 Cosiaca 350
                 </h1>
                 
@@ -91,8 +91,8 @@ const PlanIcon = (props) => (
                             onClick={() => setView(link.view)} 
                             className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
                                 view === link.view 
-                                    ? 'bg-cosiaca-red text-white shadow-lg' 
-                                    : 'hover:bg-cosiaca-beige'
+                                    ? 'bg-cafe-medio text-cosiaca-cream shadow-lg' 
+                                    : 'text-cosiaca-cream hover:bg-cafe-medio/50'
                             }`}
                         >
                             {link.icon} {link.name}
@@ -102,13 +102,13 @@ const PlanIcon = (props) => (
                         <button 
                             onClick={() => setExperiencesMenuOpen(!isExperiencesMenuOpen)} 
                             className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
-                                isExperiencesMenuOpen ? 'bg-cosiaca-beige' : 'hover:bg-cosiaca-beige'
+                                isExperiencesMenuOpen ? 'bg-cafe-medio/50 text-cosiaca-cream' : 'text-cosiaca-cream hover:bg-cafe-medio/50'
                             }`}
                         >
                             <SparklesIcon className="mr-2"/> Experiencias
                         </button>
                         {isExperiencesMenuOpen && (
-                            <div className="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-cosiaca-cream ring-1 ring-cosiaca-beige ring-opacity-50">
+                            <div className="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-cosiaca-cream ring-1 ring-cafe-medio ring-opacity-50">
                                 <div className="py-1">
                                     {experienceLinks.map(link => (
                                         <button 
@@ -119,8 +119,8 @@ const PlanIcon = (props) => (
                                             }} 
                                             className={`flex items-center w-full text-left px-4 py-2 text-sm ${
                                                 view === link.view 
-                                                    ? 'bg-cosiaca-red text-white' 
-                                                    : 'text-cosiaca-brown hover:bg-cosiaca-beige'
+                                                    ? 'bg-cafe-medio text-cosiaca-cream' 
+                                                    : 'text-cafe-oscuro hover:bg-cosiaca-beige'
                                             }`}
                                         >
                                             {link.icon} {link.name}
@@ -136,7 +136,7 @@ const PlanIcon = (props) => (
                 <div className="md:hidden">
                     <button 
                         onClick={() => setMobileMenuOpen(!isMobileMenuOpen)} 
-                        className="text-cosiaca-brown focus:outline-none p-2 rounded-md hover:bg-cosiaca-beige"
+                        className="text-cosiaca-cream focus:outline-none p-2 rounded-md hover:bg-cafe-medio/50"
                     >
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path 
@@ -160,8 +160,8 @@ const PlanIcon = (props) => (
                             }} 
                             className={`flex items-center w-full text-left px-3 py-3 rounded-md text-base font-medium transition-colors ${
                                 view === link.view 
-                                    ? 'bg-cosiaca-red text-white' 
-                                    : 'hover:bg-cosiaca-beige'
+                                    ? 'bg-cafe-medio text-cosiaca-cream' 
+                                    : 'text-cosiaca-cream hover:bg-cafe-medio/50'
                             }`}
                         >
                             {link.icon} {link.name}
