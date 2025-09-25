@@ -12,6 +12,7 @@ import Podcast from './components/Podcast';
 import Timeline from './components/Timeline';
 import Archivo from './components/Archivo';
 import PlanTrabajo from './components/PlanTrabajo';
+import CosiacaBot from './components/CosiacaBot';
 import './App.css';
 
 const App = () => {
@@ -38,6 +39,8 @@ const App = () => {
                 return <Home setView={setView} />;
             case 'proyecto':
                 return <Proyecto />;
+            case 'cosiacabot':
+                return <CosiacaBot />;
             case 'juegos':
                 return <Juegos />;
             case 'podcast':

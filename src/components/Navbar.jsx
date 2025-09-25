@@ -8,7 +8,8 @@ import {
     LinkIcon, 
     SparklesIcon, 
     VideoIcon,
-    PodcastIcon
+    PodcastIcon,
+    BotIcon
 } from '../icons/Icons';
 
 const CreditCardIcon = (props) => (
@@ -49,6 +50,7 @@ const PlanIcon = (props) => (
     const mainLinks = [
         { name: 'Inicio', view: 'home', icon: <HomeIcon className="mr-2"/> },
         { name: 'El Proyecto', view: 'proyecto', icon: <ProjectIcon className="mr-2"/> },
+        { name: 'CosiacaBot', view: 'cosiacabot', icon: <BotIcon className="mr-2"/> },
         { name: 'Juegos y AR', view: 'juegos', icon: <GamepadIcon className="mr-2"/> },
         { name: 'Podcast Histórico', view: 'podcast', icon: <PodcastIcon className="mr-2"/> },
         { name: 'Libros', view: 'libros', icon: <BookIcon className="mr-2"/> },
