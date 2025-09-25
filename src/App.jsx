@@ -70,7 +70,6 @@ const App = () => {
             <main className="flex-1 container mx-auto p-4 md:p-8">
                 {renderContent()}
             </main>
-            <footer className="p-4 text-center text-cosiaca-brown/60 border-t border-cosiaca-beige">
             <footer className="bg-cafe-oscuro p-6 text-center text-cosiaca-cream border-t border-cafe-medio">
                 <div className="max-w-4xl mx-auto">
                     <p className="text-lg font-medium mb-2">© 2024 Cosiaca 350 - Un Viaje Inmersivo a la Historia de Medellín</p>
@@ -87,5 +86,3 @@ const App = () => {
 };
 
 export default App;
-    )
-}
