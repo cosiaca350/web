@@ -115,15 +115,22 @@ class AIService {
 
     // Generar chisme histórico específico
     async generateHistoricalGossip(provider = null) {
-        const prompt = `Cuenta un "chisme histórico" divertido y real sobre Medellín entre 1675 y 2025.
+        const context = this.getCosiacaContext();
+        const prompt = `Como Cosiaca, cuenta un "chisme histórico" divertido y real sobre Medellín entre 1675 y 2025.
         Debe ser una anécdota curiosa, picante pero familiar, narrada como si fueras un testigo.
         Incluye personajes reales, fechas aproximadas y detalles jugosos pero veraces.
         Usa tu personalidad pícara y expresiones como "¿sabías que...?", "mijito", "imagínate".
-        Máximo 5 líneas, que suene como un verdadero chisme paisa.`;
+        Máximo 4 líneas, que suene como un verdadero chisme paisa con datos históricos reales.`;
         
         try {
-            return await this.generateContent(prompt, null, provider);
+            // Intentar con la API si está disponible
+            if (this.providers.gemini.active && this.providers.gemini.apiKey && this.providers.gemini.apiKey !== '') {
+                return await this.callGemini(prompt, context);
+            } else {
+                throw new Error('API no disponible');
+            }
         } catch (error) {
+            console.log('Usando chisme de fallback:', error.message);
             return this.getFallbackGossip();
         }
     }
@@ -131,11 +138,14 @@ class AIService {
     // Fallback para chismes históricos
     getFallbackGossip() {
         const gossips = [
-            "¿Sabías que cuando se fundó Medellín en 1675, había más vacas que gente? ¡Los fundadores eran tan poquitos que hasta las vacas los conocían por el nombre! Francisco Herrera Campuzano, el fundador, decía que era más fácil contar las familias que el ganado. ¡Imagínate mijito, 24 familias para toda una ciudad!",
-            "¡Uy mijito, te voy a contar un chisme sabroso! Resulta que el primer tranvía de Medellín en 1890 era jalado por mulas, y las señoras elegantes se quejaban del olor. Pero ¿sabés qué? ¡Nunca se quedaron sin gasolina! Las mulas eran más confiables que los carros de ahora, ja ja ja.",
-            "¿Te cuento un secreto de la época del café? En los años 1870, los arrieros antioqueños eran tan buenos para los negocios que vendían hasta las piedras del camino. Decían que un paisa podía vender hielo en el polo norte y carbón en el infierno. ¡Qué verraquera la de esos paisas!",
-            "¡Imagínate este chisme, mijito! Cuando llegó la electricidad a Medellín en 1895, la gente pensaba que era brujería. Las señoras se persignaban cada vez que prendían un bombillo. ¡Y los curas tuvieron que explicar desde el púlpito que la luz eléctrica no era cosa del diablo!",
-            "¿Sabías que el Teatro Junín se construyó en 1924 y era tan elegante que la gente se vestía de gala hasta para ver una obra de títeres? Las señoras se peinaban durante horas y los caballeros se planchaban el bigote. ¡Todo un espectáculo antes del espectáculo!"
+            "¿Sabías que cuando se fundó Medellín en 1675, había más vacas que gente? ¡Los 24 fundadores eran tan poquitos que hasta las vacas los conocían por el nombre! Francisco Herrera Campuzano decía que era más fácil contar las familias que el ganado. ¡Imagínate mijito, una ciudad con más mugidos que conversaciones!",
+            "¡Uy mijito, te voy a contar un chisme sabroso! El primer tranvía de Medellín en 1890 era jalado por mulas, y las señoras elegantes se quejaban del olor. Pero ¿sabés qué? ¡Nunca se quedaron sin combustible! Las mulas eran más confiables que los carros de ahora.",
+            "¿Te cuento un secreto de la época del café? En los años 1870, los arrieros antioqueños eran tan buenos para los negocios que hasta vendían las piedras del camino como 'recuerdos históricos'. Decían que un paisa podía vender hielo en el polo norte. ¡Qué verraquera!",
+            "¡Imagínate este chisme, mijito! Cuando llegó la electricidad a Medellín en 1895, las señoras se persignaban cada vez que prendían un bombillo. Los curas tuvieron que explicar desde el púlpito que la luz eléctrica no era brujería. ¡Qué tiempos aquellos!",
+            "¿Sabías que el Teatro Junín en 1924 era tan elegante que la gente se vestía de gala hasta para ver títeres? Las señoras se peinaban durante horas y los caballeros se planchaban el bigote. ¡Todo un espectáculo antes del espectáculo!",
+            "¡Uy, qué chisme tan bueno! En 1930, cuando llegaron los primeros carros a Medellín, las gallinas del centro se volvieron locas del susto. Los dueños de las tiendas tenían que perseguir sus gallinas por toda la plaza. ¡Imagínate el alboroto!",
+            "¿Te cuento algo curioso? En 1950, las señoras de Medellín competían por tener el jardín más bonito, pero en secreto se robaban las flores unas a otras de madrugada. ¡Era toda una guerra florida en los barrios elegantes!",
+            "¡Qué historia tan divertida! En los años 60, los jóvenes paisas inventaron un baile secreto llamado 'el paso del arriero' que solo se bailaba en las fiestas clandestinas. Los papás nunca se enteraron de qué se trataba realmente."
         ];
         
         return gossips[Math.floor(Math.random() * gossips.length)];

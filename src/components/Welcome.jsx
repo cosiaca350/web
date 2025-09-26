@@ -11,11 +11,21 @@ const Welcome = ({ setView }) => {
         setHistoricalFact(''); 
 
         try {
-            const fact = await AIService.generateHistoricalGossip();
-            setHistoricalFact(fact);
+            // Intentar generar con IA primero
+            const gossip = await AIService.generateHistoricalGossip();
+            setHistoricalFact(gossip);
         } catch (error) {
             console.error('Error generating fact:', error);
-            setHistoricalFact(AIService.getFallbackGossip());
+            // Si falla la IA, usar un chisme de fallback específico
+            const fallbackGossips = [
+                "¿Sabías que cuando se fundó Medellín en 1675, había más vacas que gente? ¡Los fundadores eran tan poquitos que hasta las vacas los conocían por el nombre! Francisco Herrera Campuzano, el fundador, decía que era más fácil contar las familias que el ganado. ¡Imagínate mijito, 24 familias para toda una ciudad!",
+                "¡Uy mijito, te voy a contar un chisme sabroso! Resulta que el primer tranvía de Medellín en 1890 era jalado por mulas, y las señoras elegantes se quejaban del olor. Pero ¿sabés qué? ¡Nunca se quedaron sin gasolina! Las mulas eran más confiables que los carros de ahora, ja ja ja.",
+                "¿Te cuento un secreto de la época del café? En los años 1870, los arrieros antioqueños eran tan buenos para los negocios que vendían hasta las piedras del camino. Decían que un paisa podía vender hielo en el polo norte y carbón en el infierno. ¡Qué verraquera la de esos paisas!",
+                "¡Imagínate este chisme, mijito! Cuando llegó la electricidad a Medellín en 1895, la gente pensaba que era brujería. Las señoras se persignaban cada vez que prendían un bombillo. ¡Y los curas tuvieron que explicar desde el púlpito que la luz eléctrica no era cosa del diablo!",
+                "¿Sabías que el Teatro Junín se construyó en 1924 y era tan elegante que la gente se vestía de gala hasta para ver una obra de títeres? Las señoras se peinaban durante horas y los caballeros se planchaban el bigote. ¡Todo un espectáculo antes del espectáculo!"
+            ];
+            const randomGossip = fallbackGossips[Math.floor(Math.random() * fallbackGossips.length)];
+            setHistoricalFact(randomGossip);
         } finally {
             setIsLoadingFact(false);
         }
