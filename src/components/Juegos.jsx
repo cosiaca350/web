@@ -173,7 +173,7 @@ const Juegos = () => {
                 <h2 className="text-3xl md:text-4xl font-bold tracking-tight font-serif mb-4">
                     ✨ Experiencias Interactivas
                 </h2>
-                <p className="text-xl opacity-90">Aprende jugando con Cosiaca</p>
+                <p className="text-xl opacity-90 text-white">Aprende jugando con Cosiaca</p>
             </div>
 
             {/* Navegación de Experiencias */}
