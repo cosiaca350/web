@@ -16,7 +16,7 @@ class AIService {
             claude: {
                 apiKey: 'd5XFkP0sLhN7v8TqRmYjGaWc2xIeB3zOuC4pV9yFbQ6tJrS1oHgMKLZDXEUA7NFIJPCQW',
                 baseUrl: 'https://api.anthropic.com/v1/messages',
-                active: true
+                active: false
             },
             custom: {
                 apiKey: '2881gN4mH7kXqT5cW9sP1jF0L6zR3vYxU2bEaQfJdI7uO4wVtC9sGpMhKjL5nB6vPqYxZrDcTfG8wHsJaQkXlZmWvN0bE1cR2dF3gH4jK5lM6nB7vC8xY9zR0dF1gH2jK3lM4nB5vC6xY7zR8dQ',
