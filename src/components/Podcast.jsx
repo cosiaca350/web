@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
 import { PlayIcon, PodcastIcon } from '../icons/Icons';
 
+const PauseIcon = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" {...props}>
+        <rect x="6" y="4" width="4" height="16"/>
+        <rect x="14" y="4" width="4" height="16"/>
+    </svg>
+);
+
 const Podcast = () => {
     const [currentAudio, setCurrentAudio] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [loadingAudio, setLoadingAudio] = useState(null);
+    const [error, setError] = useState(null);
 
     const podcastEpisodes = [
         {
@@ -11,7 +20,7 @@ const Podcast = () => {
             title: "El Encuentro en la Trocha",
             description: "Cosiaca nos cuenta sobre los antiguos caminos de herradura que conectaban a Medellín con el mundo exterior.",
             duration: "8:45",
-            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/AUDIOS_historias/El%20encuentro%20en%20la%20trocha.mp3",
+            audioFile: "/AUDIOS_historias/El encuentro en la trocha.mp3",
             image: "https://images.pexels.com/photos/1386604/pexels-photo-1386604.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
@@ -19,7 +28,7 @@ const Podcast = () => {
             title: "La Canción del Valle de Aburrá",
             description: "Una melodiosa narración sobre los orígenes musicales y culturales del valle que acogió a Medellín.",
             duration: "12:30",
-            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/AUDIOS_historias/La%20canci%C3%B3n%20del%20valle%20de%20aburr%C3%A1.mp3",
+            audioFile: "/AUDIOS_historias/La canción del valle de aburrá.mp3",
             image: "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
@@ -27,7 +36,7 @@ const Podcast = () => {
             title: "Sobre la Medellín de los Cafetales",
             description: "El auge del café y cómo transformó la economía y la sociedad paisa, contado con el humor característico de Cosiaca.",
             duration: "15:20",
-            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/AUDIOS_historias/Sobre%20la%20Medell%C3%ADn%20de%20los%20cafetales.mp3",
+            audioFile: "/AUDIOS_historias/Sobre la Medellín de los cafetales.mp3",
             image: "https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
@@ -35,7 +44,7 @@ const Podcast = () => {
             title: "De la Violencia a la Esperanza",
             description: "Un episodio emotivo sobre cómo Medellín superó sus momentos más difíciles y se transformó en ciudad de innovación.",
             duration: "18:45",
-            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/AUDIOS_historias/%20De%20la%20violencia%20a%20la%20esperanza.mp3",
+            audioFile: "/AUDIOS_historias/ De la violencia a la esperanza.mp3",
             image: "https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
@@ -43,7 +52,7 @@ const Podcast = () => {
             title: "La Verraquera Arriera",
             description: "Historias de los arrieros antioqueños y su papel fundamental en el desarrollo económico de la región.",
             duration: "14:10",
-            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/AUDIOS_historias/La%20verraquera%20arriera.mp3",
+            audioFile: "/AUDIOS_historias/La verraquera arriera.mp3",
             image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
@@ -51,7 +60,7 @@ const Podcast = () => {
             title: "Sobre la Medellín de Hoy",
             description: "Reflexiones de Cosiaca sobre la Medellín moderna, sus logros y desafíos en el siglo XXI.",
             duration: "16:30",
-            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/AUDIOS_historias/Sobre%20la%20Medell%C3%ADn%20de%20hoy.mp3",
+            audioFile: "/AUDIOS_historias/Sobre la Medellín de hoy.mp3",
             image: "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
@@ -59,7 +68,7 @@ const Podcast = () => {
             title: "Saludo de Cosiaca",
             description: "El mítico personaje nos da la bienvenida a este viaje por la historia de Medellín con su característico humor paisa.",
             duration: "3:15",
-            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/AUDIOS_historias/SALUDO_cosiaca.mp3",
+            audioFile: "/AUDIOS_historias/SALUDO_cosiaca.mp3",
             image: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
@@ -67,34 +76,73 @@ const Podcast = () => {
             title: "Cosiaca el Culebreo",
             description: "Una historia divertida sobre las travesuras y picardías del personaje más querido de Antioquia.",
             duration: "12:45",
-            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/AUDIOS_historias/Cosiaca%20el%20culebreo.mp3",
+            audioFile: "/AUDIOS_historias/Cosiaca el culebreo.mp3",
             image: "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=400"
         }
     ];
 
     const handlePlayPause = (episode) => {
+        setError(null);
+        
         if (currentAudio && currentAudio.id === episode.id) {
+            // Si es el mismo audio, pausar/reanudar
             if (isPlaying) {
                 currentAudio.audio.pause();
                 setIsPlaying(false);
             } else {
-                currentAudio.audio.play();
+                currentAudio.audio.play().catch(err => {
+                    console.error('Error playing audio:', err);
+                    setError(`Error reproduciendo: ${episode.title}`);
+                });
                 setIsPlaying(true);
             }
         } else {
+            // Nuevo audio
+            setLoadingAudio(episode.id);
+            
             if (currentAudio) {
                 currentAudio.audio.pause();
+                setIsPlaying(false);
             }
             
             const audio = new Audio(episode.audioFile);
+            
+            // Event listeners
             audio.addEventListener('ended', () => {
                 setIsPlaying(false);
                 setCurrentAudio(null);
             });
             
+            audio.addEventListener('loadstart', () => {
+                setLoadingAudio(episode.id);
+            });
+            
+            audio.addEventListener('canplay', () => {
+                setLoadingAudio(null);
+            });
+            
+            audio.addEventListener('error', (e) => {
+                console.error('Audio error:', e);
+                setError(`No se pudo cargar: ${episode.title}`);
+                setLoadingAudio(null);
+                setIsPlaying(false);
+                setCurrentAudio(null);
+            });
+            
             setCurrentAudio({ ...episode, audio });
-            audio.play();
-            setIsPlaying(true);
+            
+            audio.play()
+                .then(() => {
+                    setIsPlaying(true);
+                    setLoadingAudio(null);
+                })
+                .catch(err => {
+                    console.error('Error playing audio:', err);
+                    setError(`Error reproduciendo: ${episode.title}`);
+                    setLoadingAudio(null);
+                    setIsPlaying(false);
+                    setCurrentAudio(null);
+                });
         }
     };
 
@@ -121,6 +169,18 @@ const Podcast = () => {
                 </p>
             </div>
 
+            {/* Error Message */}
+            {error && (
+                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl mb-6">
+                    <p className="font-bold">⚠️ Error de Reproducción</p>
+                    <p>{error}</p>
+                    <p className="text-sm mt-2">
+                        <strong>Nota:</strong> Los archivos de audio están siendo cargados. 
+                        Si el problema persiste, intenta refrescar la página.
+                    </p>
+                </div>
+            )}
+
             <div className="grid gap-6">
                 {podcastEpisodes.map((episode) => (
                     <div 
@@ -145,16 +205,39 @@ const Podcast = () => {
                                         <strong>Duración:</strong> {episode.duration}
                                     </span>
                                     <button
+                                {loadingAudio === episode.id && (
+                                    <span className="text-sm text-cosiaca-red font-medium animate-pulse">
+                                        Cargando...
+                                    </span>
+                                )}
+                                
                                         onClick={() => handlePlayPause(episode)}
                                         className={`flex items-center px-4 py-2 rounded-full font-bold transition-all duration-300 ${
+                                    disabled={loadingAudio === episode.id}
                                             currentAudio && currentAudio.id === episode.id && isPlaying
                                                 ? 'bg-cosiaca-brown text-white'
                                                 : 'bg-cosiaca-red text-white hover:bg-cosiaca-red-dark'
-                                        }`}
-                                    >
+                                            : loadingAudio === episode.id
+                                            ? 'bg-gray-400 text-white cursor-not-allowed'
+                                            : 'bg-cosiaca-red text-white hover:bg-cosiaca-red-dark'
+                                    } ${loadingAudio === episode.id ? 'opacity-50' : ''}`}
                                         <PlayIcon className="w-4 h-4 mr-2" />
-                                        <strong>{currentAudio && currentAudio.id === episode.id && isPlaying ? 'Pausar' : 'Reproducir'}</strong>
-                                    </button>
+                                    {loadingAudio === episode.id ? (
+                                        <>
+                                            <div className="w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                                            <strong>Cargando...</strong>
+                                        </>
+                                    ) : currentAudio && currentAudio.id === episode.id && isPlaying ? (
+                                        <>
+                                            <PauseIcon className="w-4 h-4 mr-2" />
+                                            <strong>Pausar</strong>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <PlayIcon className="w-4 h-4 mr-2" />
+                                            <strong>Reproducir</strong>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -172,6 +255,14 @@ const Podcast = () => {
                     reconocido como el <em>primer comediante popular de Antioquia</em>. Cada episodio combina <strong>rigor histórico</strong> 
                     con el <em>humor y la picardía característica de la cultura paisa</em>.
                 </p>
+                
+                <div className="mt-6 p-4 bg-yellow-100 border border-yellow-300 rounded-lg">
+                    <p className="text-sm text-yellow-800">
+                        <strong>📁 Nota Técnica:</strong> Los archivos de audio se están cargando desde el servidor. 
+                        Si experimentas problemas de reproducción, por favor intenta refrescar la página o 
+                        contacta al equipo técnico.
+                    </p>
+                </div>
             </div>
         </div>
     );
