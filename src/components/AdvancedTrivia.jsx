@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SparklesIcon, CheckCircleIcon, XCircleIcon, BotIcon, TrophyIcon, StarIcon } from '../icons/Icons';
+import { SparklesIcon, CheckCircleIcon, XCircleIcon, BotIcon, TrophyIcon } from '../icons/Icons';
 import { triviaDatabase, levelConfig, getRandomQuestions, calculateMaxScore } from '../data/triviaQuestions';
 
 const AdvancedTrivia = () => {
