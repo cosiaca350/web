@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { SparklesIcon } from '../icons/Icons';
 
 const ConstructionPage = ({ onEnter }) => {
-    const [loadingText, setLoadingText] = useState('Cuadrando el chuzo para la parranda...');
+    const [loadingText, setLoadingText] = useState('Preparando el viaje histórico...');
     const [progress, setProgress] = useState(0);
 
     const loadingMessages = [
-        'Cuadrando el chuzo para la parranda...',
+        'Preparando el viaje histórico...',
         'Afinando la guitarra de Cosiaca...',
-        'Preparando los chismes históricos...',
-        'Organizando las trovas paisas...',
+        'Organizando los archivos históricos...',
         'Calentando el micrófono del podcast...',
         'Puliendo las historias de 350 años...',
-        'Ajustando el sombrero de Cosiaca...',
-        'Preparando el café para el cuento...',
-        'Acomodando los archivos históricos...',
+        'Preparando las anécdotas paisas...',
+        'Cargando la sabiduría de Cosiaca...',
+        'Ajustando los cuentos históricos...',
+        'Preparando la experiencia inmersiva...',
         '¡Ya casi está listo el sarao!'
     ];
 
@@ -33,7 +33,7 @@ const ConstructionPage = ({ onEnter }) => {
                     clearInterval(progressInterval);
                     return 100;
                 }
-                return prev + Math.random() * 15;
+                return prev + Math.random() * 12;
             });
         }, 300);
 
@@ -44,88 +44,137 @@ const ConstructionPage = ({ onEnter }) => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-cosiaca-cream via-cosiaca-beige to-cosiaca-cream flex items-center justify-center p-4">
-            <div className="max-w-2xl w-full text-center space-y-8">
-                {/* Logo/Title */}
-                <div className="animate-bounce">
-                    <h1 className="text-6xl md:text-8xl font-black text-cafe-oscuro font-montserrat mb-4">
-                        🤠 COSIACA 350
-                    </h1>
-                    <div className="w-32 h-1 bg-cosiaca-red mx-auto rounded-full"></div>
-                </div>
+        <div className="min-h-screen bg-gradient-to-br from-cosiaca-cream via-cosiaca-beige to-cosiaca-cream flex items-center justify-center p-4 relative overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-5">
+                <div className="absolute top-10 left-10 w-32 h-32 border border-cosiaca-brown rounded-full"></div>
+                <div className="absolute top-32 right-20 w-24 h-24 border border-cosiaca-brown rounded-full"></div>
+                <div className="absolute bottom-20 left-32 w-40 h-40 border border-cosiaca-brown rounded-full"></div>
+                <div className="absolute bottom-32 right-10 w-28 h-28 border border-cosiaca-brown rounded-full"></div>
+            </div>
 
-                {/* Construction Message */}
-                <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border-2 border-cosiaca-red/20">
-                    <h2 className="text-3xl md:text-4xl font-bold text-cafe-oscuro mb-4 font-serif">
-                        ¡Estamos en Construcción!
-                    </h2>
-                    <p className="text-xl text-cafe-claro mb-6">
-                        Mijito, estamos preparando algo muy berraco para celebrar los 350 años de Medellín. 
-                        ¡Un viaje inmersivo lleno de historias, risas y tradición paisa!
-                    </p>
-                    
-                    {/* Animated Loading Text */}
-                    <div className="flex items-center justify-center space-x-3 mb-6">
-                        <SparklesIcon className="w-6 h-6 text-cosiaca-red animate-spin" />
-                        <p className="text-lg font-medium text-cosiaca-red animate-pulse">
-                            {loadingText}
-                        </p>
-                        <SparklesIcon className="w-6 h-6 text-cosiaca-red animate-spin" />
-                    </div>
-
-                    {/* Progress Bar */}
-                    <div className="w-full bg-cosiaca-beige rounded-full h-4 mb-6 overflow-hidden">
-                        <div 
-                            className="bg-gradient-to-r from-cosiaca-red to-cosiaca-red-dark h-4 rounded-full transition-all duration-500 ease-out relative"
-                            style={{ width: `${Math.min(progress, 100)}%` }}
-                        >
-                            <div className="absolute inset-0 bg-white/30 animate-pulse"></div>
+            <div className="max-w-4xl w-full text-center space-y-12 relative z-10">
+                {/* Logo Principal */}
+                <div className="space-y-6">
+                    <div className="relative">
+                        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-cosiaca-brown font-serif leading-none tracking-tight">
+                            Cosiaca
+                        </h1>
+                        <div className="flex justify-center mt-4">
+                            <div className="border-2 border-cosiaca-brown px-6 py-2 rounded-lg">
+                                <span className="text-3xl sm:text-4xl md:text-5xl font-light text-cosiaca-brown">
+                                    350
+                                </span>
+                            </div>
                         </div>
                     </div>
-
-                    {/* Fun Facts */}
-                    <div className="bg-cosiaca-beige/50 p-4 rounded-lg mb-6">
-                        <p className="text-cafe-oscuro font-medium mb-2">
-                            💡 Mientras esperás, sabías que...
-                        </p>
-                        <p className="text-cafe-claro italic">
-                            José García "Cosiaca" fue el primer comediante popular de Antioquia y sus historias 
-                            siguen haciendo reír a los paisas después de más de un siglo.
-                        </p>
+                    
+                    <div className="space-y-2">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-cosiaca-brown/80 tracking-wide">
+                            UN VIAJE INMERSIVO
+                        </h2>
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-medium text-cosiaca-brown/70">
+                            A LA HISTORIA DE MEDELLÍN
+                        </h3>
                     </div>
-
-                    {/* Enter Button */}
-                    <button
-                        onClick={onEnter}
-                        className="bg-cosiaca-red hover:bg-cosiaca-red-dark text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
-                    >
-                        ¡Entrar al Sarao! 🎉
-                    </button>
                 </div>
 
-                {/* Footer */}
-                <div className="text-center space-y-2">
-                    <p className="text-cafe-claro/70">
+                {/* Contenido Principal */}
+                <div className="bg-white/80 backdrop-blur-sm p-8 sm:p-12 rounded-3xl shadow-2xl border border-cosiaca-beige/50">
+                    <div className="space-y-8">
+                        <div>
+                            <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-cosiaca-brown mb-4 font-serif">
+                                Estamos Preparando Algo Especial
+                            </h4>
+                            <p className="text-lg sm:text-xl text-cosiaca-brown/80 max-w-2xl mx-auto leading-relaxed">
+                                Un proyecto transmedia que celebra los <strong>350 años de Medellín</strong> 
+                                a través de la figura histórica de <em>José García "Cosiaca"</em>, 
+                                el primer comediante popular de Antioquia.
+                            </p>
+                        </div>
+                        
+                        {/* Loading Animation */}
+                        <div className="space-y-6">
+                            <div className="flex items-center justify-center space-x-3">
+                                <SparklesIcon className="w-6 h-6 text-cosiaca-red animate-pulse" />
+                                <p className="text-lg font-medium text-cosiaca-red">
+                                    {loadingText}
+                                </p>
+                                <SparklesIcon className="w-6 h-6 text-cosiaca-red animate-pulse" />
+                            </div>
+
+                            {/* Progress Bar */}
+                            <div className="w-full max-w-md mx-auto">
+                                <div className="w-full bg-cosiaca-beige/50 rounded-full h-4 overflow-hidden shadow-inner">
+                                    <div 
+                                        className="bg-gradient-to-r from-cosiaca-red to-cosiaca-red/80 h-4 rounded-full transition-all duration-500 ease-out relative"
+                                        style={{ width: `${Math.min(progress, 100)}%` }}
+                                    >
+                                        <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
+                                    </div>
+                                </div>
+                                <p className="text-sm text-cosiaca-brown/60 mt-2">
+                                    {Math.round(Math.min(progress, 100))}% completado
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Características del Proyecto */}
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                            <div className="bg-cosiaca-beige/30 p-4 rounded-xl border border-cosiaca-beige">
+                                <div className="text-2xl mb-2">🎭</div>
+                                <p className="font-semibold text-cosiaca-brown">Humor Paisa</p>
+                            </div>
+                            <div className="bg-cosiaca-beige/30 p-4 rounded-xl border border-cosiaca-beige">
+                                <div className="text-2xl mb-2">📚</div>
+                                <p className="font-semibold text-cosiaca-brown">Historia Real</p>
+                            </div>
+                            <div className="bg-cosiaca-beige/30 p-4 rounded-xl border border-cosiaca-beige">
+                                <div className="text-2xl mb-2">🤖</div>
+                                <p className="font-semibold text-cosiaca-brown">Tecnología IA</p>
+                            </div>
+                            <div className="bg-cosiaca-beige/30 p-4 rounded-xl border border-cosiaca-beige">
+                                <div className="text-2xl mb-2">🎪</div>
+                                <p className="font-semibold text-cosiaca-brown">Transmedia</p>
+                            </div>
+                        </div>
+
+                        {/* Botón de Entrada */}
+                        <div className="pt-4">
+                            <button
+                                onClick={onEnter}
+                                className="bg-cosiaca-red hover:bg-cosiaca-red-dark text-white font-bold py-4 px-8 sm:px-12 rounded-full text-lg sm:text-xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+                            >
+                                Comenzar el Viaje Histórico
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Información del Proyecto */}
+                <div className="text-center space-y-3 opacity-80">
+                    <p className="text-cosiaca-brown/70 font-medium">
                         Un proyecto de <strong>Núcleo Colectivo</strong>
                     </p>
-                    <p className="text-sm text-cafe-claro/60">
-                        Propuesta transmedia para la celebración de los 350 años de Medellín
+                    <p className="text-sm text-cosiaca-brown/60 max-w-2xl mx-auto">
+                        Propuesta transmedia para la celebración de los 350 años de Medellín. 
+                        Estímulo a la creación de una obra artística.
                     </p>
                 </div>
+            </div>
 
-                {/* Floating Elements */}
-                <div className="absolute top-10 left-10 text-4xl animate-bounce" style={{animationDelay: '0.5s'}}>
-                    🎭
-                </div>
-                <div className="absolute top-20 right-10 text-3xl animate-bounce" style={{animationDelay: '1s'}}>
-                    🎪
-                </div>
-                <div className="absolute bottom-20 left-20 text-3xl animate-bounce" style={{animationDelay: '1.5s'}}>
-                    🎵
-                </div>
-                <div className="absolute bottom-10 right-20 text-4xl animate-bounce" style={{animationDelay: '2s'}}>
-                    🎨
-                </div>
+            {/* Elementos Decorativos Flotantes */}
+            <div className="absolute top-20 left-20 text-3xl animate-bounce opacity-30" style={{animationDelay: '0.5s'}}>
+                🎭
+            </div>
+            <div className="absolute top-32 right-32 text-2xl animate-bounce opacity-30" style={{animationDelay: '1s'}}>
+                📚
+            </div>
+            <div className="absolute bottom-32 left-32 text-2xl animate-bounce opacity-30" style={{animationDelay: '1.5s'}}>
+                🎵
+            </div>
+            <div className="absolute bottom-20 right-20 text-3xl animate-bounce opacity-30" style={{animationDelay: '2s'}}>
+                🎪
             </div>
         </div>
     );
