@@ -61,7 +61,7 @@ const Home = ({ setView }) => {
                             <div className="flex justify-center mt-4">
                                 <div className="border-2 border-cosiaca-brown px-6 py-2 rounded-lg">
                                     <span className="text-3xl sm:text-4xl md:text-5xl font-light text-cosiaca-brown">
-                                        {350}
+                                        <strong>{350}</strong>
                                     </span>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@ const Home = ({ setView }) => {
                     </h2>
                     <div className="bg-cosiaca-beige/30 p-6 rounded-xl border border-cosiaca-beige max-w-3xl mx-auto">
                         <p className="text-sm sm:text-base text-cosiaca-brown/70 font-medium">
-                            PROPUESTA TRANSMEDIA PARA LA CELEBRACIÓN DE LOS 350 AÑOS<br/>
+                            PROPUESTA TRANSMEDIA PARA LA CELEBRACIÓN DE LOS <strong>350</strong> AÑOS<br/>
                             DE MEDELLÍN. ESTÍMULO A LA CREACIÓN DE UNA OBRA ARTÍSTICA.
                         </p>
                     </div>
@@ -121,7 +121,7 @@ const Home = ({ setView }) => {
                                 <div className="text-6xl mb-4">🤠</div>
                                 <h4 className="text-2xl font-bold text-cosiaca-brown mb-4 font-serif">350 Años de Historia</h4>
                                 <p className="text-cosiaca-brown/80">
-                                    Desde <strong>1675</strong> hasta <strong>2025</strong><br/>
+                                    Desde <strong>1675</strong> hasta <strong>2025</strong> (<strong>350</strong> años)<br/>
                                     Humor pícaro • Oralidad paisa • Participación del público
                                 </p>
                             </div>

@@ -74,7 +74,7 @@ const Timeline = () => {
         <div className="animate-fade-in max-w-6xl mx-auto text-cafe-oscuro space-y-8">
             <header className="text-center">
                 <h1 className="text-4xl md:text-5xl font-bold font-serif text-cafe-oscuro">
-                    ⏳ 350 Años en un Viaje
+                    ⏳ <strong>350</strong> Años en un Viaje
                 </h1>
                 <p className="text-xl mt-2 text-cafe-claro/70">
                     Un recorrido por la historia de Medellín, contada por Cosiaca
@@ -136,7 +136,7 @@ const Timeline = () => {
                 <p className="text-cafe-claro/80">
                     Cada período histórico está narrado desde la perspectiva única de José García "Cosiaca", 
                     quien con su humor y sabiduría popular nos ayuda a entender cómo se forjó la identidad paisa 
-                    a lo largo de estos 350 años de historia.
+                    a lo largo de estos <strong>350</strong> años de historia.
                 </p>
             </div>
         </div>

@@ -115,12 +115,12 @@ const ConstructionPage = ({ onEnter }) => {
                 <div className={`text-center pt-8 pb-4 transition-all duration-1000 ${isAnimating ? 'transform -translate-y-10 opacity-0' : 'transform translate-y-0 opacity-100'}`}>
                     <div className="relative inline-block">
                         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-cosiaca-brown font-serif leading-none tracking-tight">
-                            Cosiaca
+                            COSIACA
                         </h1>
                         <div className="flex justify-center mt-2">
                             <div className="border-2 border-cosiaca-brown px-4 py-1 rounded-lg">
                                 <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-cosiaca-brown">
-                                    {"{350}"}
+                                    {"{"}<strong>350</strong>{"}"}
                                 </span>
                             </div>
                         </div>
@@ -186,7 +186,7 @@ const ConstructionPage = ({ onEnter }) => {
                                     ¡Todo Está Listo!
                                 </h2>
                                 <p className="text-xl text-cosiaca-brown/80 max-w-3xl mx-auto leading-relaxed mb-8">
-                                    Un proyecto transmedia que celebra los <strong>350 años de Medellín</strong> 
+                                    Un proyecto transmedia que celebra los <strong>{350} años de Medellín</strong> 
                                     a través de la figura histórica de <em>José García "Cosiaca"</em>, 
                                     el primer comediante popular de Antioquia.
                                 </p>
@@ -218,7 +218,7 @@ const ConstructionPage = ({ onEnter }) => {
                                             <strong>accesible, educativa y entretenida</strong>.
                                         </p>
                                         <div className="text-sm text-cosiaca-brown/60">
-                                            <p><strong>Período:</strong> 1675 - 2025 (350 años)</p>
+                                            <p><strong>Período:</strong> 1675 - 2025 (<strong>350</strong> años)</p>
                                             <p><strong>Personaje:</strong> José García "Cosiaca"</p>
                                             <p><strong>Enfoque:</strong> Humor + Historia + Tecnología</p>
                                         </div>
@@ -247,9 +247,9 @@ const ConstructionPage = ({ onEnter }) => {
                                         🏛️ Proyecto Oficial
                                     </h3>
                                     <p className="text-cosiaca-brown/80 leading-relaxed mb-6">
-                                        <strong>Cosiaca {350}</strong> es una propuesta transmedia beneficiada de las 
+                                        <strong>Cosiaca <strong>{350}</strong></strong> es una propuesta transmedia beneficiada de las 
                                         <em> Convocatorias de Fomento y Estímulos para el Arte y la Cultura 2025</em> 
-                                        de la <strong>Secretaría de Cultura Ciudadana de Medellín</strong>.
+                                        ✨ <em>Prepárate para un viaje único por <strong>350</strong> años de historia paisa</em> ✨
                                     </p>
                                     <div className="flex flex-wrap justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-cosiaca-brown/60">
                                         <span className="bg-cosiaca-beige/50 px-3 py-1 rounded-full">📚 Investigación Histórica</span>
@@ -289,7 +289,7 @@ const ConstructionPage = ({ onEnter }) => {
                         Un proyecto de <strong>Núcleo Colectivo</strong>
                     </p>
                     <p className="text-sm text-cosiaca-brown/60">
-                        Propuesta transmedia para la celebración de los 350 años de Medellín
+                        Propuesta transmedia para la celebración de los <strong>350</strong> años de Medellín
                     </p>
                 </div>
             </div>

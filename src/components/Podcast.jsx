@@ -252,7 +252,7 @@ const Podcast = () => {
                 </h3>
                 <p className="text-cosiaca-brown/80 lead">
                     Este podcast forma parte del proyecto transmedia <strong>"Cosiaca 350"</strong>, una iniciativa 
-                    que celebra los <em>350 años de Medellín</em> a través de la figura histórica de <strong>José García "Cosiaca"</strong>, 
+                    que celebra los <em><strong>350</strong> años de Medellín</em> a través de la figura histórica de <strong>José García "Cosiaca"</strong>, 
                     reconocido como el <em>primer comediante popular de Antioquia</em>. Cada episodio combina <strong>rigor histórico</strong> 
                     con el <em>humor y la picardía característica de la cultura paisa</em>.
                 </p>
