@@ -11,7 +11,6 @@ import {
     PodcastIcon,
     BotIcon
 } from '../icons/Icons';
-import AIProviderSelector from './AIProviderSelector';
 
 const CreditCardIcon = (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -19,7 +18,7 @@ const CreditCardIcon = (props) => (
         <line x1="1" y1="10" x2="23" y2="10"/>
     </svg>
 );
-const Navbar = ({ view, setView }) => {
+
 const TimelineIcon = (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
         <circle cx="12" cy="12" r="10"/>
@@ -44,6 +43,8 @@ const PlanIcon = (props) => (
         <polyline points="10,9 9,9 8,9"/>
     </svg>
 );
+
+const Navbar = ({ view, setView }) => {
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const mainLinks = [
@@ -63,9 +64,9 @@ const PlanIcon = (props) => (
     ];
     
     return (
-        <nav className="bg-cosiaca-brown/90 backdrop-blur-lg text-cosiaca-cream p-3 sm:p-4 sticky top-0 z-50 border-b border-cosiaca-brown/20 shadow-lg">
+        <nav className="bg-cosiaca-brown/95 backdrop-blur-lg text-cosiaca-cream p-2 sm:p-3 md:p-4 sticky top-0 z-50 border-b border-cosiaca-brown/20 shadow-lg">
             <div className="container mx-auto flex justify-between items-center">
-                <h1 className="text-xl sm:text-2xl font-bold font-serif tracking-wider cursor-pointer text-cosiaca-cream" onClick={() => setView('home')}>
+                <h1 className="text-lg sm:text-xl md:text-2xl font-bold font-serif tracking-wider cursor-pointer text-cosiaca-cream" onClick={() => setView('home')}>
                     <span role="button" tabIndex="0" onKeyDown={(e) => e.key === 'Enter' && setView('home')}>
                         {"{COSIACA "}
                         <strong>350</strong>
@@ -92,7 +93,7 @@ const PlanIcon = (props) => (
                 </nav>
                 
                 {/* Mobile Navigation */}
-                <div className="lg:hidden">
+                <div className="lg:hidden flex items-center">
                     <button 
                         onClick={() => setMobileMenuOpen(!isMobileMenuOpen)} 
                         aria-expanded={isMobileMenuOpen}
@@ -111,7 +112,7 @@ const PlanIcon = (props) => (
                 </div>
             </div>
             {isMobileMenuOpen && (
-                <nav className="lg:hidden mt-4 space-y-1 max-h-96 overflow-y-auto" role="navigation" aria-label="Navegación móvil">
+                <nav className="lg:hidden mt-2 sm:mt-4 space-y-1 max-h-80 sm:max-h-96 overflow-y-auto bg-cosiaca-brown/95 rounded-lg p-2" role="navigation" aria-label="Navegación móvil">
                     {mainLinks.map(link => (
                         <button 
                             key={link.view} 
@@ -120,7 +121,7 @@ const PlanIcon = (props) => (
                                 setMobileMenuOpen(false); 
                             }} 
                             aria-current={view === link.view ? 'page' : undefined}
-                            className={`flex items-center w-full text-left px-3 py-2 sm:py-3 rounded-md text-sm sm:text-base font-medium transition-colors ${
+                            className={`flex items-center w-full text-left px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium transition-colors ${
                                 view === link.view 
                                     ? 'bg-cosiaca-red text-white' 
                                     : 'text-cosiaca-cream hover:bg-cosiaca-brown/70'

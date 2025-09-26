@@ -121,7 +121,7 @@ const App = () => {
                             aria-label="Ir al inicio"
                             title="Ir al inicio"
                         >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7" />
                             </svg>
                         </button>
@@ -133,7 +133,7 @@ const App = () => {
                             aria-label="Ver más contenido"
                             title="Ver más contenido"
                         >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-4 h-4 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
@@ -141,11 +141,11 @@ const App = () => {
                 </>
             )}
             
-            <footer className="bg-cosiaca-brown-dark p-4 sm:p-6 text-center text-cosiaca-cream border-t border-cosiaca-brown-medium">
+            <footer className="bg-cosiaca-brown-dark p-3 sm:p-4 md:p-6 text-center text-cosiaca-cream border-t border-cosiaca-brown-medium">
                 <div className="container-1920 mx-auto">
-                    <p className="text-base sm:text-lg font-medium mb-2 text-cosiaca-beige">© 2024 {"{COSIACA "}<strong>350</strong>{"}"} - Un Viaje Inmersivo a la Historia de Medellín</p>
-                    <p className="text-sm sm:text-base text-cosiaca-tan mb-4">Todos los derechos reservados. Un proyecto de <strong>Núcleo Colectivo</strong></p>
-                    <div className="text-xs sm:text-sm xl:text-1920-base text-cosiaca-cream/70 space-y-1">
+                    <p className="text-sm sm:text-base md:text-lg font-medium mb-2 text-cosiaca-beige">© 2024 {"{COSIACA "}<strong>350</strong>{"}"} - Un Viaje Inmersivo a la Historia de Medellín</p>
+                    <p className="text-xs sm:text-sm md:text-base text-cosiaca-tan mb-3 sm:mb-4">Todos los derechos reservados. Un proyecto de <strong>Núcleo Colectivo</strong></p>
+                    <div className="text-xs sm:text-xs md:text-sm xl:text-1920-base text-cosiaca-cream/70 space-y-1">
                         <p className="text-cosiaca-tan">Propuesta transmedia para la celebración de los <strong>350</strong> años de Medellín</p>
                         <p className="text-cosiaca-tan">Proyecto beneficiado de las Convocatorias de Fomento y Estímulos para el Arte y la Cultura 2025</p>
                         <p className="text-cosiaca-tan">Secretaría de Cultura Ciudadana de Medellín</p>
