@@ -215,7 +215,7 @@ const Podcast = () => {
                                                 ? 'bg-gray-400 text-white cursor-not-allowed'
                                                 : 'bg-cosiaca-red text-white hover:bg-cosiaca-red-dark'
                                         } ${loadingAudio === episode.id ? 'opacity-50' : ''}`}
-                                    >
+                                        >
                                         {loadingAudio === episode.id ? (
                                             <>
                                                 <div className="w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
@@ -232,7 +232,7 @@ const Podcast = () => {
                                                 <strong>Reproducir</strong>
                                             </>
                                         )}
-                                    </button>
+                                        </button>
                                         {loadingAudio === episode.id && (
                                             <span className="text-sm text-cosiaca-red font-medium animate-pulse mt-2 block">
                                                 Cargando...
@@ -251,7 +251,7 @@ const Podcast = () => {
                     💡 Sobre el Podcast
                 </h3>
                 <p className="text-cosiaca-brown/80 lead">
-                    Este podcast forma parte del proyecto transmedia <strong>"{COSIACA <strong>350</strong>}"</strong>, una iniciativa
+                    Este podcast forma parte del proyecto transmedia <strong>"COSIACA <strong>350</strong>"</strong>, una iniciativa
                     que celebra los <em><strong>350</strong> años de Medellín</em> a través de la figura histórica de <strong>José García "Cosiaca"</strong>, 
                     reconocido como el <em>primer comediante popular de Antioquia</em>. Cada episodio combina <strong>rigor histórico</strong> 
                     con el <em>humor y la picardía característica de la cultura paisa</em>.
