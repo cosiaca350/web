@@ -79,35 +79,37 @@ const PlanIcon = (props) => (
     }, [experiencesRef]);
 
     return (
-        <nav className="bg-cosiaca-brown/90 backdrop-blur-lg text-cosiaca-cream p-4 sticky top-0 z-50 border-b border-cosiaca-brown/20 shadow-lg">
+        <nav className="bg-cosiaca-brown/90 backdrop-blur-lg text-cosiaca-cream p-3 sm:p-4 sticky top-0 z-50 border-b border-cosiaca-brown/20 shadow-lg">
             <div className="container mx-auto flex justify-between items-center">
-                <h1 className="text-2xl font-bold font-serif tracking-wider cursor-pointer text-cosiaca-cream" onClick={() => setView('home')}>
+                <h1 className="text-xl sm:text-2xl font-bold font-serif tracking-wider cursor-pointer text-cosiaca-cream" onClick={() => setView('home')}>
                     🤠 Cosiaca 350
                 </h1>
                 
                 {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center space-x-2">
+                <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
                     {mainLinks.map(link => (
                         <button 
                             key={link.view} 
                             onClick={() => setView(link.view)} 
-                            className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
+                            className={`flex items-center px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-300 ${
                                 view === link.view 
                                     ? 'bg-cosiaca-red text-white shadow-lg' 
                                     : 'text-cosiaca-cream hover:bg-cosiaca-brown/70'
                             }`}
                         >
-                            {link.icon} {link.name}
+                            <span className="hidden xl:inline">{link.icon}</span>
+                            <span className="xl:hidden text-lg">{link.icon}</span>
+                            <span className="ml-1 xl:ml-2">{link.name}</span>
                         </button>
                     ))}
                     <div className="relative" ref={experiencesRef}>
                         <button 
                             onClick={() => setExperiencesMenuOpen(!isExperiencesMenuOpen)} 
-                            className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
+                            className={`flex items-center px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-300 ${
                                 isExperiencesMenuOpen ? 'bg-cosiaca-brown/70 text-cosiaca-cream' : 'text-cosiaca-cream hover:bg-cosiaca-brown/70'
                             }`}
                         >
-                            <SparklesIcon className="mr-2"/> Experiencias
+                            <SparklesIcon className="mr-1 xl:mr-2"/> Experiencias
                         </button>
                         {isExperiencesMenuOpen && (
                             <div className="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-cosiaca-cream ring-1 ring-cosiaca-brown ring-opacity-50">
@@ -135,12 +137,12 @@ const PlanIcon = (props) => (
                 </div>
 
                 {/* Mobile Navigation */}
-                <div className="md:hidden">
+                <div className="lg:hidden">
                     <button 
                         onClick={() => setMobileMenuOpen(!isMobileMenuOpen)} 
                         className="text-cosiaca-cream focus:outline-none p-2 rounded-md hover:bg-cosiaca-brown/70"
                     >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path 
                                 strokeLinecap="round" 
                                 strokeLinejoin="round" 
@@ -152,7 +154,7 @@ const PlanIcon = (props) => (
                 </div>
             </div>
             {isMobileMenuOpen && (
-                <div className="md:hidden mt-4 space-y-1">
+                <div className="lg:hidden mt-4 space-y-1 max-h-96 overflow-y-auto">
                     {[...mainLinks, ...experienceLinks].map(link => (
                         <button 
                             key={link.view} 
@@ -160,7 +162,7 @@ const PlanIcon = (props) => (
                                 setView(link.view); 
                                 setMobileMenuOpen(false); 
                             }} 
-                            className={`flex items-center w-full text-left px-3 py-3 rounded-md text-base font-medium transition-colors ${
+                            className={`flex items-center w-full text-left px-3 py-2 sm:py-3 rounded-md text-sm sm:text-base font-medium transition-colors ${
                                 view === link.view 
                                     ? 'bg-cosiaca-red text-white' 
                                     : 'text-cosiaca-cream hover:bg-cosiaca-brown/70'

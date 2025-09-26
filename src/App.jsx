@@ -65,16 +65,16 @@ const App = () => {
     };
 
     return (
-        <div className="min-h-screen bg-cosiaca-cream text-cosiaca-brown font-montserrat flex flex-col">
+        <div className="min-h-screen bg-cosiaca-cream text-cosiaca-brown font-montserrat flex flex-col overflow-x-hidden">
             <Navbar view={view} setView={setView} />
-            <main className="flex-1 container mx-auto p-4 md:p-8">
+            <main className="flex-1 container mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl">
                 {renderContent()}
             </main>
-            <footer className="bg-cafe-oscuro p-6 text-center text-cosiaca-cream border-t border-cafe-medio">
+            <footer className="bg-cafe-oscuro p-4 sm:p-6 text-center text-cosiaca-cream border-t border-cafe-medio">
                 <div className="max-w-4xl mx-auto">
-                    <p className="text-lg font-medium mb-2">© 2024 Cosiaca 350 - Un Viaje Inmersivo a la Historia de Medellín</p>
-                    <p className="text-cosiaca-cream/80 mb-4">Todos los derechos reservados. Un proyecto de <strong>Núcleo Colectivo</strong></p>
-                    <div className="text-sm text-cosiaca-cream/70">
+                    <p className="text-base sm:text-lg font-medium mb-2">© 2024 Cosiaca 350 - Un Viaje Inmersivo a la Historia de Medellín</p>
+                    <p className="text-sm sm:text-base text-cosiaca-cream/80 mb-4">Todos los derechos reservados. Un proyecto de <strong>Núcleo Colectivo</strong></p>
+                    <div className="text-xs sm:text-sm text-cosiaca-cream/70 space-y-1">
                         <p>Propuesta transmedia para la celebración de los 350 años de Medellín</p>
                         <p>Proyecto beneficiado de las Convocatorias de Fomento y Estímulos para el Arte y la Cultura 2025</p>
                         <p>Secretaría de Cultura Ciudadana de Medellín</p>
