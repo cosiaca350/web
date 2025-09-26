@@ -32,7 +32,7 @@ const CosiacaBot = () => {
             console.error('Error getting response:', error);
             setMessages(prev => [...prev, { 
                 type: 'bot', 
-                content: '¡Uy, mijito! Se me enredó la lengua. Intentá preguntarme de nuevo, ¿sí?' 
+                content: '¡Uy, mijito! Se me enredó la lengua por un momento, pero ya estoy aquí. ¿Qué querés saber sobre la historia de Medellín? ¡Preguntame de nuevo!' 
             }]);
         } finally {
             setIsLoading(false);

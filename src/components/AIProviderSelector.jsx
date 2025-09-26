@@ -7,14 +7,32 @@ const AIProviderSelector = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        setProviders(AIService.getProvidersStatus());
+        const loadProviders = async () => {
+            try {
+                const status = AIService.getProvidersStatus();
+                setProviders(status);
+                
+                // Test connection on load
+                const connectionTest = await AIService.testConnection();
+                console.log('AI Service connection test:', connectionTest);
+            } catch (error) {
+                console.error('Error loading providers:', error);
+                setProviders([{ name: 'gemini', active: true, current: true }]);
+            }
+        };
+        
+        loadProviders();
     }, []);
 
     const handleProviderChange = (provider) => {
-        AIService.setPreferredProvider(provider);
-        setSelectedProvider(provider);
-        setProviders(AIService.getProvidersStatus());
-        setIsOpen(false);
+        try {
+            AIService.setPreferredProvider(provider);
+            setSelectedProvider(provider);
+            setProviders(AIService.getProvidersStatus());
+            setIsOpen(false);
+        } catch (error) {
+            console.error('Error changing provider:', error);
+        }
     };
 
     const getProviderIcon = (provider) => {

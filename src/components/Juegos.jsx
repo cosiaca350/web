@@ -115,7 +115,7 @@ const Juegos = () => {
             setCurrentJoke(joke);
         } catch (error) {
             console.error('Error generating joke:', error);
-            setCurrentJoke("¡Uy! Cosiaca se enredó con el chiste. Intenta de nuevo más tarde.");
+            setCurrentJoke("¡Uy mijito! ¿Sabés por qué los paisas somos tan trabajadores? ¡Porque desde que nacemos ya estamos 'ocupados' en el vientre de la mamá! Ja ja ja, ¡qué ocurrencia!");
         } finally {
             setIsGeneratingJoke(false);
         }
@@ -128,7 +128,7 @@ const Juegos = () => {
             setCurrentTrova(trova.replace(/\n/g, '<br>'));
         } catch (error) {
             console.error('Error generating trova:', error);
-            setCurrentTrova("¡Uy! Cosiaca se enredó con la trova. Intenta de nuevo más tarde.");
+            setCurrentTrova("En las montañas de Antioquia,<br>donde el café es tradición,<br>vive el paisa trabajador<br>con mucho amor y pasión.");
         } finally {
             setIsGeneratingTrova(false);
         }

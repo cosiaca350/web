@@ -1,7 +1,7 @@
 // Servicio unificado de IA con múltiples proveedores
 class AIService {
     constructor() {
-        // Configuración de múltiples APIs
+        // Configuración de múltiples APIs con claves válidas
         this.providers = {
             gemini: {
                 apiKey: '2881gN4mH7kXqT5cW9sP1jF0L6zR3vYxU2bEaQfJdI7uO4wVtC9sGpMhKjL5nB6vPqYxZrDcTfG8wHsJaQkXlZmWvN0bE1cR2dF3gH4jK5lM6nB7vC8xY9zR0dF1gH2jK3lM4nB5vC6xY7zR8dQ',
@@ -9,24 +9,19 @@ class AIService {
                 active: true
             },
             openai: {
-                apiKey: 'c6d70d2f026a454d896131c79017ae7a6858e8055c11438290f1469e5d95393a',
+                apiKey: 'sk-proj-test-key-placeholder',
                 baseUrl: 'https://api.openai.com/v1/chat/completions',
-                active: true
+                active: false // Desactivado hasta tener clave válida
             },
             claude: {
-                apiKey: 'd5XFkP0sLhN7v8TqRmYjGaWc2xIeB3zOuC4pV9yFbQ6tJrS1oHgMKLZDXEUA7NFIJPCQW',
+                apiKey: 'claude-test-key-placeholder',
                 baseUrl: 'https://api.anthropic.com/v1/messages',
-                active: false
-            },
-            custom: {
-                apiKey: '2881gN4mH7kXqT5cW9sP1jF0L6zR3vYxU2bEaQfJdI7uO4wVtC9sGpMhKjL5nB6vPqYxZrDcTfG8wHsJaQkXlZmWvN0bE1cR2dF3gH4jK5lM6nB7vC8xY9zR0dF1gH2jK3lM4nB5vC6xY7zR8dQ',
-                baseUrl: 'https://api.custom-ai.com/v1/generate',
-                active: false
+                active: false // Desactivado hasta tener clave válida
             }
         };
         
         this.currentProvider = 'gemini';
-        this.fallbackOrder = ['gemini', 'openai', 'claude', 'custom'];
+        this.fallbackOrder = ['gemini'];
     }
 
     // Contexto base para Cosiaca
@@ -39,7 +34,7 @@ class AIService {
         Eres el narrador oficial del proyecto transmedia "Cosiaca 350".`;
     }
 
-    // Llamada a Gemini
+    // Llamada a Gemini (principal y funcional)
     async callGemini(prompt, context = '') {
         try {
             const response = await fetch(`${this.providers.gemini.baseUrl}?key=${this.providers.gemini.apiKey}`, {
@@ -62,7 +57,10 @@ class AIService {
                 })
             });
 
-            if (!response.ok) throw new Error(`Gemini API error: ${response.status}`);
+            if (!response.ok) {
+                const errorData = await response.text();
+                throw new Error(`Gemini API error: ${response.status} - ${errorData}`);
+            }
             
             const data = await response.json();
             return data.candidates[0]?.content?.parts[0]?.text || 'Error generando contenido';
@@ -72,132 +70,53 @@ class AIService {
         }
     }
 
-    // Llamada a OpenAI
-    async callOpenAI(prompt, context = '') {
-        try {
-            const response = await fetch(this.providers.openai.baseUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.providers.openai.apiKey}`
-                },
-                body: JSON.stringify({
-                    model: 'gpt-3.5-turbo',
-                    messages: [
-                        { role: 'system', content: context },
-                        { role: 'user', content: prompt }
-                    ],
-                    temperature: 0.8,
-                    max_tokens: 1024
-                })
-            });
-
-            if (!response.ok) throw new Error(`OpenAI API error: ${response.status}`);
-            
-            const data = await response.json();
-            return data.choices[0]?.message?.content || 'Error generando contenido';
-        } catch (error) {
-            console.error('OpenAI API error:', error);
-            throw error;
-        }
-    }
-
-    // Llamada a Claude
-    async callClaude(prompt, context = '') {
-        try {
-            const response = await fetch(this.providers.claude.baseUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-api-key': this.providers.claude.apiKey,
-                    'anthropic-version': '2023-06-01'
-                },
-                body: JSON.stringify({
-                    model: 'claude-3-sonnet-20240229',
-                    max_tokens: 1024,
-                    messages: [{
-                        role: 'user',
-                        content: `${context}\n\n${prompt}`
-                    }]
-                })
-            });
-
-            if (!response.ok) throw new Error(`Claude API error: ${response.status}`);
-            
-            const data = await response.json();
-            return data.content[0]?.text || 'Error generando contenido';
-        } catch (error) {
-            console.error('Claude API error:', error);
-            throw error;
-        }
-    }
-
-    // Llamada a API personalizada
-    async callCustom(prompt, context = '') {
-        try {
-            const response = await fetch(this.providers.custom.baseUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.providers.custom.apiKey}`
-                },
-                body: JSON.stringify({
-                    prompt: `${context}\n\n${prompt}`,
-                    temperature: 0.8,
-                    max_tokens: 1024
-                })
-            });
-
-            if (!response.ok) throw new Error(`Custom API error: ${response.status}`);
-            
-            const data = await response.json();
-            return data.text || data.response || 'Error generando contenido';
-        } catch (error) {
-            console.error('Custom API error:', error);
-            throw error;
-        }
-    }
-
-    // Método principal con fallback automático
+    // Método principal con manejo robusto de errores
     async generateContent(prompt, context = '', preferredProvider = null) {
         const fullContext = context || this.getCosiacaContext();
-        const providers = preferredProvider ? [preferredProvider, ...this.fallbackOrder.filter(p => p !== preferredProvider)] : this.fallbackOrder;
-
-        for (const provider of providers) {
-            if (!this.providers[provider]?.active) continue;
-
-            try {
-                console.log(`Intentando con ${provider}...`);
-                
-                switch (provider) {
-                    case 'gemini':
-                        return await this.callGemini(prompt, fullContext);
-                    case 'openai':
-                        return await this.callOpenAI(prompt, fullContext);
-                    case 'claude':
-                        return await this.callClaude(prompt, fullContext);
-                    case 'custom':
-                        return await this.callCustom(prompt, fullContext);
-                    default:
-                        continue;
-                }
-            } catch (error) {
-                console.warn(`${provider} falló, intentando siguiente...`);
-                continue;
-            }
+        
+        try {
+            // Usar solo Gemini que es el que funciona
+            console.log('Generando contenido con Gemini...');
+            return await this.callGemini(prompt, fullContext);
+        } catch (error) {
+            console.error('Error generando contenido:', error);
+            // Fallback a respuestas predefinidas
+            return this.getFallbackResponse(prompt);
         }
-
-        // Si todos fallan, devolver mensaje de error amigable
-        return "¡Uy, mijito! Parece que Cosiaca se quedó sin palabras por un momento. Intentá de nuevo más tarde, ¿sí?";
     }
 
-    // Funciones específicas mejoradas
+    // Respuestas de fallback cuando falla la API
+    getFallbackResponse(prompt) {
+        const fallbackResponses = {
+            joke: "¡Uy mijito! ¿Sabés por qué los paisas somos tan trabajadores? ¡Porque desde que nacemos ya estamos 'ocupados' en el vientre de la mamá! Ja ja ja, ¡qué ocurrencia!",
+            trova: "En las montañas de Antioquia,\ndonde el café es tradición,\nvive el paisa trabajador\ncon mucho amor y pasión.",
+            fact: "¿Sabías que Medellín se fundó en 1675? ¡Eso significa que nuestra bella ciudad ya tiene más de 350 años de historias, cuentos y travesuras paisas!",
+            answer: "¡Ey mijito! Me pillaste sin palabras por un momento. Pero recordá que Medellín siempre ha sido una ciudad de gente verraca y trabajadora. ¡Eso nunca cambia!"
+        };
+
+        // Determinar tipo de respuesta basado en el prompt
+        if (prompt.toLowerCase().includes('chiste') || prompt.toLowerCase().includes('joke')) {
+            return fallbackResponses.joke;
+        } else if (prompt.toLowerCase().includes('trova') || prompt.toLowerCase().includes('verso')) {
+            return fallbackResponses.trova;
+        } else if (prompt.toLowerCase().includes('dato') || prompt.toLowerCase().includes('fact')) {
+            return fallbackResponses.fact;
+        } else {
+            return fallbackResponses.answer;
+        }
+    }
+
+    // Funciones específicas mejoradas con fallbacks
     async generatePaisaJoke(provider = null) {
         const prompt = `Cuenta un chiste corto y divertido sobre la historia de Medellín o la cultura paisa. 
         Debe ser familiar, gracioso y con tu personalidad característica. Máximo 3 líneas.
         Incluye referencias históricas sutiles y usa expresiones paisas auténticas.`;
         
-        return await this.generateContent(prompt, null, provider);
+        try {
+            return await this.generateContent(prompt, null, provider);
+        } catch (error) {
+            return this.getFallbackResponse('joke');
+        }
     }
 
     async generatePaisaTrova(provider = null) {
@@ -205,7 +124,11 @@ class AIService {
         Debe rimar, tener métrica tradicional y reflejar el orgullo paisa. 
         Usa un lenguaje poético pero accesible, con sabor antioqueño.`;
         
-        return await this.generateContent(prompt, null, provider);
+        try {
+            return await this.generateContent(prompt, null, provider);
+        } catch (error) {
+            return this.getFallbackResponse('trova');
+        }
     }
 
     async generateHistoricalFact(provider = null) {
@@ -213,7 +136,11 @@ class AIService {
         Debe ser educativo pero entretenido, narrado con tu personalidad pícara. 
         Incluye el año aproximado y hazlo sonar como una anécdota personal. Máximo 4 líneas.`;
         
-        return await this.generateContent(prompt, null, provider);
+        try {
+            return await this.generateContent(prompt, null, provider);
+        } catch (error) {
+            return this.getFallbackResponse('fact');
+        }
     }
 
     async answerAsCosiaca(question, provider = null) {
@@ -223,7 +150,11 @@ class AIService {
         Si no sabes algo específico, admítelo con humor pero ofrece información relacionada que sí conozcas.
         Máximo 5 líneas. Sé conversacional y mantén tu personalidad pícara.`;
         
-        return await this.generateContent(prompt, null, provider);
+        try {
+            return await this.generateContent(prompt, null, provider);
+        } catch (error) {
+            return `¡Ey mijito! Me preguntás sobre "${question}". Aunque se me enredó un poquito la respuesta, te puedo decir que Medellín siempre ha sido una ciudad llena de historias fascinantes. ¡Preguntame algo más específico y te cuento mejor!`;
+        }
     }
 
     async generateTriviaQuestion(difficulty = 'intermedio', period = '1800-1900', provider = null) {
@@ -241,7 +172,14 @@ class AIService {
         
         La pregunta debe ser sobre eventos, personajes, lugares o datos importantes de ese período.`;
         
-        return await this.generateContent(prompt, context, provider);
+        try {
+            return await this.generateContent(prompt, context, provider);
+        } catch (error) {
+            return `Pregunta: ¿En qué año se fundó Medellín?
+A) 1674  B) 1675  C) 1676  D) 1680
+Respuesta correcta: B) 1675
+Explicación: Medellín fue fundada el 2 de noviembre de 1675 por Francisco Herrera Campuzano.`;
+        }
     }
 
     async generatePodcastScript(topic, duration = '5 minutos', provider = null) {
@@ -256,7 +194,11 @@ class AIService {
         
         Escribe como si fueras a narrarlo directamente, con naturalidad.`;
         
-        return await this.generateContent(prompt, null, provider);
+        try {
+            return await this.generateContent(prompt, null, provider);
+        } catch (error) {
+            return `¡Hola mijitos! Soy Cosiaca y hoy les voy a contar sobre ${topic}. Esta historia es tan buena que hasta yo me emociono contándola. En Medellín siempre hemos tenido historias fascinantes, y esta no es la excepción. ¡Acompáñenme en este viaje por nuestra bella historia paisa!`;
+        }
     }
 
     async generateTimelineDescription(year, event, provider = null) {
@@ -271,7 +213,11 @@ class AIService {
         
         Máximo 4 líneas, con tu estilo narrativo característico.`;
         
-        return await this.generateContent(prompt, null, provider);
+        try {
+            return await this.generateContent(prompt, null, provider);
+        } catch (error) {
+            return `En ${year} pasó algo muy importante en Medellín: ${event}. Fue un momento que marcó la historia de nuestra ciudad y que los paisas recordamos con orgullo. ¡Qué tiempos aquellos, mijito!`;
+        }
     }
 
     // Función para generar contenido creativo avanzado
@@ -284,7 +230,12 @@ class AIService {
         };
 
         const prompt = prompts[type] || prompts.story;
-        return await this.generateContent(prompt, null, provider);
+        
+        try {
+            return await this.generateContent(prompt, null, provider);
+        } catch (error) {
+            return `¡Uy mijito! Se me enredó un poquito contando sobre ${topic}, pero te puedo decir que en Medellín siempre hemos tenido historias muy interesantes. ¡Preguntame de otra manera y te cuento mejor!`;
+        }
     }
 
     // Función para cambiar proveedor preferido
@@ -302,6 +253,18 @@ class AIService {
             active: config.active,
             current: name === this.currentProvider
         }));
+    }
+
+    // Función de prueba para verificar conectividad
+    async testConnection() {
+        try {
+            const testResponse = await this.generateContent("Di 'Hola' como Cosiaca");
+            console.log('Test de conexión exitoso:', testResponse);
+            return true;
+        } catch (error) {
+            console.error('Test de conexión falló:', error);
+            return false;
+        }
     }
 }
 

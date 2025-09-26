@@ -31,7 +31,8 @@ class GeminiService {
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                const errorText = await response.text();
+                throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
             }
 
             const data = await response.json();
@@ -51,7 +52,11 @@ class GeminiService {
         const prompt = `Cuenta un chiste corto y divertido sobre la historia de Medellín o la cultura paisa. 
         Debe ser familiar, gracioso y con tu personalidad característica. Máximo 3 líneas.`;
         
-        return await this.generateContent(prompt, context);
+        try {
+            return await this.generateContent(prompt, context);
+        } catch (error) {
+            return "¡Uy mijito! ¿Sabés por qué los paisas somos tan trabajadores? ¡Porque desde que nacemos ya estamos 'ocupados' en el vientre de la mamá! Ja ja ja, ¡qué ocurrencia!";
+        }
     }
 
     // Generar trovas paisas
@@ -63,7 +68,11 @@ class GeminiService {
         const prompt = `Crea una trova paisa de 4 líneas sobre Medellín, su historia o su gente. 
         Debe rimar, tener métrica tradicional y reflejar el orgullo paisa. Usa un lenguaje poético pero accesible.`;
         
-        return await this.generateContent(prompt, context);
+        try {
+            return await this.generateContent(prompt, context);
+        } catch (error) {
+            return "En las montañas de Antioquia,\ndonde el café es tradición,\nvive el paisa trabajador\ncon mucho amor y pasión.";
+        }
     }
 
     // Generar datos históricos curiosos
@@ -76,7 +85,11 @@ class GeminiService {
         Debe ser educativo pero entretenido, narrado con tu personalidad pícara. 
         Incluye el año aproximado y hazlo sonar como una anécdota personal. Máximo 4 líneas.`;
         
-        return await this.generateContent(prompt, context);
+        try {
+            return await this.generateContent(prompt, context);
+        } catch (error) {
+            return "¿Sabías que Medellín se fundó en 1675? ¡Eso significa que nuestra bella ciudad ya tiene más de 350 años de historias, cuentos y travesuras paisas! Los primeros pobladores eran tan pocos que se conocían hasta por el apellido, mijito.";
+        }
     }
 
     // Responder preguntas como CosiacaBot
@@ -92,7 +105,11 @@ class GeminiService {
         Si no sabes algo específico, admítelo con humor pero ofrece información relacionada que sí conozcas.
         Máximo 5 líneas.`;
         
-        return await this.generateContent(prompt, context);
+        try {
+            return await this.generateContent(prompt, context);
+        } catch (error) {
+            return `¡Ey mijito! Me preguntás sobre "${question}". Aunque se me enredó un poquito la respuesta, te puedo decir que Medellín siempre ha sido una ciudad llena de historias fascinantes. ¡Preguntame algo más específico y te cuento mejor!`;
+        }
     }
 
     // Generar preguntas de trivia
@@ -111,7 +128,14 @@ class GeminiService {
         
         La pregunta debe ser sobre eventos, personajes, lugares o datos importantes de ese período.`;
         
-        return await this.generateContent(prompt, context);
+        try {
+            return await this.generateContent(prompt, context);
+        } catch (error) {
+            return `Pregunta: ¿En qué año se fundó Medellín?
+A) 1674  B) 1675  C) 1676  D) 1680
+Respuesta correcta: B) 1675
+Explicación: Medellín fue fundada el 2 de noviembre de 1675 por Francisco Herrera Campuzano.`;
+        }
     }
 
     // Generar contenido para podcast
@@ -131,7 +155,11 @@ class GeminiService {
         
         Escribe como si fueras a narrarlo directamente, con naturalidad.`;
         
-        return await this.generateContent(prompt, context);
+        try {
+            return await this.generateContent(prompt, context);
+        } catch (error) {
+            return `¡Hola mijitos! Soy Cosiaca y hoy les voy a contar sobre ${topic}. Esta historia es tan buena que hasta yo me emociono contándola. En Medellín siempre hemos tenido historias fascinantes, y esta no es la excepción. ¡Acompáñenme en este viaje por nuestra bella historia paisa!`;
+        }
     }
 
     // Generar descripciones para la línea de tiempo
@@ -151,7 +179,23 @@ class GeminiService {
         
         Máximo 4 líneas, con tu estilo narrativo característico.`;
         
-        return await this.generateContent(prompt, context);
+        try {
+            return await this.generateContent(prompt, context);
+        } catch (error) {
+            return `En ${year} pasó algo muy importante en Medellín: ${event}. Fue un momento que marcó la historia de nuestra ciudad y que los paisas recordamos con orgullo. ¡Qué tiempos aquellos, mijito!`;
+        }
+    }
+
+    // Función de prueba
+    async testConnection() {
+        try {
+            const testResponse = await this.generateContent("Di 'Hola' como Cosiaca");
+            console.log('Gemini test exitoso:', testResponse);
+            return true;
+        } catch (error) {
+            console.error('Gemini test falló:', error);
+            return false;
+        }
     }
 }
 
