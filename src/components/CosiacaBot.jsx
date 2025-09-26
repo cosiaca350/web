@@ -1,7 +1,6 @@
 import React from 'react';
 import { BotIcon } from '../icons/Icons';
 import AIService from '../services/aiService';
-import { SendIcon } from '../icons/Icons';
 
 // Componente del widget de ElevenLabs
 const ElevenLabsWidget = () => {
@@ -25,41 +24,8 @@ const ElevenLabsWidget = () => {
                 ¡Ahora podés conversar con Cosiaca usando tu voz! Presiona el botón y pregúntale sobre la historia de Medellín.
             </p>
             
-            {/* Widgets de ElevenLabs - Dos opciones */}
-            <div className="space-y-4 mb-6">
-                <div className="text-center">
-                    <h4 className="font-bold text-cosiaca-brown mb-2">🎭 Cosiaca Principal</h4>
-                    <div className="flex justify-center">
-                        <elevenlabs-convai 
-                            agent-id="agent_4301k5gpsen4erzt882jhf3ekyby"
-                        />
-                    </div>
-                </div>
-                
-                <div className="text-center">
-                    <h4 className="font-bold text-cosiaca-brown mb-2">🎪 Cosiaca Alternativo</h4>
-                    <div className="flex justify-center">
-                        <elevenlabs-convai 
-                            agent-id="agent_6901k5bkw09ce5wb26gw96e5nh8e"
-                        />
-                    </div>
-                </div>
-            </div>
-            
-            {/* Enlace directo a ElevenLabs */}
-            <div className="mb-4">
-                <a 
-                    href="https://elevenlabs.io/app/talk-to?agent_id=agent_6901k5bkw09ce5wb26gw96e5nh8e" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors"
-                >
-                    🔗 Abrir en ElevenLabs
-                </a>
-            </div>
-            
-            {/* Widget original */}
-            <div className="flex justify-center mb-4 border-t pt-4">
+            {/* Widget de ElevenLabs */}
+            <div className="flex justify-center mb-4">
                 <elevenlabs-convai 
                     agent-id="agent_4301k5gpsen4erzt882jhf3ekyby"
                 />
@@ -86,37 +52,12 @@ const CosiacaBot = () => {
     const [activeTab, setActiveTab] = React.useState('chat');
     const [messages, setMessages] = React.useState([
         {
-            id: 1,
             type: 'bot',
-            content: '¡Hola, mijito! Soy Cosiaca, el cuentero más pícaro de Antioquia. ¿Qué querés saber sobre la historia de Medellín? ¡Preguntame lo que se te ocurra!',
-            timestamp: new Date()
+            content: '¡Hola, mijito! Soy Cosiaca, el cuentero más pícaro de Antioquia. ¿Qué querés saber sobre la historia de Medellín? ¡Preguntame lo que se te ocurra!'
         }
     ]);
     const [inputMessage, setInputMessage] = React.useState('');
     const [isLoading, setIsLoading] = React.useState(false);
-    const [messageId, setMessageId] = React.useState(2);
-    const messagesEndRef = React.useRef(null);
-
-    // Auto-scroll al final de los mensajes
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    };
-
-    React.useEffect(() => {
-        scrollToBottom();
-    }, [messages]);
-
-    // Preguntas sugeridas
-    const suggestedQuestions = [
-        "¿Cómo era Medellín cuando se fundó?",
-        "Contame un chisme histórico",
-        "¿Qué pasó en el siglo XIX?",
-        "¿Cómo llegó el café a Antioquia?",
-        "¿Quién fue el primer alcalde?",
-        "Contame sobre el Metro de Medellín",
-        "¿Qué sabes de Fernando Botero?",
-        "Háblame de la Feria de las Flores"
-    ];
 
     const handleSendMessage = async () => {
         if (!inputMessage.trim() || isLoading) return;
@@ -125,13 +66,7 @@ const CosiacaBot = () => {
         setInputMessage('');
         
         // Agregar mensaje del usuario
-        setMessages(prev => [...prev, { 
-            id: messageId,
-            type: 'user', 
-            content: userMessage,
-            timestamp: new Date()
-        }]);
-        setMessageId(prev => prev + 1);
+        setMessages(prev => [...prev, { type: 'user', content: userMessage }]);
         setIsLoading(true);
 
         try {
@@ -139,29 +74,16 @@ const CosiacaBot = () => {
             const response = await AIService.answerAsCosiaca(userMessage);
             
             // Agregar respuesta de Cosiaca
-            setMessages(prev => [...prev, { 
-                id: messageId + 1,
-                type: 'bot', 
-                content: response,
-                timestamp: new Date()
-            }]);
-            setMessageId(prev => prev + 2);
+            setMessages(prev => [...prev, { type: 'bot', content: response }]);
         } catch (error) {
             console.error('Error getting response:', error);
-            setMessages(prev => [...prev, {
-                id: messageId + 1,
+            setMessages(prev => [...prev, { 
                 type: 'bot', 
-                content: '¡Uy, mijito! Se me enredó la lengua por un momento, pero ya estoy aquí. ¿Qué querés saber sobre la historia de Medellín? ¡Preguntame de nuevo!',
-                timestamp: new Date()
+                content: '¡Uy, mijito! Se me enredó la lengua por un momento, pero ya estoy aquí. ¿Qué querés saber sobre la historia de Medellín? ¡Preguntame de nuevo!' 
             }]);
-            setMessageId(prev => prev + 2);
         } finally {
             setIsLoading(false);
         }
-    };
-
-    const handleSuggestedQuestion = (question) => {
-        setInputMessage(question);
     };
 
     const handleKeyPress = (e) => {
@@ -169,23 +91,6 @@ const CosiacaBot = () => {
             e.preventDefault();
             handleSendMessage();
         }
-    };
-
-    const clearChat = () => {
-        setMessages([{
-            id: 1,
-            type: 'bot',
-            content: '¡Hola de nuevo, mijito! ¿En qué más te puedo ayudar con la historia de Medellín?',
-            timestamp: new Date()
-        }]);
-        setMessageId(2);
-    };
-
-    const formatTime = (timestamp) => {
-        return timestamp.toLocaleTimeString('es-CO', { 
-            hour: '2-digit', 
-            minute: '2-digit' 
-        });
     };
 
     return (
@@ -227,140 +132,85 @@ const CosiacaBot = () => {
             {activeTab === 'voice' && <ElevenLabsWidget />}
             
             {activeTab === 'chat' && (
-                <div className="space-y-6">
-                    {/* Header del Chat */}
-                    <div className="bg-cosiaca-beige/30 p-6 rounded-xl shadow-2xl border border-cosiaca-beige text-center">
-                        <BotIcon className="w-16 h-16 mx-auto text-cosiaca-red mb-4" />
-                        <h2 className="text-2xl font-bold font-serif text-cosiaca-brown mb-4">
-                            "Conversa Conmigo Directamente"
-                        </h2>
-                        <p className="text-lg text-cosiaca-brown-light/80 mb-4 lead">
-                            ¿Querés saber algo de la <strong>historia de Medellín</strong>? <em>¡Preguntame lo que se te ocurra!</em> 
-                            Tengo <strong>350 años de chismes, cuentos y anécdotas</strong> para contarte.
-                        </p>
-                        
-                        {/* Botón para limpiar chat */}
-                        <button
-                            onClick={clearChat}
-                            className="bg-cosiaca-brown text-white px-4 py-2 rounded-lg hover:bg-cosiaca-brown/80 transition-colors text-sm"
-                        >
-                            🗑️ Limpiar Chat
-                        </button>
-                    </div>
-
-                    {/* Preguntas Sugeridas */}
-                    <div className="bg-white rounded-xl shadow-lg border border-cosiaca-beige p-4">
-                        <h3 className="text-lg font-bold text-cosiaca-brown mb-3 text-center">💡 Preguntas Sugeridas</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                            {suggestedQuestions.map((question, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => handleSuggestedQuestion(question)}
-                                    className="text-left p-2 text-sm bg-cosiaca-beige/50 hover:bg-cosiaca-beige rounded-lg transition-colors text-cosiaca-brown"
-                                    disabled={isLoading}
+            <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige text-center">
+                <BotIcon className="w-16 h-16 mx-auto text-cosiaca-red mb-4" />
+                <h2 className="text-2xl font-bold font-serif text-cosiaca-brown mb-4">
+                    "Conversa Conmigo Directamente"
+                </h2>
+                <p className="text-lg text-cosiaca-brown-light/80 mb-6 lead">
+                    ¿Querés saber algo de la <strong>historia de Medellín</strong>? <em>¡Preguntame lo que se te ocurra!</em> 
+                    Tengo <strong>350 años de chismes, cuentos y anécdotas</strong> para contarte. 
+                    Desde la fundación hasta hoy, yo he visto todo con estos <em>ojitos pícaros</em>.
+                </p>
+                
+                {/* Chat Interface */}
+                <div className="bg-white rounded-xl shadow-lg border border-cosiaca-beige overflow-hidden">
+                    {/* Messages Area */}
+                    <div className="h-96 overflow-y-auto p-4 space-y-4">
+                        {messages.map((message, index) => (
+                            <div
+                                key={index}
+                                className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                            >
+                                <div
+                                    className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                                        message.type === 'user'
+                                            ? 'bg-cosiaca-red text-white user-message'
+                                            : 'bg-cosiaca-beige text-cosiaca-brown bot-message'
+                                    }`}
                                 >
-                                    "{question}"
-                                </button>
-                            ))}
-                        </div>
+                                    {message.type === 'bot' && (
+                                        <div className="flex items-start space-x-2">
+                                            <BotIcon className="w-5 h-5 mt-1 flex-shrink-0" />
+                                            <p className="text-sm leading-relaxed">{message.content}</p>
+                                        </div>
+                                    )}
+                                    {message.type === 'user' && (
+                                        <p className="text-sm leading-relaxed">{message.content}</p>
+                                    )}
+                                </div>
+                            </div>
+                        ))}
+                        
+                        {isLoading && (
+                            <div className="flex justify-start">
+                                <div className="bg-cosiaca-beige text-cosiaca-brown px-4 py-2 rounded-lg">
+                                    <div className="flex items-center space-x-2">
+                                        <BotIcon className="w-5 h-5" />
+                                        <div className="flex space-x-1">
+                                            <div className="w-2 h-2 bg-cosiaca-red rounded-full animate-bounce"></div>
+                                            <div className="w-2 h-2 bg-cosiaca-red rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                                            <div className="w-2 h-2 bg-cosiaca-red rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
                     
-                    {/* Chat Interface */}
-                    <div className="bg-white rounded-xl shadow-lg border border-cosiaca-beige overflow-hidden">
-                        {/* Chat Header */}
-                        <div className="bg-cosiaca-red text-white p-4 flex items-center justify-between">
-                            <div className="flex items-center space-x-3">
-                                <BotIcon className="w-8 h-8" />
-                                <div>
-                                    <h3 className="font-bold">José García "Cosiaca"</h3>
-                                    <p className="text-sm opacity-90">Cuentero Histórico de Medellín</p>
-                                </div>
-                            </div>
-                            <div className="text-sm opacity-90">
-                                {messages.length - 1} mensajes
-                            </div>
-                        </div>
-
-                        {/* Messages Area */}
-                        <div className="h-96 overflow-y-auto p-4 space-y-4 bg-gray-50">
-                            {messages.map((message) => (
-                                <div
-                                    key={message.id}
-                                    className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
-                                >
-                                    <div className={`max-w-xs lg:max-w-md ${message.type === 'user' ? 'order-2' : 'order-1'}`}>
-                                        <div
-                                            className={`px-4 py-3 rounded-2xl shadow-sm ${
-                                                message.type === 'user'
-                                                    ? 'bg-cosiaca-red text-white user-message rounded-br-sm'
-                                                    : 'bg-white text-cosiaca-brown bot-message rounded-bl-sm border border-cosiaca-beige'
-                                            }`}
-                                        >
-                                            {message.type === 'bot' && (
-                                                <div className="flex items-start space-x-2">
-                                                    <BotIcon className="w-5 h-5 mt-1 flex-shrink-0 text-cosiaca-red" />
-                                                    <div className="flex-1">
-                                                        <p className="text-sm leading-relaxed">{message.content}</p>
-                                                    </div>
-                                                </div>
-                                            )}
-                                            {message.type === 'user' && (
-                                                <p className="text-sm leading-relaxed">{message.content}</p>
-                                            )}
-                                        </div>
-                                        <div className={`text-xs text-gray-500 mt-1 ${
-                                            message.type === 'user' ? 'text-right' : 'text-left'
-                                        }`}>
-                                            {formatTime(message.timestamp)}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                            
-                            {isLoading && (
-                                <div className="flex justify-start">
-                                    <div className="bg-white text-cosiaca-brown px-4 py-3 rounded-2xl rounded-bl-sm shadow-sm border border-cosiaca-beige">
-                                        <div className="flex items-center space-x-2">
-                                            <BotIcon className="w-5 h-5 text-cosiaca-red" />
-                                            <div className="flex space-x-1">
-                                                <div className="w-2 h-2 bg-cosiaca-red rounded-full animate-bounce"></div>
-                                                <div className="w-2 h-2 bg-cosiaca-red rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                                                <div className="w-2 h-2 bg-cosiaca-red rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
-                                            </div>
-                                            <span className="text-sm text-gray-500">Cosiaca está pensando...</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
-                            <div ref={messagesEndRef} />
-                        </div>
-
-                        {/* Input Area */}
-                        <div className="p-4 bg-white border-t border-cosiaca-beige">
-                            <div className="flex space-x-2">
-                                <textarea
-                                    value={inputMessage}
-                                    onChange={(e) => setInputMessage(e.target.value)}
-                                    onKeyPress={handleKeyPress}
-                                    placeholder="Pregúntale a Cosiaca sobre la historia de Medellín..."
-                                    className="flex-1 p-3 border border-cosiaca-beige rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-cosiaca-red focus:border-transparent"
-                                    rows="2"
-                                    disabled={isLoading}
-                                />
-                                <button
-                                    onClick={handleSendMessage}
-                                    disabled={!inputMessage.trim() || isLoading}
-                                    className="bg-cosiaca-red text-white p-3 rounded-lg hover:bg-cosiaca-red/80 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                                >
-                                    <SendIcon className="w-5 h-5" />
-                                </button>
-                            </div>
-                            <div className="text-xs text-gray-500 mt-2 text-center">
-                                {inputMessage.length}/500 caracteres • Presiona Enter para enviar
-                            </div>
+                    {/* Input Area */}
+                    <div className="border-t border-cosiaca-beige p-4">
+                        <div className="flex space-x-2">
+                            <input
+                                type="text"
+                                value={inputMessage}
+                                onChange={(e) => setInputMessage(e.target.value)}
+                                onKeyPress={handleKeyPress}
+                                placeholder="Pregúntale a Cosiaca sobre la historia de Medellín..."
+                                className="flex-1 px-4 py-2 border border-cosiaca-beige rounded-lg focus:outline-none focus:ring-2 focus:ring-cosiaca-red"
+                                disabled={isLoading}
+                            />
+                            <button
+                                onClick={handleSendMessage}
+                                disabled={isLoading || !inputMessage.trim()}
+                                className="bg-cosiaca-red text-white px-6 py-2 rounded-lg hover:bg-cosiaca-red-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                Enviar
+                            </button>
                         </div>
                     </div>
                 </div>
+            </div>
             )}
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -376,14 +226,14 @@ const CosiacaBot = () => {
                     </ul>
                 </div>
                 <div className="bg-cosiaca-beige/30 p-6 rounded-xl border border-cosiaca-beige">
-                    <h3 className="text-xl font-bold text-cosiaca-brown mb-3 font-serif">🎙️ Opciones de Chat</h3>
+                    <h3 className="text-xl font-bold text-cosiaca-brown mb-3 font-serif">💬 Ejemplos de preguntas</h3>
                     <ul className="space-y-2 text-cosiaca-brown-light/80 text-lg">
-                        <li>• <strong>Chat de Texto:</strong> <em>Conversación escrita detallada</em></li>
-                        <li>• <strong>Chat por Voz:</strong> <em>Habla directamente con Cosiaca</em></li>
-                        <li>• <strong>Preguntas Sugeridas:</strong> <em>Ideas para empezar</em></li>
-                        <li>• <strong>Historial:</strong> <em>Guarda tu conversación</em></li>
-                        <li>• <strong>Respuestas IA:</strong> <em>Powered by Gemini</em></li>
-                        <li>• <strong>Fallbacks:</strong> <em>Siempre hay respuesta</em></li>
+                        <li>• "¿Cómo era Medellín cuando se fundó?"</li>
+                        <li>• "Contame un chisme histórico"</li>
+                        <li>• "¿Qué pasó en el siglo XIX?"</li>
+                        <li>• "¿Cómo llegó el café a Antioquia?"</li>
+                        <li>• "¿Quién fue el primer alcalde?"</li>
+                        <li>• "Contame una historia divertida"</li>
                     </ul>
                 </div>
             </div>
@@ -403,27 +253,28 @@ const CosiacaBot = () => {
                     <div className="p-4 bg-blue-100 border border-blue-300 rounded-lg">
                         <h4 className="font-bold text-blue-800 mb-2">💬 Chat de Texto</h4>
                         <p className="text-sm text-blue-700">
-                            Conversa escribiendo tus preguntas. Incluye preguntas sugeridas, historial de mensajes y respuestas detalladas.
+                            Conversa escribiendo tus preguntas. Ideal para consultas detalladas y referencias históricas precisas.
                         </p>
                     </div>
                     <div className="p-4 bg-green-100 border border-green-300 rounded-lg">
                         <h4 className="font-bold text-green-800 mb-2">🎙️ Chat por Voz</h4>
                         <p className="text-sm text-green-700">
-                            Habla directamente con Cosiaca usando ElevenLabs. Presiona y mantén para hablar.
+                            Habla directamente con Cosiaca usando tu micrófono. Una experiencia más natural e inmersiva.
                         </p>
                     </div>
                 </div>
                 
                 <div className="mt-6 p-4 bg-green-100 border border-green-300 rounded-lg">
                     <p className="text-sm text-green-800">
-                        <strong>🤖 Tecnología Avanzada:</strong> Chat de texto con IA (Gemini) y chat por voz con ElevenLabs. 
-                        Respuestas auténticas de Cosiaca con información histórica real de Medellín.
+                        <strong>🤖 Potenciado por IA:</strong> Este chatbot utiliza inteligencia artificial avanzada 
+                        para generar respuestas auténticas como Cosiaca. Cada conversación es única y se basa en 
+                        información histórica real de Medellín.
                     </p>
                 </div>
                 <div className="mt-4 p-4 bg-blue-100 border border-blue-300 rounded-lg">
                     <p className="text-sm text-blue-800">
-                        <strong>💡 Nuevas Funciones:</strong> Preguntas sugeridas, historial con timestamps, 
-                        auto-scroll, contador de caracteres y chat por voz integrado.
+                        <strong>💡 Consejo:</strong> Pregúntale sobre fechas específicas, personajes históricos, 
+                        eventos importantes, o pídele que te cuente anécdotas divertidas de la historia paisa.
                     </p>
                 </div>
             </div>
