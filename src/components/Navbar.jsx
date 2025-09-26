@@ -91,11 +91,6 @@ const PlanIcon = (props) => (
                     ))}
                 </nav>
                 
-                {/* AI Provider Selector - Desktop */}
-                <div className="hidden lg:block">
-                    <AIProviderSelector />
-                </div>
-
                 {/* Mobile Navigation */}
                 <div className="lg:hidden">
                     <button 
