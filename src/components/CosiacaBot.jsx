@@ -184,7 +184,6 @@ const CosiacaBot = () => {
                         <strong>💡 Consejo:</strong> Pregúntale sobre fechas específicas, personajes históricos, 
                         eventos importantes, o pídele que te cuente anécdotas divertidas de la historia paisa.
                     </p>
-                </p>
             </div>
         </div>
     );
