@@ -82,15 +82,18 @@ const PlanIcon = (props) => (
         <nav className="bg-cosiaca-brown/90 backdrop-blur-lg text-cosiaca-cream p-3 sm:p-4 sticky top-0 z-50 border-b border-cosiaca-brown/20 shadow-lg">
             <div className="container mx-auto flex justify-between items-center">
                 <h1 className="text-xl sm:text-2xl font-bold font-serif tracking-wider cursor-pointer text-cosiaca-cream" onClick={() => setView('home')}>
-                    Cosiaca {350}
+                    <span role="button" tabIndex="0" onKeyDown={(e) => e.key === 'Enter' && setView('home')}>
+                        Cosiaca {350}
+                    </span>
                 </h1>
                 
                 {/* Desktop Navigation */}
-                <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
+                <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2" role="navigation" aria-label="Navegación principal">
                     {mainLinks.map(link => (
                         <button 
                             key={link.view} 
                             onClick={() => setView(link.view)} 
+                            aria-current={view === link.view ? 'page' : undefined}
                             className={`flex items-center px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-300 ${
                                 view === link.view 
                                     ? 'bg-cosiaca-red text-white shadow-lg' 
@@ -105,6 +108,8 @@ const PlanIcon = (props) => (
                     <div className="relative" ref={experiencesRef}>
                         <button 
                             onClick={() => setExperiencesMenuOpen(!isExperiencesMenuOpen)} 
+                            aria-expanded={isExperiencesMenuOpen}
+                            aria-haspopup="true"
                             className={`flex items-center px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-300 ${
                                 isExperiencesMenuOpen ? 'bg-cosiaca-brown/70 text-cosiaca-cream' : 'text-cosiaca-cream hover:bg-cosiaca-brown/70'
                             }`}
@@ -112,7 +117,7 @@ const PlanIcon = (props) => (
                             <SparklesIcon className="mr-1 xl:mr-2"/> Experiencias
                         </button>
                         {isExperiencesMenuOpen && (
-                            <div className="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-cosiaca-cream ring-1 ring-cosiaca-brown ring-opacity-50">
+                            <div className="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-cosiaca-cream ring-1 ring-cosiaca-brown ring-opacity-50" role="menu">
                                 <div className="py-1">
                                     {experienceLinks.map(link => (
                                         <button 
@@ -121,6 +126,7 @@ const PlanIcon = (props) => (
                                                 setView(link.view); 
                                                 setExperiencesMenuOpen(false); 
                                             }} 
+                                            role="menuitem"
                                             className={`flex items-center w-full text-left px-4 py-2 text-sm ${
                                                 view === link.view 
                                                     ? 'bg-cosiaca-red text-white' 
@@ -134,12 +140,14 @@ const PlanIcon = (props) => (
                             </div>
                         )}
                     </div>
-                </div>
+                </nav>
 
                 {/* Mobile Navigation */}
                 <div className="lg:hidden">
                     <button 
                         onClick={() => setMobileMenuOpen(!isMobileMenuOpen)} 
+                        aria-expanded={isMobileMenuOpen}
+                        aria-label="Abrir menú de navegación"
                         className="text-cosiaca-cream focus:outline-none p-2 rounded-md hover:bg-cosiaca-brown/70"
                     >
                         <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -154,7 +162,7 @@ const PlanIcon = (props) => (
                 </div>
             </div>
             {isMobileMenuOpen && (
-                <div className="lg:hidden mt-4 space-y-1 max-h-96 overflow-y-auto">
+                <nav className="lg:hidden mt-4 space-y-1 max-h-96 overflow-y-auto" role="navigation" aria-label="Navegación móvil">
                     {[...mainLinks, ...experienceLinks].map(link => (
                         <button 
                             key={link.view} 
@@ -162,6 +170,7 @@ const PlanIcon = (props) => (
                                 setView(link.view); 
                                 setMobileMenuOpen(false); 
                             }} 
+                            aria-current={view === link.view ? 'page' : undefined}
                             className={`flex items-center w-full text-left px-3 py-2 sm:py-3 rounded-md text-sm sm:text-base font-medium transition-colors ${
                                 view === link.view 
                                     ? 'bg-cosiaca-red text-white' 
@@ -171,7 +180,7 @@ const PlanIcon = (props) => (
                             {link.icon} {link.name}
                         </button>
                     ))}
-                </div>
+                </nav>
             )}
         </nav>
     );

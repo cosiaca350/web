@@ -13,6 +13,7 @@ import Timeline from './components/Timeline';
 import Archivo from './components/Archivo';
 import PlanTrabajo from './components/PlanTrabajo';
 import CosiacaBot from './components/CosiacaBot';
+import AccessibilityControls from './components/AccessibilityControls';
 import './App.css';
 
 const App = () => {
@@ -66,8 +67,16 @@ const App = () => {
 
     return (
         <div className="min-h-screen bg-cosiaca-cream text-cosiaca-brown font-montserrat flex flex-col overflow-x-hidden">
+            {/* Skip to main content link */}
+            <a href="#main-content" className="skip-link">
+                Saltar al contenido principal
+            </a>
+            
+            {/* Accessibility Controls */}
+            <AccessibilityControls />
+            
             <Navbar view={view} setView={setView} />
-            <main className="flex-1 container mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl">
+            <main id="main-content" className="flex-1 container mx-auto p-3 sm:p-4 md:p-6 lg:p-8 max-w-7xl" role="main">
                 {renderContent()}
             </main>
             <footer className="bg-cosiaca-brown-dark p-4 sm:p-6 text-center text-cosiaca-cream border-t border-cosiaca-brown-medium">
