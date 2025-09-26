@@ -32,6 +32,7 @@ const Home = ({ setView }) => {
             ];
             
             const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            setHistoricalFact(randomFact);
         } finally {
             setIsLoadingFact(false);
         }
@@ -344,6 +345,7 @@ const Home = ({ setView }) => {
                 </div>
 
                 {/* Footer with Sponsors */}
+            </div>
         </div>
     );
 };
