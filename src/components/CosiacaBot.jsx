@@ -332,7 +332,35 @@ const CosiacaBot = () => {
                                     </div>
                                 </div>
                             )}
-                    {/* Widget de ElevenLabs */}
+                            <div ref={messagesEndRef} />
+                        </div>
+
+                        {/* Input Area */}
+                        <div className="p-4 bg-white border-t border-cosiaca-beige">
+                            <div className="flex space-x-2">
+                                <textarea
+                                    value={inputMessage}
+                                    onChange={(e) => setInputMessage(e.target.value)}
+                                    onKeyPress={handleKeyPress}
+                                    placeholder="Pregúntale a Cosiaca sobre la historia de Medellín..."
+                                    className="flex-1 p-3 border border-cosiaca-beige rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-cosiaca-red focus:border-transparent"
+                                    rows="2"
+                                    disabled={isLoading}
+                                />
+                                <button
+                                    onClick={handleSendMessage}
+                                    disabled={!inputMessage.trim() || isLoading}
+                                    className="bg-cosiaca-red text-white p-3 rounded-lg hover:bg-cosiaca-red/80 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                >
+                                    <SendIcon className="w-5 h-5" />
+                                </button>
+                            </div>
+                            <div className="text-xs text-gray-500 mt-2 text-center">
+                                {inputMessage.length}/500 caracteres • Presiona Enter para enviar
+                            </div>
+                        </div>
+                    </div>
+                </div>
             )}
 
             <div className="grid md:grid-cols-2 gap-6">
