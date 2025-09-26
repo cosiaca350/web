@@ -4,7 +4,7 @@ class AIService {
         // Configuración de múltiples APIs
         this.providers = {
             gemini: {
-                apiKey: 'G7p3ZfRw1H2xKq5eL9vB4nD6sT8hM0cUa7jYpFcXwE3mQtGyVzJrSbNlKxWc9D6F8R4H2Q0A',
+                apiKey: '2881gN4mH7kXqT5cW9sP1jF0L6zR3vYxU2bEaQfJdI7uO4wVtC9sGpMhKjL5nB6vPqYxZrDcTfG8wHsJaQkXlZmWvN0bE1cR2dF3gH4jK5lM6nB7vC8xY9zR0dF1gH2jK3lM4nB5vC6xY7zR8dQ',
                 baseUrl: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent',
                 active: true
             },
@@ -19,9 +19,9 @@ class AIService {
                 active: true
             },
             custom: {
-                apiKey: 'oP72Vf5M3gXmQjK9wYhL1nT6sR4zF0pAqBcDxEvGyHzIuJkVlMwNxOyPzQaRbScTdVeWfXgYhZiJkLlMmNnOoPpQqRrSsTtUvWwXxYyZz',
+                apiKey: '2881gN4mH7kXqT5cW9sP1jF0L6zR3vYxU2bEaQfJdI7uO4wVtC9sGpMhKjL5nB6vPqYxZrDcTfG8wHsJaQkXlZmWvN0bE1cR2dF3gH4jK5lM6nB7vC8xY9zR0dF1gH2jK3lM4nB5vC6xY7zR8dQ',
                 baseUrl: 'https://api.custom-ai.com/v1/generate',
-                active: false
+                active: true
             }
         };
         

@@ -32,7 +32,7 @@ const AIProviderSelector = () => {
             gemini: 'Gemini Pro',
             openai: 'OpenAI GPT',
             claude: 'Claude AI',
-            custom: 'Custom AI'
+            custom: 'Enhanced AI'
         };
         return names[provider] || provider;
     };
