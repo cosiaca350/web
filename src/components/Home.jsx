@@ -344,39 +344,6 @@ const Home = ({ setView }) => {
                 </div>
 
                 {/* Footer with Sponsors */}
-                <div className="bg-cosiaca-brown/90 backdrop-blur-sm text-white p-4">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="text-center mb-4">
-                            <p className="text-sm font-medium mb-2">Apoya:</p>
-                        </div>
-                        <div className="flex flex-wrap justify-center items-center gap-6 text-xs">
-                            <div className="text-center">
-                                <p className="font-bold">Proyecto beneficiado de las</p>
-                                <p>Convocatorias de Fomento y Estímulos</p>
-                                <p>para el Arte y la Cultura 2025. Secretaría</p>
-                                <p>de Cultura Ciudadana de Medellín.</p>
-                            </div>
-                            <div className="flex items-center gap-4">
-                                <div className="text-center">
-                                    <p className="font-bold">BPP</p>
-                                    <p className="text-xs">BIBLIOTECA</p>
-                                    <p className="text-xs">PÚBLICA PILOTO</p>
-                                </div>
-                                <div className="text-center">
-                                    <p className="font-bold">SISTEMA DE</p>
-                                    <p className="text-xs">BIBLIOTECAS</p>
-                                    <p className="text-xs">PÚBLICAS DE</p>
-                                    <p className="text-xs">MEDELLÍN</p>
-                                </div>
-                                <div className="text-center">
-                                    <p className="font-bold">Alcaldía de Medellín</p>
-                                    <p className="text-xs">Ciencia, Tecnología e Innovación</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     );
 };
