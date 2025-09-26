@@ -11,6 +11,7 @@ import {
     PodcastIcon,
     BotIcon
 } from '../icons/Icons';
+import AIProviderSelector from './AIProviderSelector';
 
 const CreditCardIcon = (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -141,6 +142,11 @@ const PlanIcon = (props) => (
                         )}
                     </div>
                 </nav>
+                
+                {/* AI Provider Selector - Desktop */}
+                <div className="hidden lg:block">
+                    <AIProviderSelector />
+                </div>
 
                 {/* Mobile Navigation */}
                 <div className="lg:hidden">

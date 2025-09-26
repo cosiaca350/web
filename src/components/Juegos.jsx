@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BotIcon, CheckCircleIcon, XCircleIcon, SparklesIcon } from '../icons/Icons';
 import AdvancedTrivia from './AdvancedTrivia';
-import GeminiService from '../services/geminiService';
+import AIService from '../services/aiService';
 
 const Juegos = () => {
     const [activeTab, setActiveTab] = useState('trivia');
@@ -111,7 +111,7 @@ const Juegos = () => {
     const generateAIJoke = async () => {
         setIsGeneratingJoke(true);
         try {
-            const joke = await GeminiService.generatePaisaJoke();
+            const joke = await AIService.generatePaisaJoke();
             setCurrentJoke(joke);
         } catch (error) {
             console.error('Error generating joke:', error);
@@ -124,7 +124,7 @@ const Juegos = () => {
     const generateAITrova = async () => {
         setIsGeneratingTrova(true);
         try {
-            const trova = await GeminiService.generatePaisaTrova();
+            const trova = await AIService.generatePaisaTrova();
             setCurrentTrova(trova.replace(/\n/g, '<br>'));
         } catch (error) {
             console.error('Error generating trova:', error);

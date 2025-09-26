@@ -1,6 +1,6 @@
 import React from 'react';
 import { BotIcon } from '../icons/Icons';
-import GeminiService from '../services/geminiService';
+import AIService from '../services/aiService';
 
 const CosiacaBot = () => {
     const [messages, setMessages] = React.useState([
@@ -23,8 +23,8 @@ const CosiacaBot = () => {
         setIsLoading(true);
 
         try {
-            // Generar respuesta con Gemini
-            const response = await GeminiService.answerAsCosiaca(userMessage);
+            // Generar respuesta con AI Service (múltiples proveedores)
+            const response = await AIService.answerAsCosiaca(userMessage);
             
             // Agregar respuesta de Cosiaca
             setMessages(prev => [...prev, { type: 'bot', content: response }]);
