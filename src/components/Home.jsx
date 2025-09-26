@@ -62,6 +62,13 @@ const Home = ({ setView }) => {
                             <div className="text-8xl sm:text-9xl md:text-[12rem] font-black text-cosiaca-red font-serif leading-none tracking-tight">
                                 COSIACA
                             </div>
+                            <div className="flex justify-center mt-4">
+                                <div className="border-2 border-cosiaca-brown px-6 py-2 rounded-lg">
+                                    <span className="text-3xl sm:text-4xl md:text-5xl font-light text-cosiaca-brown">
+                                        {350}
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-cosiaca-brown/80 mb-6 max-w-4xl mx-auto leading-tight">

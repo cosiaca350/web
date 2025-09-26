@@ -63,7 +63,7 @@ const ConstructionPage = ({ onEnter }) => {
                         <div className="flex justify-center mt-4">
                             <div className="border-2 border-cosiaca-brown px-6 py-2 rounded-lg">
                                 <span className="text-3xl sm:text-4xl md:text-5xl font-light text-cosiaca-brown">
-                                    350
+                                    {350}
                                 </span>
                             </div>
                         </div>

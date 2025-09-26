@@ -82,7 +82,7 @@ const PlanIcon = (props) => (
         <nav className="bg-cosiaca-brown/90 backdrop-blur-lg text-cosiaca-cream p-3 sm:p-4 sticky top-0 z-50 border-b border-cosiaca-brown/20 shadow-lg">
             <div className="container mx-auto flex justify-between items-center">
                 <h1 className="text-xl sm:text-2xl font-bold font-serif tracking-wider cursor-pointer text-cosiaca-cream" onClick={() => setView('home')}>
-                    Cosiaca 350
+                    Cosiaca {350}
                 </h1>
                 
                 {/* Desktop Navigation */}
