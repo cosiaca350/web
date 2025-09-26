@@ -32,9 +32,6 @@ const Home = ({ setView }) => {
             ];
             
             const randomFact = facts[Math.floor(Math.random() * facts.length)];
-            setHistoricalFact(randomFact);
-        } catch (error) {
-            console.error('Error generating fact:', error);
         } finally {
             setIsLoadingFact(false);
         }
