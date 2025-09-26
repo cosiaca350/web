@@ -81,7 +81,7 @@ const App = () => {
             </main>
             <footer className="bg-cosiaca-brown-dark p-4 sm:p-6 text-center text-cosiaca-cream border-t border-cosiaca-brown-medium">
                 <div className="max-w-4xl mx-auto">
-                    <p className="text-base sm:text-lg font-medium mb-2 text-cosiaca-beige">© 2024 Cosiaca <strong>{350}</strong> - Un Viaje Inmersivo a la Historia de Medellín</p>
+                    <p className="text-base sm:text-lg font-medium mb-2 text-cosiaca-beige">© 2024 {"{COSIACA "}<strong>350</strong>{"}"} - Un Viaje Inmersivo a la Historia de Medellín</p>
                     <p className="text-sm sm:text-base text-cosiaca-tan mb-4">Todos los derechos reservados. Un proyecto de <strong>Núcleo Colectivo</strong></p>
                     <div className="text-xs sm:text-sm text-cosiaca-cream/70 space-y-1">
                         <p className="text-cosiaca-tan">Propuesta transmedia para la celebración de los <strong>350</strong> años de Medellín</p>

@@ -56,14 +56,9 @@ const Home = ({ setView }) => {
                     <div className="mb-12">
                         <div className="relative inline-block">
                             <div className="text-8xl sm:text-9xl md:text-[12rem] font-black text-cosiaca-red font-serif leading-none tracking-tight">
-                                COSIACA
-                            </div>
-                            <div className="flex justify-center mt-4">
-                                <div className="border-2 border-cosiaca-brown px-6 py-2 rounded-lg">
-                                    <span className="text-3xl sm:text-4xl md:text-5xl font-light text-cosiaca-brown">
-                                        <strong>{350}</strong>
-                                    </span>
-                                </div>
+                                {"{COSIACA "}
+                                <strong>350</strong>
+                                {"}"}
                             </div>
                         </div>
                     </div>

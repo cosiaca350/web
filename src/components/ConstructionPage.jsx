@@ -115,15 +115,10 @@ const ConstructionPage = ({ onEnter }) => {
                 <div className={`text-center pt-8 pb-4 transition-all duration-1000 ${isAnimating ? 'transform -translate-y-10 opacity-0' : 'transform translate-y-0 opacity-100'}`}>
                     <div className="relative inline-block">
                         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-cosiaca-brown font-serif leading-none tracking-tight">
-                            COSIACA
+                            {"{COSIACA "}
+                            <strong>350</strong>
+                            {"}"}
                         </h1>
-                        <div className="flex justify-center mt-2">
-                            <div className="border-2 border-cosiaca-brown px-4 py-1 rounded-lg">
-                                <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-cosiaca-brown">
-                                    {"{"}<strong>350</strong>{"}"}
-                                </span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
