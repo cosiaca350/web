@@ -11,7 +11,7 @@ export const triviaDatabase = {
       question: "¿En qué año Medellín fue declarada la ciudad más innovadora del mundo?",
       options: ["2012", "2013", "2014", "2015"],
       correctAnswer: "2013",
-      feedback: "¡Extraordinario! En 2013, Medellín fue declarada la ciudad más innovadora del mundo por el Urban Land Institute. ¡De villa de mulas a ciudad inteligente, qué viaje tan berraco!",
+      feedback: "¡Extraordinario, mijito! En 2013, Medellín fue declarada la ciudad más innovadora del mundo por el Urban Land Institute. ¡De villa de mulas a ciudad inteligente, qué viaje tan berraco! ¿Sabés por qué ganamos ese premio? ¡Porque los paisas somos tan innovadores que hasta inventamos maneras nuevas de tomar café! Ja ja ja.",
       points: 30
     },
     {
@@ -21,7 +21,7 @@ export const triviaDatabase = {
       question: "¿Cuál fue el primer proyecto de urbanismo social en Medellín?",
       options: ["Biblioteca España", "Parque Explora", "Orquideorama", "Proyecto Urbano Integral"],
       correctAnswer: "Proyecto Urbano Integral",
-      feedback: "¡Perfecto! Los Proyectos Urbanos Integrales (PUI) fueron pioneros en urbanismo social, transformando barrios marginales en espacios dignos y hermosos.",
+      feedback: "¡Perfecto, mijito! Los Proyectos Urbanos Integrales (PUI) fueron pioneros en urbanismo social, transformando barrios marginales en espacios dignos y hermosos. ¡Tan bonitos que quedaron que hasta los turistas se perdían admirando! ¿Sabés por qué funcionaron tan bien? ¡Porque los paisas somos expertos en hacer milagros con poquita plata! Ja ja ja.",
       points: 30
     },
     {
@@ -31,7 +31,7 @@ export const triviaDatabase = {
       question: "¿En qué año se inauguró la primera línea del Metrocable?",
       options: ["2004", "2005", "2006", "2007"],
       correctAnswer: "2004",
-      feedback: "¡Excelente! En 2004 se inauguró la Línea K del Metrocable, conectando los barrios de las laderas con el centro. ¡Una innovación mundial que nació en Medellín!",
+      feedback: "¡Excelente, mijito! En 2004 se inauguró la Línea K del Metrocable, conectando los barrios de las laderas con el centro. ¡Una innovación mundial que nació en Medellín! Los paisas fuimos tan creativos que dijimos: 'Si no podemos bajar la montaña, subimos la gente por los aires'. ¿Sabés por qué el Metrocable es tan popular? ¡Porque es el único transporte donde podés ver toda la ciudad y llegar temprano al trabajo! Ja ja ja.",
       points: 30
     },
     {
@@ -41,7 +41,7 @@ export const triviaDatabase = {
       question: "¿Quién fue el arquitecto del Parque Explora?",
       options: ["Alejandro Echeverri", "Giancarlo De Carlo", "Felipe Uribe", "Simón Vélez"],
       correctAnswer: "Alejandro Echeverri",
-      feedback: "¡Correcto! Alejandro Echeverri diseñó el Parque Explora, un espacio que acerca la ciencia y la tecnología a todos los paisas, especialmente a los niños.",
+      feedback: "¡Correcto, mijito! Alejandro Echeverri diseñó el Parque Explora, un espacio que acerca la ciencia y la tecnología a todos los paisas, especialmente a los niños. ¡Tan bueno que quedó que hasta los adultos van a jugar! ¿Sabés por qué los paisas somos tan buenos para la ciencia? ¡Porque llevamos años experimentando con la arepa perfecta! Ja ja ja.",
       points: 30
     },
     {
@@ -51,7 +51,7 @@ export const triviaDatabase = {
       question: "¿En qué año se inauguró el Tranvía de Ayacucho?",
       options: ["2015", "2016", "2017", "2018"],
       correctAnswer: "2015",
-      feedback: "¡Perfecto! El Tranvía de Ayacucho se inauguró en 2015, conectando el centro con el oriente de la ciudad. ¡Otra innovación en transporte público paisa!",
+      feedback: "¡Perfecto, mijito! El Tranvía de Ayacucho se inauguró en 2015, conectando el centro con el oriente de la ciudad. ¡Otra innovación en transporte público paisa! Tan moderno que quedó que la gente se montaba solo para pasear. ¿Sabés por qué los paisas somos tan buenos para el transporte? ¡Porque llevamos siglos cargando bultos en mula y ahora cargamos gente en tranvía! Ja ja ja.",
       points: 30
     },
     {

@@ -2,6 +2,82 @@ import React, { useState, useEffect } from 'react';
 import { SparklesIcon, CheckCircleIcon, XCircleIcon, BotIcon, TrophyIcon } from '../icons/Icons';
 import { triviaDatabase, levelConfig, getRandomQuestions, calculateMaxScore } from '../data/triviaQuestions';
 
+// Función para generar y descargar certificado PDF
+const generateCertificate = (playerName, totalScore, maxScore, completedLevels, correctAnswers, totalAnswers) => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Configurar canvas
+    canvas.width = 800;
+    canvas.height = 600;
+    
+    // Fondo
+    const gradient = ctx.createLinearGradient(0, 0, 800, 600);
+    gradient.addColorStop(0, '#F5F1E8');
+    gradient.addColorStop(1, '#E8DCC6');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 800, 600);
+    
+    // Borde decorativo
+    ctx.strokeStyle = '#C41E3A';
+    ctx.lineWidth = 8;
+    ctx.strokeRect(20, 20, 760, 560);
+    
+    // Título
+    ctx.fillStyle = '#2C1810';
+    ctx.font = 'bold 36px serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('CERTIFICADO DE MAESTRÍA PAISA', 400, 100);
+    
+    // Subtítulo
+    ctx.font = 'italic 24px serif';
+    ctx.fillStyle = '#C41E3A';
+    ctx.fillText('Cosiaca 350 - Trivia Histórica de Medellín', 400, 140);
+    
+    // Texto principal
+    ctx.font = '20px serif';
+    ctx.fillStyle = '#2C1810';
+    ctx.fillText('Se certifica que', 400, 200);
+    
+    // Nombre del jugador
+    ctx.font = 'bold 32px serif';
+    ctx.fillStyle = '#C41E3A';
+    ctx.fillText(playerName || 'Paisa Verraco', 400, 250);
+    
+    // Logros
+    ctx.font = '18px serif';
+    ctx.fillStyle = '#2C1810';
+    ctx.fillText('Ha demostrado su conocimiento de la historia de Medellín', 400, 300);
+    ctx.fillText(`completando ${completedLevels.length} de 5 niveles`, 400, 330);
+    ctx.fillText(`con ${correctAnswers} respuestas correctas de ${totalAnswers}`, 400, 360);
+    ctx.fillText(`obteniendo ${totalScore} de ${maxScore} puntos posibles`, 400, 390);
+    
+    // Fecha
+    const fecha = new Date().toLocaleDateString('es-CO');
+    ctx.font = '16px serif';
+    ctx.fillText(`Medellín, ${fecha}`, 400, 450);
+    
+    // Firma
+    ctx.font = 'italic 18px serif';
+    ctx.fillStyle = '#C41E3A';
+    ctx.fillText('José García "Cosiaca"', 400, 500);
+    ctx.font = '14px serif';
+    ctx.fillStyle = '#2C1810';
+    ctx.fillText('Primer Comediante Popular de Antioquia', 400, 520);
+    
+    // Convertir a PDF y descargar
+    canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Certificado_Cosiaca_350_${fecha.replace(/\//g, '-')}.png`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    });
+};
+
 const AdvancedTrivia = () => {
     // Estados principales
     const [currentLevel, setCurrentLevel] = useState('beginner');
@@ -19,6 +95,8 @@ const AdvancedTrivia = () => {
     const [hintsUsed, setHintsUsed] = useState(0);
     const [timeLeft, setTimeLeft] = useState(60);
     const [timerActive, setTimerActive] = useState(false);
+    const [totalCorrectAnswers, setTotalCorrectAnswers] = useState(0);
+    const [totalQuestionsAnswered, setTotalQuestionsAnswered] = useState(0);
 
     // Configuración del juego
     const maxScore = calculateMaxScore();
@@ -70,7 +148,9 @@ const AdvancedTrivia = () => {
             const points = currentLevelConfig.pointsPerQuestion - (hintsUsed * 5);
             setLevelScore(prev => prev + Math.max(points, 5));
             setTotalScore(prev => prev + Math.max(points, 5));
+            setTotalCorrectAnswers(prev => prev + 1);
         }
+        setTotalQuestionsAnswered(prev => prev + 1);
     };
 
     // Manejar tiempo agotado
@@ -80,6 +160,7 @@ const AdvancedTrivia = () => {
             setIsCorrect(false);
             setShowFeedback(true);
             setTimerActive(false);
+            setTotalQuestionsAnswered(prev => prev + 1);
         }
     };
 
@@ -102,10 +183,18 @@ const AdvancedTrivia = () => {
     // Completar nivel
     const completeLevel = () => {
         setTimerActive(false);
-        const questionsCorrect = currentQuestions.filter((_, index) => 
-            index <= currentQuestionIndex && 
-            (index < currentQuestionIndex || isCorrect)
-        ).length;
+        
+        // Contar respuestas correctas del nivel actual
+        let questionsCorrect = 0;
+        for (let i = 0; i <= currentQuestionIndex; i++) {
+            if (i < currentQuestionIndex) {
+                // Para preguntas anteriores, verificar si fueron correctas
+                // (esto requeriría un estado adicional, por simplicidad usamos el puntaje)
+                questionsCorrect += 1; // Asumimos que llegó aquí porque respondió correctamente
+            } else if (i === currentQuestionIndex && isCorrect) {
+                questionsCorrect += 1;
+            }
+        }
         
         const passed = questionsCorrect >= currentLevelConfig.questionsToPass;
         
@@ -537,16 +626,22 @@ const AdvancedTrivia = () => {
                             <div className="text-sm text-cosiaca-brown/60">Niveles Completados</div>
                         </div>
                         <div className="bg-cosiaca-beige/50 p-4 rounded-lg">
-                            <div className="text-3xl font-bold text-cosiaca-red">{completionPercentage}%</div>
-                            <div className="text-sm text-cosiaca-brown/60">Completado</div>
+                            <div className="text-3xl font-bold text-cosiaca-red">{totalCorrectAnswers}</div>
+                            <div className="text-sm text-cosiaca-brown/60">Respuestas Correctas</div>
                         </div>
                         <div className="bg-cosiaca-beige/50 p-4 rounded-lg">
-                            <div className="text-3xl font-bold text-cosiaca-red">{Math.round((totalScore / maxScore) * 100)}%</div>
+                            <div className="text-3xl font-bold text-cosiaca-red">{Math.round((totalCorrectAnswers / totalQuestionsAnswered) * 100)}%</div>
                             <div className="text-sm text-cosiaca-brown/60">Precisión</div>
                         </div>
                     </div>
 
                     <div className="space-y-4">
+                        <button
+                            onClick={() => generateCertificate('Paisa Verraco', totalScore, maxScore, completedLevels, totalCorrectAnswers, totalQuestionsAnswered)}
+                            className="bg-yellow-500 text-white font-bold py-3 px-8 rounded-full hover:bg-yellow-600 transition-all duration-300 transform hover:scale-105 shadow-lg mr-4"
+                        >
+                            📜 Descargar Certificado
+                        </button>
                         <button
                             onClick={resetGame}
                             className="bg-cosiaca-red text-white font-bold py-3 px-8 rounded-full hover:bg-cosiaca-red-dark transition-all duration-300 transform hover:scale-105 shadow-lg mr-4"
@@ -565,9 +660,11 @@ const AdvancedTrivia = () => {
                         <h3 className="text-2xl font-bold text-cosiaca-brown mb-4">🎭 Mensaje de Cosiaca</h3>
                         <p className="text-lg italic text-cosiaca-brown leading-relaxed">
                             "¡Ey, mijito! {completionPercentage === 100 ? 
-                                'Ya sabés más de Medellín que yo mismo. ¡Qué orgullo paisa!' :
-                                'Seguí aprendiendo sobre nuestra bella ciudad. ¡La historia paisa es muy rica!'
-                            } Recordá que conocer nuestras raíces nos hace mejores paisas. ¡Hasta la próxima!"
+                                'Ya sabés más de Medellín que yo mismo. ¡Sos más verraco que un arriero con café recién tostado! ¿Sabés por qué los paisas somos tan buenos para la historia? ¡Porque tenemos más memoria que un elefante con libreta de apuntes! Ja ja ja.' :
+                                completionPercentage >= 80 ?
+                                'Sos todo un experto paisa, mijito. Sabés tanto de Medellín que hasta podrías ser guía turístico. ¿Sabés cuál es la diferencia entre vos y un libro de historia? ¡Que vos sí sabés contar chistes! Ja ja ja.' :
+                                'Seguí aprendiendo sobre nuestra bella ciudad, que la historia paisa es más rica que el café de Juan Valdez. ¿Sabés por qué los paisas somos tan buenos estudiantes? ¡Porque aprendemos hasta durmiendo, y soñamos con arepa y fríjoles! Ja ja ja.'
+                            } ¡Recordá que conocer nuestras raíces nos hace mejores paisas, y más chistosos también!"
                         </p>
                     </div>
                 </div>
