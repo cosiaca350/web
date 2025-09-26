@@ -156,12 +156,12 @@ const CosiacaBot = () => {
     };
 
     return (
-        <div className="animate-fade-in max-w-4xl mx-auto text-cosiaca-brown space-y-8">
+        <div className="animate-fade-in container-1920 mx-auto text-cosiaca-brown space-y-1920">
             <header className="text-center">
-                <h1 className="text-4xl md:text-5xl font-black font-serif text-cosiaca-brown">
+                <h1 className="text-4xl md:text-5xl xl:text-1920-xl font-black font-serif text-cosiaca-brown">
                     🤖 CosiacaBot
                 </h1>
-                <p className="text-xl mt-2 text-cosiaca-brown-light/70 lead font-medium">
+                <p className="text-xl xl:text-1920-base mt-2 text-cosiaca-brown-light/70 lead font-medium">
                     <em>Conversa con el mismísimo Cosiaca sobre la historia de Medellín</em>
                 </p>
             </header>
@@ -170,7 +170,7 @@ const CosiacaBot = () => {
             <div className="flex justify-center gap-4 mb-6">
                 <button
                     onClick={() => setActiveTab('chat')}
-                    className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${
+                    className={`px-6 xl:px-8 py-3 xl:py-4 rounded-full font-bold text-base xl:text-1920-base transition-all duration-300 ${
                         activeTab === 'chat' 
                             ? 'bg-cosiaca-red text-white shadow-lg' 
                             : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
@@ -180,7 +180,7 @@ const CosiacaBot = () => {
                 </button>
                 <button
                     onClick={() => setActiveTab('voice')}
-                    className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${
+                    className={`px-6 xl:px-8 py-3 xl:py-4 rounded-full font-bold text-base xl:text-1920-base transition-all duration-300 ${
                         activeTab === 'voice' 
                             ? 'bg-cosiaca-red text-white shadow-lg' 
                             : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
@@ -196,12 +196,12 @@ const CosiacaBot = () => {
             {activeTab === 'chat' && (
                 <div className="space-y-6">
                     {/* Header del Chat */}
-                    <div className="bg-cosiaca-beige/30 p-6 rounded-xl shadow-2xl border border-cosiaca-beige text-center">
-                        <BotIcon className="w-16 h-16 mx-auto text-cosiaca-red mb-4" />
-                        <h2 className="text-2xl font-bold font-serif text-cosiaca-brown mb-4">
+                    <div className="bg-cosiaca-beige/30 p-6 xl:p-1920 rounded-xl shadow-2xl border border-cosiaca-beige text-center">
+                        <BotIcon className="w-16 h-16 xl:w-20 xl:h-20 mx-auto text-cosiaca-red mb-4" />
+                        <h2 className="text-2xl xl:text-1920-lg font-bold font-serif text-cosiaca-brown mb-4">
                             "Conversa Conmigo Directamente"
                         </h2>
-                        <p className="text-lg text-cosiaca-brown-light/80 mb-4 lead">
+                        <p className="text-lg xl:text-1920-base text-cosiaca-brown-light/80 mb-4 lead">
                             ¿Querés saber algo de la <strong>historia de Medellín</strong>? <em>¡Preguntame lo que se te ocurra!</em> 
                             Tengo <strong>350 años de chismes, cuentos y anécdotas</strong> para contarte.
                         </p>
@@ -209,7 +209,7 @@ const CosiacaBot = () => {
                         {/* Botón para limpiar chat */}
                         <button
                             onClick={clearChat}
-                            className="bg-cosiaca-brown text-white px-4 py-2 rounded-lg hover:bg-cosiaca-brown/80 transition-colors text-sm"
+                            className="bg-cosiaca-brown text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg hover:bg-cosiaca-brown/80 transition-colors text-sm xl:text-base"
                         >
                             🗑️ Limpiar Chat
                         </button>
@@ -217,13 +217,13 @@ const CosiacaBot = () => {
 
                     {/* Preguntas Sugeridas */}
                     <div className="bg-white rounded-xl shadow-lg border border-cosiaca-beige p-4">
-                        <h3 className="text-lg font-bold text-cosiaca-brown mb-3 text-center">💡 Preguntas Sugeridas</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <h3 className="text-lg xl:text-1920-base font-bold text-cosiaca-brown mb-3 text-center">💡 Preguntas Sugeridas</h3>
+                        <div className="responsive-grid">
                             {suggestedQuestions.map((question, index) => (
                                 <button
                                     key={index}
                                     onClick={() => handleSuggestedQuestion(question)}
-                                    className="text-left p-2 text-sm bg-cosiaca-beige/50 hover:bg-cosiaca-beige rounded-lg transition-colors text-cosiaca-brown"
+                                    className="text-left p-2 xl:p-3 text-sm xl:text-base bg-cosiaca-beige/50 hover:bg-cosiaca-beige rounded-lg transition-colors text-cosiaca-brown"
                                     disabled={isLoading}
                                 >
                                     "{question}"
@@ -235,21 +235,21 @@ const CosiacaBot = () => {
                     {/* Chat Interface */}
                     <div className="bg-white rounded-xl shadow-lg border border-cosiaca-beige overflow-hidden">
                         {/* Chat Header */}
-                        <div className="bg-cosiaca-red text-white p-4 flex items-center justify-between">
+                        <div className="bg-cosiaca-red text-white p-4 xl:p-6 flex items-center justify-between">
                             <div className="flex items-center space-x-3">
-                                <BotIcon className="w-8 h-8" />
+                                <BotIcon className="w-8 h-8 xl:w-10 xl:h-10" />
                                 <div>
-                                    <h3 className="font-bold">José García "Cosiaca"</h3>
-                                    <p className="text-sm opacity-90">Cuentero Histórico de Medellín</p>
+                                    <h3 className="font-bold text-base xl:text-1920-base">José García "Cosiaca"</h3>
+                                    <p className="text-sm xl:text-base opacity-90">Cuentero Histórico de Medellín</p>
                                 </div>
                             </div>
-                            <div className="text-sm opacity-90">
+                            <div className="text-sm xl:text-base opacity-90">
                                 {messages.length - 1} mensajes
                             </div>
                         </div>
 
                         {/* Messages Area */}
-                        <div className="h-96 overflow-y-auto p-4 space-y-4 bg-gray-50">
+                        <div className="h-96 xl:h-[500px] overflow-y-auto p-4 xl:p-6 space-y-4 bg-gray-50 smooth-scroll">
                             {messages.map((message) => (
                                 <div
                                     key={message.id}
@@ -257,7 +257,7 @@ const CosiacaBot = () => {
                                 >
                                     <div className={`max-w-xs lg:max-w-md ${message.type === 'user' ? 'order-2' : 'order-1'}`}>
                                         <div
-                                            className={`px-4 py-3 rounded-2xl shadow-sm ${
+                                            className={`px-4 xl:px-6 py-3 xl:py-4 rounded-2xl shadow-sm ${
                                                 message.type === 'user'
                                                     ? 'bg-cosiaca-red text-white user-message rounded-br-sm'
                                                     : 'bg-white text-cosiaca-brown bot-message rounded-bl-sm border border-cosiaca-beige'
@@ -265,14 +265,14 @@ const CosiacaBot = () => {
                                         >
                                             {message.type === 'bot' && (
                                                 <div className="flex items-start space-x-2">
-                                                    <BotIcon className="w-5 h-5 mt-1 flex-shrink-0 text-cosiaca-red" />
+                                                    <BotIcon className="w-5 h-5 xl:w-6 xl:h-6 mt-1 flex-shrink-0 text-cosiaca-red" />
                                                     <div className="flex-1">
-                                                        <p className="text-sm leading-relaxed">{message.content}</p>
+                                                        <p className="text-sm xl:text-base leading-relaxed">{message.content}</p>
                                                     </div>
                                                 </div>
                                             )}
                                             {message.type === 'user' && (
-                                                <p className="text-sm leading-relaxed">{message.content}</p>
+                                                <p className="text-sm xl:text-base leading-relaxed">{message.content}</p>
                                             )}
                                         </div>
                                         <div className={`text-xs text-gray-500 mt-1 ${
@@ -288,13 +288,13 @@ const CosiacaBot = () => {
                                 <div className="flex justify-start">
                                     <div className="bg-white text-cosiaca-brown px-4 py-3 rounded-2xl rounded-bl-sm shadow-sm border border-cosiaca-beige">
                                         <div className="flex items-center space-x-2">
-                                            <BotIcon className="w-5 h-5 text-cosiaca-red" />
+                                            <BotIcon className="w-5 h-5 xl:w-6 xl:h-6 text-cosiaca-red" />
                                             <div className="flex space-x-1">
                                                 <div className="w-2 h-2 bg-cosiaca-red rounded-full animate-bounce"></div>
                                                 <div className="w-2 h-2 bg-cosiaca-red rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
                                                 <div className="w-2 h-2 bg-cosiaca-red rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                                             </div>
-                                            <span className="text-sm text-gray-500">Cosiaca está pensando...</span>
+                                            <span className="text-sm xl:text-base text-gray-500">Cosiaca está pensando...</span>
                                         </div>
                                     </div>
                                 </div>
@@ -303,26 +303,26 @@ const CosiacaBot = () => {
                         </div>
 
                         {/* Input Area */}
-                        <div className="p-4 bg-white border-t border-cosiaca-beige">
+                        <div className="p-4 xl:p-6 bg-white border-t border-cosiaca-beige">
                             <div className="flex space-x-2">
                                 <textarea
                                     value={inputMessage}
                                     onChange={(e) => setInputMessage(e.target.value)}
                                     onKeyPress={handleKeyPress}
                                     placeholder="Pregúntale a Cosiaca sobre la historia de Medellín..."
-                                    className="flex-1 p-3 border border-cosiaca-beige rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-cosiaca-red focus:border-transparent"
+                                    className="flex-1 p-3 xl:p-4 text-base xl:text-1920-base border border-cosiaca-beige rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-cosiaca-red focus:border-transparent"
                                     rows="2"
                                     disabled={isLoading}
                                 />
                                 <button
                                     onClick={handleSendMessage}
                                     disabled={!inputMessage.trim() || isLoading}
-                                    className="bg-cosiaca-red text-white p-3 rounded-lg hover:bg-cosiaca-red/80 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                    className="bg-cosiaca-red text-white p-3 xl:p-4 rounded-lg hover:bg-cosiaca-red/80 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                                 >
-                                    <SendIcon className="w-5 h-5" />
+                                    <SendIcon className="w-5 h-5 xl:w-6 xl:h-6" />
                                 </button>
                             </div>
-                            <div className="text-xs text-gray-500 mt-2 text-center">
+                            <div className="text-xs xl:text-sm text-gray-500 mt-2 text-center">
                                 {inputMessage.length}/500 caracteres • Presiona Enter para enviar
                             </div>
                         </div>
@@ -330,10 +330,10 @@ const CosiacaBot = () => {
                 </div>
             )}
 
-            <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-cosiaca-beige/30 p-6 rounded-xl border border-cosiaca-beige">
-                    <h3 className="text-xl font-bold text-cosiaca-brown mb-3 font-serif">🎭 ¿Qué puedo contarte?</h3>
-                    <ul className="space-y-2 text-cosiaca-brown-light/80 text-lg">
+            <div className="responsive-grid">
+                <div className="bg-cosiaca-beige/30 p-6 xl:p-8 rounded-xl border border-cosiaca-beige">
+                    <h3 className="text-xl xl:text-1920-base font-bold text-cosiaca-brown mb-3 font-serif">🎭 ¿Qué puedo contarte?</h3>
+                    <ul className="space-y-2 text-cosiaca-brown-light/80 text-lg xl:text-1920-base">
                         <li>• <strong>Historias de la fundación de Medellín</strong></li>
                         <li>• <em>Anécdotas del auge cafetero</em></li>
                         <li>• <strong>Cuentos de arrieros y comerciantes</strong></li>
@@ -342,9 +342,9 @@ const CosiacaBot = () => {
                         <li>• <em>Personajes históricos curiosos</em></li>
                     </ul>
                 </div>
-                <div className="bg-cosiaca-beige/30 p-6 rounded-xl border border-cosiaca-beige">
-                    <h3 className="text-xl font-bold text-cosiaca-brown mb-3 font-serif">🎙️ Opciones de Chat</h3>
-                    <ul className="space-y-2 text-cosiaca-brown-light/80 text-lg">
+                <div className="bg-cosiaca-beige/30 p-6 xl:p-8 rounded-xl border border-cosiaca-beige">
+                    <h3 className="text-xl xl:text-1920-base font-bold text-cosiaca-brown mb-3 font-serif">🎙️ Opciones de Chat</h3>
+                    <ul className="space-y-2 text-cosiaca-brown-light/80 text-lg xl:text-1920-base">
                         <li>• <strong>Chat de Texto:</strong> <em>Conversación escrita detallada</em></li>
                         <li>• <strong>Chat por Voz:</strong> <em>Habla directamente con Cosiaca</em></li>
                         <li>• <strong>Preguntas Sugeridas:</strong> <em>Ideas para empezar</em></li>
@@ -355,40 +355,40 @@ const CosiacaBot = () => {
                 </div>
             </div>
 
-            <div className="bg-cosiaca-beige/30 p-6 rounded-xl border border-cosiaca-beige text-center">
-                <h3 className="text-2xl font-bold font-serif text-cosiaca-brown mb-4">
+            <div className="bg-cosiaca-beige/30 p-6 xl:p-1920 rounded-xl border border-cosiaca-beige text-center">
+                <h3 className="text-2xl xl:text-1920-lg font-bold font-serif text-cosiaca-brown mb-4">
                     🧠 Sobre CosiacaBot
                 </h3>
-                <p className="text-cosiaca-brown-light/80 lead">
+                <p className="text-cosiaca-brown-light/80 text-lg xl:text-1920-base lead">
                     Este <strong>asistente virtual</strong> está entrenado con <em>información histórica real de Medellín</em> y 
                     habla con la personalidad auténtica de <strong>José García "Cosiaca"</strong>, el <em>primer comediante 
                     popular de Antioquia</em>. Combina <strong>rigor histórico</strong> con el <em>humor y la picardía paisa 
                     característica del personaje</em>.
                 </p>
                 
-                <div className="mt-6 grid md:grid-cols-2 gap-4">
+                <div className="mt-6 responsive-grid">
                     <div className="p-4 bg-blue-100 border border-blue-300 rounded-lg">
-                        <h4 className="font-bold text-blue-800 mb-2">💬 Chat de Texto</h4>
-                        <p className="text-sm text-blue-700">
+                        <h4 className="font-bold text-blue-800 mb-2 text-base xl:text-1920-base">💬 Chat de Texto</h4>
+                        <p className="text-sm xl:text-base text-blue-700">
                             Conversa escribiendo tus preguntas. Incluye preguntas sugeridas, historial de mensajes y respuestas detalladas.
                         </p>
                     </div>
                     <div className="p-4 bg-green-100 border border-green-300 rounded-lg">
-                        <h4 className="font-bold text-green-800 mb-2">🎙️ Chat por Voz</h4>
-                        <p className="text-sm text-green-700">
+                        <h4 className="font-bold text-green-800 mb-2 text-base xl:text-1920-base">🎙️ Chat por Voz</h4>
+                        <p className="text-sm xl:text-base text-green-700">
                             Habla directamente con Cosiaca usando ElevenLabs. Presiona y mantén para hablar.
                         </p>
                     </div>
                 </div>
                 
                 <div className="mt-6 p-4 bg-green-100 border border-green-300 rounded-lg">
-                    <p className="text-sm text-green-800">
+                    <p className="text-sm xl:text-base text-green-800">
                         <strong>🤖 Tecnología Avanzada:</strong> Chat de texto con IA (Gemini) y chat por voz con ElevenLabs. 
                         Respuestas auténticas de Cosiaca con información histórica real de Medellín.
                     </p>
                 </div>
                 <div className="mt-4 p-4 bg-blue-100 border border-blue-300 rounded-lg">
-                    <p className="text-sm text-blue-800">
+                    <p className="text-sm xl:text-base text-blue-800">
                         <strong>💡 Nuevas Funciones:</strong> Preguntas sugeridas, historial con timestamps, 
                         auto-scroll, contador de caracteres y chat por voz integrado.
                     </p>

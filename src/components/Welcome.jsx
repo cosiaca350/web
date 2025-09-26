@@ -5,6 +5,26 @@ import AIService from '../services/aiService';
 const Welcome = ({ setView }) => {
     const [historicalFact, setHistoricalFact] = useState('');
     const [isLoadingFact, setIsLoadingFact] = useState(false);
+    const [currentSection, setCurrentSection] = useState(0);
+    
+    const sections = [
+        'intro',
+        'interactive',
+        'features',
+        'project-info'
+    ];
+    
+    const scrollToSection = (direction) => {
+        const newSection = direction === 'next' 
+            ? Math.min(currentSection + 1, sections.length - 1)
+            : Math.max(currentSection - 1, 0);
+        
+        setCurrentSection(newSection);
+        const element = document.getElementById(sections[newSection]);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     const handleGenerateFact = async () => {
         setIsLoadingFact(true);
@@ -63,36 +83,37 @@ const Welcome = ({ setView }) => {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-cosiaca-cream via-cosiaca-beige to-cosiaca-tan py-8 px-4">
-            <div className="w-full max-w-6xl mx-auto text-center space-y-12">
+        <div className="min-h-screen bg-gradient-to-br from-cosiaca-cream via-cosiaca-beige to-cosiaca-tan py-8 px-4 smooth-scroll">
+            <div className="w-full container-1920 mx-auto text-center space-y-1920">
                 
                 {/* Header */}
-                <div className="mb-8">
-                    <div className="text-4xl md:text-5xl font-black text-cosiaca-brown font-serif leading-none tracking-tight mb-6">
+                <section id="intro" className="section-1920 fade-in-section">
+                    <div className="text-4xl md:text-5xl xl:text-1920-xl font-black text-cosiaca-brown font-serif leading-none tracking-tight mb-6">
                         {"{COSIACA "}
                         <strong>350</strong>
                         {"}"}
                     </div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-cosiaca-brown/80 mb-4">
+                    <h2 className="text-2xl md:text-3xl xl:text-1920-lg font-bold text-cosiaca-brown/80 mb-4">
                         UN VIAJE INMERSIVO A LA HISTORIA DE MEDELLÍN
                     </h2>
-                </div>
+                </section>
 
                 {/* Información Principal */}
-                <div className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-cosiaca-beige max-w-5xl mx-auto">
+                <section id="interactive" className="section-1920 fade-in-section">
+                <div className="bg-white/90 backdrop-blur-sm p-8 xl:p-1920 rounded-2xl shadow-2xl border border-cosiaca-beige max-w-6xl xl:max-w-7xl mx-auto">
                     <div className="text-center mb-6">
-                        <div className="text-4xl mb-4">🎭</div>
-                        <h3 className="text-2xl font-bold text-cosiaca-brown font-serif mb-4">
+                        <div className="text-4xl xl:text-6xl mb-4">🎭</div>
+                        <h3 className="text-2xl xl:text-1920-lg font-bold text-cosiaca-brown font-serif mb-4">
                             Una Experiencia Transmedia Única
                         </h3>
                     </div>
                     
-                    <div className="grid md:grid-cols-2 gap-8 text-left">
+                    <div className="responsive-grid text-left">
                         <div>
-                            <h4 className="font-bold text-cosiaca-red mb-4 text-lg">
+                            <h4 className="font-bold text-cosiaca-red mb-4 text-lg xl:text-1920-base">
                                 🌟 Lo que encontrarás:
                             </h4>
-                            <ul className="space-y-2 text-cosiaca-brown/80">
+                            <ul className="space-y-2 text-cosiaca-brown/80 xl:text-1920-base">
                                 <li>• <strong>CosiacaBot:</strong> Conversa con la historia</li>
                                 <li>• <strong>Podcast Histórico:</strong> <strong>350</strong> años narrados</li>
                                 <li>• <strong>Juegos Interactivos:</strong> Trivia y diversión</li>
@@ -102,16 +123,16 @@ const Welcome = ({ setView }) => {
                             </ul>
                         </div>
                         <div>
-                            <h4 className="font-bold text-cosiaca-red mb-4 text-lg">
+                            <h4 className="font-bold text-cosiaca-red mb-4 text-lg xl:text-1920-base">
                                 🎯 Nuestra Misión:
                             </h4>
-                            <p className="text-cosiaca-brown/80 leading-relaxed mb-4">
+                            <p className="text-cosiaca-brown/80 xl:text-1920-base leading-relaxed mb-4">
                                 Revivir la historia de Medellín a través del <strong>humor paisa</strong> 
                                 y la <em>picardía de Cosiaca</em>. Combinamos <strong>rigor histórico</strong> 
                                 con <em>tecnología innovadora</em> para crear una experiencia cultural
                                 <strong>accesible, educativa y entretenida</strong>.
                             </p>
-                            <div className="text-sm text-cosiaca-brown/60 space-y-1">
+                            <div className="text-sm xl:text-base text-cosiaca-brown/60 space-y-1">
                                 <p><strong>Período:</strong> 1675 - 2025 (<strong>350</strong> años)</p>
                                 <p><strong>Personaje:</strong> José García "Cosiaca"</p>
                                 <p><strong>Enfoque:</strong> Humor + Historia + Tecnología</p>
@@ -119,32 +140,33 @@ const Welcome = ({ setView }) => {
                         </div>
                     </div>
                 </div>
+                </section>
 
                 {/* Experiencia Interactiva */}
-                <div className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-cosiaca-beige max-w-4xl mx-auto">
+                <div className="bg-white/90 backdrop-blur-sm p-8 xl:p-1920 rounded-2xl shadow-2xl border border-cosiaca-beige max-w-5xl xl:max-w-6xl mx-auto">
                     <div className="text-center mb-6">
-                        <div className="text-4xl mb-4">✨</div>
-                        <h3 className="text-2xl font-bold text-cosiaca-brown font-serif mb-4">
+                        <div className="text-4xl xl:text-6xl mb-4">✨</div>
+                        <h3 className="text-2xl xl:text-1920-lg font-bold text-cosiaca-brown font-serif mb-4">
                             El Chismecito Histórico de Cosiaca
                         </h3>
-                        <p className="text-lg text-cosiaca-brown/80 mb-6">
+                        <p className="text-lg xl:text-1920-base text-cosiaca-brown/80 mb-6">
                             ¿Quieres escuchar un <strong>dato curioso</strong> de la historia de Medellín?
                         </p>
                     </div>
                     
                     <button 
                         onClick={handleGenerateFact} 
-                        className="w-full max-w-md mx-auto bg-gradient-to-r from-cosiaca-red to-cosiaca-red-dark text-white font-bold py-4 px-8 rounded-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-lg flex items-center justify-center mb-6" 
+                        className="w-full max-w-md xl:max-w-lg mx-auto bg-gradient-to-r from-cosiaca-red to-cosiaca-red-dark text-white font-bold py-4 xl:py-6 px-8 xl:px-12 rounded-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-lg xl:text-1920-base flex items-center justify-center mb-6" 
                         disabled={isLoadingFact}
                     >
                         {isLoadingFact ? (
                             <>
-                                <SparklesIcon className="animate-pulse mr-3 w-6 h-6" /> 
+                                <SparklesIcon className="animate-pulse mr-3 w-6 h-6 xl:w-8 xl:h-8" /> 
                                 Pensando el chisme...
                             </>
                         ) : (
                             <>
-                                <SparklesIcon className="mr-3 w-6 h-6" /> 
+                                <SparklesIcon className="mr-3 w-6 h-6 xl:w-8 xl:h-8" /> 
                                 Contar un Chisme Histórico
                             </>
                         )}
@@ -152,7 +174,7 @@ const Welcome = ({ setView }) => {
                     
                     {historicalFact && (
                         <div className="p-6 bg-cosiaca-cream rounded-xl text-cosiaca-brown relative border border-cosiaca-beige animate-fade-in">
-                            <p className="text-lg leading-relaxed font-medium italic text-center">
+                            <p className="text-lg xl:text-1920-base leading-relaxed font-medium italic text-center">
                                 "{historicalFact}"
                             </p>
                             <div className="absolute top-0 right-0 -mt-3 -mr-3 bg-cosiaca-red text-white rounded-full p-2 shadow-lg">
@@ -163,49 +185,79 @@ const Welcome = ({ setView }) => {
                 </div>
 
                 {/* Accesos Rápidos */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <section id="features" className="section-1920 fade-in-section">
+                <div className="responsive-grid max-w-6xl xl:max-w-7xl mx-auto">
                     {features.map((feature, index) => (
                         <button
                             key={index}
                             onClick={feature.action}
-                            className="group bg-white/90 backdrop-blur-sm p-6 rounded-xl border border-cosiaca-beige hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-center"
+                            className="group bg-white/90 backdrop-blur-sm p-6 xl:p-8 rounded-xl border border-cosiaca-beige hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-center"
                         >
-                            <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center mx-auto mb-4 text-white group-hover:scale-110 transition-transform duration-300`}>
+                            <div className={`w-16 h-16 xl:w-20 xl:h-20 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center mx-auto mb-4 text-white group-hover:scale-110 transition-transform duration-300`}>
                                 {feature.icon}
                             </div>
-                            <h3 className="font-bold text-cosiaca-brown text-lg mb-2 group-hover:text-cosiaca-red transition-colors">{feature.title}</h3>
-                            <p className="text-sm text-cosiaca-brown/70 group-hover:text-cosiaca-brown transition-colors">{feature.desc}</p>
+                            <h3 className="font-bold text-cosiaca-brown text-lg xl:text-1920-base mb-2 group-hover:text-cosiaca-red transition-colors">{feature.title}</h3>
+                            <p className="text-sm xl:text-base text-cosiaca-brown/70 group-hover:text-cosiaca-brown transition-colors">{feature.desc}</p>
                         </button>
                     ))}
                 </div>
+                </section>
 
                 {/* Información del Proyecto */}
-                <div className="bg-gradient-to-r from-cosiaca-red/10 to-cosiaca-brown/10 p-8 rounded-2xl border border-cosiaca-beige/50 max-w-5xl mx-auto">
-                    <h3 className="text-3xl font-bold text-cosiaca-brown mb-4 font-serif">
+                <section id="project-info" className="section-1920 fade-in-section">
+                <div className="bg-gradient-to-r from-cosiaca-red/10 to-cosiaca-brown/10 p-8 xl:p-1920 rounded-2xl border border-cosiaca-beige/50 max-w-6xl xl:max-w-7xl mx-auto">
+                    <h3 className="text-3xl xl:text-1920-lg font-bold text-cosiaca-brown mb-4 font-serif">
                         🏛️ Proyecto Oficial
                     </h3>
-                    <p className="text-xl text-cosiaca-brown/80 leading-relaxed mb-6 max-w-4xl mx-auto">
+                    <p className="text-xl xl:text-1920-base text-cosiaca-brown/80 leading-relaxed mb-6 max-w-5xl xl:max-w-6xl mx-auto">
                         <strong>{"{COSIACA "}<strong>350</strong>{"}"}</strong> es una propuesta transmedia beneficiada de las 
                         <em> Convocatorias de Fomento y Estímulos para el Arte y la Cultura 2025</em>
                     </p>
-                    <div className="flex flex-wrap justify-center gap-3 text-sm text-cosiaca-brown/60">
-                        <span className="bg-cosiaca-beige/50 px-4 py-2 rounded-full">📚 Investigación Histórica</span>
-                        <span className="bg-cosiaca-beige/50 px-4 py-2 rounded-full">🤖 Inteligencia Artificial</span>
-                        <span className="bg-cosiaca-beige/50 px-4 py-2 rounded-full">🎭 Cultura Paisa</span>
-                        <span className="bg-cosiaca-beige/50 px-4 py-2 rounded-full">🌐 Transmedia</span>
-                        <span className="bg-cosiaca-beige/50 px-4 py-2 rounded-full">🎪 Entretenimiento</span>
-                        <span className="bg-cosiaca-beige/50 px-4 py-2 rounded-full">📖 Educación</span>
+                    <div className="flex flex-wrap justify-center gap-3 text-sm xl:text-base text-cosiaca-brown/60">
+                        <span className="bg-cosiaca-beige/50 px-4 xl:px-6 py-2 xl:py-3 rounded-full">📚 Investigación Histórica</span>
+                        <span className="bg-cosiaca-beige/50 px-4 xl:px-6 py-2 xl:py-3 rounded-full">🤖 Inteligencia Artificial</span>
+                        <span className="bg-cosiaca-beige/50 px-4 xl:px-6 py-2 xl:py-3 rounded-full">🎭 Cultura Paisa</span>
+                        <span className="bg-cosiaca-beige/50 px-4 xl:px-6 py-2 xl:py-3 rounded-full">🌐 Transmedia</span>
+                        <span className="bg-cosiaca-beige/50 px-4 xl:px-6 py-2 xl:py-3 rounded-full">🎪 Entretenimiento</span>
+                        <span className="bg-cosiaca-beige/50 px-4 xl:px-6 py-2 xl:py-3 rounded-full">📖 Educación</span>
                     </div>
                 </div>
+                </section>
 
                 {/* Botón para ver más detalles */}
                 <div className="text-center">
                     <button
                         onClick={() => setView('proyecto')}
-                        className="bg-gradient-to-r from-cosiaca-brown to-cosiaca-brown/80 hover:from-cosiaca-brown/80 hover:to-cosiaca-brown text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl"
+                        className="bg-gradient-to-r from-cosiaca-brown to-cosiaca-brown/80 hover:from-cosiaca-brown/80 hover:to-cosiaca-brown text-white font-bold py-4 xl:py-6 px-8 xl:px-12 rounded-full text-lg xl:text-1920-base transition-all duration-300 transform hover:scale-105 shadow-xl"
                     >
                         Ver Detalles del Proyecto
                     </button>
+                </div>
+                
+                {/* Navegación entre secciones */}
+                <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-30 space-y-2">
+                    {currentSection > 0 && (
+                        <button
+                            onClick={() => scrollToSection('prev')}
+                            className="nav-arrow"
+                            aria-label="Sección anterior"
+                        >
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7" />
+                            </svg>
+                        </button>
+                    )}
+                    {currentSection < sections.length - 1 && (
+                        <button
+                            onClick={() => scrollToSection('next')}
+                            className="nav-arrow"
+                            aria-label="Siguiente sección"
+                        >
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                    )}
                 </div>
             </div>
         </div>
