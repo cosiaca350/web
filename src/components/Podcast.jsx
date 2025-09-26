@@ -204,7 +204,8 @@ const Podcast = () => {
                                     <span className="text-sm text-cosiaca-brown/60 font-medium">
                                         <strong>Duración:</strong> {episode.duration}
                                     </span>
-                                    <button
+                                    <div>
+                                        <button
                                         onClick={() => handlePlayPause(episode)}
                                         disabled={loadingAudio === episode.id}
                                         className={`flex items-center px-4 py-2 rounded-full font-bold transition-all duration-300 ${
@@ -232,12 +233,13 @@ const Podcast = () => {
                                             </>
                                         )}
                                     </button>
+                                        {loadingAudio === episode.id && (
+                                            <span className="text-sm text-cosiaca-red font-medium animate-pulse mt-2 block">
+                                                Cargando...
+                                            </span>
+                                        )}
+                                    </div>
                                 </div>
-                                {loadingAudio === episode.id && (
-                                    <span className="text-sm text-cosiaca-red font-medium animate-pulse">
-                                        Cargando...
-                                    </span>
-                                )}
                             </div>
                         </div>
                     </div>
