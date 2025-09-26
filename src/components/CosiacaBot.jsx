@@ -2,7 +2,52 @@ import React from 'react';
 import { BotIcon } from '../icons/Icons';
 import AIService from '../services/aiService';
 
+// Componente del widget de ElevenLabs
+const ElevenLabsWidget = () => {
+    React.useEffect(() => {
+        // Cargar el script de ElevenLabs si no está ya cargado
+        if (!window.ElevenLabsConvAI) {
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
+            script.async = true;
+            script.type = 'text/javascript';
+            document.head.appendChild(script);
+        }
+    }, []);
+
+    return (
+        <div className="bg-cosiaca-beige/30 p-6 rounded-xl border border-cosiaca-beige text-center">
+            <h3 className="text-2xl font-bold font-serif text-cosiaca-brown mb-4">
+                🎙️ Habla con Cosiaca por Voz
+            </h3>
+            <p className="text-lg text-cosiaca-brown-light/80 mb-6">
+                ¡Ahora podés conversar con Cosiaca usando tu voz! Presiona el botón y pregúntale sobre la historia de Medellín.
+            </p>
+            
+            {/* Widget de ElevenLabs */}
+            <div className="flex justify-center mb-4">
+                <elevenlabs-convai 
+                    agent-id="tu-agent-id-aqui"
+                    style={{
+                        width: '300px',
+                        height: '200px',
+                        borderRadius: '12px',
+                        border: '2px solid #8B6F47'
+                    }}
+                />
+            </div>
+            
+            <div className="text-sm text-cosiaca-brown/60 space-y-2">
+                <p>🎤 <strong>Presiona y mantén</strong> para hablar</p>
+                <p>🔊 <strong>Escucha</strong> las respuestas de Cosiaca</p>
+                <p>📱 <strong>Compatible</strong> con móviles y escritorio</p>
+            </div>
+        </div>
+    );
+};
+
 const CosiacaBot = () => {
+    const [activeTab, setActiveTab] = React.useState('chat');
     const [messages, setMessages] = React.useState([
         {
             type: 'bot',
@@ -57,6 +102,34 @@ const CosiacaBot = () => {
                 </p>
             </header>
             
+            {/* Navegación entre Chat y Voz */}
+            <div className="flex justify-center gap-4 mb-6">
+                <button
+                    onClick={() => setActiveTab('chat')}
+                    className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${
+                        activeTab === 'chat' 
+                            ? 'bg-cosiaca-red text-white shadow-lg' 
+                            : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
+                    }`}
+                >
+                    💬 Chat de Texto
+                </button>
+                <button
+                    onClick={() => setActiveTab('voice')}
+                    className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${
+                        activeTab === 'voice' 
+                            ? 'bg-cosiaca-red text-white shadow-lg' 
+                            : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
+                    }`}
+                >
+                    🎙️ Chat por Voz
+                </button>
+            </div>
+
+            {/* Contenido según la pestaña activa */}
+            {activeTab === 'voice' && <ElevenLabsWidget />}
+            
+            {activeTab === 'chat' && (
             <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige text-center">
                 <BotIcon className="w-16 h-16 mx-auto text-cosiaca-red mb-4" />
                 <h2 className="text-2xl font-bold font-serif text-cosiaca-brown mb-4">
@@ -136,6 +209,7 @@ const CosiacaBot = () => {
                     </div>
                 </div>
             </div>
+            )}
 
             <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-cosiaca-beige/30 p-6 rounded-xl border border-cosiaca-beige">
@@ -172,6 +246,22 @@ const CosiacaBot = () => {
                     popular de Antioquia</em>. Combina <strong>rigor histórico</strong> con el <em>humor y la picardía paisa 
                     característica del personaje</em>.
                 </p>
+                
+                <div className="mt-6 grid md:grid-cols-2 gap-4">
+                    <div className="p-4 bg-blue-100 border border-blue-300 rounded-lg">
+                        <h4 className="font-bold text-blue-800 mb-2">💬 Chat de Texto</h4>
+                        <p className="text-sm text-blue-700">
+                            Conversa escribiendo tus preguntas. Ideal para consultas detalladas y referencias históricas precisas.
+                        </p>
+                    </div>
+                    <div className="p-4 bg-green-100 border border-green-300 rounded-lg">
+                        <h4 className="font-bold text-green-800 mb-2">🎙️ Chat por Voz</h4>
+                        <p className="text-sm text-green-700">
+                            Habla directamente con Cosiaca usando tu micrófono. Una experiencia más natural e inmersiva.
+                        </p>
+                    </div>
+                </div>
+                
                 <div className="mt-6 p-4 bg-green-100 border border-green-300 rounded-lg">
                     <p className="text-sm text-green-800">
                         <strong>🤖 Potenciado por IA:</strong> Este chatbot utiliza inteligencia artificial avanzada 

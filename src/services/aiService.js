@@ -113,6 +113,34 @@ class AIService {
         }
     }
 
+    // Generar chisme histórico específico
+    async generateHistoricalGossip(provider = null) {
+        const prompt = `Cuenta un "chisme histórico" divertido y real sobre Medellín entre 1675 y 2025.
+        Debe ser una anécdota curiosa, picante pero familiar, narrada como si fueras un testigo.
+        Incluye personajes reales, fechas aproximadas y detalles jugosos pero veraces.
+        Usa tu personalidad pícara y expresiones como "¿sabías que...?", "mijito", "imagínate".
+        Máximo 5 líneas, que suene como un verdadero chisme paisa.`;
+        
+        try {
+            return await this.generateContent(prompt, null, provider);
+        } catch (error) {
+            return this.getFallbackGossip();
+        }
+    }
+
+    // Fallback para chismes históricos
+    getFallbackGossip() {
+        const gossips = [
+            "¿Sabías que cuando se fundó Medellín en 1675, había más vacas que gente? ¡Los fundadores eran tan poquitos que hasta las vacas los conocían por el nombre! Francisco Herrera Campuzano, el fundador, decía que era más fácil contar las familias que el ganado. ¡Imagínate mijito, 24 familias para toda una ciudad!",
+            "¡Uy mijito, te voy a contar un chisme sabroso! Resulta que el primer tranvía de Medellín en 1890 era jalado por mulas, y las señoras elegantes se quejaban del olor. Pero ¿sabés qué? ¡Nunca se quedaron sin gasolina! Las mulas eran más confiables que los carros de ahora, ja ja ja.",
+            "¿Te cuento un secreto de la época del café? En los años 1870, los arrieros antioqueños eran tan buenos para los negocios que vendían hasta las piedras del camino. Decían que un paisa podía vender hielo en el polo norte y carbón en el infierno. ¡Qué verraquera la de esos paisas!",
+            "¡Imagínate este chisme, mijito! Cuando llegó la electricidad a Medellín en 1895, la gente pensaba que era brujería. Las señoras se persignaban cada vez que prendían un bombillo. ¡Y los curas tuvieron que explicar desde el púlpito que la luz eléctrica no era cosa del diablo!",
+            "¿Sabías que el Teatro Junín se construyó en 1924 y era tan elegante que la gente se vestía de gala hasta para ver una obra de títeres? Las señoras se peinaban durante horas y los caballeros se planchaban el bigote. ¡Todo un espectáculo antes del espectáculo!"
+        ];
+        
+        return gossips[Math.floor(Math.random() * gossips.length)];
+    }
+
     async generatePaisaTrova(provider = null) {
         const prompt = `Crea una trova paisa de 4 líneas sobre Medellín, su historia o su gente. 
         Debe rimar, tener métrica tradicional y reflejar el orgullo paisa. 

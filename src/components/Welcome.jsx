@@ -11,11 +11,11 @@ const Welcome = ({ setView }) => {
         setHistoricalFact(''); 
 
         try {
-            const fact = await AIService.generateHistoricalFact();
+            const fact = await AIService.generateHistoricalGossip();
             setHistoricalFact(fact);
         } catch (error) {
             console.error('Error generating fact:', error);
-            setHistoricalFact("¿Sabías que Medellín se fundó en 1675? ¡Eso significa que nuestra bella ciudad ya tiene más de 350 años de historias, cuentos y travesuras paisas! Los primeros pobladores eran tan pocos que se conocían hasta por el apellido, mijito.");
+            setHistoricalFact(AIService.getFallbackGossip());
         } finally {
             setIsLoadingFact(false);
         }
