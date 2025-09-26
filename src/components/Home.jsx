@@ -34,29 +34,6 @@ const Home = ({ setView }) => {
             const randomFact = facts[Math.floor(Math.random() * facts.length)];
             setHistoricalFact(randomFact);
         } catch (error) {
-            console.error('Error generating historical fact:', error);
-            setHistoricalFact('¡Uy! Cosiaca se enredó con la historia. Intenta de nuevo más tarde.');
-        } finally {
-            setIsLoadingFact(false);
-        }
-    };
-
-    const pages = [
-        {
-            id: 'intro',
-            title: 'Cosiaca 350',
-            subtitle: 'Un Viaje Inmersivo a la Historia de Medellín',
-            content: (
-                <div className="text-center space-y-6">
-                    <div className="mb-8">
-                        <div className="inline-block">
-                            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-cosiaca-brown font-serif mb-4 tracking-tight">
-                                Cosiaca
-                            </h1>
-                            <div className="flex justify-center">
-                                <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-cosiaca-brown border-2 border-cosiaca-brown px-6 py-2 rounded-lg">
-                                    350
-                                </span>
                             </div>
                         </div>
                     </div>
