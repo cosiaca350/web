@@ -57,12 +57,12 @@ const ConstructionPage = ({ onEnter }) => {
                 {/* Logo Principal */}
                 <div className="space-y-6">
                     <div className="relative">
-                        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-cosiaca-brown font-serif leading-none tracking-tight">
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-cosiaca-brown font-serif leading-none tracking-tight">
                             Cosiaca
                         </h1>
                         <div className="flex justify-center mt-4">
                             <div className="border-2 border-cosiaca-brown px-6 py-2 rounded-lg">
-                                <span className="text-3xl sm:text-4xl md:text-5xl font-light text-cosiaca-brown">
+                                <span className="text-xl sm:text-2xl md:text-3xl font-light text-cosiaca-brown">
                                     {350}
                                 </span>
                             </div>
@@ -70,23 +70,23 @@ const ConstructionPage = ({ onEnter }) => {
                     </div>
                     
                     <div className="space-y-2">
-                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-cosiaca-brown/80 tracking-wide">
+                        <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-cosiaca-brown/80 tracking-wide">
                             UN VIAJE INMERSIVO
                         </h2>
-                        <h3 className="text-lg sm:text-xl md:text-2xl font-medium text-cosiaca-brown/70">
+                        <h3 className="text-base sm:text-lg md:text-xl font-medium text-cosiaca-brown/70">
                             A LA HISTORIA DE MEDELLÍN
                         </h3>
                     </div>
                 </div>
 
                 {/* Contenido Principal */}
-                <div className="bg-white/80 backdrop-blur-sm p-8 sm:p-12 rounded-3xl shadow-2xl border border-cosiaca-beige/50">
+                <div className="bg-white/80 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-xl border border-cosiaca-beige/50">
                     <div className="space-y-8">
                         <div>
-                            <h4 className="text-2xl sm:text-3xl md:text-4xl font-bold text-cosiaca-brown mb-4 font-serif">
+                            <h4 className="text-xl sm:text-2xl md:text-3xl font-bold text-cosiaca-brown mb-4 font-serif">
                                 Estamos Preparando Algo Especial
                             </h4>
-                            <p className="text-lg sm:text-xl text-cosiaca-brown/80 max-w-2xl mx-auto leading-relaxed">
+                            <p className="text-base sm:text-lg text-cosiaca-brown/80 max-w-2xl mx-auto leading-relaxed">
                                 Un proyecto transmedia que celebra los <strong>350 años de Medellín</strong> 
                                 a través de la figura histórica de <em>José García "Cosiaca"</em>, 
                                 el primer comediante popular de Antioquia.
@@ -96,18 +96,18 @@ const ConstructionPage = ({ onEnter }) => {
                         {/* Loading Animation */}
                         <div className="space-y-6">
                             <div className="flex items-center justify-center space-x-3">
-                                <SparklesIcon className="w-6 h-6 text-cosiaca-red animate-pulse" />
-                                <p className="text-lg font-medium text-cosiaca-red">
+                                <SparklesIcon className="w-5 h-5 text-cosiaca-red animate-pulse" />
+                                <p className="text-base font-medium text-cosiaca-red">
                                     {loadingText}
                                 </p>
-                                <SparklesIcon className="w-6 h-6 text-cosiaca-red animate-pulse" />
+                                <SparklesIcon className="w-5 h-5 text-cosiaca-red animate-pulse" />
                             </div>
 
                             {/* Progress Bar */}
                             <div className="w-full max-w-md mx-auto">
-                                <div className="w-full bg-cosiaca-beige/50 rounded-full h-4 overflow-hidden shadow-inner">
+                                <div className="w-full bg-cosiaca-beige/50 rounded-full h-3 overflow-hidden shadow-inner">
                                     <div 
-                                        className="bg-gradient-to-r from-cosiaca-red to-cosiaca-red/80 h-4 rounded-full transition-all duration-500 ease-out relative"
+                                        className="bg-gradient-to-r from-cosiaca-red to-cosiaca-red/80 h-3 rounded-full transition-all duration-500 ease-out relative"
                                         style={{ width: `${Math.min(progress, 100)}%` }}
                                     >
                                         <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
@@ -121,20 +121,20 @@ const ConstructionPage = ({ onEnter }) => {
 
                         {/* Características del Proyecto */}
                         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-                            <div className="bg-cosiaca-beige/30 p-4 rounded-xl border border-cosiaca-beige">
-                                <div className="text-2xl mb-2">🎭</div>
+                            <div className="bg-cosiaca-beige/30 p-3 rounded-lg border border-cosiaca-beige">
+                                <div className="text-xl mb-2">🎭</div>
                                 <p className="font-semibold text-cosiaca-brown">Humor Paisa</p>
                             </div>
-                            <div className="bg-cosiaca-beige/30 p-4 rounded-xl border border-cosiaca-beige">
-                                <div className="text-2xl mb-2">📚</div>
+                            <div className="bg-cosiaca-beige/30 p-3 rounded-lg border border-cosiaca-beige">
+                                <div className="text-xl mb-2">📚</div>
                                 <p className="font-semibold text-cosiaca-brown">Historia Real</p>
                             </div>
-                            <div className="bg-cosiaca-beige/30 p-4 rounded-xl border border-cosiaca-beige">
-                                <div className="text-2xl mb-2">🤖</div>
+                            <div className="bg-cosiaca-beige/30 p-3 rounded-lg border border-cosiaca-beige">
+                                <div className="text-xl mb-2">🤖</div>
                                 <p className="font-semibold text-cosiaca-brown">Tecnología IA</p>
                             </div>
-                            <div className="bg-cosiaca-beige/30 p-4 rounded-xl border border-cosiaca-beige">
-                                <div className="text-2xl mb-2">🎪</div>
+                            <div className="bg-cosiaca-beige/30 p-3 rounded-lg border border-cosiaca-beige">
+                                <div className="text-xl mb-2">🎪</div>
                                 <p className="font-semibold text-cosiaca-brown">Transmedia</p>
                             </div>
                         </div>
@@ -143,7 +143,7 @@ const ConstructionPage = ({ onEnter }) => {
                         <div className="pt-4">
                             <button
                                 onClick={onEnter}
-                                className="bg-cosiaca-red hover:bg-cosiaca-red-dark text-white font-bold py-4 px-8 sm:px-12 rounded-full text-lg sm:text-xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+                                className="bg-cosiaca-red hover:bg-cosiaca-red-dark text-white font-bold py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                             >
                                 Comenzar el Viaje Histórico
                             </button>
@@ -164,16 +164,16 @@ const ConstructionPage = ({ onEnter }) => {
             </div>
 
             {/* Elementos Decorativos Flotantes */}
-            <div className="absolute top-20 left-20 text-3xl animate-bounce opacity-30" style={{animationDelay: '0.5s'}}>
+            <div className="absolute top-20 left-20 text-2xl animate-bounce opacity-30" style={{animationDelay: '0.5s'}}>
                 🎭
             </div>
-            <div className="absolute top-32 right-32 text-2xl animate-bounce opacity-30" style={{animationDelay: '1s'}}>
+            <div className="absolute top-32 right-32 text-xl animate-bounce opacity-30" style={{animationDelay: '1s'}}>
                 📚
             </div>
-            <div className="absolute bottom-32 left-32 text-2xl animate-bounce opacity-30" style={{animationDelay: '1.5s'}}>
+            <div className="absolute bottom-32 left-32 text-xl animate-bounce opacity-30" style={{animationDelay: '1.5s'}}>
                 🎵
             </div>
-            <div className="absolute bottom-20 right-20 text-3xl animate-bounce opacity-30" style={{animationDelay: '2s'}}>
+            <div className="absolute bottom-20 right-20 text-2xl animate-bounce opacity-30" style={{animationDelay: '2s'}}>
                 🎪
             </div>
         </div>
