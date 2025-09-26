@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import ConstructionPage from './components/ConstructionPage';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
+import Welcome from './components/Welcome';
 import Proyecto from './components/Proyecto';
 import Libros from './components/Libros';
 import Team from './components/Team';
@@ -19,27 +19,18 @@ import './App.css';
 const App = () => {
     const [view, setView] = useState('home');
     const [user, setUser] = useState(null);
-    const [showConstruction, setShowConstruction] = useState(true);
 
     useEffect(() => {
         // Simulate user authentication for demo purposes
         setUser({ uid: 'demo-user' });
     }, []);
 
-    const handleEnterSite = () => {
-        setShowConstruction(false);
-    };
-
-    if (showConstruction) {
-        return <ConstructionPage onEnter={handleEnterSite} />;
-    }
-
     const renderContent = () => {
         switch (view) {
             case 'home':
                 return <Home setView={setView} />;
             case 'welcome':
-                return <Welcome setView={setView} />;
+                return <Welcome />;
             case 'proyecto':
                 return <Proyecto />;
             case 'cosiacabot':
