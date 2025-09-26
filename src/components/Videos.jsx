@@ -32,6 +32,16 @@ const Videos = () => {
                     recrear personajes del pasado</em> y crear experiencias visuales que transportan al espectador a través de 
                     <strong>350 años de historia medellinense</strong>.
                 </p>
+                <div className="mt-6">
+                    <a 
+                        href="https://www.youtube.com/watch?v=GP0kzjU5XxQ" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center bg-cosiaca-red text-white px-6 py-3 rounded-full hover:bg-cosiaca-red-dark transition-all duration-300 transform hover:scale-105 shadow-lg font-bold"
+                    >
+                        🎥 Ver Video Principal
+                    </a>
+                </div>
             </div>
 
             {/* Lista de Videos */}
