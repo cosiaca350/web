@@ -1,5 +1,5 @@
 // Servicio para integración con Gemini AI
-const GEMINI_API_KEY = '2881gN4mH7kXqT5cW9sP1jF0L6zR3vYxU2bEaQfJdI7uO4wVtC9sGpMhKjL5nB6vPqYxZrDcTfG8wHsJaQkXlZmWvN0bE1cR2dF3gH4jK5lM6nB7vC8xY9zR0dF1gH2jK3lM4nB5vC6xY7zR8dQ';
+const GEMINI_API_KEY = ''; // API key inválida
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
 
 class GeminiService {
@@ -9,38 +9,9 @@ class GeminiService {
     }
 
     async generateContent(prompt, context = '') {
-        try {
-            const response = await fetch(`${this.baseUrl}?key=${this.apiKey}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    contents: [{
-                        parts: [{
-                            text: `${context}\n\n${prompt}`
-                        }]
-                    }],
-                    generationConfig: {
-                        temperature: 0.7,
-                        topK: 40,
-                        topP: 0.95,
-                        maxOutputTokens: 1024,
-                    }
-                })
-            });
-
-            if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
-            }
-
-            const data = await response.json();
-            return data.candidates[0]?.content?.parts[0]?.text || 'No se pudo generar contenido';
-        } catch (error) {
-            console.error('Error calling Gemini API:', error);
-            throw error;
-        }
+        // Sin API key válida, usar fallback directo
+        console.log('API key inválida - usando fallback');
+        throw new Error('API key inválida');
     }
 
     // Generar chistes paisas con contexto histórico
@@ -188,14 +159,9 @@ Explicación: Medellín fue fundada el 2 de noviembre de 1675 por Francisco Herr
 
     // Función de prueba
     async testConnection() {
-        try {
-            const testResponse = await this.generateContent("Di 'Hola' como Cosiaca");
-            console.log('Gemini test exitoso:', testResponse);
-            return true;
-        } catch (error) {
-            console.error('Gemini test falló:', error);
-            return false;
-        }
+        // Sin API key válida
+        console.log('Gemini API key inválida');
+        return false;
     }
 }
 

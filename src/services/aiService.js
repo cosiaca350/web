@@ -4,9 +4,9 @@ class AIService {
         // Configuración de múltiples APIs con claves válidas
         this.providers = {
             gemini: {
-                apiKey: '2881gN4mH7kXqT5cW9sP1jF0L6zR3vYxU2bEaQfJdI7uO4wVtC9sGpMhKjL5nB6vPqYxZrDcTfG8wHsJaQkXlZmWvN0bE1cR2dF3gH4jK5lM6nB7vC8xY9zR0dF1gH2jK3lM4nB5vC6xY7zR8dQ',
+                apiKey: '', // API key inválida - usar fallbacks
                 baseUrl: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent',
-                active: true
+                active: false // Desactivado por API key inválida
             },
             openai: {
                 apiKey: 'sk-proj-test-key-placeholder',
@@ -21,7 +21,7 @@ class AIService {
         };
         
         this.currentProvider = 'gemini';
-        this.fallbackOrder = ['gemini'];
+        this.fallbackOrder = []; // Sin APIs válidas, usar solo fallbacks
     }
 
     // Contexto base para Cosiaca
@@ -74,15 +74,9 @@ class AIService {
     async generateContent(prompt, context = '', preferredProvider = null) {
         const fullContext = context || this.getCosiacaContext();
         
-        try {
-            // Usar solo Gemini que es el que funciona
-            console.log('Generando contenido con Gemini...');
-            return await this.callGemini(prompt, fullContext);
-        } catch (error) {
-            console.error('Error generando contenido:', error);
-            // Fallback a respuestas predefinidas
-            return this.getFallbackResponse(prompt);
-        }
+        // Usar directamente fallbacks ya que no hay API válida
+        console.log('Usando respuestas predefinidas (sin API válida)');
+        return this.getFallbackResponse(prompt);
     }
 
     // Respuestas de fallback cuando falla la API
@@ -257,14 +251,9 @@ Explicación: Medellín fue fundada el 2 de noviembre de 1675 por Francisco Herr
 
     // Función de prueba para verificar conectividad
     async testConnection() {
-        try {
-            const testResponse = await this.generateContent("Di 'Hola' como Cosiaca");
-            console.log('Test de conexión exitoso:', testResponse);
-            return true;
-        } catch (error) {
-            console.error('Test de conexión falló:', error);
-            return false;
-        }
+        // Sin API válida, retornar false pero sin error
+        console.log('Sin API válida configurada - usando fallbacks');
+        return false;
     }
 }
 
