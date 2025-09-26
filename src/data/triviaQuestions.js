@@ -430,7 +430,7 @@ export const levelConfig = {
     description: "Ciudad Innovadora (2000-2025)",
     questionsToPass: 6,
     totalQuestions: 8,
-    pointsPerQuestion: 30,
+    pointsPerQuestion: 10,
     color: "bg-green-500"
   },
   intermediate: {
@@ -438,7 +438,7 @@ export const levelConfig = {
     description: "Transformación Urbana (1950-2000)",
     questionsToPass: 6,
     totalQuestions: 8,
-    pointsPerQuestion: 25,
+    pointsPerQuestion: 15,
     color: "bg-blue-500"
   },
   advanced: {
@@ -454,7 +454,7 @@ export const levelConfig = {
     description: "Independencia y República (1800-1900)",
     questionsToPass: 6,
     totalQuestions: 8,
-    pointsPerQuestion: 15,
+    pointsPerQuestion: 25,
     color: "bg-red-500"
   },
   master: {
@@ -462,7 +462,7 @@ export const levelConfig = {
     description: "Época Colonial (1675-1800)",
     questionsToPass: 6,
     totalQuestions: 8,
-    pointsPerQuestion: 10,
+    pointsPerQuestion: 30,
     color: "bg-yellow-500"
   }
 };
