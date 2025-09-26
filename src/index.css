@@ -322,32 +322,6 @@ html {
 }
 
 /* Secciones con altura optimizada */
-.section-1920 {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem 0;
-}
-
-@media (min-width: 1920px) {
-  .section-1920 {
-    padding: 4rem 0;
-  }
-}
-
-/* Animaciones suaves */
-.fade-in-section {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease-in-out;
-}
-
-.fade-in-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* Grid responsivo mejorado */
 .responsive-grid {
   display: grid;

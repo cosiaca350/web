@@ -5,26 +5,6 @@ import AIService from '../services/aiService';
 const Welcome = ({ setView }) => {
     const [historicalFact, setHistoricalFact] = useState('');
     const [isLoadingFact, setIsLoadingFact] = useState(false);
-    const [currentSection, setCurrentSection] = useState(0);
-    
-    const sections = [
-        'intro',
-        'interactive',
-        'features',
-        'project-info'
-    ];
-    
-    const scrollToSection = (direction) => {
-        const newSection = direction === 'next' 
-            ? Math.min(currentSection + 1, sections.length - 1)
-            : Math.max(currentSection - 1, 0);
-        
-        setCurrentSection(newSection);
-        const element = document.getElementById(sections[newSection]);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
 
     const handleGenerateFact = async () => {
         setIsLoadingFact(true);
@@ -83,11 +63,11 @@ const Welcome = ({ setView }) => {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-cosiaca-cream via-cosiaca-beige to-cosiaca-tan py-8 px-4 smooth-scroll">
+        <div className="min-h-screen bg-gradient-to-br from-cosiaca-cream via-cosiaca-beige to-cosiaca-tan py-4 sm:py-8 px-4">
             <div className="w-full container-1920 mx-auto text-center space-y-1920">
                 
                 {/* Header */}
-                <section id="intro" className="section-1920 fade-in-section">
+                <section className="animate-fade-in mb-8 sm:mb-12">
                     <div className="text-4xl md:text-5xl xl:text-1920-xl font-black text-cosiaca-brown font-serif leading-none tracking-tight mb-6">
                         {"{COSIACA "}
                         <strong>350</strong>
@@ -99,7 +79,7 @@ const Welcome = ({ setView }) => {
                 </section>
 
                 {/* Información Principal */}
-                <section id="interactive" className="section-1920 fade-in-section">
+                <section className="animate-fade-in mb-8 sm:mb-12">
                 <div className="bg-white/90 backdrop-blur-sm p-8 xl:p-1920 rounded-2xl shadow-2xl border border-cosiaca-beige max-w-6xl xl:max-w-7xl mx-auto">
                     <div className="text-center mb-6">
                         <div className="text-4xl xl:text-6xl mb-4">🎭</div>
@@ -143,7 +123,7 @@ const Welcome = ({ setView }) => {
                 </section>
 
                 {/* Experiencia Interactiva */}
-                <div className="bg-white/90 backdrop-blur-sm p-8 xl:p-1920 rounded-2xl shadow-2xl border border-cosiaca-beige max-w-5xl xl:max-w-6xl mx-auto">
+                <div className="bg-white/90 backdrop-blur-sm p-8 xl:p-1920 rounded-2xl shadow-2xl border border-cosiaca-beige max-w-5xl xl:max-w-6xl mx-auto mb-8 sm:mb-12">
                     <div className="text-center mb-6">
                         <div className="text-4xl xl:text-6xl mb-4">✨</div>
                         <h3 className="text-2xl xl:text-1920-lg font-bold text-cosiaca-brown font-serif mb-4">
@@ -185,7 +165,7 @@ const Welcome = ({ setView }) => {
                 </div>
 
                 {/* Accesos Rápidos */}
-                <section id="features" className="section-1920 fade-in-section">
+                <section className="animate-fade-in mb-8 sm:mb-12">
                 <div className="responsive-grid max-w-6xl xl:max-w-7xl mx-auto">
                     {features.map((feature, index) => (
                         <button
@@ -204,7 +184,7 @@ const Welcome = ({ setView }) => {
                 </section>
 
                 {/* Información del Proyecto */}
-                <section id="project-info" className="section-1920 fade-in-section">
+                <section className="animate-fade-in mb-8 sm:mb-12">
                 <div className="bg-gradient-to-r from-cosiaca-red/10 to-cosiaca-brown/10 p-8 xl:p-1920 rounded-2xl border border-cosiaca-beige/50 max-w-6xl xl:max-w-7xl mx-auto">
                     <h3 className="text-3xl xl:text-1920-lg font-bold text-cosiaca-brown mb-4 font-serif">
                         🏛️ Proyecto Oficial
@@ -225,39 +205,13 @@ const Welcome = ({ setView }) => {
                 </section>
 
                 {/* Botón para ver más detalles */}
-                <div className="text-center">
+                <div className="text-center mb-8 sm:mb-12">
                     <button
                         onClick={() => setView('proyecto')}
                         className="bg-gradient-to-r from-cosiaca-brown to-cosiaca-brown/80 hover:from-cosiaca-brown/80 hover:to-cosiaca-brown text-white font-bold py-4 xl:py-6 px-8 xl:px-12 rounded-full text-lg xl:text-1920-base transition-all duration-300 transform hover:scale-105 shadow-xl"
                     >
                         Ver Detalles del Proyecto
                     </button>
-                </div>
-                
-                {/* Navegación entre secciones */}
-                <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-30 space-y-2">
-                    {currentSection > 0 && (
-                        <button
-                            onClick={() => scrollToSection('prev')}
-                            className="nav-arrow"
-                            aria-label="Sección anterior"
-                        >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 15l7-7 7 7" />
-                            </svg>
-                        </button>
-                    )}
-                    {currentSection < sections.length - 1 && (
-                        <button
-                            onClick={() => scrollToSection('next')}
-                            className="nav-arrow"
-                            aria-label="Siguiente sección"
-                        >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                    )}
                 </div>
             </div>
         </div>
