@@ -2,175 +2,175 @@
 // Organizadas por períodos históricos y niveles de dificultad
 
 export const triviaDatabase = {
-  // NIVEL 1: PRINCIPIANTE (1675-1800) - Época Colonial
+  // NIVEL 1: PRINCIPIANTE (2000-2025) - Ciudad Innovadora
   beginner: [
     {
-      id: 1,
-      period: "1675-1700",
+      id: 33,
+      period: "2000-2010",
       difficulty: "Principiante",
-      question: "¿En qué año se fundó oficialmente Medellín?",
-      options: ["1675", "1674", "1676", "1680"],
-      correctAnswer: "1675",
-      feedback: "¡Exacto, mijito! El 2 de noviembre de 1675, Francisco Herrera Campuzano fundó la Villa de Nuestra Señora de la Candelaria de Medellín. ¡Ahí empezó todo este cuento paisa!",
-      points: 10
+      question: "¿En qué año Medellín fue declarada la ciudad más innovadora del mundo?",
+      options: ["2012", "2013", "2014", "2015"],
+      correctAnswer: "2013",
+      feedback: "¡Extraordinario! En 2013, Medellín fue declarada la ciudad más innovadora del mundo por el Urban Land Institute. ¡De villa de mulas a ciudad inteligente, qué viaje tan berraco!",
+      points: 30
     },
     {
-      id: 2,
-      period: "1675-1700",
-      difficulty: "Principiante", 
-      question: "¿Cuál era el nombre completo original de Medellín?",
-      options: ["Villa de la Candelaria", "Villa de Nuestra Señora de la Candelaria de Medellín", "Villa de Medellín", "Villa de Antioquia"],
-      correctAnswer: "Villa de Nuestra Señora de la Candelaria de Medellín",
-      feedback: "¡Eso es! Un nombre larguísimo para una villa pequeñita. Los fundadores eran muy devotos de la Virgen de la Candelaria, por eso le pusieron ese nombre tan elegante.",
-      points: 10
+      id: 34,
+      period: "2000-2010",
+      difficulty: "Principiante",
+      question: "¿Cuál fue el primer proyecto de urbanismo social en Medellín?",
+      options: ["Biblioteca España", "Parque Explora", "Orquideorama", "Proyecto Urbano Integral"],
+      correctAnswer: "Proyecto Urbano Integral",
+      feedback: "¡Perfecto! Los Proyectos Urbanos Integrales (PUI) fueron pioneros en urbanismo social, transformando barrios marginales en espacios dignos y hermosos.",
+      points: 30
     },
     {
-      id: 3,
-      period: "1675-1700",
+      id: 35,
+      period: "2004-2015",
       difficulty: "Principiante",
-      question: "¿Quién fue el fundador de Medellín?",
-      options: ["Francisco Herrera Campuzano", "Pedro de Heredia", "Gonzalo Jiménez de Quesada", "Sebastián de Belalcázar"],
-      correctAnswer: "Francisco Herrera Campuzano",
-      feedback: "¡Correcto! Don Francisco Herrera Campuzano fue el verraco que se aventuró a fundar esta villa. Un hombre con visión, ¡aunque no se imaginaba que iba a crear la cuna de tanto paisa trabajador!",
-      points: 10
+      question: "¿En qué año se inauguró la primera línea del Metrocable?",
+      options: ["2004", "2005", "2006", "2007"],
+      correctAnswer: "2004",
+      feedback: "¡Excelente! En 2004 se inauguró la Línea K del Metrocable, conectando los barrios de las laderas con el centro. ¡Una innovación mundial que nació en Medellín!",
+      points: 30
     },
     {
-      id: 4,
-      period: "1675-1700",
+      id: 36,
+      period: "2006-2015",
       difficulty: "Principiante",
-      question: "¿Cuántas familias fundadoras llegaron inicialmente a Medellín?",
-      options: ["20", "24", "30", "35"],
-      correctAnswer: "24",
-      feedback: "¡Así es! Llegaron 24 familias valientes, pero había más vacas que gente, ja ja ja. Por eso es que los paisas heredamos esa terquedad bovina, ¡pero también la nobleza!",
-      points: 10
+      question: "¿Quién fue el arquitecto del Parque Explora?",
+      options: ["Alejandro Echeverri", "Giancarlo De Carlo", "Felipe Uribe", "Simón Vélez"],
+      correctAnswer: "Alejandro Echeverri",
+      feedback: "¡Correcto! Alejandro Echeverri diseñó el Parque Explora, un espacio que acerca la ciencia y la tecnología a todos los paisas, especialmente a los niños.",
+      points: 30
     },
     {
-      id: 5,
-      period: "1700-1750",
+      id: 37,
+      period: "2010-2020",
       difficulty: "Principiante",
-      question: "¿En qué valle se estableció Medellín?",
-      options: ["Valle de Aburrá", "Valle de Urabá", "Valle del Cauca", "Valle de Tenza"],
-      correctAnswer: "Valle de Aburrá",
-      feedback: "¡Claro que sí! El Valle de Aburrá, rodeado de montañas verdes y con un río que lo atraviesa. Un lugar perfecto para que floreciera la cultura paisa.",
-      points: 10
+      question: "¿En qué año se inauguró el Tranvía de Ayacucho?",
+      options: ["2015", "2016", "2017", "2018"],
+      correctAnswer: "2015",
+      feedback: "¡Perfecto! El Tranvía de Ayacucho se inauguró en 2015, conectando el centro con el oriente de la ciudad. ¡Otra innovación en transporte público paisa!",
+      points: 30
     },
     {
-      id: 6,
-      period: "1700-1750",
+      id: 38,
+      period: "2010-2020",
       difficulty: "Principiante",
-      question: "¿Cuál era la principal actividad económica en los primeros años de Medellín?",
-      options: ["Minería", "Agricultura y ganadería", "Comercio", "Artesanías"],
-      correctAnswer: "Agricultura y ganadería",
-      feedback: "¡Exacto! Los primeros paisas eran agricultores y ganaderos. Sembraban maíz, fríjol y criaban ganado. De ahí viene esa tradición paisa de trabajar la tierra con amor.",
-      points: 10
+      question: "¿Cuál es el nombre del distrito de innovación de Medellín?",
+      options: ["Distrito E", "Ruta N", "Medellín Digital", "Ciudad del Conocimiento"],
+      correctAnswer: "Distrito E",
+      feedback: "¡Excelente! El Distrito E (Distrito de la Economía del Conocimiento) es el corazón de la innovación paisa, donde convergen empresas, universidades y emprendedores.",
+      points: 30
     },
     {
-      id: 7,
-      period: "1750-1800",
+      id: 39,
+      period: "2015-2025",
       difficulty: "Principiante",
-      question: "¿Cómo se llamaba originalmente el Parque Berrío?",
-      options: ["Plaza Mayor", "Plaza de la Villa de la Candelaria", "Plaza Central", "Plaza de Armas"],
-      correctAnswer: "Plaza de la Villa de la Candelaria",
-      feedback: "¡Eso es! La Plaza de la Villa de la Candelaria era el corazón de todo. Ahí se hacían los negocios, las misas y hasta las peleas de gallos. ¡El ombligo del pueblo!",
-      points: 10
+      question: "¿En qué año se inauguró el Parque del Río?",
+      options: ["2016", "2017", "2018", "2019"],
+      correctAnswer: "2016",
+      feedback: "¡Correcto! El Parque del Río se inauguró en 2016, devolviendo el río a los paisas y creando un espacio verde en el corazón de la ciudad.",
+      points: 30
     },
     {
-      id: 8,
-      period: "1750-1800",
+      id: 40,
+      period: "2020-2025",
       difficulty: "Principiante",
-      question: "¿Qué río atraviesa el Valle de Aburrá?",
-      options: ["Río Medellín", "Río Cauca", "Río Magdalena", "Río Atrato"],
-      correctAnswer: "Río Medellín",
-      feedback: "¡Correcto! El Río Medellín, que antes se llamaba Río Aburrá. Nuestro río querido que ha visto pasar toda la historia de la ciudad.",
-      points: 10
+      question: "¿Cuál es el nombre del proyecto de ciudad inteligente de Medellín?",
+      options: ["MedellínTech", "Smart Medellín", "Medellín 4.0", "Ciudad Inteligente"],
+      correctAnswer: "Medellín 4.0",
+      feedback: "¡Extraordinario! Medellín 4.0 es la estrategia de ciudad inteligente que posiciona a Medellín como referente mundial en innovación urbana y tecnología.",
+      points: 30
     }
   ],
 
-  // NIVEL 2: INTERMEDIO (1800-1900) - Independencia y República
+  // NIVEL 2: INTERMEDIO (1950-2000) - Transformación Urbana
   intermediate: [
     {
-      id: 9,
-      period: "1800-1850",
+      id: 25,
+      period: "1950-1970",
       difficulty: "Intermedio",
-      question: "¿En qué año Medellín obtuvo el título de ciudad?",
-      options: ["1813", "1826", "1835", "1842"],
-      correctAnswer: "1813",
-      feedback: "¡Muy bien! En 1813, durante las guerras de independencia, Medellín recibió el título de ciudad. Ya no era una simple villa, ¡era una ciudad hecha y derecha!",
-      points: 15
+      question: "¿En qué año se inauguró la Ciudad Universitaria de la Universidad de Antioquia?",
+      options: ["1957", "1962", "1968", "1972"],
+      correctAnswer: "1962",
+      feedback: "¡Excelente conocimiento! En 1962 se inauguró la Ciudad Universitaria, un proyecto ambicioso que consolidó a la U de A como una de las mejores universidades del país.",
+      points: 25
     },
     {
-      id: 10,
-      period: "1800-1850",
+      id: 26,
+      period: "1950-1970",
       difficulty: "Intermedio",
-      question: "¿Quién fue el primer alcalde de Medellín como ciudad?",
-      options: ["José María Córdoba", "Francisco Antonio Zea", "Juan del Corral", "José Félix de Restrepo"],
-      correctAnswer: "Juan del Corral",
-      feedback: "¡Exacto! Juan del Corral fue el primer alcalde cuando Medellín se convirtió en ciudad. Un hombre ilustrado que ayudó a sentar las bases de lo que somos hoy.",
-      points: 15
+      question: "¿Cuál fue el primer centro comercial de Medellín?",
+      options: ["Centro Comercial Oviedo", "Unicentro", "San Diego", "Monterrey"],
+      correctAnswer: "Centro Comercial Oviedo",
+      feedback: "¡Perfecto! El Centro Comercial Oviedo fue el pionero en 1974, cambiando para siempre la forma de hacer compras en la ciudad. ¡Una revolución comercial paisa!",
+      points: 25
     },
     {
-      id: 11,
-      period: "1850-1900",
+      id: 27,
+      period: "1970-1990",
       difficulty: "Intermedio",
-      question: "¿En qué década comenzó el auge del café en Antioquia?",
-      options: ["1850s", "1860s", "1870s", "1880s"],
-      correctAnswer: "1870s",
-      feedback: "¡Correcto! En los años 1870 empezó la bonanza cafetera que nos hizo ricos en plata y en cultura. El grano dorado que cambió la historia paisa para siempre.",
-      points: 15
+      question: "¿En qué año comenzó la construcción del Metro de Medellín?",
+      options: ["1979", "1984", "1987", "1990"],
+      correctAnswer: "1984",
+      feedback: "¡Correcto! En 1984 comenzó la construcción del Metro, el sueño más grande de los paisas. Once años después, en 1995, se inauguró este orgullo de la ingeniería colombiana.",
+      points: 25
     },
     {
-      id: 12,
-      period: "1850-1900",
+      id: 28,
+      period: "1970-1990",
       difficulty: "Intermedio",
-      question: "¿Cuál fue la primera empresa textil importante de Medellín?",
-      options: ["Coltejer", "Fabricato", "Tejicóndor", "Compañía Colombiana de Tejidos"],
-      correctAnswer: "Compañía Colombiana de Tejidos",
-      feedback: "¡Así es! La Compañía Colombiana de Tejidos fue la pionera. Después vinieron Coltejer y Fabricato, pero esta fue la que abrió el camino de la industria textil paisa.",
-      points: 15
+      question: "¿Quién fue el alcalde que impulsó el proyecto del Metro?",
+      options: ["William Jaramillo", "Juan Gómez Martínez", "Omar Flórez", "Álvaro Uribe Vélez"],
+      correctAnswer: "Juan Gómez Martínez",
+      feedback: "¡Excelente! Juan Gómez Martínez fue el visionario que impulsó el Metro cuando muchos decían que era imposible. ¡Un verdadero líder paisa con visión de futuro!",
+      points: 25
     },
     {
-      id: 13,
-      period: "1850-1900",
+      id: 29,
+      period: "1980-2000",
       difficulty: "Intermedio",
-      question: "¿En qué año se fundó la Universidad de Antioquia?",
-      options: ["1803", "1822", "1871", "1886"],
-      correctAnswer: "1803",
-      feedback: "¡Muy bien! En 1803 se fundó como Colegio de Franciscanos, y después se convirtió en la Universidad de Antioquia. ¡Más de 200 años formando mentes brillantes!",
-      points: 15
+      question: "¿En qué año se fundó el Museo de Antioquia?",
+      options: ["1881", "1922", "1955", "1978"],
+      correctAnswer: "1881",
+      feedback: "¡Increíble conocimiento! El Museo de Antioquia se fundó en 1881, siendo uno de los museos más antiguos de Colombia. ¡Más de 140 años preservando nuestra cultura!",
+      points: 25
     },
     {
-      id: 14,
-      period: "1880-1900",
+      id: 30,
+      period: "1990-2000",
       difficulty: "Intermedio",
-      question: "¿Cuál era el apodo de José García 'Cosiaca'?",
-      options: ["El Cuentero", "El Pícaro", "El que vive a costillas de los demás", "El Trovador"],
-      correctAnswer: "El que vive a costillas de los demás",
-      feedback: "¡Exacto! Cosiaca era famoso por vivir a costillas de los demás, pero con tanto ingenio y gracia que la gente lo quería. ¡El primer comediante popular de Antioquia!",
-      points: 15
+      question: "¿Cuál fue el primer alcalde elegido por voto popular en Medellín?",
+      options: ["William Jaramillo", "Juan Gómez Martínez", "Omar Flórez", "Álvaro Uribe Vélez"],
+      correctAnswer: "William Jaramillo",
+      feedback: "¡Perfecto! William Jaramillo fue el primer alcalde elegido por voto popular en 1988, marcando una nueva era democrática en la ciudad.",
+      points: 25
     },
     {
-      id: 15,
-      period: "1880-1900",
+      id: 31,
+      period: "1990-2000",
       difficulty: "Intermedio",
-      question: "¿En qué año se inauguró el primer tranvía de Medellín?",
-      options: ["1885", "1890", "1895", "1900"],
-      correctAnswer: "1890",
-      feedback: "¡Correcto! En 1890 se inauguró el tranvía de mulas. ¡Imagínese, las mulas jalando carros por toda la ciudad! Los pasajeros se quejaban del olor, pero nunca se quedaron sin gasolina, ja ja ja.",
-      points: 15
+      question: "¿En qué año se inauguró el Planetario de Medellín?",
+      options: ["1984", "1989", "1993", "1997"],
+      correctAnswer: "1984",
+      feedback: "¡Correcto! El Planetario se inauguró en 1984, acercando las estrellas a los paisas y fomentando el amor por la ciencia y la astronomía.",
+      points: 25
     },
     {
-      id: 16,
-      period: "1880-1900",
+      id: 32,
+      period: "1990-2000",
       difficulty: "Intermedio",
-      question: "¿Cuál fue el primer periódico de Medellín?",
-      options: ["El Colombiano", "El Espectador Antioqueño", "La Miscelánea", "El Zancudo"],
-      correctAnswer: "El Espectador Antioqueño",
-      feedback: "¡Así es! El Espectador Antioqueño fue el primer periódico en 1887. Después vino El Zancudo con su humor satírico, ¡el antecedente del humor paisa moderno!",
-      points: 15
+      question: "¿Cuál fue el primer festival internacional que se realizó en Medellín?",
+      options: ["Festival de Poesía", "Festival de Tango", "Festival de Jazz", "Festival de Teatro"],
+      correctAnswer: "Festival de Poesía",
+      feedback: "¡Excelente! El Festival Internacional de Poesía comenzó en 1991, convirtiendo a Medellín en la capital mundial de la poesía. ¡Qué orgullo paisa!",
+      points: 25
     }
   ],
 
-  // NIVEL 3: AVANZADO (1900-1950) - Industrialización
+  // NIVEL 3: AVANZADO (1900-1950) - Industrialización (se mantiene igual)
   advanced: [
     {
       id: 17,
@@ -254,171 +254,171 @@ export const triviaDatabase = {
     }
   ],
 
-  // NIVEL 4: EXPERTO (1950-2000) - Transformación Urbana
+  // NIVEL 4: EXPERTO (1800-1900) - Independencia y República
   expert: [
     {
-      id: 25,
-      period: "1950-1970",
+      id: 9,
+      period: "1800-1850",
       difficulty: "Experto",
-      question: "¿En qué año se inauguró la Ciudad Universitaria de la Universidad de Antioquia?",
-      options: ["1957", "1962", "1968", "1972"],
-      correctAnswer: "1962",
-      feedback: "¡Excelente conocimiento! En 1962 se inauguró la Ciudad Universitaria, un proyecto ambicioso que consolidó a la U de A como una de las mejores universidades del país.",
-      points: 25
+      question: "¿En qué año Medellín obtuvo el título de ciudad?",
+      options: ["1813", "1826", "1835", "1842"],
+      correctAnswer: "1813",
+      feedback: "¡Muy bien! En 1813, durante las guerras de independencia, Medellín recibió el título de ciudad. Ya no era una simple villa, ¡era una ciudad hecha y derecha!",
+      points: 15
     },
     {
-      id: 26,
-      period: "1950-1970",
+      id: 10,
+      period: "1800-1850",
       difficulty: "Experto",
-      question: "¿Cuál fue el primer centro comercial de Medellín?",
-      options: ["Centro Comercial Oviedo", "Unicentro", "San Diego", "Monterrey"],
-      correctAnswer: "Centro Comercial Oviedo",
-      feedback: "¡Perfecto! El Centro Comercial Oviedo fue el pionero en 1974, cambiando para siempre la forma de hacer compras en la ciudad. ¡Una revolución comercial paisa!",
-      points: 25
+      question: "¿Quién fue el primer alcalde de Medellín como ciudad?",
+      options: ["José María Córdoba", "Francisco Antonio Zea", "Juan del Corral", "José Félix de Restrepo"],
+      correctAnswer: "Juan del Corral",
+      feedback: "¡Exacto! Juan del Corral fue el primer alcalde cuando Medellín se convirtió en ciudad. Un hombre ilustrado que ayudó a sentar las bases de lo que somos hoy.",
+      points: 15
     },
     {
-      id: 27,
-      period: "1970-1990",
+      id: 11,
+      period: "1850-1900",
       difficulty: "Experto",
-      question: "¿En qué año comenzó la construcción del Metro de Medellín?",
-      options: ["1979", "1984", "1987", "1990"],
-      correctAnswer: "1984",
-      feedback: "¡Correcto! En 1984 comenzó la construcción del Metro, el sueño más grande de los paisas. Once años después, en 1995, se inauguró este orgullo de la ingeniería colombiana.",
-      points: 25
+      question: "¿En qué década comenzó el auge del café en Antioquia?",
+      options: ["1850s", "1860s", "1870s", "1880s"],
+      correctAnswer: "1870s",
+      feedback: "¡Correcto! En los años 1870 empezó la bonanza cafetera que nos hizo ricos en plata y en cultura. El grano dorado que cambió la historia paisa para siempre.",
+      points: 15
     },
     {
-      id: 28,
-      period: "1970-1990",
+      id: 12,
+      period: "1850-1900",
       difficulty: "Experto",
-      question: "¿Quién fue el alcalde que impulsó el proyecto del Metro?",
-      options: ["William Jaramillo", "Juan Gómez Martínez", "Omar Flórez", "Álvaro Uribe Vélez"],
-      correctAnswer: "Juan Gómez Martínez",
-      feedback: "¡Excelente! Juan Gómez Martínez fue el visionario que impulsó el Metro cuando muchos decían que era imposible. ¡Un verdadero líder paisa con visión de futuro!",
-      points: 25
+      question: "¿Cuál fue la primera empresa textil importante de Medellín?",
+      options: ["Coltejer", "Fabricato", "Tejicóndor", "Compañía Colombiana de Tejidos"],
+      correctAnswer: "Compañía Colombiana de Tejidos",
+      feedback: "¡Así es! La Compañía Colombiana de Tejidos fue la pionera. Después vinieron Coltejer y Fabricato, pero esta fue la que abrió el camino de la industria textil paisa.",
+      points: 15
     },
     {
-      id: 29,
-      period: "1980-2000",
+      id: 13,
+      period: "1850-1900",
       difficulty: "Experto",
-      question: "¿En qué año se fundó el Museo de Antioquia?",
-      options: ["1881", "1922", "1955", "1978"],
-      correctAnswer: "1881",
-      feedback: "¡Increíble conocimiento! El Museo de Antioquia se fundó en 1881, siendo uno de los museos más antiguos de Colombia. ¡Más de 140 años preservando nuestra cultura!",
-      points: 25
+      question: "¿En qué año se fundó la Universidad de Antioquia?",
+      options: ["1803", "1822", "1871", "1886"],
+      correctAnswer: "1803",
+      feedback: "¡Muy bien! En 1803 se fundó como Colegio de Franciscanos, y después se convirtió en la Universidad de Antioquia. ¡Más de 200 años formando mentes brillantes!",
+      points: 15
     },
     {
-      id: 30,
-      period: "1990-2000",
+      id: 14,
+      period: "1880-1900",
       difficulty: "Experto",
-      question: "¿Cuál fue el primer alcalde elegido por voto popular en Medellín?",
-      options: ["William Jaramillo", "Juan Gómez Martínez", "Omar Flórez", "Álvaro Uribe Vélez"],
-      correctAnswer: "William Jaramillo",
-      feedback: "¡Perfecto! William Jaramillo fue el primer alcalde elegido por voto popular en 1988, marcando una nueva era democrática en la ciudad.",
-      points: 25
+      question: "¿Cuál era el apodo de José García 'Cosiaca'?",
+      options: ["El Cuentero", "El Pícaro", "El que vive a costillas de los demás", "El Trovador"],
+      correctAnswer: "El que vive a costillas de los demás",
+      feedback: "¡Exacto! Cosiaca era famoso por vivir a costillas de los demás, pero con tanto ingenio y gracia que la gente lo quería. ¡El primer comediante popular de Antioquia!",
+      points: 15
     },
     {
-      id: 31,
-      period: "1990-2000",
+      id: 15,
+      period: "1880-1900",
       difficulty: "Experto",
-      question: "¿En qué año se inauguró el Planetario de Medellín?",
-      options: ["1984", "1989", "1993", "1997"],
-      correctAnswer: "1984",
-      feedback: "¡Correcto! El Planetario se inauguró en 1984, acercando las estrellas a los paisas y fomentando el amor por la ciencia y la astronomía.",
-      points: 25
+      question: "¿En qué año se inauguró el primer tranvía de Medellín?",
+      options: ["1885", "1890", "1895", "1900"],
+      correctAnswer: "1890",
+      feedback: "¡Correcto! En 1890 se inauguró el tranvía de mulas. ¡Imagínese, las mulas jalando carros por toda la ciudad! Los pasajeros se quejaban del olor, pero nunca se quedaron sin gasolina, ja ja ja.",
+      points: 15
     },
     {
-      id: 32,
-      period: "1990-2000",
+      id: 16,
+      period: "1880-1900",
       difficulty: "Experto",
-      question: "¿Cuál fue el primer festival internacional que se realizó en Medellín?",
-      options: ["Festival de Poesía", "Festival de Tango", "Festival de Jazz", "Festival de Teatro"],
-      correctAnswer: "Festival de Poesía",
-      feedback: "¡Excelente! El Festival Internacional de Poesía comenzó en 1991, convirtiendo a Medellín en la capital mundial de la poesía. ¡Qué orgullo paisa!",
-      points: 25
+      question: "¿Cuál fue el primer periódico de Medellín?",
+      options: ["El Colombiano", "El Espectador Antioqueño", "La Miscelánea", "El Zancudo"],
+      correctAnswer: "El Espectador Antioqueño",
+      feedback: "¡Así es! El Espectador Antioqueño fue el primer periódico en 1887. Después vino El Zancudo con su humor satírico, ¡el antecedente del humor paisa moderno!",
+      points: 15
     }
   ],
 
-  // NIVEL 5: MAESTRO (2000-2025) - Ciudad Innovadora
+  // NIVEL 5: MAESTRO (1675-1800) - Época Colonial
   master: [
     {
-      id: 33,
-      period: "2000-2010",
+      id: 1,
+      period: "1675-1700",
       difficulty: "Maestro",
-      question: "¿En qué año Medellín fue declarada la ciudad más innovadora del mundo?",
-      options: ["2012", "2013", "2014", "2015"],
-      correctAnswer: "2013",
-      feedback: "¡Extraordinario! En 2013, Medellín fue declarada la ciudad más innovadora del mundo por el Urban Land Institute. ¡De villa de mulas a ciudad inteligente, qué viaje tan berraco!",
-      points: 30
+      question: "¿En qué año se fundó oficialmente Medellín?",
+      options: ["1675", "1674", "1676", "1680"],
+      correctAnswer: "1675",
+      feedback: "¡Exacto, mijito! El 2 de noviembre de 1675, Francisco Herrera Campuzano fundó la Villa de Nuestra Señora de la Candelaria de Medellín. ¡Ahí empezó todo este cuento paisa!",
+      points: 10
     },
     {
-      id: 34,
-      period: "2000-2010",
+      id: 2,
+      period: "1675-1700",
       difficulty: "Maestro",
-      question: "¿Cuál fue el primer proyecto de urbanismo social en Medellín?",
-      options: ["Biblioteca España", "Parque Explora", "Orquideorama", "Proyecto Urbano Integral"],
-      correctAnswer: "Proyecto Urbano Integral",
-      feedback: "¡Perfecto! Los Proyectos Urbanos Integrales (PUI) fueron pioneros en urbanismo social, transformando barrios marginales en espacios dignos y hermosos.",
-      points: 30
+      question: "¿Cuál era el nombre completo original de Medellín?",
+      options: ["Villa de la Candelaria", "Villa de Nuestra Señora de la Candelaria de Medellín", "Villa de Medellín", "Villa de Antioquia"],
+      correctAnswer: "Villa de Nuestra Señora de la Candelaria de Medellín",
+      feedback: "¡Eso es! Un nombre larguísimo para una villa pequeñita. Los fundadores eran muy devotos de la Virgen de la Candelaria, por eso le pusieron ese nombre tan elegante.",
+      points: 10
     },
     {
-      id: 35,
-      period: "2004-2015",
+      id: 3,
+      period: "1675-1700",
       difficulty: "Maestro",
-      question: "¿En qué año se inauguró la primera línea del Metrocable?",
-      options: ["2004", "2005", "2006", "2007"],
-      correctAnswer: "2004",
-      feedback: "¡Excelente! En 2004 se inauguró la Línea K del Metrocable, conectando los barrios de las laderas con el centro. ¡Una innovación mundial que nació en Medellín!",
-      points: 30
+      question: "¿Quién fue el fundador de Medellín?",
+      options: ["Francisco Herrera Campuzano", "Pedro de Heredia", "Gonzalo Jiménez de Quesada", "Sebastián de Belalcázar"],
+      correctAnswer: "Francisco Herrera Campuzano",
+      feedback: "¡Correcto! Don Francisco Herrera Campuzano fue el verraco que se aventuró a fundar esta villa. Un hombre con visión, ¡aunque no se imaginaba que iba a crear la cuna de tanto paisa trabajador!",
+      points: 10
     },
     {
-      id: 36,
-      period: "2006-2015",
+      id: 4,
+      period: "1675-1700",
       difficulty: "Maestro",
-      question: "¿Quién fue el arquitecto del Parque Explora?",
-      options: ["Alejandro Echeverri", "Giancarlo De Carlo", "Felipe Uribe", "Simón Vélez"],
-      correctAnswer: "Alejandro Echeverri",
-      feedback: "¡Correcto! Alejandro Echeverri diseñó el Parque Explora, un espacio que acerca la ciencia y la tecnología a todos los paisas, especialmente a los niños.",
-      points: 30
+      question: "¿Cuántas familias fundadoras llegaron inicialmente a Medellín?",
+      options: ["20", "24", "30", "35"],
+      correctAnswer: "24",
+      feedback: "¡Así es! Llegaron 24 familias valientes, pero había más vacas que gente, ja ja ja. Por eso es que los paisas heredamos esa terquedad bovina, ¡pero también la nobleza!",
+      points: 10
     },
     {
-      id: 37,
-      period: "2010-2020",
+      id: 5,
+      period: "1700-1750",
       difficulty: "Maestro",
-      question: "¿En qué año se inauguró el Tranvía de Ayacucho?",
-      options: ["2015", "2016", "2017", "2018"],
-      correctAnswer: "2015",
-      feedback: "¡Perfecto! El Tranvía de Ayacucho se inauguró en 2015, conectando el centro con el oriente de la ciudad. ¡Otra innovación en transporte público paisa!",
-      points: 30
+      question: "¿En qué valle se estableció Medellín?",
+      options: ["Valle de Aburrá", "Valle de Urabá", "Valle del Cauca", "Valle de Tenza"],
+      correctAnswer: "Valle de Aburrá",
+      feedback: "¡Claro que sí! El Valle de Aburrá, rodeado de montañas verdes y con un río que lo atraviesa. Un lugar perfecto para que floreciera la cultura paisa.",
+      points: 10
     },
     {
-      id: 38,
-      period: "2010-2020",
+      id: 6,
+      period: "1700-1750",
       difficulty: "Maestro",
-      question: "¿Cuál es el nombre del distrito de innovación de Medellín?",
-      options: ["Distrito E", "Ruta N", "Medellín Digital", "Ciudad del Conocimiento"],
-      correctAnswer: "Distrito E",
-      feedback: "¡Excelente! El Distrito E (Distrito de la Economía del Conocimiento) es el corazón de la innovación paisa, donde convergen empresas, universidades y emprendedores.",
-      points: 30
+      question: "¿Cuál era la principal actividad económica en los primeros años de Medellín?",
+      options: ["Minería", "Agricultura y ganadería", "Comercio", "Artesanías"],
+      correctAnswer: "Agricultura y ganadería",
+      feedback: "¡Exacto! Los primeros paisas eran agricultores y ganaderos. Sembraban maíz, fríjol y criaban ganado. De ahí viene esa tradición paisa de trabajar la tierra con amor.",
+      points: 10
     },
     {
-      id: 39,
-      period: "2015-2025",
+      id: 7,
+      period: "1750-1800",
       difficulty: "Maestro",
-      question: "¿En qué año se inauguró el Parque del Río?",
-      options: ["2016", "2017", "2018", "2019"],
-      correctAnswer: "2016",
-      feedback: "¡Correcto! El Parque del Río se inauguró en 2016, devolviendo el río a los paisas y creando un espacio verde en el corazón de la ciudad.",
-      points: 30
+      question: "¿Cómo se llamaba originalmente el Parque Berrío?",
+      options: ["Plaza Mayor", "Plaza de la Villa de la Candelaria", "Plaza Central", "Plaza de Armas"],
+      correctAnswer: "Plaza de la Villa de la Candelaria",
+      feedback: "¡Eso es! La Plaza de la Villa de la Candelaria era el corazón de todo. Ahí se hacían los negocios, las misas y hasta las peleas de gallos. ¡El ombligo del pueblo!",
+      points: 10
     },
     {
-      id: 40,
-      period: "2020-2025",
+      id: 8,
+      period: "1750-1800",
       difficulty: "Maestro",
-      question: "¿Cuál es el nombre del proyecto de ciudad inteligente de Medellín?",
-      options: ["MedellínTech", "Smart Medellín", "Medellín 4.0", "Ciudad Inteligente"],
-      correctAnswer: "Medellín 4.0",
-      feedback: "¡Extraordinario! Medellín 4.0 es la estrategia de ciudad inteligente que posiciona a Medellín como referente mundial en innovación urbana y tecnología.",
-      points: 30
+      question: "¿Qué río atraviesa el Valle de Aburrá?",
+      options: ["Río Medellín", "Río Cauca", "Río Magdalena", "Río Atrato"],
+      correctAnswer: "Río Medellín",
+      feedback: "¡Correcto! El Río Medellín, que antes se llamaba Río Aburrá. Nuestro río querido que ha visto pasar toda la historia de la ciudad.",
+      points: 10
     }
   ]
 };
@@ -426,24 +426,24 @@ export const triviaDatabase = {
 // Configuración de niveles y progresión
 export const levelConfig = {
   beginner: {
-    name: "Principiante",
-    description: "Época Colonial (1675-1800)",
+    name: "Principiante", 
+    description: "Ciudad Innovadora (2000-2025)",
     questionsToPass: 6,
     totalQuestions: 8,
-    pointsPerQuestion: 10,
+    pointsPerQuestion: 30,
     color: "bg-green-500"
   },
   intermediate: {
     name: "Intermedio", 
-    description: "Independencia y República (1800-1900)",
+    description: "Transformación Urbana (1950-2000)",
     questionsToPass: 6,
     totalQuestions: 8,
-    pointsPerQuestion: 15,
+    pointsPerQuestion: 25,
     color: "bg-blue-500"
   },
   advanced: {
     name: "Avanzado",
-    description: "Industrialización (1900-1950)", 
+    description: "Industrialización (1900-1950)",
     questionsToPass: 6,
     totalQuestions: 8,
     pointsPerQuestion: 20,
@@ -451,18 +451,18 @@ export const levelConfig = {
   },
   expert: {
     name: "Experto",
-    description: "Transformación Urbana (1950-2000)",
+    description: "Independencia y República (1800-1900)",
     questionsToPass: 6,
     totalQuestions: 8,
-    pointsPerQuestion: 25,
+    pointsPerQuestion: 15,
     color: "bg-red-500"
   },
   master: {
     name: "Maestro",
-    description: "Ciudad Innovadora (2000-2025)",
+    description: "Época Colonial (1675-1800)",
     questionsToPass: 6,
     totalQuestions: 8,
-    pointsPerQuestion: 30,
+    pointsPerQuestion: 10,
     color: "bg-yellow-500"
   }
 };
