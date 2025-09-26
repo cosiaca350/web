@@ -332,39 +332,7 @@ const CosiacaBot = () => {
                                     </div>
                                 </div>
                             )}
-                            
-                            <div ref={messagesEndRef} />
-                        </div>
-                        
-                        {/* Input Area */}
-                        <div className="border-t border-cosiaca-beige p-4 bg-white">
-                            <div className="flex space-x-3">
-                                <input
-                                    type="text"
-                                    value={inputMessage}
-                                    onChange={(e) => setInputMessage(e.target.value)}
-                                    onKeyPress={handleKeyPress}
-                                    placeholder="Pregúntale a Cosiaca sobre la historia de Medellín..."
-                                    className="flex-1 px-4 py-3 border border-cosiaca-beige rounded-full focus:outline-none focus:ring-2 focus:ring-cosiaca-red focus:border-transparent"
-                                    disabled={isLoading}
-                                />
-                                <button
-                                    onClick={handleSendMessage}
-                                    disabled={isLoading || !inputMessage.trim()}
-                                    className="bg-cosiaca-red text-white p-3 rounded-full hover:bg-cosiaca-red-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
-                                    title="Enviar mensaje"
-                                >
-                                    <SendIcon className="w-5 h-5" />
-                                </button>
-                            </div>
-                            
-                            {/* Contador de caracteres */}
-                            <div className="text-xs text-gray-500 mt-2 text-right">
-                                {inputMessage.length}/500 caracteres
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    {/* Widget de ElevenLabs */}
             )}
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -413,7 +381,7 @@ const CosiacaBot = () => {
                     <div className="p-4 bg-green-100 border border-green-300 rounded-lg">
                         <h4 className="font-bold text-green-800 mb-2">🎙️ Chat por Voz</h4>
                         <p className="text-sm text-green-700">
-                            Habla directamente con Cosiaca usando ElevenLabs. Dos agentes disponibles para diferentes experiencias.
+                            Habla directamente con Cosiaca usando ElevenLabs. Presiona y mantén para hablar.
                         </p>
                     </div>
                 </div>
@@ -427,7 +395,7 @@ const CosiacaBot = () => {
                 <div className="mt-4 p-4 bg-blue-100 border border-blue-300 rounded-lg">
                     <p className="text-sm text-blue-800">
                         <strong>💡 Nuevas Funciones:</strong> Preguntas sugeridas, historial con timestamps, 
-                        auto-scroll, contador de caracteres y dos agentes de voz diferentes.
+                        auto-scroll, contador de caracteres y chat por voz integrado.
                     </p>
                 </div>
             </div>
