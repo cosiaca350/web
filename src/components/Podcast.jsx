@@ -205,40 +205,39 @@ const Podcast = () => {
                                         <strong>Duración:</strong> {episode.duration}
                                     </span>
                                     <button
+                                        onClick={() => handlePlayPause(episode)}
+                                        disabled={loadingAudio === episode.id}
+                                        className={`flex items-center px-4 py-2 rounded-full font-bold transition-all duration-300 ${
+                                            currentAudio && currentAudio.id === episode.id && isPlaying
+                                                ? 'bg-cosiaca-brown text-white'
+                                                : loadingAudio === episode.id
+                                                ? 'bg-gray-400 text-white cursor-not-allowed'
+                                                : 'bg-cosiaca-red text-white hover:bg-cosiaca-red-dark'
+                                        } ${loadingAudio === episode.id ? 'opacity-50' : ''}`}
+                                    >
+                                        {loadingAudio === episode.id ? (
+                                            <>
+                                                <div className="w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                                                <strong>Cargando...</strong>
+                                            </>
+                                        ) : currentAudio && currentAudio.id === episode.id && isPlaying ? (
+                                            <>
+                                                <PauseIcon className="w-4 h-4 mr-2" />
+                                                <strong>Pausar</strong>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <PlayIcon className="w-4 h-4 mr-2" />
+                                                <strong>Reproducir</strong>
+                                            </>
+                                        )}
+                                    </button>
+                                </div>
                                 {loadingAudio === episode.id && (
                                     <span className="text-sm text-cosiaca-red font-medium animate-pulse">
                                         Cargando...
                                     </span>
                                 )}
-                                
-                                        onClick={() => handlePlayPause(episode)}
-                                        className={`flex items-center px-4 py-2 rounded-full font-bold transition-all duration-300 ${
-                                    disabled={loadingAudio === episode.id}
-                                            currentAudio && currentAudio.id === episode.id && isPlaying
-                                                ? 'bg-cosiaca-brown text-white'
-                                                : 'bg-cosiaca-red text-white hover:bg-cosiaca-red-dark'
-                                            : loadingAudio === episode.id
-                                            ? 'bg-gray-400 text-white cursor-not-allowed'
-                                            : 'bg-cosiaca-red text-white hover:bg-cosiaca-red-dark'
-                                    } ${loadingAudio === episode.id ? 'opacity-50' : ''}`}
-                                        <PlayIcon className="w-4 h-4 mr-2" />
-                                    {loadingAudio === episode.id ? (
-                                        <>
-                                            <div className="w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                                            <strong>Cargando...</strong>
-                                        </>
-                                    ) : currentAudio && currentAudio.id === episode.id && isPlaying ? (
-                                        <>
-                                            <PauseIcon className="w-4 h-4 mr-2" />
-                                            <strong>Pausar</strong>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <PlayIcon className="w-4 h-4 mr-2" />
-                                            <strong>Reproducir</strong>
-                                        </>
-                                    )}
-                                </div>
                             </div>
                         </div>
                     </div>
