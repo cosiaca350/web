@@ -34,29 +34,35 @@ const Home = ({ setView }) => {
             const randomFact = facts[Math.floor(Math.random() * facts.length)];
             setHistoricalFact(randomFact);
         } catch (error) {
-            console.error('Error generating historical fact:', error);
-            setHistoricalFact('¡Uy! Cosiaca se enredó con la historia. Intenta de nuevo más tarde.');
+            console.error('Error generating fact:', error);
         } finally {
             setIsLoadingFact(false);
         }
     };
 
+    const nextPage = () => {
+        setCurrentPage((prev) => (prev + 1) % pages.length);
+    };
+
+    const prevPage = () => {
+        setCurrentPage((prev) => (prev - 1 + pages.length) % pages.length);
+    };
+
+    const goToPage = (pageIndex) => {
+        setCurrentPage(pageIndex);
+    };
+
     const pages = [
         {
             id: 'intro',
-            title: 'Cosiaca 350',
-            subtitle: 'Un Viaje Inmersivo a la Historia de Medellín',
+            title: 'Cosiaca',
+            subtitle: 'Un viaje inmersivo a la historia de Medellín',
             content: (
-                <div className="text-center space-y-6">
-                    <div className="mb-8">
-                        <div className="inline-block">
-                            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-cosiaca-brown font-serif mb-4 tracking-tight">
-                                Cosiaca
-                            </h1>
-                            <div className="flex justify-center">
-                                <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-cosiaca-brown border-2 border-cosiaca-brown px-6 py-2 rounded-lg">
-                                    350
-                                </span>
+                <div className="text-center space-y-8">
+                    <div className="mb-12">
+                        <div className="relative inline-block">
+                            <div className="text-8xl sm:text-9xl md:text-[12rem] font-black text-cosiaca-red font-serif leading-none tracking-tight">
+                                COSIACA
                             </div>
                         </div>
                     </div>
@@ -268,22 +274,6 @@ const Home = ({ setView }) => {
             background: 'https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop'
         }
     ];
-
-    const nextPage = () => {
-        if (currentPage < pages.length - 1) {
-            setCurrentPage(currentPage + 1);
-        }
-    };
-
-    const prevPage = () => {
-        if (currentPage > 0) {
-            setCurrentPage(currentPage - 1);
-        }
-    };
-
-    const goToPage = (pageIndex) => {
-        setCurrentPage(pageIndex);
-    };
 
     const currentPageData = pages[currentPage];
 
