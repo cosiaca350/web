@@ -18,6 +18,29 @@ const Home = ({ setView }) => {
     const [historicalFact, setHistoricalFact] = useState('');
     const [isLoadingFact, setIsLoadingFact] = useState(false);
 
+    const handleGenerateFact = async () => {
+        setIsLoadingFact(true);
+        setHistoricalFact(''); 
+
+        try {
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            const facts = [
+                "¡Ah, mijito, le voy a contar un chismecito de Medellín! ¿Sabía que en 1675, cuando se fundó la Villa de Nuestra Señora de la Candelaria de Medellín, había más vacas que gente? ¡Sí señor! Los fundadores trajeron 24 familias, pero las vacas eran como 200. Por eso es que los paisas somos tan tercos, ¡heredamos el gen bovino!",
+                "¡Uy, mijito, esto sí está bueno! En 1890, Medellín tenía el primer tranvía de mulas de Colombia. ¡Imagínese, las mulas jalando carros por toda la ciudad! Los pasajeros se quejaban del olor, pero las mulas nunca se quedaron sin gasolina. ¡Qué tiempos aquellos cuando el transporte público tenía cola y relinchaba!",
+                "¡Ah, qué cosa tan curiosa! En 1920, el Parque Berrío era el lugar donde se hacían las peleas de gallos más famosas de Antioquia. Los domingos se llenaba de apostadores y el gallo ganador se volvía más famoso que cualquier político. ¡Hasta había gallos con manager y todo!"
+            ];
+            
+            const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            setHistoricalFact(randomFact);
+        } catch (error) {
+            console.error('Error generating historical fact:', error);
+            setHistoricalFact('¡Uy! Cosiaca se enredó con la historia. Intenta de nuevo más tarde.');
+        } finally {
+            setIsLoadingFact(false);
+        }
+    };
+
     const pages = [
         {
             id: 'intro',
@@ -262,29 +285,6 @@ const Home = ({ setView }) => {
             const randomFact = facts[Math.floor(Math.random() * facts.length)];
             setHistoricalFact(randomFact);
         } catch (error) {
-            console.error('Error generating historical fact:', error);
-            setHistoricalFact('¡Uy! Cosiaca se enredó con la historia. Intenta de nuevo más tarde.');
-        } finally {
-            setIsLoadingFact(false);
-        }
-    };
-
-    const nextPage = () => {
-        if (currentPage < pages.length - 1) {
-            setCurrentPage(currentPage + 1);
-        }
-    };
-
-    const prevPage = () => {
-        if (currentPage > 0) {
-            setCurrentPage(currentPage - 1);
-        }
-    };
-
-    const goToPage = (pageIndex) => {
-        setCurrentPage(pageIndex);
-    };
-
     const currentPageData = pages[currentPage];
 
     return (
