@@ -45,41 +45,23 @@ const PlanIcon = (props) => (
     </svg>
 );
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [isExperiencesMenuOpen, setExperiencesMenuOpen] = useState(false);
-    const experiencesRef = useRef(null);
 
     const mainLinks = [
-        { name: 'Inicio', view: 'home', icon: <HomeIcon className="mr-2"/> },
-        { name: 'Bienvenida', view: 'welcome', icon: <SparklesIcon className="mr-2"/> },
-        { name: 'El Proyecto', view: 'proyecto', icon: <ProjectIcon className="mr-2"/> },
-        { name: 'CosiacaBot', view: 'cosiacabot', icon: <BotIcon className="mr-2"/> },
-        { name: 'Juegos y AR', view: 'juegos', icon: <GamepadIcon className="mr-2"/> },
-        { name: 'Podcast Histórico', view: 'podcast', icon: <PodcastIcon className="mr-2"/> },
-        { name: 'Libros', view: 'libros', icon: <BookIcon className="mr-2"/> },
-        { name: 'Línea de Tiempo', view: 'timeline', icon: <TimelineIcon className="mr-2"/> },
-        { name: 'Archivo', view: 'archivo', icon: <ArchiveIcon className="mr-2"/> },
-        { name: 'Plan de Trabajo', view: 'plan', icon: <PlanIcon className="mr-2"/> },
-        { name: 'Equipo', view: 'team', icon: <TeamIcon className="mr-2"/> },
-        { name: 'Redes', view: 'redes', icon: <LinkIcon className="mr-2"/> },
-    ];
-
-    const experienceLinks = [
-        { name: 'Videos IA', view: 'videos', icon: <VideoIcon className="mr-2"/> },
+        { name: 'Inicio', view: 'home' },
+        { name: 'Bienvenida', view: 'welcome' },
+        { name: 'El Proyecto', view: 'proyecto' },
+        { name: 'Videos IA', view: 'videos' },
+        { name: 'CosiacaBot', view: 'cosiacabot' },
+        { name: 'Juegos y AR', view: 'juegos' },
+        { name: 'Podcast Histórico', view: 'podcast' },
+        { name: 'Libros', view: 'libros' },
+        { name: 'Línea de Tiempo', view: 'timeline' },
+        { name: 'Archivo', view: 'archivo' },
+        { name: 'Plan de Trabajo', view: 'plan' },
+        { name: 'Equipo', view: 'team' },
+        { name: 'Redes', view: 'redes' },
     ];
     
-    // Close dropdown if clicked outside
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (experiencesRef.current && !experiencesRef.current.contains(event.target)) {
-                setExperiencesMenuOpen(false);
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, [experiencesRef]);
-
     return (
         <nav className="bg-cosiaca-brown/90 backdrop-blur-lg text-cosiaca-cream p-3 sm:p-4 sticky top-0 z-50 border-b border-cosiaca-brown/20 shadow-lg">
             <div className="container mx-auto flex justify-between items-center">
@@ -101,49 +83,12 @@ const PlanIcon = (props) => (
                             className={`flex items-center px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-300 ${
                                 view === link.view 
                                     ? 'bg-cosiaca-red text-white shadow-lg' 
-                                    : 'text-cosiaca-cream hover:bg-cosiaca-brown/70'
+                                    : 'text-cosiaca-cream hover:bg-cosiaca-brown/70 hover:text-white'
                             }`}
                         >
-                            <span className="hidden xl:inline">{link.icon}</span>
-                            <span className="xl:hidden text-lg">{link.icon}</span>
-                            <span className="ml-1 xl:ml-2">{link.name}</span>
+                            {link.name}
                         </button>
                     ))}
-                    <div className="relative" ref={experiencesRef}>
-                        <button 
-                            onClick={() => setExperiencesMenuOpen(!isExperiencesMenuOpen)} 
-                            aria-expanded={isExperiencesMenuOpen}
-                            aria-haspopup="true"
-                            className={`flex items-center px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-300 ${
-                                isExperiencesMenuOpen ? 'bg-cosiaca-brown/70 text-cosiaca-cream' : 'text-cosiaca-cream hover:bg-cosiaca-brown/70'
-                            }`}
-                        >
-                            <SparklesIcon className="mr-1 xl:mr-2"/> Experiencias
-                        </button>
-                        {isExperiencesMenuOpen && (
-                            <div className="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-cosiaca-cream ring-1 ring-cosiaca-brown ring-opacity-50" role="menu">
-                                <div className="py-1">
-                                    {experienceLinks.map(link => (
-                                        <button 
-                                            key={link.view} 
-                                            onClick={() => { 
-                                                setView(link.view); 
-                                                setExperiencesMenuOpen(false); 
-                                            }} 
-                                            role="menuitem"
-                                            className={`flex items-center w-full text-left px-4 py-2 text-sm ${
-                                                view === link.view 
-                                                    ? 'bg-cosiaca-red text-white' 
-                                                    : 'text-cosiaca-brown hover:bg-cosiaca-beige'
-                                            }`}
-                                        >
-                                            {link.icon} {link.name}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </div>
                 </nav>
                 
                 {/* AI Provider Selector - Desktop */}
@@ -172,7 +117,7 @@ const PlanIcon = (props) => (
             </div>
             {isMobileMenuOpen && (
                 <nav className="lg:hidden mt-4 space-y-1 max-h-96 overflow-y-auto" role="navigation" aria-label="Navegación móvil">
-                    {[...mainLinks, ...experienceLinks].map(link => (
+                    {mainLinks.map(link => (
                         <button 
                             key={link.view} 
                             onClick={() => { 
@@ -186,7 +131,7 @@ const PlanIcon = (props) => (
                                     : 'text-cosiaca-cream hover:bg-cosiaca-brown/70'
                             }`}
                         >
-                            {link.icon} {link.name}
+                            {link.name}
                         </button>
                     ))}
                 </nav>

@@ -33,31 +33,31 @@ const Welcome = ({ setView }) => {
 
     const features = [
         { 
+            icon: <VideoIcon className="w-8 h-8" />, 
+            title: "Videos IA", 
+            desc: "Historia visual con IA",
+            action: () => setView('videos'),
+            color: "from-blue-500 to-blue-600"
+        },
+        { 
             icon: <BotIcon className="w-8 h-8" />, 
             title: "CosiacaBot", 
             desc: "Conversa con la historia",
             action: () => setView('cosiacabot'),
-            color: "from-blue-500 to-blue-600"
+            color: "from-purple-500 to-purple-600"
         },
         { 
             icon: <GamepadIcon className="w-8 h-8" />, 
             title: "Juegos AR", 
             desc: "Aprende jugando",
             action: () => setView('juegos'),
-            color: "from-purple-500 to-purple-600"
+            color: "from-green-500 to-green-600"
         },
         { 
             icon: <PlayIcon className="w-8 h-8" />, 
             title: "Podcast", 
             desc: "Historias narradas",
             action: () => setView('podcast'),
-            color: "from-green-500 to-green-600"
-        },
-        { 
-            icon: <VideoIcon className="w-8 h-8" />, 
-            title: "Videos IA", 
-            desc: "Historia visual",
-            action: () => setView('videos'),
             color: "from-red-500 to-red-600"
         }
     ];

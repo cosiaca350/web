@@ -111,8 +111,16 @@ const Juegos = () => {
     const generateAIJoke = async () => {
         setIsGeneratingJoke(true);
         try {
-            const joke = await AIService.generatePaisaJoke();
-            setCurrentJoke(joke);
+            // Usar directamente fallback ya que no hay API válida
+            const fallbackJokes = [
+                "¡Uy mijito! ¿Sabés por qué los paisas somos tan trabajadores? ¡Porque desde que nacemos ya estamos 'ocupados' en el vientre de la mamá! Ja ja ja, ¡qué ocurrencia!",
+                "¿Por qué en Medellín nunca llueve dinero? ¡Porque los paisas ya lo habríamos recogido todo antes de que toque el suelo! Ja ja ja.",
+                "¿Sabés cuál es el colmo de un paisa? ¡Que le regalen algo y pregunte cuánto vale para saber si le gustó! Ja ja ja.",
+                "¿Por qué los paisas somos tan buenos para los negocios? ¡Porque vendemos hasta la sombra y después cobramos por el fresco! Ja ja ja.",
+                "¿Cuál es la diferencia entre un paisa y un arriero? ¡Que el arriero solo carga mulas, pero el paisa carga con toda la familia! Ja ja ja."
+            ];
+            const randomJoke = fallbackJokes[Math.floor(Math.random() * fallbackJokes.length)];
+            setCurrentJoke(randomJoke);
         } catch (error) {
             console.error('Error generating joke:', error);
             setCurrentJoke("¡Uy mijito! ¿Sabés por qué los paisas somos tan trabajadores? ¡Porque desde que nacemos ya estamos 'ocupados' en el vientre de la mamá! Ja ja ja, ¡qué ocurrencia!");
@@ -124,8 +132,16 @@ const Juegos = () => {
     const generateAITrova = async () => {
         setIsGeneratingTrova(true);
         try {
-            const trova = await AIService.generatePaisaTrova();
-            setCurrentTrova(trova.replace(/\n/g, '<br>'));
+            // Usar directamente fallback ya que no hay API válida
+            const fallbackTrovas = [
+                "En las montañas de Antioquia,<br>donde el café es tradición,<br>vive el paisa trabajador<br>con mucho amor y pasión.",
+                "Medellín, ciudad querida,<br>de arrieros y soñadores,<br>tus calles guardan la vida<br>de nobles trabajadores.",
+                "En el Valle de Aburrá,<br>donde el río canta y fluye,<br>la historia paisa está<br>en cada alma que construye.",
+                "Cosiaca cuenta con gracia<br>las historias del pasado,<br>de esta tierra de Antioquia<br>que siempre ha prosperado.",
+                "Desde mil seiscientos setenta,<br>cuando se fundó la villa,<br>los paisas con su destreza<br>hicieron grande esta orilla."
+            ];
+            const randomTrova = fallbackTrovas[Math.floor(Math.random() * fallbackTrovas.length)];
+            setCurrentTrova(randomTrova);
         } catch (error) {
             console.error('Error generating trova:', error);
             setCurrentTrova("En las montañas de Antioquia,<br>donde el café es tradición,<br>vive el paisa trabajador<br>con mucho amor y pasión.");

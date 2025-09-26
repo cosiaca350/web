@@ -25,40 +25,7 @@ const ElevenLabsWidget = () => {
                 ¡Ahora podés conversar con Cosiaca usando tu voz! Presiona el botón y pregúntale sobre la historia de Medellín.
             </p>
             
-            {/* Widgets de ElevenLabs - Dos opciones */}
-            <div className="space-y-4 mb-6">
-                <div className="text-center">
-                    <h4 className="font-bold text-cosiaca-brown mb-2">🎭 Cosiaca Principal</h4>
-                    <div className="flex justify-center">
-                        <elevenlabs-convai 
-                            agent-id="agent_4301k5gpsen4erzt882jhf3ekyby"
-                        />
-                    </div>
-                </div>
-                
-                <div className="text-center">
-                    <h4 className="font-bold text-cosiaca-brown mb-2">🎪 Cosiaca Alternativo</h4>
-                    <div className="flex justify-center">
-                        <elevenlabs-convai 
-                            agent-id="agent_6901k5bkw09ce5wb26gw96e5nh8e"
-                        />
-                    </div>
-                </div>
-            </div>
-            
-            {/* Enlace directo a ElevenLabs */}
-            <div className="mb-4">
-                <a 
-                    href="https://elevenlabs.io/app/talk-to?agent_id=agent_6901k5bkw09ce5wb26gw96e5nh8e" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors"
-                >
-                    🔗 Abrir en ElevenLabs
-                </a>
-            </div>
-            
-            {/* Widget original */}
+            {/* Widget de ElevenLabs */}
             <div className="flex justify-center mb-4 border-t pt-4">
                 <elevenlabs-convai 
                     agent-id="agent_4301k5gpsen4erzt882jhf3ekyby"

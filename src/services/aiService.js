@@ -123,12 +123,9 @@ class AIService {
         Máximo 4 líneas, que suene como un verdadero chisme paisa con datos históricos reales.`;
         
         try {
-            // Intentar con la API si está disponible
-            if (this.providers.gemini.active && this.providers.gemini.apiKey && this.providers.gemini.apiKey !== '') {
-                return await this.callGemini(prompt, context);
-            } else {
-                throw new Error('API no disponible');
-            }
+            // Usar directamente fallbacks ya que no hay API válida
+            console.log('Generando chisme histórico con fallback');
+            return this.getFallbackGossip();
         } catch (error) {
             console.log('Usando chisme de fallback:', error.message);
             return this.getFallbackGossip();
