@@ -112,9 +112,9 @@ const ConstructionPage = ({ onEnter }) => {
 
             <div className="relative z-10 min-h-screen flex flex-col">
                 {/* Header with Logo */}
-                <div className={`text-center pt-8 pb-4 transition-all duration-1000 ${isAnimating ? 'transform -translate-y-10 opacity-0' : 'transform translate-y-0 opacity-100'}`}>
+                <div className={`text-center pt-6 pb-3 transition-all duration-1000 ${isAnimating ? 'transform -translate-y-10 opacity-0' : 'transform translate-y-0 opacity-100'}`}>
                     <div className="relative inline-block">
-                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-cosiaca-brown font-serif leading-none tracking-tight">
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-cosiaca-brown font-serif leading-none tracking-tight">
                             {"{COSIACA "}
                             <strong>350</strong>
                             {"}"}
