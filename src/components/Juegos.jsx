@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BotIcon, CheckCircleIcon, XCircleIcon, SparklesIcon } from '../icons/Icons';
 import AdvancedTrivia from './AdvancedTrivia';
+import GeminiService from '../services/geminiService';
 
 const Juegos = () => {
     const [activeTab, setActiveTab] = useState('trivia');
@@ -110,18 +111,10 @@ const Juegos = () => {
     const generateAIJoke = async () => {
         setIsGeneratingJoke(true);
         try {
-            // Simulate AI generation
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            const aiJokes = [
-                "¡Ay, mijito! ¿Sabés por qué los paisas no jugamos al escondite? ¡Porque siempre nos encuentran por el acento tan marcado! 'Eyyy, ¿vos dónde estás?' ¡Y ahí nos pillan!",
-                "¿Cuál es el colmo de un paisa? Que le digan que no hable tanto y responda: '¡Pero si apenas estoy empezando el cuento, pues!'",
-                "¿Por qué los paisas somos tan buenos para los negocios? ¡Porque hasta para contar un chiste cobramos la entrada! Ja, ja, ja.",
-                "¿Qué le dice un paisa a otro paisa en el extranjero? '¡Ey, paisano, ¿vos también extrañás el sancocho de la abuela?' Y el otro: '¡Claro, hermano, y las arepas con quesito!'",
-                "¿Cuál es la diferencia entre un paisa y un loro? ¡Que el loro repite lo que escucha, pero el paisa mejora la historia cada vez que la cuenta!"
-            ];
-            const randomJoke = aiJokes[Math.floor(Math.random() * aiJokes.length)];
-            setCurrentJoke(randomJoke);
+            const joke = await GeminiService.generatePaisaJoke();
+            setCurrentJoke(joke);
         } catch (error) {
+            console.error('Error generating joke:', error);
             setCurrentJoke("¡Uy! Cosiaca se enredó con el chiste. Intenta de nuevo más tarde.");
         } finally {
             setIsGeneratingJoke(false);
@@ -131,18 +124,10 @@ const Juegos = () => {
     const generateAITrova = async () => {
         setIsGeneratingTrova(true);
         try {
-            // Simulate AI generation
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            const aiTrovas = [
-                "En Medellín la bella\ndonde el café es tradición,\nles canto con alegría\nesta trova del corazón.",
-                "Por las calles empinadas\nde mi tierra antioqueña,\nvoy cantando estas coplas\ncon el alma muy risueña.",
-                "Desde el cerro Nutibara\nhasta el río Medellín,\nresuena mi voz cantando\neste verso sin fin.",
-                "Con el sombrero ladeado\ny la ruana al viento,\nles traigo estas palabras\ncomo dulce alimento.",
-                "En la plaza de Botero\ndonde el arte es rey,\ncanto esta trova paisa\ncon orgullo y con fe."
-            ];
-            const randomTrova = aiTrovas[Math.floor(Math.random() * aiTrovas.length)];
-            setCurrentTrova(randomTrova.replace(/\n/g, '<br>'));
+            const trova = await GeminiService.generatePaisaTrova();
+            setCurrentTrova(trova.replace(/\n/g, '<br>'));
         } catch (error) {
+            console.error('Error generating trova:', error);
             setCurrentTrova("¡Uy! Cosiaca se enredó con la trova. Intenta de nuevo más tarde.");
         } finally {
             setIsGeneratingTrova(false);
