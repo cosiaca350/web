@@ -38,6 +38,8 @@ const App = () => {
         switch (view) {
             case 'home':
                 return <Home setView={setView} />;
+            case 'welcome':
+                return <Welcome setView={setView} />;
             case 'proyecto':
                 return <Proyecto />;
             case 'cosiacabot':

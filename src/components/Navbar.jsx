@@ -50,6 +50,7 @@ const PlanIcon = (props) => (
 
     const mainLinks = [
         { name: 'Inicio', view: 'home', icon: <HomeIcon className="mr-2"/> },
+        { name: 'Bienvenida', view: 'welcome', icon: <SparklesIcon className="mr-2"/> },
         { name: 'El Proyecto', view: 'proyecto', icon: <ProjectIcon className="mr-2"/> },
         { name: 'CosiacaBot', view: 'cosiacabot', icon: <BotIcon className="mr-2"/> },
         { name: 'Juegos y AR', view: 'juegos', icon: <GamepadIcon className="mr-2"/> },
