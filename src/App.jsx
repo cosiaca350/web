@@ -30,7 +30,7 @@ const App = () => {
             case 'home':
                 return <Home setView={setView} />;
             case 'welcome':
-                return <Welcome />;
+                return <Welcome setView={setView} />;
             case 'proyecto':
                 return <Proyecto />;
             case 'cosiacabot':
