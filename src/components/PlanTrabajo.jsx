@@ -5,7 +5,7 @@ const PlanTrabajo = () => {
         {
             phase: "Fase 1",
             title: "Investigación y Desarrollo de Contenidos",
-            period: "Enero - Marzo 2025",
+            period: "Primer Trimestre",
             status: "En Progreso",
             color: "bg-blue-600",
             key_deliverables: ["Base de datos histórica", "Guiones para CosiacaBot", "Videos con IA", "Manuscrito del libro"]
@@ -13,7 +13,7 @@ const PlanTrabajo = () => {
         {
             phase: "Fase 2", 
             title: "Desarrollo Tecnológico y Plataforma Digital",
-            period: "Abril - Junio 2025",
+            period: "Segundo Trimestre",
             status: "Planificado",
             color: "bg-purple-600",
             key_deliverables: ["Plataforma web completa", "CosiacaBot funcional", "Línea de tiempo interactiva", "Juegos y AR"]
@@ -21,7 +21,7 @@ const PlanTrabajo = () => {
         {
             phase: "Fase 3",
             title: "Producción Audiovisual y Contenidos Multimedia", 
-            period: "Julio - Septiembre 2025",
+            period: "Tercer Trimestre",
             status: "Planificado",
             color: "bg-green-600",
             key_deliverables: ["25 episodios de podcast", "Videos promocionales", "Contenido para redes", "Material educativo"]
@@ -29,7 +29,7 @@ const PlanTrabajo = () => {
         {
             phase: "Fase 4",
             title: "Lanzamiento, Difusión y Evaluación",
-            period: "Octubre - Diciembre 2025", 
+            period: "Cuarto Trimestre",
             status: "Planificado",
             color: "bg-amber-600",
             key_deliverables: ["Lanzamiento oficial", "Campaña mediática", "Eventos comunitarios", "Evaluación de impacto"]
@@ -74,7 +74,7 @@ const PlanTrabajo = () => {
                     "Un Proyecto Transmedia para Celebrar 350 Años de Historia"
                 </h2>
                 <p className="text-lg text-cafe-claro/80">
-                    Cosiaca 350 se desarrolla en 4 fases durante 2025, combinando investigación histórica rigurosa 
+                    Cosiaca 350 se desarrolla en 4 fases durante el año de ejecución, combinando investigación histórica rigurosa 
                     con innovación tecnológica para crear una experiencia cultural única que honre la historia de Medellín.
                 </p>
             </div>
@@ -165,23 +165,23 @@ const PlanTrabajo = () => {
             {/* Cronograma Resumido */}
             <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige">
                 <h2 className="text-3xl font-serif text-cafe-oscuro mb-6 text-center">
-                    📅 Cronograma 2025
+                    📅 Cronograma de Ejecución
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                     <div className="bg-blue-100 p-4 rounded-lg">
-                        <h3 className="font-bold text-blue-800">Q1 2025</h3>
+                        <h3 className="font-bold text-blue-800">Q1</h3>
                         <p className="text-sm text-blue-600">Investigación</p>
                     </div>
                     <div className="bg-purple-100 p-4 rounded-lg">
-                        <h3 className="font-bold text-purple-800">Q2 2025</h3>
+                        <h3 className="font-bold text-purple-800">Q2</h3>
                         <p className="text-sm text-purple-600">Desarrollo</p>
                     </div>
                     <div className="bg-green-100 p-4 rounded-lg">
-                        <h3 className="font-bold text-green-800">Q3 2025</h3>
+                        <h3 className="font-bold text-green-800">Q3</h3>
                         <p className="text-sm text-green-600">Producción</p>
                     </div>
                     <div className="bg-amber-100 p-4 rounded-lg">
-                        <h3 className="font-bold text-amber-800">Q4 2025</h3>
+                        <h3 className="font-bold text-amber-800">Q4</h3>
                         <p className="text-sm text-amber-600">Lanzamiento</p>
                     </div>
                 </div>
