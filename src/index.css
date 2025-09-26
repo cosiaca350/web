@@ -18,11 +18,71 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Typography improvements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #2C1810;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.875rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.625rem;
+}
+
+p {
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #3D2914;
+}
+
+.lead {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #2C1810;
+}
+
+.text-emphasis {
+  font-weight: 600;
+  color: #D32F2F;
+}
+
+.text-highlight {
+  background: linear-gradient(120deg, #FFD600 0%, #FFD600 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.2em;
+  background-position: 0 88%;
+  font-weight: 600;
+}
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
   background-color: #F5F1E8;
+  font-family: "Inter", sans-serif;
 }
 
 * {

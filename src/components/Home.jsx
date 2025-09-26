@@ -39,72 +39,74 @@ const Home = ({ setView }) => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-cosiaca-brown via-cosiaca-brown/40 to-transparent"></div>
                 <div className="relative z-10 p-8">
-                    <h2 className="text-4xl md:text-6xl font-black text-white font-montserrat shadow-lg animate-fade-in-up">
-                        COSIACA 350
-                        <span className="text-lg md:text-2xl font-montserrat font-normal block mt-2">
-                            / UN VIAJE INMERSIVO A LA HISTORIA DE MEDELLÍN
+                    <h1 className="text-4xl md:text-6xl font-black text-white font-serif shadow-lg animate-fade-in-up">
+                        <span className="text-emphasis">COSIACA 350</span>
+                        <span className="text-lg md:text-2xl font-sans font-normal block mt-2 opacity-90">
+                            Un Viaje Inmersivo a la Historia de Medellín
                         </span>
-                    </h2>
-                    <p className="text-lg md:text-xl text-cosiaca-yellow mt-4 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-                        PROPUESTA TRANSMEDIA PARA LA CELEBRACIÓN DE LOS 350 AÑOS DE MEDELLÍN
+                    </h1>
+                    <p className="text-lg md:text-xl text-cosiaca-yellow mt-4 animate-fade-in-up font-medium" style={{animationDelay: '0.2s'}}>
+                        <strong>Propuesta Transmedia</strong> para la Celebración de los 350 Años de Medellín
                     </p>
-                    <p className="text-sm md:text-base text-cosiaca-yellow/80 mt-2 italic animate-fade-in-up" style={{animationDelay: '0.4s'}}>
-                        ESTÍMULO A LA CREACIÓN DE UNA OBRA ARTÍSTICA: CELEBRACIÓN DE LOS 350 AÑOS DE MEDELLÍN
+                    <p className="text-sm md:text-base text-cosiaca-yellow/80 mt-2 italic animate-fade-in-up font-medium" style={{animationDelay: '0.4s'}}>
+                        <em>Estímulo a la Creación de una Obra Artística: Celebración de los 350 Años de Medellín</em>
                     </p>
-                    <p className="text-sm md:text-base text-cosiaca-yellow/80 mt-2 italic animate-fade-in-up" style={{animationDelay: '0.6s'}}>
-                        Proyecto beneficiado de las Convocatorias de Fomento y Estímulos para el Arte y la Cultura 2025. 
-                        Secretaría de Cultura Ciudadana de Medellín.
+                    <p className="text-sm md:text-base text-cosiaca-yellow/80 mt-2 italic animate-fade-in-up font-medium" style={{animationDelay: '0.6s'}}>
+                        <strong>Proyecto beneficiado</strong> de las Convocatorias de Fomento y Estímulos para el Arte y la Cultura 2025.<br/>
+                        <em>Secretaría de Cultura Ciudadana de Medellín</em>
                     </p>
                 </div>
             </div>
             
             <div className="max-w-4xl mx-auto text-center">
-                <h3 className="text-3xl font-bold font-serif text-cosiaca-brown mb-4">
+                <h2 className="text-3xl font-bold font-serif text-cosiaca-brown mb-4">
                     "Contar la historia para vivirla riendo"
-                </h3>
-                <p className="text-lg text-cosiaca-brown-light/80">
-                    En el marco de la conmemoración de los 350 años de la fundación de Medellín, presentamos **Cosiaca 350**, 
-                    una propuesta artística transmedia que dialoga con la historia, la identidad y el futuro de la ciudad. 
-                    El proyecto rinde homenaje a Medellín integrando narrativa histórica y tecnología interactiva, 
-                    reviviendo al mítico cuentero José García, "Cosiaca", como guía y narrador a través de tres siglos 
-                    y medio de historia local.
+                </h2>
+                <p className="text-lg text-cosiaca-brown-light/80 lead">
+                    En el marco de la conmemoración de los <strong>350 años de la fundación de Medellín</strong>, presentamos <span className="text-emphasis">Cosiaca 350</span>, 
+                    una <strong>propuesta artística transmedia</strong> que dialoga con la historia, la identidad y el futuro de la ciudad. 
+                    El proyecto rinde homenaje a Medellín integrando <em>narrativa histórica y tecnología interactiva</em>, 
+                    reviviendo al mítico cuentero <strong>José García "Cosiaca"</strong> como guía y narrador a través de <em>tres siglos 
+                    y medio de historia local</em>.
                 </p>
                 <button 
                     onClick={() => setView('proyecto')} 
-                    className="mt-8 bg-cosiaca-red text-white font-bold py-3 px-8 rounded-full hover:bg-cosiaca-red-dark transition-transform transform hover:scale-105 shadow-lg text-lg"
+                    className="mt-8 bg-cosiaca-red text-white font-bold py-4 px-10 rounded-full hover:bg-cosiaca-red-dark transition-transform transform hover:scale-105 shadow-lg text-lg font-sans"
                 >
-                    Conocer el Proyecto a Fondo
+                    <strong>Conocer el Proyecto a Fondo</strong>
                 </button>
             </div>
 
             <section className="max-w-4xl mx-auto text-center bg-cosiaca-beige/50 p-8 rounded-lg shadow-xl border border-cosiaca-beige">
-                <h3 className="text-3xl font-bold font-serif text-cosiaca-brown mb-4">
+                <h2 className="text-3xl font-bold font-serif text-cosiaca-brown mb-4">
                     ✨ El Chismecito Histórico de Cosiaca ✨
-                </h3>
-                <p className="text-lg text-cosiaca-brown-light mb-6">
-                    ¿Quieres escuchar un dato curioso y divertido de la historia de Medellín, contado por el mismísimo Cosiaca? 
-                    ¡Dale al botón!
+                </h2>
+                <p className="text-lg text-cosiaca-brown-light mb-6 lead">
+                    ¿Quieres escuchar un <strong>dato curioso y divertido</strong> de la historia de Medellín, contado por el mismísimo <em>Cosiaca</em>? 
+                    <strong>¡Dale al botón!</strong>
                 </p>
                 <button 
                     onClick={handleGenerateFact} 
-                    className="bg-cosiaca-red text-white font-bold py-3 px-8 rounded-full hover:bg-cosiaca-red-dark transition-transform transform hover:scale-105 shadow-lg text-lg flex items-center justify-center mx-auto" 
+                    className="bg-cosiaca-red text-white font-bold py-4 px-10 rounded-full hover:bg-cosiaca-red-dark transition-transform transform hover:scale-105 shadow-lg text-lg flex items-center justify-center mx-auto font-sans" 
                     disabled={isLoadingFact}
                 >
                     {isLoadingFact ? (
                         <>
                             <SparklesIcon className="animate-pulse mr-2" /> 
-                            Pensando el chisme...
+                            <strong>Pensando el chisme...</strong>
                         </>
                     ) : (
                         <>
                             <SparklesIcon className="mr-2" /> 
-                            Contar un Chisme Histórico
+                            <strong>Contar un Chisme Histórico</strong>
                         </>
                     )}
                 </button>
                 {historicalFact && (
                     <div className="mt-8 p-6 bg-cosiaca-cream rounded-lg text-cosiaca-brown-light italic text-left relative border border-cosiaca-beige">
-                        <p className="text-lg leading-relaxed">"{historicalFact}"</p>
+                        <p className="text-lg leading-relaxed font-medium">
+                            <em>"{historicalFact}"</em>
+                        </p>
                         <div className="absolute top-0 right-0 -mt-3 -mr-3 bg-cosiaca-red text-white rounded-full p-2 shadow-md">
                             <BotIcon className="w-6 h-6" />
                         </div>
