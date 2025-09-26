@@ -53,7 +53,7 @@ const Home = ({ setView }) => {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-cosiaca-cream via-cosiaca-beige to-cosiaca-tan relative overflow-hidden">
+        <div className="min-h-screen bg-gradient-to-br from-cosiaca-cream via-cosiaca-beige to-cosiaca-tan relative overflow-hidden flex items-center justify-center">
             {/* Elementos decorativos de fondo */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-20 left-10 text-6xl opacity-10 animate-pulse">🎭</div>
@@ -62,21 +62,21 @@ const Home = ({ setView }) => {
                 <div className="absolute bottom-20 right-32 text-6xl opacity-10 animate-pulse" style={{animationDelay: '3s'}}>🎪</div>
             </div>
 
-            <div className="relative z-10 min-h-screen flex flex-col justify-center items-center px-4 py-8">
-                <div className="w-full max-w-7xl mx-auto">
+            <div className="relative z-10 w-full max-w-6xl mx-auto px-4 py-8">
+                <div className="text-center space-y-12">
                     
                     {/* Logo Principal - Reducido 20% */}
-                    <div className="text-center mb-12">
+                    <div className="mb-16">
                         <div className="relative inline-block">
-                            <div className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-cosiaca-brown font-serif leading-none tracking-tight mb-6">
+                            <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-cosiaca-brown font-serif leading-none tracking-tight mb-8">
                                 {"{COSIACA "}
                                 <strong>350</strong>
                                 {"}"}
                             </div>
-                            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-cosiaca-brown/80 mb-4">
+                            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-cosiaca-brown/80 mb-6">
                                 UN VIAJE INMERSIVO A LA HISTORIA DE MEDELLÍN
                             </h2>
-                            <p className="text-base sm:text-lg text-cosiaca-brown/70 max-w-3xl mx-auto">
+                            <p className="text-base sm:text-lg text-cosiaca-brown/70 max-w-4xl mx-auto">
                                 Propuesta transmedia para la celebración de los <strong>350</strong> años de Medellín. 
                                 Estímulo a la creación de una obra artística.
                             </p>
@@ -84,23 +84,23 @@ const Home = ({ setView }) => {
                     </div>
 
                     {/* Contenido Principal en Grid */}
-                    <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+                    <div className="max-w-5xl mx-auto mb-16">
                         
                         {/* Información del Proyecto */}
-                        <div className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-cosiaca-beige">
-                            <div className="text-center mb-6">
+                        <div className="bg-white/90 backdrop-blur-sm p-8 sm:p-10 rounded-2xl shadow-2xl border border-cosiaca-beige mb-12">
+                            <div className="text-center mb-8">
                                 <div className="text-4xl mb-4">🎭</div>
-                                <h3 className="text-2xl font-bold text-cosiaca-brown font-serif mb-4">
+                                <h3 className="text-3xl font-bold text-cosiaca-brown font-serif mb-6">
                                     Una Experiencia Transmedia Única
                                 </h3>
                             </div>
                             
-                            <div className="grid md:grid-cols-2 gap-6 text-left">
+                            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                                 <div>
-                                    <h4 className="font-bold text-cosiaca-red mb-3 flex items-center">
+                                    <h4 className="font-bold text-cosiaca-red mb-4 flex items-center justify-center md:justify-start">
                                         <span className="text-2xl mr-2">🌟</span> Lo que encontrarás:
                                     </h4>
-                                    <ul className="space-y-2 text-cosiaca-brown/80 text-sm">
+                                    <ul className="space-y-3 text-cosiaca-brown/80 text-base text-center md:text-left">
                                         <li>• <strong>CosiacaBot:</strong> Conversa con la historia</li>
                                         <li>• <strong>Podcast Histórico:</strong> <strong>350</strong> años narrados</li>
                                         <li>• <strong>Juegos Interactivos:</strong> Trivia y diversión</li>
@@ -110,16 +110,16 @@ const Home = ({ setView }) => {
                                     </ul>
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-cosiaca-red mb-3 flex items-center">
+                                    <h4 className="font-bold text-cosiaca-red mb-4 flex items-center justify-center md:justify-start">
                                         <span className="text-2xl mr-2">🎯</span> Nuestra Misión:
                                     </h4>
-                                    <p className="text-cosiaca-brown/80 leading-relaxed mb-4 text-sm">
+                                    <p className="text-cosiaca-brown/80 leading-relaxed mb-6 text-base text-center md:text-left">
                                         Revivir la historia de Medellín a través del <strong>humor paisa</strong> 
                                         y la <em>picardía de Cosiaca</em>. Combinamos <strong>rigor histórico</strong> 
                                         con <em>tecnología innovadora</em> para crear una experiencia cultural 
                                         <strong>accesible, educativa y entretenida</strong>.
                                     </p>
-                                    <div className="text-xs text-cosiaca-brown/60 space-y-1">
+                                    <div className="text-sm text-cosiaca-brown/60 space-y-2 text-center md:text-left">
                                         <p><strong>Período:</strong> 1675 - 2025 (<strong>350</strong> años)</p>
                                         <p><strong>Personaje:</strong> José García "Cosiaca"</p>
                                         <p><strong>Enfoque:</strong> Humor + Historia + Tecnología</p>
@@ -129,13 +129,13 @@ const Home = ({ setView }) => {
                         </div>
 
                         {/* Experiencia Interactiva */}
-                        <div className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-cosiaca-beige">
-                            <div className="text-center mb-6">
+                        <div className="bg-white/90 backdrop-blur-sm p-8 sm:p-10 rounded-2xl shadow-2xl border border-cosiaca-beige max-w-3xl mx-auto">
+                            <div className="text-center mb-8">
                                 <div className="text-4xl mb-4">✨</div>
-                                <h3 className="text-2xl font-bold text-cosiaca-brown font-serif mb-4">
+                                <h3 className="text-3xl font-bold text-cosiaca-brown font-serif mb-6">
                                     El Chismecito Histórico de Cosiaca
                                 </h3>
-                                <p className="text-cosiaca-brown/80 mb-6">
+                                <p className="text-lg text-cosiaca-brown/80 mb-8">
                                     ¿Quieres escuchar un <strong>dato curioso</strong> de la historia de Medellín? 
                                     <strong>¡Dale al botón!</strong>
                                 </p>
@@ -143,29 +143,29 @@ const Home = ({ setView }) => {
                             
                             <button 
                                 onClick={handleGenerateFact} 
-                                className="w-full bg-gradient-to-r from-cosiaca-red to-cosiaca-red-dark text-white font-bold py-4 px-6 rounded-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-lg flex items-center justify-center mb-6" 
+                                className="w-full max-w-md mx-auto bg-gradient-to-r from-cosiaca-red to-cosiaca-red-dark text-white font-bold py-5 px-8 rounded-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-xl flex items-center justify-center mb-8" 
                                 disabled={isLoadingFact}
                             >
                                 {isLoadingFact ? (
                                     <>
-                                        <SparklesIcon className="animate-pulse mr-3 w-6 h-6" /> 
+                                        <SparklesIcon className="animate-pulse mr-3 w-7 h-7" /> 
                                         Pensando el chisme...
                                     </>
                                 ) : (
                                     <>
-                                        <SparklesIcon className="mr-3 w-6 h-6" /> 
+                                        <SparklesIcon className="mr-3 w-7 h-7" /> 
                                         Contar un Chisme Histórico
                                     </>
                                 )}
                             </button>
                             
                             {historicalFact && (
-                                <div className="p-6 bg-cosiaca-cream rounded-xl text-cosiaca-brown relative border border-cosiaca-beige animate-fade-in">
-                                    <p className="text-base leading-relaxed font-medium italic">
+                                <div className="p-8 bg-cosiaca-cream rounded-xl text-cosiaca-brown relative border border-cosiaca-beige animate-fade-in">
+                                    <p className="text-lg leading-relaxed font-medium italic text-center">
                                         "{historicalFact}"
                                     </p>
                                     <div className="absolute top-0 right-0 -mt-3 -mr-3 bg-cosiaca-red text-white rounded-full p-2 shadow-lg">
-                                        <BotIcon className="w-5 h-5" />
+                                        <BotIcon className="w-6 h-6" />
                                     </div>
                                 </div>
                             )}
@@ -173,51 +173,51 @@ const Home = ({ setView }) => {
                     </div>
 
                     {/* Accesos Rápidos a Experiencias */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16 max-w-5xl mx-auto">
                         {features.map((feature, index) => (
                             <button
                                 key={index}
                                 onClick={feature.action}
-                                className="group bg-white/90 backdrop-blur-sm p-6 rounded-xl border border-cosiaca-beige hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-center"
+                                className="group bg-white/90 backdrop-blur-sm p-8 rounded-xl border border-cosiaca-beige hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-center"
                             >
-                                <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center mx-auto mb-4 text-white group-hover:scale-110 transition-transform duration-300`}>
+                                <div className={`w-20 h-20 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center mx-auto mb-6 text-white group-hover:scale-110 transition-transform duration-300`}>
                                     {feature.icon}
                                 </div>
-                                <h3 className="font-bold text-cosiaca-brown text-lg mb-2 group-hover:text-cosiaca-red transition-colors">{feature.title}</h3>
-                                <p className="text-sm text-cosiaca-brown/70 group-hover:text-cosiaca-brown transition-colors">{feature.desc}</p>
+                                <h3 className="font-bold text-cosiaca-brown text-xl mb-3 group-hover:text-cosiaca-red transition-colors">{feature.title}</h3>
+                                <p className="text-base text-cosiaca-brown/70 group-hover:text-cosiaca-brown transition-colors">{feature.desc}</p>
                             </button>
                         ))}
                     </div>
 
                     {/* Call to Action Principal */}
                     <div className="text-center">
-                        <div className="bg-gradient-to-r from-cosiaca-red/10 to-cosiaca-brown/10 p-8 rounded-2xl border border-cosiaca-beige/50 mb-8">
-                            <h3 className="text-3xl font-bold text-cosiaca-brown mb-4 font-serif">
+                        <div className="bg-gradient-to-r from-cosiaca-red/10 to-cosiaca-brown/10 p-10 rounded-2xl border border-cosiaca-beige/50 mb-12 max-w-4xl mx-auto">
+                            <h3 className="text-4xl font-bold text-cosiaca-brown mb-6 font-serif">
                                 🏛️ Proyecto Oficial
                             </h3>
-                            <p className="text-cosiaca-brown/80 leading-relaxed mb-6 max-w-4xl mx-auto">
+                            <p className="text-xl text-cosiaca-brown/80 leading-relaxed mb-8 max-w-3xl mx-auto">
                                 <strong>{"{COSIACA "}<strong>350</strong>{"}"}</strong> es una propuesta transmedia beneficiada de las 
                                 <em> Convocatorias de Fomento y Estímulos para el Arte y la Cultura 2025</em>
                             </p>
-                            <div className="flex flex-wrap justify-center gap-3 text-sm text-cosiaca-brown/60 mb-8">
-                                <span className="bg-cosiaca-beige/50 px-4 py-2 rounded-full">📚 Investigación Histórica</span>
-                                <span className="bg-cosiaca-beige/50 px-4 py-2 rounded-full">🤖 Inteligencia Artificial</span>
-                                <span className="bg-cosiaca-beige/50 px-4 py-2 rounded-full">🎭 Cultura Paisa</span>
-                                <span className="bg-cosiaca-beige/50 px-4 py-2 rounded-full">🌐 Transmedia</span>
-                                <span className="bg-cosiaca-beige/50 px-4 py-2 rounded-full">🎪 Entretenimiento</span>
+                            <div className="flex flex-wrap justify-center gap-4 text-base text-cosiaca-brown/60 mb-10">
+                                <span className="bg-cosiaca-beige/50 px-5 py-3 rounded-full">📚 Investigación Histórica</span>
+                                <span className="bg-cosiaca-beige/50 px-5 py-3 rounded-full">🤖 Inteligencia Artificial</span>
+                                <span className="bg-cosiaca-beige/50 px-5 py-3 rounded-full">🎭 Cultura Paisa</span>
+                                <span className="bg-cosiaca-beige/50 px-5 py-3 rounded-full">🌐 Transmedia</span>
+                                <span className="bg-cosiaca-beige/50 px-5 py-3 rounded-full">🎪 Entretenimiento</span>
                             </div>
                         </div>
 
                         <button
                             onClick={() => setView('proyecto')}
-                            className="bg-gradient-to-r from-cosiaca-red to-cosiaca-red-dark hover:from-cosiaca-red-dark hover:to-cosiaca-red text-white font-bold py-6 px-12 rounded-full text-2xl transition-all duration-300 transform hover:scale-110 shadow-2xl hover:shadow-cosiaca-red/50 animate-pulse hover:animate-none"
+                            className="bg-gradient-to-r from-cosiaca-red to-cosiaca-red-dark hover:from-cosiaca-red-dark hover:to-cosiaca-red text-white font-bold py-8 px-16 rounded-full text-3xl transition-all duration-300 transform hover:scale-110 shadow-2xl hover:shadow-cosiaca-red/50 animate-pulse hover:animate-none max-w-2xl mx-auto"
                         >
-                            <SparklesIcon className="inline-block w-7 h-7 mr-3" />
+                            <SparklesIcon className="inline-block w-8 h-8 mr-4" />
                             Explorar el Proyecto Completo
-                            <SparklesIcon className="inline-block w-7 h-7 ml-3" />
+                            <SparklesIcon className="inline-block w-8 h-8 ml-4" />
                         </button>
                         
-                        <p className="text-sm text-cosiaca-brown/60 mt-4">
+                        <p className="text-lg text-cosiaca-brown/60 mt-8">
                             ✨ <em>Prepárate para un viaje único por <strong>350</strong> años de historia paisa</em> ✨
                         </p>
                     </div>
