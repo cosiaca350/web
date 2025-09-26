@@ -84,7 +84,9 @@ const PlanIcon = (props) => (
             <div className="container mx-auto flex justify-between items-center">
                 <h1 className="text-xl sm:text-2xl font-bold font-serif tracking-wider cursor-pointer text-cosiaca-cream" onClick={() => setView('home')}>
                     <span role="button" tabIndex="0" onKeyDown={(e) => e.key === 'Enter' && setView('home')}>
-                        Cosiaca <strong>{350}</strong>
+                        {"{COSIACA "}
+                        <strong>350</strong>
+                        {"}"}
                     </span>
                 </h1>
                 
