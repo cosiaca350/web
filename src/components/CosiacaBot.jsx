@@ -27,13 +27,7 @@ const ElevenLabsWidget = () => {
             {/* Widget de ElevenLabs */}
             <div className="flex justify-center mb-4">
                 <elevenlabs-convai 
-                    agent-id="tu-agent-id-aqui"
-                    style={{
-                        width: '300px',
-                        height: '200px',
-                        borderRadius: '12px',
-                        border: '2px solid #8B6F47'
-                    }}
+                    agent-id="agent_4301k5gpsen4erzt882jhf3ekyby"
                 />
             </div>
             
@@ -41,6 +35,14 @@ const ElevenLabsWidget = () => {
                 <p>🎤 <strong>Presiona y mantén</strong> para hablar</p>
                 <p>🔊 <strong>Escucha</strong> las respuestas de Cosiaca</p>
                 <p>📱 <strong>Compatible</strong> con móviles y escritorio</p>
+                <p>🤖 <strong>IA Conversacional</strong> con personalidad de Cosiaca</p>
+            </div>
+            
+            <div className="mt-4 p-4 bg-green-100 border border-green-300 rounded-lg">
+                <p className="text-sm text-green-800">
+                    <strong>✅ Widget Activo:</strong> El chat por voz está configurado y listo para usar. 
+                    Habla directamente con Cosiaca sobre la historia de Medellín.
+                </p>
             </div>
         </div>
     );
