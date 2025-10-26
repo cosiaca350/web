@@ -23,7 +23,7 @@ const Podcast = () => {
             title: "Saludo de Cosiaca",
             description: "El mítico personaje nos da la bienvenida a este viaje por la historia de Medellín con su característico humor paisa.",
             duration: "3:15",
-            audioFile: "AUDIOS_historias/SALUDO_cosiaca.mp3",
+            audioFile: "/AUDIOS_historias/SALUDO_cosiaca.mp3",
             image: "https://images.pexels.com/photos/1386604/pexels-photo-1386604.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
@@ -31,7 +31,7 @@ const Podcast = () => {
             title: "El Encuentro en la Trocha",
             description: "Cosiaca nos cuenta sobre los antiguos caminos de herradura que conectaban a Medellín con el mundo exterior.",
             duration: "8:45",
-            audioFile: "AUDIOS_historias/El encuentro en la trocha.mp3",
+            audioFile: "/AUDIOS_historias/El encuentro en la trocha.mp3",
             image: "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
@@ -39,7 +39,7 @@ const Podcast = () => {
             title: "La Canción del Valle de Aburrá",
             description: "Una melodiosa narración sobre los orígenes musicales y culturales del valle que acogió a Medellín.",
             duration: "12:30",
-            audioFile: "AUDIOS_historias/La canción del valle de aburrá.mp3",
+            audioFile: "/AUDIOS_historias/La canción del valle de aburrá.mp3",
             image: "https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
@@ -47,7 +47,7 @@ const Podcast = () => {
             title: "Sobre la Medellín de los Cafetales",
             description: "El auge del café y cómo transformó la economía y la sociedad paisa, contado con el humor característico de Cosiaca.",
             duration: "15:20",
-            audioFile: "AUDIOS_historias/Sobre la Medellín de los cafetales.mp3",
+            audioFile: "/AUDIOS_historias/Sobre la Medellín de los cafetales.mp3",
             image: "https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
@@ -55,7 +55,7 @@ const Podcast = () => {
             title: "De la Violencia a la Esperanza",
             description: "Un episodio emotivo sobre cómo Medellín superó sus momentos más difíciles y se transformó en ciudad de innovación.",
             duration: "18:45",
-            audioFile: "AUDIOS_historias/De la violencia a la esperanza.mp3",
+            audioFile: "/AUDIOS_historias/De la violencia a la esperanza.mp3",
             image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
@@ -63,7 +63,7 @@ const Podcast = () => {
             title: "La Verraquera Arriera",
             description: "Historias de los arrieros antioqueños y su papel fundamental en el desarrollo económico de la región.",
             duration: "14:10",
-            audioFile: "AUDIOS_historias/La verraquera arriera.mp3",
+            audioFile: "/AUDIOS_historias/La verraquera arriera.mp3",
             image: "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
@@ -71,7 +71,7 @@ const Podcast = () => {
             title: "Sobre la Medellín de Hoy",
             description: "Reflexiones de Cosiaca sobre la Medellín moderna, sus logros y desafíos en el siglo XXI.",
             duration: "16:30",
-            audioFile: "AUDIOS_historias/Sobre la Medellín de hoy.mp3",
+            audioFile: "/AUDIOS_historias/Sobre la Medellín de hoy.mp3",
             image: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=400"
         },
         {
@@ -79,7 +79,7 @@ const Podcast = () => {
             title: "Cosiaca el Culebreo",
             description: "Una historia divertida sobre las travesuras y picardías del personaje más querido de Antioquia.",
             duration: "12:45",
-            audioFile: "AUDIOS_historias/Cosiaca el culebreo.mp3",
+            audioFile: "/AUDIOS_historias/Cosiaca el culebreo.mp3",
             image: "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=400"
         }
     ];
