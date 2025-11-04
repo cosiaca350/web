@@ -1,19 +1,7 @@
 import React from 'react';
 import { BotIcon } from '../icons/Icons';
 
-// Componente del widget de ElevenLabs
 const ElevenLabsWidget = () => {
-    React.useEffect(() => {
-        // Cargar el script de ElevenLabs si no está ya cargado
-        if (!window.ElevenLabsConvAI) {
-            const script = document.createElement('script');
-            script.src = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
-            script.async = true;
-            script.type = 'text/javascript';
-            document.head.appendChild(script);
-        }
-    }, []);
-
     return (
         <div className="animate-fade-in container-1920 mx-auto text-cosiaca-brown space-y-8 px-4">
             <header className="text-center">
