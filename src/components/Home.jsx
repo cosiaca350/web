@@ -32,11 +32,13 @@ const Home = ({ setView }) => {
                     
                     {/* Logo Principal */}
                     <div className="animate-fade-in">
-                        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-1920-xl font-black text-cosiaca-brown font-serif leading-none tracking-tight mb-4 sm:mb-6 lg:mb-8">
-                            {"{COSIACA "}
-                            <strong className="text-cosiaca-red">350</strong>
-                            {"}"}
-                        </h1>
+                        <div className="flex justify-center mb-4 sm:mb-6 lg:mb-8">
+                            <img 
+                                src="/logo-cosiaca.svg" 
+                                alt="Cosiaca 350 - Un viaje inmersivo a la historia de Medellín"
+                                className="w-64 sm:w-80 md:w-96 lg:w-[500px] xl:w-[600px] 2xl:w-[700px] h-auto"
+                            />
+                        </div>
                     </div>
 
                     {/* Mensaje principal */}

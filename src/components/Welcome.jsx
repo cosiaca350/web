@@ -68,10 +68,12 @@ const Welcome = ({ setView }) => {
                 
                 {/* Header */}
                 <section className="animate-fade-in mb-8 sm:mb-12">
-                    <div className="text-4xl md:text-5xl xl:text-1920-xl font-black text-cosiaca-brown font-serif leading-none tracking-tight mb-6">
-                        {"{COSIACA "}
-                        <strong>350</strong>
-                        {"}"}
+                    <div className="flex justify-center mb-6">
+                        <img 
+                            src="/logo-cosiaca.svg" 
+                            alt="Cosiaca 350 - Un viaje inmersivo a la historia de Medellín"
+                            className="w-48 sm:w-64 md:w-80 lg:w-96 xl:w-[500px] h-auto"
+                        />
                     </div>
                     <h2 className="text-2xl md:text-3xl xl:text-1920-lg font-bold text-cosiaca-brown/80 mb-4">
                         UN VIAJE INMERSIVO A LA HISTORIA DE MEDELLÍN

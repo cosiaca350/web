@@ -66,13 +66,20 @@ const Navbar = ({ view, setView }) => {
     return (
         <nav className="bg-cosiaca-brown/95 backdrop-blur-lg text-cosiaca-cream p-2 sm:p-3 md:p-4 sticky top-0 z-50 border-b border-cosiaca-brown/20 shadow-lg">
             <div className="container mx-auto flex justify-between items-center">
-                <h1 className="text-lg sm:text-xl md:text-2xl font-bold font-serif tracking-wider cursor-pointer text-cosiaca-cream" onClick={() => setView('home')}>
-                    <span role="button" tabIndex="0" onKeyDown={(e) => e.key === 'Enter' && setView('home')}>
-                        {"{COSIACA "}
-                        <strong>350</strong>
-                        {"}"}
-                    </span>
-                </h1>
+                <div 
+                    className="cursor-pointer flex items-center" 
+                    onClick={() => setView('home')}
+                    role="button" 
+                    tabIndex="0" 
+                    onKeyDown={(e) => e.key === 'Enter' && setView('home')}
+                    aria-label="Ir al inicio"
+                >
+                    <img 
+                        src="/logo-cosiaca.svg" 
+                        alt="Cosiaca 350"
+                        className="h-8 sm:h-10 md:h-12 w-auto"
+                    />
+                </div>
                 
                 {/* Desktop Navigation */}
                 <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2" role="navigation" aria-label="Navegación principal">
