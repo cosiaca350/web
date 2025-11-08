@@ -73,7 +73,7 @@ const Timeline = () => {
     return (
         <div className="animate-fade-in max-w-6xl mx-auto text-cafe-oscuro space-y-8">
             <header className="text-center">
-                <h1 className="text-4xl md:text-5xl font-bold font-anton text-cafe-oscuro">
+                <h1 className="text-4xl md:text-5xl font-bold font-serif text-cafe-oscuro">
                     ⏳ <strong>350</strong> Años en un Viaje
                 </h1>
                 <p className="text-xl mt-2 text-cafe-claro/70">
@@ -82,7 +82,7 @@ const Timeline = () => {
             </header>
             
             <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige text-center">
-                <h2 className="text-2xl font-anton text-cafe-oscuro mb-4">
+                <h2 className="text-2xl font-serif text-cafe-oscuro mb-4">
                     "De Villa de Mulas a Ciudad Inteligente"
                 </h2>
                 <p className="text-lg text-cafe-claro/80">
@@ -93,7 +93,7 @@ const Timeline = () => {
 
             <div className="relative">
                 {/* Timeline Line */}
-                <div className="absolute left-8 top-0 bottom-0 w-1 bg-cosiaca-enfasis"></div>
+                <div className="absolute left-8 top-0 bottom-0 w-1 bg-cosiaca-red"></div>
                 
                 <div className="space-y-8">
                     {timelinePeriods.map((period, index) => (
@@ -106,11 +106,11 @@ const Timeline = () => {
                                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                                     <div>
                                         <h3 className="text-2xl font-bold text-cafe-oscuro">{period.year}</h3>
-                                        <h4 className="text-xl font-anton text-cosiaca-enfasis">{period.title}</h4>
+                                        <h4 className="text-xl font-serif text-cosiaca-red">{period.title}</h4>
                                     </div>
                                     <button
                                         onClick={() => setSelectedPeriod(selectedPeriod === period.id ? null : period.id)}
-                                        className="mt-2 md:mt-0 bg-cosiaca-enfasis text-white px-4 py-2 rounded-full hover:bg-cosiaca-enfasis transition-colors"
+                                        className="mt-2 md:mt-0 bg-cosiaca-red text-white px-4 py-2 rounded-full hover:bg-cosiaca-red-dark transition-colors"
                                     >
                                         {selectedPeriod === period.id ? 'Ocultar' : 'Ver más'}
                                     </button>
@@ -130,7 +130,7 @@ const Timeline = () => {
             </div>
 
             <div className="bg-cosiaca-beige/30 p-6 rounded-xl border border-cosiaca-beige text-center">
-                <h3 className="text-2xl font-anton text-cafe-oscuro mb-4">
+                <h3 className="text-2xl font-serif text-cafe-oscuro mb-4">
                     🎭 La Mirada de Cosiaca
                 </h3>
                 <p className="text-cafe-claro/80">

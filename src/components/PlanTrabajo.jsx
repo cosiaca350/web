@@ -92,7 +92,7 @@ const PlanTrabajo = () => {
                                 <div className={`w-4 h-4 rounded-full ${phase.color}`}></div>
                                 <div>
                                     <h3 className="text-xl font-bold text-cafe-oscuro">{phase.phase}</h3>
-                                    <p className="text-cosiaca-enfasis font-medium">{phase.title}</p>
+                                    <p className="text-cosiaca-red font-medium">{phase.title}</p>
                                 </div>
                             </div>
                             <p className="text-cafe-claro/70 mb-3">{phase.period}</p>
@@ -122,7 +122,7 @@ const PlanTrabajo = () => {
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {budget.map((item, index) => (
                         <div key={index} className="bg-cosiaca-cream/50 p-4 rounded-lg border border-cosiaca-beige text-center">
-                            <div className="text-2xl font-bold text-cosiaca-enfasis mb-2">{item.percentage}</div>
+                            <div className="text-2xl font-bold text-cosiaca-red mb-2">{item.percentage}</div>
                             <h3 className="font-bold text-cafe-oscuro text-sm mb-2">{item.category}</h3>
                             <p className="text-xs text-cafe-claro/80">{item.description}</p>
                         </div>
@@ -139,7 +139,7 @@ const PlanTrabajo = () => {
                     {team.map((member, index) => (
                         <div key={index} className="text-center">
                             <div className="bg-cosiaca-cream/50 p-4 rounded-lg border border-cosiaca-beige">
-                                <h3 className="font-bold text-cosiaca-enfasis text-lg mb-2">{member.name}</h3>
+                                <h3 className="font-bold text-cosiaca-red text-lg mb-2">{member.name}</h3>
                                 <p className="text-sm text-cafe-claro/80">{member.role}</p>
                             </div>
                         </div>
@@ -155,7 +155,7 @@ const PlanTrabajo = () => {
                 <div className="grid md:grid-cols-2 gap-4">
                     {goals.map((goal, index) => (
                         <div key={index} className="flex items-start space-x-3">
-                            <span className="text-cosiaca-enfasis text-xl">•</span>
+                            <span className="text-cosiaca-red text-xl">•</span>
                             <p className="text-cafe-claro/80">{goal}</p>
                         </div>
                     ))}

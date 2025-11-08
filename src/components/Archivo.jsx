@@ -101,7 +101,7 @@ const Archivo = () => {
     return (
         <div className="animate-fade-in max-w-6xl mx-auto text-cafe-oscuro space-y-8">
             <header className="text-center">
-                <h1 className="text-4xl md:text-5xl font-black font-anton text-cafe-oscuro">
+                <h1 className="text-4xl md:text-5xl font-black font-serif text-cafe-oscuro">
                     📚 Archivo Histórico
                 </h1>
                 <p className="text-xl mt-2 text-cafe-claro/70 lead font-medium">
@@ -110,7 +110,7 @@ const Archivo = () => {
             </header>
             
             <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige text-center">
-                <h2 className="text-2xl font-bold font-anton text-cafe-oscuro mb-4">
+                <h2 className="text-2xl font-bold font-serif text-cafe-oscuro mb-4">
                     "La Historia Vive en los Documentos"
                 </h2>
                 <p className="text-lg text-cafe-claro/80 lead">
@@ -127,7 +127,7 @@ const Archivo = () => {
                         onClick={() => setSelectedCategory(key)}
                         className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
                             selectedCategory === key
-                                ? 'bg-cosiaca-enfasis text-white shadow-lg'
+                                ? 'bg-cosiaca-red text-white shadow-lg'
                                 : 'bg-cosiaca-beige text-cafe-claro hover:bg-cosiaca-beige/70'
                         }`}
                     >
@@ -138,7 +138,7 @@ const Archivo = () => {
 
             {/* Archive Content */}
             <div className="space-y-6">
-                <h2 className="text-3xl font-bold font-anton text-cafe-oscuro text-center mb-8">
+                <h2 className="text-3xl font-bold font-serif text-cafe-oscuro text-center mb-8">
                     {archiveCategories[selectedCategory].title}
                 </h2>
                 
@@ -154,13 +154,13 @@ const Archivo = () => {
                                 className="w-full h-48 object-cover"
                             />
                             <div className="p-6">
-                                <h3 className="text-xl font-bold text-cafe-oscuro mb-2 font-anton">
+                                <h3 className="text-xl font-bold text-cafe-oscuro mb-2 font-serif">
                                     {item.title}
                                 </h3>
                                 <p className="text-cafe-claro/80 mb-3 leading-relaxed">
                                     {item.description}
                                 </p>
-                                <p className="text-sm text-cosiaca-enfasis font-bold">
+                                <p className="text-sm text-cosiaca-red font-bold">
                                     <strong>Fuente:</strong> <em>{item.source}</em>
                                 </p>
                             </div>
@@ -171,12 +171,12 @@ const Archivo = () => {
 
             {/* Archive Sources */}
             <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige">
-                <h2 className="text-3xl font-bold font-anton text-cafe-oscuro mb-6 text-center">
+                <h2 className="text-3xl font-bold font-serif text-cafe-oscuro mb-6 text-center">
                     🏛️ Nuestras Fuentes
                 </h2>
                 <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-4">
-                        <h3 className="text-xl font-bold text-cafe-oscuro font-anton">📁 Archivos Principales</h3>
+                        <h3 className="text-xl font-bold text-cafe-oscuro font-serif">📁 Archivos Principales</h3>
                         <ul className="space-y-2 text-cafe-claro/80 text-lg">
                             <li>• <strong>Archivo Histórico de Medellín</strong></li>
                             <li>• <strong>Biblioteca Pública Piloto</strong></li>
@@ -186,7 +186,7 @@ const Archivo = () => {
                         </ul>
                     </div>
                     <div className="space-y-4">
-                        <h3 className="text-xl font-bold text-cafe-oscuro font-anton">🎨 Colecciones Especiales</h3>
+                        <h3 className="text-xl font-bold text-cafe-oscuro font-serif">🎨 Colecciones Especiales</h3>
                         <ul className="space-y-2 text-cafe-claro/80 text-lg">
                             <li>• <em>Fondo Fotográfico Melitón Rodríguez</em></li>
                             <li>• <em>Colección Ignacio Gómez</em></li>

@@ -85,14 +85,14 @@ const Welcome = ({ setView }) => {
                 <div className="bg-white/90 backdrop-blur-sm p-8 xl:p-1920 rounded-2xl shadow-2xl border border-cosiaca-beige max-w-6xl xl:max-w-7xl mx-auto">
                     <div className="text-center mb-6">
                         <div className="text-4xl xl:text-6xl mb-4">🎭</div>
-                        <h3 className="text-2xl xl:text-1920-lg font-bold text-cosiaca-brown font-anton mb-4">
+                        <h3 className="text-2xl xl:text-1920-lg font-bold text-cosiaca-brown font-serif mb-4">
                             Una Experiencia Transmedia Única
                         </h3>
                     </div>
                     
                     <div className="responsive-grid text-left">
                         <div>
-                            <h4 className="font-bold text-cosiaca-enfasis mb-4 text-lg xl:text-1920-base">
+                            <h4 className="font-bold text-cosiaca-red mb-4 text-lg xl:text-1920-base">
                                 🌟 Lo que encontrarás:
                             </h4>
                             <ul className="space-y-2 text-cosiaca-brown/80 xl:text-1920-base">
@@ -105,7 +105,7 @@ const Welcome = ({ setView }) => {
                             </ul>
                         </div>
                         <div>
-                            <h4 className="font-bold text-cosiaca-enfasis mb-4 text-lg xl:text-1920-base">
+                            <h4 className="font-bold text-cosiaca-red mb-4 text-lg xl:text-1920-base">
                                 🎯 Nuestra Misión:
                             </h4>
                             <p className="text-cosiaca-brown/80 xl:text-1920-base leading-relaxed mb-4">
@@ -128,7 +128,7 @@ const Welcome = ({ setView }) => {
                 <div className="bg-white/90 backdrop-blur-sm p-8 xl:p-1920 rounded-2xl shadow-2xl border border-cosiaca-beige max-w-5xl xl:max-w-6xl mx-auto mb-8 sm:mb-12">
                     <div className="text-center mb-6">
                         <div className="text-4xl xl:text-6xl mb-4">✨</div>
-                        <h3 className="text-2xl xl:text-1920-lg font-bold text-cosiaca-brown font-anton mb-4">
+                        <h3 className="text-2xl xl:text-1920-lg font-bold text-cosiaca-brown font-serif mb-4">
                             El Chismecito Histórico de Cosiaca
                         </h3>
                         <p className="text-lg xl:text-1920-base text-cosiaca-brown/80 mb-6">
@@ -159,7 +159,7 @@ const Welcome = ({ setView }) => {
                             <p className="text-lg xl:text-1920-base leading-relaxed font-medium italic text-center">
                                 "{historicalFact}"
                             </p>
-                            <div className="absolute top-0 right-0 -mt-3 -mr-3 bg-cosiaca-enfasis text-white rounded-full p-2 shadow-lg">
+                            <div className="absolute top-0 right-0 -mt-3 -mr-3 bg-cosiaca-red text-white rounded-full p-2 shadow-lg">
                                 <BotIcon className="w-5 h-5" />
                             </div>
                         </div>
@@ -178,7 +178,7 @@ const Welcome = ({ setView }) => {
                             <div className={`w-16 h-16 xl:w-20 xl:h-20 rounded-full bg-gradient-to-r ${feature.color} flex items-center justify-center mx-auto mb-4 text-white group-hover:scale-110 transition-transform duration-300`}>
                                 {feature.icon}
                             </div>
-                            <h3 className="font-bold text-cosiaca-brown text-lg xl:text-1920-base mb-2 group-hover:text-cosiaca-enfasis transition-colors">{feature.title}</h3>
+                            <h3 className="font-bold text-cosiaca-brown text-lg xl:text-1920-base mb-2 group-hover:text-cosiaca-red transition-colors">{feature.title}</h3>
                             <p className="text-sm xl:text-base text-cosiaca-brown/70 group-hover:text-cosiaca-brown transition-colors">{feature.desc}</p>
                         </button>
                     ))}
@@ -188,7 +188,7 @@ const Welcome = ({ setView }) => {
                 {/* Información del Proyecto */}
                 <section className="animate-fade-in mb-8 sm:mb-12">
                 <div className="bg-gradient-to-r from-cosiaca-red/10 to-cosiaca-brown/10 p-8 xl:p-1920 rounded-2xl border border-cosiaca-beige/50 max-w-6xl xl:max-w-7xl mx-auto">
-                    <h3 className="text-3xl xl:text-1920-lg font-bold text-cosiaca-brown mb-4 font-anton">
+                    <h3 className="text-3xl xl:text-1920-lg font-bold text-cosiaca-brown mb-4 font-serif">
                         🏛️ Proyecto Oficial
                     </h3>
                     <p className="text-xl xl:text-1920-base text-cosiaca-brown/80 leading-relaxed mb-6 max-w-5xl xl:max-w-6xl mx-auto">

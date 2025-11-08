@@ -81,7 +81,7 @@ const AIProviderSelector = () => {
                                 onClick={() => handleProviderChange(provider.name)}
                                 disabled={!provider.active}
                                 className={`w-full flex items-center space-x-3 px-4 py-3 text-left hover:bg-cosiaca-beige/50 transition-colors ${
-                                    provider.current ? 'bg-cosiaca-enfasis/10 text-cosiaca-enfasis' : 'text-cosiaca-brown'
+                                    provider.current ? 'bg-cosiaca-red/10 text-cosiaca-red' : 'text-cosiaca-brown'
                                 } ${!provider.active ? 'opacity-50 cursor-not-allowed' : ''}`}
                             >
                                 <span className="text-lg">{getProviderIcon(provider.name)}</span>
@@ -92,7 +92,7 @@ const AIProviderSelector = () => {
                                     </div>
                                 </div>
                                 {provider.current && (
-                                    <div className="w-2 h-2 bg-cosiaca-enfasis rounded-full"></div>
+                                    <div className="w-2 h-2 bg-cosiaca-red rounded-full"></div>
                                 )}
                             </button>
                         ))}

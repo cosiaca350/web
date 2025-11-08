@@ -5,7 +5,7 @@ const ElevenLabsWidget = () => {
     return (
         <div className="animate-fade-in container-1920 mx-auto text-cosiaca-brown space-y-8 px-4">
             <header className="text-center">
-                <h1 className="text-4xl md:text-5xl xl:text-1920-xl font-black font-anton text-cosiaca-brown">
+                <h1 className="text-4xl md:text-5xl xl:text-1920-xl font-black font-serif text-cosiaca-brown">
                     🤖 CosiacaBot
                 </h1>
                 <p className="text-xl xl:text-1920-base mt-2 text-cosiaca-brown-light/70 lead font-medium">
@@ -15,7 +15,7 @@ const ElevenLabsWidget = () => {
             
             {/* Banner Principal */}
             <div className="bg-gradient-to-r from-cosiaca-brown to-cosiaca-brown/80 rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 text-center text-white">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight font-anton mb-4 text-white">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight font-serif mb-4 text-white">
                     🎙️ Chat por Voz con Inteligencia Artificial
                 </h2>
                 <p className="text-lg sm:text-xl opacity-90 text-white">
@@ -26,8 +26,8 @@ const ElevenLabsWidget = () => {
             {/* Widget Principal de ElevenLabs */}
             <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 border border-cosiaca-beige">
                 <div className="text-center mb-6">
-                    <BotIcon className="w-16 h-16 xl:w-20 xl:h-20 mx-auto text-cosiaca-enfasis mb-4" />
-                    <h3 className="text-2xl sm:text-3xl font-bold font-anton text-cosiaca-brown mb-4">
+                    <BotIcon className="w-16 h-16 xl:w-20 xl:h-20 mx-auto text-cosiaca-red mb-4" />
+                    <h3 className="text-2xl sm:text-3xl font-bold font-serif text-cosiaca-brown mb-4">
                         "Habla Conmigo Directamente"
                     </h3>
                     <p className="text-lg xl:text-1920-base text-cosiaca-brown-light/80 mb-6 lead max-w-4xl mx-auto">
@@ -66,7 +66,7 @@ const ElevenLabsWidget = () => {
 
             {/* Preguntas Sugeridas */}
             <div className="bg-white rounded-2xl shadow-lg border border-cosiaca-beige p-6">
-                <h3 className="text-2xl font-bold text-cosiaca-brown mb-6 text-center font-anton">
+                <h3 className="text-2xl font-bold text-cosiaca-brown mb-6 text-center font-serif">
                     💡 Preguntas que Puedes Hacerle a Cosiaca
                 </h3>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -99,7 +99,7 @@ const ElevenLabsWidget = () => {
             {/* Información Técnica */}
             <div className="responsive-grid">
                 <div className="bg-cosiaca-beige/30 p-6 xl:p-8 rounded-xl border border-cosiaca-beige">
-                    <h3 className="text-xl xl:text-1920-base font-bold text-cosiaca-brown mb-3 font-anton">🎭 ¿Qué puedo contarte?</h3>
+                    <h3 className="text-xl xl:text-1920-base font-bold text-cosiaca-brown mb-3 font-serif">🎭 ¿Qué puedo contarte?</h3>
                     <ul className="space-y-2 text-cosiaca-brown-light/80 text-base xl:text-1920-base">
                         <li>• <strong>Historias de la fundación de Medellín (1675)</strong></li>
                         <li>• <em>Anécdotas del auge cafetero</em></li>
@@ -112,7 +112,7 @@ const ElevenLabsWidget = () => {
                     </ul>
                 </div>
                 <div className="bg-cosiaca-beige/30 p-6 xl:p-8 rounded-xl border border-cosiaca-beige">
-                    <h3 className="text-xl xl:text-1920-base font-bold text-cosiaca-brown mb-3 font-anton">🤖 Tecnología Avanzada</h3>
+                    <h3 className="text-xl xl:text-1920-base font-bold text-cosiaca-brown mb-3 font-serif">🤖 Tecnología Avanzada</h3>
                     <ul className="space-y-2 text-cosiaca-brown-light/80 text-base xl:text-1920-base">
                         <li>• <strong>Inteligencia Artificial:</strong> <em>ElevenLabs ConvAI</em></li>
                         <li>• <strong>Reconocimiento de Voz:</strong> <em>Tiempo real</em></li>
@@ -126,7 +126,7 @@ const ElevenLabsWidget = () => {
 
             {/* Información del Proyecto */}
             <div className="bg-cosiaca-beige/30 p-6 xl:p-8 rounded-xl border border-cosiaca-beige text-center">
-                <h3 className="text-2xl xl:text-1920-lg font-bold font-anton text-cosiaca-brown mb-4">
+                <h3 className="text-2xl xl:text-1920-lg font-bold font-serif text-cosiaca-brown mb-4">
                     🧠 Sobre CosiacaBot
                 </h3>
                 <p className="text-cosiaca-brown-light/80 text-lg xl:text-1920-base lead mb-6">

@@ -11,6 +11,7 @@ import Juegos from './components/Juegos';
 import Podcast from './components/Podcast';
 import Timeline from './components/Timeline';
 import Archivo from './components/Archivo';
+import PlanTrabajo from './components/PlanTrabajo';
 import CosiacaBot from './components/CosiacaBot';
 import AccessibilityControls from './components/AccessibilityControls';
 import './App.css';
@@ -80,6 +81,8 @@ const App = () => {
                 return <Timeline />;
             case 'archivo':
                 return <Archivo />;
+            case 'plan':
+                return <PlanTrabajo />;
             case 'libros':
                 return user ? <Libros /> : <div className="text-center text-gray-400 mt-20">Cargando...</div>;
             case 'team':
