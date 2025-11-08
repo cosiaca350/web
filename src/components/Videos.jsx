@@ -1,15 +1,50 @@
 import React from 'react';
 
 const Videos = () => {
+    // Playlist completa de YouTube: Cosiaca 350
+    const playlistId = "PLLldviceNkKeURfhsKQ_uqFqg-Kyx-tjA";
+
+    // Videos individuales de la playlist (actualizar manualmente según necesidad)
     const videoList = [
         {
             id: 1,
-            title: "Medellín a través del tiempo - Video promocional",
-            description: "Un viaje visual por 350 años de historia de Medellín con efectos de IA",
+            title: "COSIACA 350 - Un viaje inmersivo a la historia de Medellín",
+            description: "Video promocional del proyecto transmedia que celebra los 350 años de Medellín a través del humor, la historia y la tecnología.",
             embedId: "GP0kzjU5XxQ",
             category: "Promocional"
         },
-        // Aquí puedes agregar más videos cuando estén disponibles
+        {
+            id: 2,
+            title: "Historias de Medellín con IA",
+            description: "Explora la historia de Medellín contada por Cosiaca con inteligencia artificial y efectos visuales generativos.",
+            embedId: "", // Agregar ID cuando esté disponible
+            category: "Historia",
+            coming: true
+        },
+        {
+            id: 3,
+            title: "La Fundación de Medellín 1675",
+            description: "Recreación con IA de los primeros días de la Villa de Nuestra Señora de la Candelaria de Medellín.",
+            embedId: "", // Agregar ID cuando esté disponible
+            category: "Época Colonial",
+            coming: true
+        },
+        {
+            id: 4,
+            title: "Los Arrieros Paisas",
+            description: "La cultura arriera del siglo XIX que construyó caminos y llevó progreso a Antioquia.",
+            embedId: "", // Agregar ID cuando esté disponible
+            category: "Siglo XIX",
+            coming: true
+        },
+        {
+            id: 5,
+            title: "De Ciudad Violenta a Innovadora",
+            description: "La increíble transformación de Medellín en el siglo XXI: del dolor a la esperanza.",
+            embedId: "", // Agregar ID cuando esté disponible
+            category: "Transformación",
+            coming: true
+        }
     ];
 
     return (
@@ -28,52 +63,93 @@ const Videos = () => {
                     "Cuando la Historia se Encuentra con la Tecnología"
                 </h2>
                 <p className="text-lg text-cosiaca-brown/80 lead">
-                    Utilizamos <strong>inteligencia artificial de última generación</strong> para dar vida a <em>fotografías históricas, 
-                    recrear personajes del pasado</em> y crear experiencias visuales que transportan al espectador a través de 
+                    Utilizamos <strong>inteligencia artificial de última generación</strong> para dar vida a <em>fotografías históricas,
+                    recrear personajes del pasado</em> y crear experiencias visuales que transportan al espectador a través de
                     <strong>350 años de historia medellinense</strong>.
                 </p>
-                <div className="mt-6">
-                    <a 
-                        href="https://www.youtube.com/watch?v=GP0kzjU5XxQ" 
-                        target="_blank" 
+                <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+                    <a
+                        href={`https://www.youtube.com/playlist?list=${playlistId}`}
+                        target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center bg-cosiaca-red text-white px-6 py-3 rounded-full hover:bg-cosiaca-red-dark transition-all duration-300 transform hover:scale-105 shadow-lg font-bold"
+                        className="inline-flex items-center justify-center bg-cosiaca-red text-white px-6 py-3 rounded-full hover:bg-cosiaca-red-dark transition-all duration-300 transform hover:scale-105 shadow-lg font-bold"
+                    >
+                        📺 Ver Playlist Completa en YouTube
+                    </a>
+                    <a
+                        href="https://www.youtube.com/watch?v=GP0kzjU5XxQ"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center bg-cosiaca-brown text-white px-6 py-3 rounded-full hover:bg-cosiaca-brown-dark transition-all duration-300 transform hover:scale-105 shadow-lg font-bold"
                     >
                         🎥 Ver Video Principal
                     </a>
                 </div>
             </div>
 
-            {/* Lista de Videos */}
+            {/* Playlist Embed de YouTube */}
+            <div className="bg-white rounded-xl shadow-lg border border-cosiaca-beige overflow-hidden">
+                <div className="bg-gradient-to-r from-cosiaca-red to-cosiaca-brown p-4 text-white">
+                    <h3 className="text-xl font-bold font-anton text-center">
+                        📺 Playlist Completa: COSIACA 350 - Videos IA
+                    </h3>
+                    <p className="text-center text-sm mt-1 opacity-90">
+                        Todos los videos del proyecto en una sola lista
+                    </p>
+                </div>
+                <div className="relative pt-[56.25%] bg-black">
+                    <iframe
+                        className="absolute inset-0 w-full h-full"
+                        src={`https://www.youtube.com/embed/videoseries?list=${playlistId}&rel=0`}
+                        title="COSIACA 350 - Playlist Completa"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                    />
+                </div>
+                <div className="p-6 bg-cosiaca-beige/20">
+                    <p className="text-center text-cosiaca-brown">
+                        <strong>💡 Tip:</strong> Usa los controles de la playlist para navegar entre todos los videos.
+                        Se actualizan automáticamente cuando agregamos contenido nuevo.
+                    </p>
+                </div>
+            </div>
+
+            {/* Videos Destacados Disponibles */}
             <div className="space-y-8">
-                {videoList.map((video) => (
-                    <div key={video.id} className="bg-white rounded-xl shadow-lg border border-cosiaca-beige overflow-hidden">
-                        <div className="relative pt-[56.25%] bg-cosiaca-beige">
-                            <iframe 
-                                className="absolute inset-0 w-full h-full" 
-                                src={`https://www.youtube.com/embed/${video.embedId}`}
-                                title={video.title}
-                                frameBorder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                allowFullScreen
-                            />
-                        </div>
-                        <div className="p-6">
-                            <div className="flex items-center justify-between mb-3">
-                                <span className="bg-cosiaca-red text-white px-3 py-1 rounded-full text-sm font-medium">
-                                    {video.category}
-                                </span>
-                                <span className="text-sm text-cosiaca-brown/60">🎥 Video IA</span>
+                <h2 className="text-3xl font-bold font-anton text-cosiaca-brown text-center">
+                    🎬 Videos Destacados
+                </h2>
+                {videoList
+                    .filter(video => !video.coming && video.embedId)
+                    .map((video) => (
+                        <div key={video.id} className="bg-white rounded-xl shadow-lg border border-cosiaca-beige overflow-hidden">
+                            <div className="relative pt-[56.25%] bg-cosiaca-beige">
+                                <iframe
+                                    className="absolute inset-0 w-full h-full"
+                                    src={`https://www.youtube.com/embed/${video.embedId}`}
+                                    title={video.title}
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowFullScreen
+                                />
                             </div>
-                            <h3 className="text-xl font-bold text-cosiaca-brown mb-3 font-anton">
-                                {video.title}
-                            </h3>
-                            <p className="text-cosiaca-brown/80 leading-relaxed">
-                                {video.description}
-                            </p>
+                            <div className="p-6">
+                                <div className="flex items-center justify-between mb-3">
+                                    <span className="bg-cosiaca-red text-white px-3 py-1 rounded-full text-sm font-medium">
+                                        {video.category}
+                                    </span>
+                                    <span className="text-sm text-cosiaca-brown/60">🎥 Video IA</span>
+                                </div>
+                                <h3 className="text-xl font-bold text-cosiaca-brown mb-3 font-anton">
+                                    {video.title}
+                                </h3>
+                                <p className="text-cosiaca-brown/80 leading-relaxed">
+                                    {video.description}
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
             </div>
 
             {/* Información Técnica */}
@@ -99,25 +175,32 @@ const Videos = () => {
             </div>
 
             {/* Próximos Videos */}
-            <div className="bg-gradient-to-r from-cosiaca-red/10 to-cosiaca-brown/10 p-8 rounded-xl border border-cosiaca-beige/50">
-                <h3 className="text-2xl font-bold text-cosiaca-brown mb-4 font-anton text-center">
-                    🎬 Próximos Videos en Producción
-                </h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div className="bg-white/50 p-4 rounded-lg text-center">
-                        <h4 className="font-bold text-cosiaca-brown mb-2">La Fundación de Medellín</h4>
-                        <p className="text-sm text-cosiaca-brown/70">Recreación IA del año 1675</p>
+            {videoList.filter(video => video.coming).length > 0 && (
+                <div className="bg-gradient-to-r from-cosiaca-red/10 to-cosiaca-brown/10 p-8 rounded-xl border border-cosiaca-beige/50">
+                    <h3 className="text-2xl font-bold text-cosiaca-brown mb-4 font-anton text-center">
+                        🎬 Próximos Videos en Producción
+                    </h3>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {videoList
+                            .filter(video => video.coming)
+                            .map((video) => (
+                                <div key={video.id} className="bg-white/70 p-5 rounded-lg border-2 border-cosiaca-beige hover:border-cosiaca-red transition-all duration-300">
+                                    <div className="flex items-start justify-between mb-2">
+                                        <span className="bg-cosiaca-brown/20 text-cosiaca-brown px-2 py-1 rounded text-xs font-bold">
+                                            {video.category}
+                                        </span>
+                                        <span className="text-cosiaca-red text-xs font-bold">Próximamente</span>
+                                    </div>
+                                    <h4 className="font-bold text-cosiaca-brown mb-2 text-base">{video.title}</h4>
+                                    <p className="text-sm text-cosiaca-brown/70 leading-relaxed">{video.description}</p>
+                                </div>
+                            ))}
                     </div>
-                    <div className="bg-white/50 p-4 rounded-lg text-center">
-                        <h4 className="font-bold text-cosiaca-brown mb-2">El Auge Cafetero</h4>
-                        <p className="text-sm text-cosiaca-brown/70">Arrieros y comerciantes del siglo XIX</p>
-                    </div>
-                    <div className="bg-white/50 p-4 rounded-lg text-center">
-                        <h4 className="font-bold text-cosiaca-brown mb-2">Medellín Innovadora</h4>
-                        <p className="text-sm text-cosiaca-brown/70">La transformación del siglo XXI</p>
-                    </div>
+                    <p className="text-center text-cosiaca-brown/70 mt-6 italic">
+                        💡 <strong>Suscríbete a nuestro canal</strong> para recibir notificaciones cuando publiquemos nuevos videos
+                    </p>
                 </div>
-            </div>
+            )}
         </div>
     );
 };
