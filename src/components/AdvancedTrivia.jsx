@@ -25,27 +25,27 @@ const generateCertificate = (playerName, totalScore, maxScore, completedLevels, 
     
     // Título
     ctx.fillStyle = '#2C1810';
-    ctx.font = 'bold 36px serif';
+    ctx.font = 'bold 36px "Anton", sans-serif';
     ctx.textAlign = 'center';
     ctx.fillText('CERTIFICADO DE MAESTRÍA PAISA', 400, 100);
     
     // Subtítulo
-    ctx.font = 'italic 24px serif';
+    ctx.font = 'italic 24px "Montserrat", sans-serif';
     ctx.fillStyle = '#C41E3A';
     ctx.fillText('Cosiaca 350 - Trivia Histórica de Medellín', 400, 140);
     
     // Texto principal
-    ctx.font = '20px serif';
+    ctx.font = '20px "Montserrat", sans-serif';
     ctx.fillStyle = '#2C1810';
     ctx.fillText('Se certifica que', 400, 200);
     
     // Nombre del jugador
-    ctx.font = 'bold 32px serif';
+    ctx.font = 'bold 32px "Anton", sans-serif';
     ctx.fillStyle = '#C41E3A';
     ctx.fillText(playerName || 'Paisa Verraco', 400, 250);
     
     // Logros
-    ctx.font = '18px serif';
+    ctx.font = '18px "Montserrat", sans-serif';
     ctx.fillStyle = '#2C1810';
     ctx.fillText('Ha demostrado su conocimiento de la historia de Medellín', 400, 300);
     ctx.fillText(`completando ${completedLevels.length} de 5 niveles`, 400, 330);
@@ -54,14 +54,14 @@ const generateCertificate = (playerName, totalScore, maxScore, completedLevels, 
     
     // Fecha
     const fecha = new Date().toLocaleDateString('es-CO');
-    ctx.font = '16px serif';
+    ctx.font = '16px "Montserrat", sans-serif';
     ctx.fillText(`Medellín, ${fecha}`, 400, 450);
     
     // Firma
-    ctx.font = 'italic 18px serif';
+    ctx.font = 'italic 18px "Montserrat", sans-serif';
     ctx.fillStyle = '#C41E3A';
     ctx.fillText('José García "Cosiaca"', 400, 500);
-    ctx.font = '14px serif';
+    ctx.font = '14px "Montserrat", sans-serif';
     ctx.fillStyle = '#2C1810';
     ctx.fillText('Primer Comediante Popular de Antioquia', 400, 520);
     
@@ -265,7 +265,7 @@ const AdvancedTrivia = () => {
     const renderMenu = () => (
         <div className="space-y-8">
             <div className="text-center">
-                <h2 className="text-4xl font-bold font-serif text-cosiaca-brown mb-4">
+                <h2 className="text-4xl font-bold font-anton text-cosiaca-brown mb-4">
                     🏆 Trivia Histórica de Medellín
                 </h2>
                 <p className="text-xl text-cosiaca-brown/70 mb-6">

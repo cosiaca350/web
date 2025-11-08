@@ -4,7 +4,7 @@ const Libros = () => {
     return (
         <div className="animate-fade-in max-w-4xl mx-auto text-cosiaca-brown space-y-8">
             <header className="text-center">
-                <h1 className="text-4xl md:text-5xl font-bold font-serif text-cosiaca-brown">
+                <h1 className="text-4xl md:text-5xl font-bold font-anton text-cosiaca-brown">
                     📖 Libros: La Base Narrativa
                 </h1>
                 <p className="text-xl mt-2 text-cosiaca-brown-light/70">La crónica que inspira nuestro universo transmedia.</p>
@@ -29,7 +29,7 @@ const Libros = () => {
                     </div>
                 </div>
                 <div className="md:w-2/3">
-                    <h2 className="text-3xl font-serif text-cosiaca-brown mb-4">
+                    <h2 className="text-3xl font-anton text-cosiaca-brown mb-4">
                         "País de Cosiacas, ciegos y puritanos"
                     </h2>
                     <p className="text-lg mb-4">
@@ -47,24 +47,24 @@ const Libros = () => {
             </div>
             
             <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige text-center">
-                <h2 className="text-2xl font-serif text-cafe-oscuro mb-4">
+                <h2 className="text-2xl font-anton text-cosiaca-brown mb-4">
                     📖 Sobre el Libro
                 </h2>
                 <div className="grid md:grid-cols-3 gap-6 mt-6">
                     <div className="bg-cosiaca-cream/50 p-4 rounded-lg border border-cosiaca-beige">
-                        <h3 className="font-bold text-cafe-oscuro mb-2">📚 Género</h3>
-                        <p className="text-cafe-claro/80">Crónica Novelada Histórica</p>
+                        <h3 className="font-bold text-cosiaca-brown mb-2">📚 Género</h3>
+                        <p className="text-cosiaca-brown/80">Crónica Novelada Histórica</p>
                     </div>
                     <div className="bg-cosiaca-cream/50 p-4 rounded-lg border border-cosiaca-beige">
-                        <h3 className="font-bold text-cafe-oscuro mb-2">✍️ Autor</h3>
-                        <p className="text-cafe-claro/80">Juan Alejandro Ramírez</p>
+                        <h3 className="font-bold text-cosiaca-brown mb-2">✍️ Autor</h3>
+                        <p className="text-cosiaca-brown/80">Juan Alejandro Ramírez</p>
                     </div>
                     <div className="bg-cosiaca-cream/50 p-4 rounded-lg border border-cosiaca-beige">
-                        <h3 className="font-bold text-cafe-oscuro mb-2">🎯 Enfoque</h3>
-                        <p className="text-cafe-claro/80">Humor Paisa e Historia</p>
+                        <h3 className="font-bold text-cosiaca-brown mb-2">🎯 Enfoque</h3>
+                        <p className="text-cosiaca-brown/80">Humor Paisa e Historia</p>
                     </div>
                 </div>
-                <p className="text-lg text-cafe-claro/80 mt-6">
+                <p className="text-lg text-cosiaca-brown/80 mt-6">
                     El libro es la piedra angular del proyecto Cosiaca 350, combinando investigación histórica rigurosa 
                     con el humor característico de la cultura paisa. A través de sus páginas, los lectores descubren 
                     cómo se forjó la identidad antioqueña y el papel fundamental que jugó el humor popular en la 

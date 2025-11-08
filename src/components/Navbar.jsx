@@ -64,7 +64,7 @@ const Navbar = ({ view, setView }) => {
     ];
     
     return (
-        <nav className="bg-cosiaca-principal/95 backdrop-blur-lg text-cosiaca-cream p-2 sm:p-3 md:p-4 sticky top-0 z-50 border-b-2 border-cosiaca-acento/30 shadow-lg">
+        <nav className="bg-cosiaca-brown-dark backdrop-blur-lg text-cosiaca-cream p-2 sm:p-3 md:p-4 sticky top-0 z-50 border-b-2 border-cosiaca-acento/30 shadow-lg">
             <div className="container mx-auto flex justify-between items-center">
                 <div
                     className="cursor-pointer flex items-center"

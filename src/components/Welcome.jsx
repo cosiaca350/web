@@ -44,7 +44,7 @@ const Welcome = ({ setView }) => {
             title: "CosiacaBot", 
             desc: "Conversa con la historia",
             action: () => setView('cosiacabot'),
-            color: "from-purple-500 to-purple-600"
+            color: "from-cosiaca-acento to-cosiaca-secundario"
         },
         { 
             icon: <GamepadIcon className="w-8 h-8" />, 
@@ -85,7 +85,7 @@ const Welcome = ({ setView }) => {
                 <div className="bg-white/90 backdrop-blur-sm p-8 xl:p-1920 rounded-2xl shadow-2xl border border-cosiaca-beige max-w-6xl xl:max-w-7xl mx-auto">
                     <div className="text-center mb-6">
                         <div className="text-4xl xl:text-6xl mb-4">🎭</div>
-                        <h3 className="text-2xl xl:text-1920-lg font-bold text-cosiaca-brown font-serif mb-4">
+                        <h3 className="text-2xl xl:text-1920-lg font-bold text-cosiaca-brown font-anton mb-4">
                             Una Experiencia Transmedia Única
                         </h3>
                     </div>
@@ -128,7 +128,7 @@ const Welcome = ({ setView }) => {
                 <div className="bg-white/90 backdrop-blur-sm p-8 xl:p-1920 rounded-2xl shadow-2xl border border-cosiaca-beige max-w-5xl xl:max-w-6xl mx-auto mb-8 sm:mb-12">
                     <div className="text-center mb-6">
                         <div className="text-4xl xl:text-6xl mb-4">✨</div>
-                        <h3 className="text-2xl xl:text-1920-lg font-bold text-cosiaca-brown font-serif mb-4">
+                        <h3 className="text-2xl xl:text-1920-lg font-bold text-cosiaca-brown font-anton mb-4">
                             El Chismecito Histórico de Cosiaca
                         </h3>
                         <p className="text-lg xl:text-1920-base text-cosiaca-brown/80 mb-6">
@@ -188,7 +188,7 @@ const Welcome = ({ setView }) => {
                 {/* Información del Proyecto */}
                 <section className="animate-fade-in mb-8 sm:mb-12">
                 <div className="bg-gradient-to-r from-cosiaca-red/10 to-cosiaca-brown/10 p-8 xl:p-1920 rounded-2xl border border-cosiaca-beige/50 max-w-6xl xl:max-w-7xl mx-auto">
-                    <h3 className="text-3xl xl:text-1920-lg font-bold text-cosiaca-brown mb-4 font-serif">
+                    <h3 className="text-3xl xl:text-1920-lg font-bold text-cosiaca-brown mb-4 font-anton">
                         🏛️ Proyecto Oficial
                     </h3>
                     <p className="text-xl xl:text-1920-base text-cosiaca-brown/80 leading-relaxed mb-6 max-w-5xl xl:max-w-6xl mx-auto">

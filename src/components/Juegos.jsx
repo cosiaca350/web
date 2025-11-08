@@ -163,7 +163,7 @@ const Juegos = () => {
     return (
         <div className="animate-fade-in max-w-6xl mx-auto text-cosiaca-brown space-y-6 sm:space-y-8 px-4">
             <header className="text-center">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif text-cosiaca-brown">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-anton text-cosiaca-brown">
                     🎮 Juegos y AR
                 </h1>
                 <p className="text-lg sm:text-xl mt-2 text-cosiaca-brown-light/70">¡Humor, conocimiento y rima paisa!</p>
@@ -171,7 +171,7 @@ const Juegos = () => {
             
             {/* Banner Principal */}
             <div className="bg-gradient-to-r from-cosiaca-brown to-cosiaca-brown/80 rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 text-center text-white">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight font-serif mb-4 text-white">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight font-anton mb-4 text-white">
                     ✨ Experiencias Interactivas
                 </h2>
                 <p className="text-lg sm:text-xl opacity-90 text-white">Aprende jugando con Cosiaca</p>
@@ -222,7 +222,7 @@ const Juegos = () => {
             {activeTab === 'standup' && (
                 <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 border border-cosiaca-beige animate-fade-in">
                     <div className="text-center mb-6 sm:mb-8">
-                        <h3 className="text-2xl sm:text-3xl font-bold font-serif text-cosiaca-brown mb-2">
+                        <h3 className="text-2xl sm:text-3xl font-bold font-anton text-cosiaca-brown mb-2">
                             😂 Stand Up Paisa con IA
                         </h3>
                         <p className="text-base sm:text-lg text-cosiaca-brown/70">
@@ -270,7 +270,7 @@ const Juegos = () => {
             {activeTab === 'trovas' && (
                 <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 border border-cosiaca-beige animate-fade-in">
                     <div className="text-center mb-6 sm:mb-8">
-                        <h3 className="text-2xl sm:text-3xl font-bold font-serif text-cosiaca-brown mb-2">
+                        <h3 className="text-2xl sm:text-3xl font-bold font-anton text-cosiaca-brown mb-2">
                             🎵 Trovas Paisas con IA
                         </h3>
                         <p className="text-base sm:text-lg text-cosiaca-brown/70">

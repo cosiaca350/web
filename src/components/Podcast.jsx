@@ -194,7 +194,7 @@ const Podcast = () => {
     return (
         <div className="animate-fade-in max-w-4xl mx-auto text-cosiaca-brown space-y-8">
             <header className="text-center">
-                <h1 className="text-4xl md:text-5xl font-black font-serif text-cafe-oscuro">
+                <h1 className="text-4xl md:text-5xl font-black font-anton text-cosiaca-brown">
                     🎙️ Podcast Histórico
                 </h1>
                 <p className="text-xl mt-2 text-cosiaca-brown/70 lead font-medium">
@@ -204,7 +204,7 @@ const Podcast = () => {
             
             <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige text-center">
                 <PodcastIcon className="w-16 h-16 mx-auto text-cosiaca-red mb-4" />
-                <h2 className="text-2xl font-bold font-serif text-cafe-oscuro mb-4">
+                <h2 className="text-2xl font-bold font-anton text-cosiaca-brown mb-4">
                     "Historias Contadas con Humor Paisa"
                 </h2>
                 <p className="text-lg text-cosiaca-brown/80 lead">
@@ -286,7 +286,7 @@ const Podcast = () => {
                                 className="w-full md:w-24 h-48 md:h-24 object-cover rounded-lg shadow-md"
                             />
                             <div className="flex-1">
-                                <h3 className="text-xl font-bold text-cafe-oscuro mb-2 font-serif">
+                                <h3 className="text-xl font-bold text-cosiaca-brown mb-2 font-anton">
                                     {episode.title}
                                 </h3>
                                 <p className="text-cosiaca-brown/80 mb-3 leading-relaxed">
@@ -338,7 +338,7 @@ const Podcast = () => {
 
             {/* Información técnica */}
             <div className="bg-cosiaca-beige/30 p-6 rounded-xl border border-cosiaca-beige">
-                <h3 className="text-2xl font-bold font-serif text-cafe-oscuro mb-4">
+                <h3 className="text-2xl font-bold font-anton text-cosiaca-brown mb-4">
                     💡 Información del Podcast
                 </h3>
                 <p className="text-cosiaca-brown/80 lead mb-4">

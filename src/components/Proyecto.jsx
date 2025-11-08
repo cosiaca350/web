@@ -4,7 +4,7 @@ const Proyecto = () => {
     return (
         <div className="animate-fade-in space-y-8 max-w-6xl mx-auto text-cosiaca-brown px-4">
             <header className="text-center">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-black font-serif text-cosiaca-brown mb-4">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-black font-anton text-cosiaca-brown mb-4">
                     El Proyecto: Cosiaca 350
                 </h1>
                 <p className="text-lg sm:text-xl text-cosiaca-brown-light/70 lead font-medium max-w-4xl mx-auto">
@@ -13,7 +13,7 @@ const Proyecto = () => {
             </header>
             
             <section className="bg-white/90 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-xl border border-cosiaca-beige">
-                <h2 className="text-2xl sm:text-3xl font-bold font-serif text-cosiaca-brown mb-6 text-center">
+                <h2 className="text-2xl sm:text-3xl font-bold font-anton text-cosiaca-brown mb-6 text-center">
                     💡 Introducción y Concepto General
                 </h2>
                 <div className="grid lg:grid-cols-2 gap-8 items-center">
@@ -46,7 +46,7 @@ const Proyecto = () => {
             </section>
             
             <section className="bg-white/90 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-xl border border-cosiaca-beige">
-                <h2 className="text-2xl sm:text-3xl font-bold font-serif text-cosiaca-brown mb-8 text-center">
+                <h2 className="text-2xl sm:text-3xl font-bold font-anton text-cosiaca-brown mb-8 text-center">
                     🌌 Componentes Transmedia
                 </h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -100,7 +100,7 @@ const Proyecto = () => {
             </section>
             
             <section className="bg-white/90 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-xl border border-cosiaca-beige">
-                <h2 className="text-2xl sm:text-3xl font-bold font-serif text-cosiaca-brown mb-6 text-center">
+                <h2 className="text-2xl sm:text-3xl font-bold font-anton text-cosiaca-brown mb-6 text-center">
                     🔍 Inspiración y Fuentes
                 </h2>
                 <div className="grid lg:grid-cols-2 gap-8">

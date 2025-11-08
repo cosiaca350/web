@@ -71,21 +71,21 @@ const Timeline = () => {
     ];
 
     return (
-        <div className="animate-fade-in max-w-6xl mx-auto text-cafe-oscuro space-y-8">
+        <div className="animate-fade-in max-w-6xl mx-auto text-cosiaca-brown space-y-8">
             <header className="text-center">
-                <h1 className="text-4xl md:text-5xl font-bold font-serif text-cafe-oscuro">
+                <h1 className="text-4xl md:text-5xl font-bold font-anton text-cosiaca-brown">
                     ⏳ <strong>350</strong> Años en un Viaje
                 </h1>
-                <p className="text-xl mt-2 text-cafe-claro/70">
+                <p className="text-xl mt-2 text-cosiaca-brown/70">
                     Un recorrido por la historia de Medellín, contada por Cosiaca
                 </p>
             </header>
             
             <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige text-center">
-                <h2 className="text-2xl font-serif text-cafe-oscuro mb-4">
+                <h2 className="text-2xl font-anton text-cosiaca-brown mb-4">
                     "De Villa de Mulas a Ciudad Inteligente"
                 </h2>
-                <p className="text-lg text-cafe-claro/80">
+                <p className="text-lg text-cosiaca-brown/80">
                     Acompáñanos en este viaje temporal donde Cosiaca nos cuenta, con su humor característico, 
                     cómo una pequeña villa fundada en 1675 se convirtió en la innovadora Medellín de hoy.
                 </p>
@@ -105,8 +105,8 @@ const Timeline = () => {
                             <div className="ml-16 bg-cosiaca-beige/30 p-6 rounded-xl border border-cosiaca-beige hover:shadow-lg transition-all duration-300">
                                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                                     <div>
-                                        <h3 className="text-2xl font-bold text-cafe-oscuro">{period.year}</h3>
-                                        <h4 className="text-xl font-serif text-cosiaca-red">{period.title}</h4>
+                                        <h3 className="text-2xl font-bold text-cosiaca-brown">{period.year}</h3>
+                                        <h4 className="text-xl font-anton text-cosiaca-red">{period.title}</h4>
                                     </div>
                                     <button
                                         onClick={() => setSelectedPeriod(selectedPeriod === period.id ? null : period.id)}
@@ -116,11 +116,11 @@ const Timeline = () => {
                                     </button>
                                 </div>
                                 
-                                <p className="text-cafe-claro/80 mb-4">{period.description}</p>
+                                <p className="text-cosiaca-brown/80 mb-4">{period.description}</p>
                                 
                                 {selectedPeriod === period.id && (
                                     <div className="bg-cosiaca-cream/50 p-4 rounded-lg border border-cosiaca-beige animate-fade-in">
-                                        <p className="text-cafe-claro italic">{period.details}</p>
+                                        <p className="text-cosiaca-brown italic">{period.details}</p>
                                     </div>
                                 )}
                             </div>
@@ -130,10 +130,10 @@ const Timeline = () => {
             </div>
 
             <div className="bg-cosiaca-beige/30 p-6 rounded-xl border border-cosiaca-beige text-center">
-                <h3 className="text-2xl font-serif text-cafe-oscuro mb-4">
+                <h3 className="text-2xl font-anton text-cosiaca-brown mb-4">
                     🎭 La Mirada de Cosiaca
                 </h3>
-                <p className="text-cafe-claro/80">
+                <p className="text-cosiaca-brown/80">
                     Cada período histórico está narrado desde la perspectiva única de José García "Cosiaca", 
                     quien con su humor y sabiduría popular nos ayuda a entender cómo se forjó la identidad paisa 
                     a lo largo de estos <strong>350</strong> años de historia.

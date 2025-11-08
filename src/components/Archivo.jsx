@@ -99,21 +99,21 @@ const Archivo = () => {
     };
 
     return (
-        <div className="animate-fade-in max-w-6xl mx-auto text-cafe-oscuro space-y-8">
+        <div className="animate-fade-in max-w-6xl mx-auto text-cosiaca-brown space-y-8">
             <header className="text-center">
-                <h1 className="text-4xl md:text-5xl font-black font-serif text-cafe-oscuro">
+                <h1 className="text-4xl md:text-5xl font-black font-anton text-cosiaca-brown">
                     📚 Archivo Histórico
                 </h1>
-                <p className="text-xl mt-2 text-cafe-claro/70 lead font-medium">
+                <p className="text-xl mt-2 text-cosiaca-brown/70 lead font-medium">
                     <em>Fuentes documentales que nutren las historias de Cosiaca</em>
                 </p>
             </header>
             
             <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige text-center">
-                <h2 className="text-2xl font-bold font-serif text-cafe-oscuro mb-4">
+                <h2 className="text-2xl font-bold font-anton text-cosiaca-brown mb-4">
                     "La Historia Vive en los Documentos"
                 </h2>
-                <p className="text-lg text-cafe-claro/80 lead">
+                <p className="text-lg text-cosiaca-brown/80 lead">
                     Cada historia que cuenta <strong>Cosiaca</strong> está respaldada por <em>documentos, fotografías y testimonios 
                     reales</em> que hemos recopilado de los principales <strong>archivos históricos de Medellín y Antioquia</strong>.
                 </p>
@@ -128,7 +128,7 @@ const Archivo = () => {
                         className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
                             selectedCategory === key
                                 ? 'bg-cosiaca-red text-white shadow-lg'
-                                : 'bg-cosiaca-beige text-cafe-claro hover:bg-cosiaca-beige/70'
+                                : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
                         }`}
                     >
                         {category.title}
@@ -138,7 +138,7 @@ const Archivo = () => {
 
             {/* Archive Content */}
             <div className="space-y-6">
-                <h2 className="text-3xl font-bold font-serif text-cafe-oscuro text-center mb-8">
+                <h2 className="text-3xl font-bold font-anton text-cosiaca-brown text-center mb-8">
                     {archiveCategories[selectedCategory].title}
                 </h2>
                 
@@ -154,10 +154,10 @@ const Archivo = () => {
                                 className="w-full h-48 object-cover"
                             />
                             <div className="p-6">
-                                <h3 className="text-xl font-bold text-cafe-oscuro mb-2 font-serif">
+                                <h3 className="text-xl font-bold text-cosiaca-brown mb-2 font-anton">
                                     {item.title}
                                 </h3>
-                                <p className="text-cafe-claro/80 mb-3 leading-relaxed">
+                                <p className="text-cosiaca-brown/80 mb-3 leading-relaxed">
                                     {item.description}
                                 </p>
                                 <p className="text-sm text-cosiaca-red font-bold">
@@ -171,13 +171,13 @@ const Archivo = () => {
 
             {/* Archive Sources */}
             <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige">
-                <h2 className="text-3xl font-bold font-serif text-cafe-oscuro mb-6 text-center">
+                <h2 className="text-3xl font-bold font-anton text-cosiaca-brown mb-6 text-center">
                     🏛️ Nuestras Fuentes
                 </h2>
                 <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-4">
-                        <h3 className="text-xl font-bold text-cafe-oscuro font-serif">📁 Archivos Principales</h3>
-                        <ul className="space-y-2 text-cafe-claro/80 text-lg">
+                        <h3 className="text-xl font-bold text-cosiaca-brown font-anton">📁 Archivos Principales</h3>
+                        <ul className="space-y-2 text-cosiaca-brown/80 text-lg">
                             <li>• <strong>Archivo Histórico de Medellín</strong></li>
                             <li>• <strong>Biblioteca Pública Piloto</strong></li>
                             <li>• <strong>Archivo Fotográfico Biblioteca EPM</strong></li>
@@ -186,8 +186,8 @@ const Archivo = () => {
                         </ul>
                     </div>
                     <div className="space-y-4">
-                        <h3 className="text-xl font-bold text-cafe-oscuro font-serif">🎨 Colecciones Especiales</h3>
-                        <ul className="space-y-2 text-cafe-claro/80 text-lg">
+                        <h3 className="text-xl font-bold text-cosiaca-brown font-anton">🎨 Colecciones Especiales</h3>
+                        <ul className="space-y-2 text-cosiaca-brown/80 text-lg">
                             <li>• <em>Fondo Fotográfico Melitón Rodríguez</em></li>
                             <li>• <em>Colección Ignacio Gómez</em></li>
                             <li>• <em>Hemeroteca de Prensa Satírica</em></li>
