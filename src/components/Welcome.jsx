@@ -192,6 +192,59 @@ const Welcome = ({ setView }) => {
                 </div>
                 </section>
 
+                {/* Componentes Transmedia Detallados */}
+                <section className="animate-fade-in mb-8 sm:mb-12">
+                <div className="bg-white/90 backdrop-blur-sm p-8 xl:p-1920 rounded-2xl shadow-2xl border border-cosiaca-beige max-w-6xl xl:max-w-7xl mx-auto">
+                    <h3 className="text-2xl xl:text-1920-lg font-bold text-cosiaca-brown mb-8 font-anton text-center">
+                        🌌 Componentes Transmedia
+                    </h3>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="bg-cosiaca-cream/50 p-6 rounded-xl border border-cosiaca-beige hover:shadow-lg transition-all duration-300 group">
+                            <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">🌐</div>
+                            <h4 className="font-bold text-lg text-cosiaca-brown mb-3">Plataforma Web Interactiva</h4>
+                            <p className="text-cosiaca-brown/80 leading-relaxed text-sm">
+                                <strong>Sitio web</strong> a modo de <em>museo virtual</em> donde convergen todos los contenidos, con <strong>narrativas, líneas de tiempo y galerías audiovisuales</strong>.
+                            </p>
+                        </div>
+                        <div className="bg-cosiaca-cream/50 p-6 rounded-xl border border-cosiaca-beige hover:shadow-lg transition-all duration-300 group">
+                            <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">🤖</div>
+                            <h4 className="font-bold text-lg text-cosiaca-brown mb-3">CosiacaBot</h4>
+                            <p className="text-cosiaca-brown/80 leading-relaxed text-sm">
+                                <strong>Asistente virtual</strong> con la personalidad de Cosiaca que permite a los usuarios <em>"conversar" con este personaje histórico</em>.
+                            </p>
+                        </div>
+                        <div className="bg-cosiaca-cream/50 p-6 rounded-xl border border-cosiaca-beige hover:shadow-lg transition-all duration-300 group">
+                            <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">🎥</div>
+                            <h4 className="font-bold text-lg text-cosiaca-brown mb-3">Videos Históricos con IA</h4>
+                            <p className="text-cosiaca-brown/80 leading-relaxed text-sm">
+                                <strong>Micro-videos</strong> que recrean <em>escenas y personajes históricos</em> de Medellín usando técnicas de <strong>inteligencia artificial</strong>.
+                            </p>
+                        </div>
+                        <div className="bg-cosiaca-cream/50 p-6 rounded-xl border border-cosiaca-beige hover:shadow-lg transition-all duration-300 group">
+                            <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">📚</div>
+                            <h4 className="font-bold text-lg text-cosiaca-brown mb-3">Crónica Novelada</h4>
+                            <p className="text-cosiaca-brown/80 leading-relaxed text-sm">
+                                <em>"País de Cosiacas, ciegos y puritanos"</em>, <strong>libro que sienta la base narrativa</strong> del proyecto.
+                            </p>
+                        </div>
+                        <div className="bg-cosiaca-cream/50 p-6 rounded-xl border border-cosiaca-beige hover:shadow-lg transition-all duration-300 group">
+                            <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">🎙️</div>
+                            <h4 className="font-bold text-lg text-cosiaca-brown mb-3">Podcast Histórico</h4>
+                            <p className="text-cosiaca-brown/80 leading-relaxed text-sm">
+                                <strong>Serie de episodios</strong> donde Cosiaca narra las historias más fascinantes de los <strong>350</strong> años de Medellín.
+                            </p>
+                        </div>
+                        <div className="bg-cosiaca-cream/50 p-6 rounded-xl border border-cosiaca-beige hover:shadow-lg transition-all duration-300 group">
+                            <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">📱</div>
+                            <h4 className="font-bold text-lg text-cosiaca-brown mb-3">Difusión en Redes Sociales</h4>
+                            <p className="text-cosiaca-brown/80 leading-relaxed text-sm">
+                                <strong>Campaña digital</strong> en <em>TikTok, Instagram, y YouTube</em> para promocionar el contenido y <strong>fomentar la participación</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                </section>
+
                 {/* Fuentes e Inspiración */}
                 <section className="animate-fade-in mb-8 sm:mb-12">
                 <div className="bg-white/90 backdrop-blur-sm p-8 xl:p-1920 rounded-2xl shadow-2xl border border-cosiaca-beige max-w-6xl xl:max-w-7xl mx-auto">

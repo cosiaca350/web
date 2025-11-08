@@ -49,8 +49,7 @@ const Navbar = ({ view, setView }) => {
 
     const mainLinks = [
         { name: 'Inicio', view: 'home' },
-        { name: 'Bienvenida', view: 'welcome' },
-        { name: 'El Proyecto', view: 'proyecto' },
+        { name: 'El Proyecto', view: 'welcome' },
         { name: 'Videos IA', view: 'videos' },
         { name: 'CosiacaBot', view: 'cosiacabot' },
         { name: 'Juegos y AR', view: 'juegos' },
