@@ -64,13 +64,13 @@ const Navbar = ({ view, setView }) => {
     ];
     
     return (
-        <nav className="bg-cosiaca-brown/95 backdrop-blur-lg text-cosiaca-cream p-2 sm:p-3 md:p-4 sticky top-0 z-50 border-b border-cosiaca-brown/20 shadow-lg">
+        <nav className="bg-cosiaca-principal/95 backdrop-blur-lg text-cosiaca-cream p-2 sm:p-3 md:p-4 sticky top-0 z-50 border-b-2 border-cosiaca-acento/30 shadow-lg">
             <div className="container mx-auto flex justify-between items-center">
-                <div 
-                    className="cursor-pointer flex items-center" 
+                <div
+                    className="cursor-pointer flex items-center"
                     onClick={() => setView('home')}
-                    role="button" 
-                    tabIndex="0" 
+                    role="button"
+                    tabIndex="0"
                     onKeyDown={(e) => e.key === 'Enter' && setView('home')}
                     aria-label="Ir al inicio"
                 >
@@ -81,18 +81,18 @@ const Navbar = ({ view, setView }) => {
                         style={{ minWidth: '120px' }}
                     />
                 </div>
-                
+
                 {/* Desktop Navigation */}
                 <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2" role="navigation" aria-label="Navegación principal">
                     {mainLinks.map(link => (
-                        <button 
-                            key={link.view} 
-                            onClick={() => setView(link.view)} 
+                        <button
+                            key={link.view}
+                            onClick={() => setView(link.view)}
                             aria-current={view === link.view ? 'page' : undefined}
-                            className={`flex items-center px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-medium transition-all duration-300 ${
-                                view === link.view 
-                                    ? 'bg-cosiaca-red text-white shadow-lg' 
-                                    : 'text-cosiaca-cream hover:bg-cosiaca-brown/70 hover:text-white'
+                            className={`flex items-center px-2 xl:px-3 py-2 rounded-md text-xs xl:text-sm font-semibold transition-all duration-300 ${
+                                view === link.view
+                                    ? 'bg-cosiaca-acento text-white shadow-lg scale-105'
+                                    : 'text-cosiaca-cream hover:bg-cosiaca-enfasis hover:text-white'
                             }`}
                         >
                             {link.name}
@@ -102,17 +102,17 @@ const Navbar = ({ view, setView }) => {
                 
                 {/* Mobile Navigation */}
                 <div className="lg:hidden flex items-center">
-                    <button 
-                        onClick={() => setMobileMenuOpen(!isMobileMenuOpen)} 
+                    <button
+                        onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
                         aria-expanded={isMobileMenuOpen}
                         aria-label="Abrir menú de navegación"
-                        className="text-cosiaca-cream focus:outline-none p-2 rounded-md hover:bg-cosiaca-brown/70"
+                        className="text-cosiaca-cream focus:outline-none p-2 rounded-md hover:bg-cosiaca-acento transition-colors"
                     >
                         <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round" 
-                                strokeWidth="2" 
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
                                 d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}
                             />
                         </svg>
@@ -120,19 +120,19 @@ const Navbar = ({ view, setView }) => {
                 </div>
             </div>
             {isMobileMenuOpen && (
-                <nav className="lg:hidden mt-2 sm:mt-4 space-y-1 max-h-80 sm:max-h-96 overflow-y-auto bg-cosiaca-brown/95 rounded-lg p-2" role="navigation" aria-label="Navegación móvil">
+                <nav className="lg:hidden mt-2 sm:mt-4 space-y-1 max-h-80 sm:max-h-96 overflow-y-auto bg-cosiaca-principal/95 rounded-lg p-2 border-2 border-cosiaca-acento/30" role="navigation" aria-label="Navegación móvil">
                     {mainLinks.map(link => (
-                        <button 
-                            key={link.view} 
-                            onClick={() => { 
-                                setView(link.view); 
-                                setMobileMenuOpen(false); 
-                            }} 
+                        <button
+                            key={link.view}
+                            onClick={() => {
+                                setView(link.view);
+                                setMobileMenuOpen(false);
+                            }}
                             aria-current={view === link.view ? 'page' : undefined}
-                            className={`flex items-center w-full text-left px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium transition-colors ${
-                                view === link.view 
-                                    ? 'bg-cosiaca-red text-white' 
-                                    : 'text-cosiaca-cream hover:bg-cosiaca-brown/70'
+                            className={`flex items-center w-full text-left px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-semibold transition-all duration-300 ${
+                                view === link.view
+                                    ? 'bg-cosiaca-acento text-white shadow-md'
+                                    : 'text-cosiaca-cream hover:bg-cosiaca-enfasis hover:text-white'
                             }`}
                         >
                             {link.name}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@200;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&family=Anton&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -22,60 +22,75 @@ img[src*="logo-cosiaca"] {
   font-weight: 400;
 
   color-scheme: light;
-  color: #2C1810;
-  background-color: #F5F1E8;
+  color: #4B372B;
+  background-color: #F5EEDB;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --color-principal: #4B372B;
+  --color-acento: #3AA9BE;
+  --color-enfasis: #C92C3D;
+  --color-secundario: #5C8374;
+  --color-fondo: #F5EEDB;
+  --color-cream: #F5F1E8;
 }
 
-/* Typography improvements */
+/* Typography improvements - Brand Manual Compliant */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Playfair Display", serif;
-  font-weight: 700;
-  line-height: 1.2;
-  color: #2C1810;
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  line-height: 1.1;
+  color: #4B372B;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 h1 {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 900;
-  margin-bottom: 1rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 1.5rem;
 }
 
 h2 {
-  font-size: clamp(1.5rem, 3.5vw, 2rem);
-  font-weight: 800;
-  margin-bottom: 0.875rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 1.25rem;
 }
 
 h3 {
-  font-size: clamp(1.25rem, 3vw, 1.5rem);
-  font-weight: 700;
-  margin-bottom: 0.75rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 1rem;
 }
 
 h4 {
-  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
-  font-weight: 600;
-  margin-bottom: 0.625rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  margin-bottom: 0.875rem;
 }
 
 p {
-  font-family: "Inter", sans-serif;
-  font-size: clamp(0.875rem, 2vw, 1rem);
-  line-height: 1.6;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(0.9rem, 2vw, 1.125rem);
+  line-height: 1.7;
   margin-bottom: 1rem;
-  color: #2C1810;
+  color: #4B372B;
+  font-weight: 400;
 }
 
 .lead {
-  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
   font-weight: 500;
+  line-height: 1.6;
+  color: #4B372B;
+}
+
+.subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 300;
   line-height: 1.5;
-  color: #2C1810;
+  color: #5C8374;
+  margin-bottom: 1.5rem;
 }
 
 /* Responsive containers */
@@ -121,45 +136,51 @@ p {
 
 .text-emphasis {
   font-weight: 600;
-  color: #C41E3A;
+  color: #C92C3D;
+}
+
+.text-accent {
+  color: #3AA9BE;
+  font-weight: 500;
 }
 
 .text-highlight {
-  background: linear-gradient(120deg, #D4B896 0%, #D4B896 100%);
+  background: linear-gradient(120deg, #3AA9BE 0%, #3AA9BE 100%);
   background-repeat: no-repeat;
-  background-size: 100% 0.2em;
-  background-position: 0 88%;
-  font-weight: 600;
+  background-size: 100% 0.3em;
+  background-position: 0 85%;
+  font-weight: 500;
+  padding: 0 0.25rem;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #F5F1E8;
-  font-family: "Inter", sans-serif;
+  background-color: #F5EEDB;
+  font-family: "Montserrat", sans-serif;
 }
 
 * {
   box-sizing: border-box;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Brand Colors */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #E8DCC6;
+  background: #F5EEDB;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4A3426;
-  border-radius: 4px;
+  background: #3AA9BE;
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2C1810;
+  background: #C92C3D;
 }
 
 /* Smooth scrolling */
@@ -279,7 +300,7 @@ html {
   scroll-behavior: smooth;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #C41E3A #E8DCC6;
+  scrollbar-color: #3AA9BE #F5EEDB;
 }
 
 .smooth-scroll::-webkit-scrollbar {
@@ -287,25 +308,25 @@ html {
 }
 
 .smooth-scroll::-webkit-scrollbar-track {
-  background: #E8DCC6;
+  background: #F5EEDB;
   border-radius: 6px;
 }
 
 .smooth-scroll::-webkit-scrollbar-thumb {
-  background: #C41E3A;
+  background: #3AA9BE;
   border-radius: 6px;
-  border: 2px solid #E8DCC6;
+  border: 2px solid #F5EEDB;
 }
 
 .smooth-scroll::-webkit-scrollbar-thumb:hover {
-  background: #8B0000;
+  background: #C92C3D;
 }
 
-/* Botones de navegación orgánica */
+/* Botones de navegación orgánica - Brand Colors */
 .nav-arrow {
   position: fixed;
   right: 2rem;
-  background: rgba(196, 30, 58, 0.9);
+  background: rgba(58, 169, 190, 0.9);
   color: white;
   border: none;
   border-radius: 50%;
@@ -318,11 +339,11 @@ html {
   transition: all 0.3s ease;
   z-index: 40;
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .nav-arrow:hover {
-  background: rgba(139, 0, 0, 0.9);
+  background: rgba(201, 44, 61, 0.9);
   transform: scale(1.1);
 }
 
@@ -452,14 +473,14 @@ html {
   border: 0;
 }
 
-/* Focus indicators for keyboard navigation */
+/* Focus indicators for keyboard navigation - Brand Colors */
 *:focus {
-  outline: 2px solid #C41E3A;
+  outline: 2px solid #3AA9BE;
   outline-offset: 2px;
 }
 
 .dark *:focus {
-  outline-color: #F5F1E8;
+  outline-color: #F5EEDB;
 }
 
 /* Skip to main content link */
@@ -467,16 +488,18 @@ html {
   position: absolute;
   top: -40px;
   left: 6px;
-  background: #C41E3A;
+  background: #3AA9BE;
   color: white;
   padding: 8px;
   text-decoration: none;
   border-radius: 4px;
   z-index: 1000;
+  font-weight: 600;
 }
 
 .skip-link:focus {
   top: 6px;
+  background: #C92C3D;
 }
 
 /* Reduced motion preferences */

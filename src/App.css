@@ -9,12 +9,14 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.font-serif {
-  font-family: "Playfair Display", serif;
+.font-anton {
+  font-family: "Anton", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .font-sans {
-  font-family: "Inter", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .animate-fade-in {

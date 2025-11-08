@@ -141,14 +141,14 @@ const App = () => {
                 </>
             )}
             
-            <footer className="bg-cosiaca-brown-dark p-3 sm:p-4 md:p-6 text-center text-cosiaca-cream border-t border-cosiaca-brown-medium">
+            <footer className="bg-cosiaca-principal p-3 sm:p-4 md:p-6 text-center text-cosiaca-cream border-t-2 border-cosiaca-acento">
                 <div className="container-1920 mx-auto">
-                    <p className="text-sm sm:text-base md:text-lg font-medium mb-2 text-cosiaca-beige">© 2024 {"{COSIACA "}<strong>350</strong>{"}"} - Un Viaje Inmersivo a la Historia de Medellín</p>
-                    <p className="text-xs sm:text-sm md:text-base text-cosiaca-tan mb-3 sm:mb-4">Todos los derechos reservados. Un proyecto de <strong>Núcleo Colectivo</strong></p>
-                    <div className="text-xs sm:text-xs md:text-sm xl:text-1920-base text-cosiaca-cream/70 space-y-1">
-                        <p className="text-cosiaca-tan">Propuesta transmedia para la celebración de los <strong>350</strong> años de Medellín</p>
-                        <p className="text-cosiaca-tan">Proyecto beneficiado de las Convocatorias de Fomento y Estímulos para el Arte y la Cultura 2025</p>
-                        <p className="text-cosiaca-tan">Secretaría de Cultura Ciudadana de Medellín</p>
+                    <p className="text-sm sm:text-base md:text-lg font-semibold mb-2 text-cosiaca-cream font-montserrat">© 2024 {"{COSIACA "}<strong className="text-cosiaca-acento">350</strong>{"}"} - Un Viaje Inmersivo a la Historia de Medellín</p>
+                    <p className="text-xs sm:text-sm md:text-base text-cosiaca-beige font-montserrat mb-3 sm:mb-4">Todos los derechos reservados. Un proyecto de <strong className="text-cosiaca-acento">Núcleo Colectivo</strong></p>
+                    <div className="text-xs sm:text-xs md:text-sm xl:text-1920-base text-cosiaca-cream/80 font-montserrat space-y-1">
+                        <p className="text-cosiaca-beige">Propuesta transmedia para la celebración de los <strong className="text-cosiaca-enfasis">350</strong> años de Medellín</p>
+                        <p className="text-cosiaca-beige">Proyecto beneficiado de las Convocatorias de Fomento y Estímulos para el Arte y la Cultura 2025</p>
+                        <p className="text-cosiaca-beige">Secretaría de Cultura Ciudadana de Medellín</p>
                     </div>
                 </div>
             </footer>
