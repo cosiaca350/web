@@ -106,14 +106,14 @@ const Home = ({ setView }) => {
                     </div>
 
                     {/* Footer compacto */}
-                    <div className="animate-fade-in-up pt-6 lg:pt-8 space-y-2 lg:space-y-3 opacity-70">
-                        <p className="text-cosiaca-principal/70 font-montserrat font-medium text-xs sm:text-sm lg:text-base xl:text-1920-base">
+                    <div className="animate-fade-in-up pt-6 lg:pt-8 space-y-2 lg:space-y-3">
+                        <p className="text-cosiaca-principal font-montserrat font-medium text-xs sm:text-sm lg:text-base xl:text-1920-base">
                             Un proyecto de <strong className="text-cosiaca-acento">Núcleo Colectivo</strong>
                         </p>
-                        <p className="text-xs sm:text-xs lg:text-sm xl:text-base text-cosiaca-principal/60 font-montserrat">
+                        <p className="text-xs sm:text-xs lg:text-sm xl:text-base text-cosiaca-principal/90 font-montserrat">
                             Propuesta transmedia para la celebración de los <strong className="text-cosiaca-enfasis">350</strong> años de Medellín
                         </p>
-                        <p className="text-xs sm:text-xs lg:text-sm xl:text-base text-cosiaca-principal/50 font-montserrat">
+                        <p className="text-xs sm:text-xs lg:text-sm xl:text-base text-cosiaca-principal/80 font-montserrat">
                             🎭 <strong className="text-cosiaca-secundario">Núcleo Colectivo</strong> • 📍 Medellín, Colombia • 🎪 2025
                         </p>
                     </div>
