@@ -8,17 +8,32 @@ const Videos = () => {
     const videoList = [
         {
             id: 1,
-            title: "COSIACA 350 - Video 1",
-            description: "Parte 1 de la serie histórica sobre los 350 años de Medellín. Un viaje inmersivo contado por Cosiaca con inteligencia artificial.",
+            title: "Los Orígenes: De Aná a Medellín (1541-1675)",
+            description: "Descubre cómo el Valle de Aburrá pasó de ser territorio indígena Aburraé a convertirse en la Villa de Nuestra Señora de la Candelaria. Cosiaca nos cuenta con humor y picardía sobre las 24 familias fundadoras, los primeros colonos españoles, y cómo era la vida en esta pequeña villa rodeada de montañas. Con recreaciones visuales generadas por IA de la época colonial.",
             embedId: "UPIzJ_I4Em8",
-            category: "Historia de Medellín"
+            category: "Época Colonial (1541-1810)",
+            duration: "Video generado con IA",
+            highlights: [
+                "🏛️ Pueblos indígenas originarios",
+                "⛪ Fundación oficial en 1675",
+                "👨‍👩‍👧‍👦 Las 24 familias fundadoras",
+                "🎨 Recreaciones visuales con IA"
+            ]
         },
         {
             id: 2,
-            title: "COSIACA 350 - Video 2",
-            description: "Parte 2 de la serie histórica. Continuamos explorando las historias, personajes y anécdotas que marcaron la historia de nuestra ciudad.",
+            title: "Independencia y Café: El Despertar Paisa (1810-1900)",
+            description: "Un recorrido por la época más transformadora de Medellín. Desde la declaración de independencia con Juan del Corral, pasando por la cultura arriera que conectó montañas, hasta el boom cafetero que nos puso en el mapa mundial. Cosiaca narra con su característico humor cómo los paisas construyeron caminos imposibles, fundaron pueblos y se convirtieron en los mejores comerciantes de café. Incluye animaciones de personajes históricos y fotografías colorizadas con IA.",
             embedId: "k077YMXVcsg",
-            category: "Historia de Medellín"
+            category: "Siglo XIX (1810-1900)",
+            duration: "Video generado con IA",
+            highlights: [
+                "⚔️ Independencia de Antioquia (1813)",
+                "🐴 La cultura arriera paisa",
+                "☕ El boom cafetero",
+                "🛤️ Colonización antioqueña",
+                "🎨 Personajes históricos animados con IA"
+            ]
         }
     ];
 
@@ -98,8 +113,8 @@ const Videos = () => {
                 {videoList
                     .filter(video => !video.coming && video.embedId)
                     .map((video) => (
-                        <div key={video.id} className="bg-white rounded-xl shadow-lg border border-cosiaca-beige overflow-hidden">
-                            <div className="relative pt-[56.25%] bg-cosiaca-beige">
+                        <div key={video.id} className="bg-white rounded-xl shadow-lg border-2 border-cosiaca-beige overflow-hidden hover:border-cosiaca-red transition-all duration-300">
+                            <div className="relative pt-[56.25%] bg-black">
                                 <iframe
                                     className="absolute inset-0 w-full h-full"
                                     src={`https://www.youtube.com/embed/${video.embedId}`}
@@ -110,18 +125,30 @@ const Videos = () => {
                                 />
                             </div>
                             <div className="p-6">
-                                <div className="flex items-center justify-between mb-3">
-                                    <span className="bg-cosiaca-red text-white px-3 py-1 rounded-full text-sm font-medium">
+                                <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
+                                    <span className="bg-cosiaca-red text-white px-4 py-1.5 rounded-full text-sm font-bold">
                                         {video.category}
                                     </span>
-                                    <span className="text-sm text-cosiaca-brown/60">🎥 Video IA</span>
+                                    <span className="text-sm text-cosiaca-brown/60 font-medium">🎥 {video.duration}</span>
                                 </div>
-                                <h3 className="text-xl font-bold text-cosiaca-brown mb-3 font-anton">
+                                <h3 className="text-2xl font-bold text-cosiaca-brown mb-3 font-anton leading-tight">
                                     {video.title}
                                 </h3>
-                                <p className="text-cosiaca-brown/80 leading-relaxed">
+                                <p className="text-cosiaca-brown/80 leading-relaxed mb-4">
                                     {video.description}
                                 </p>
+                                {video.highlights && (
+                                    <div className="bg-cosiaca-beige/30 rounded-lg p-4 border border-cosiaca-beige">
+                                        <h4 className="font-bold text-cosiaca-brown mb-2 text-sm">✨ Lo que descubrirás:</h4>
+                                        <ul className="space-y-1">
+                                            {video.highlights.map((highlight, index) => (
+                                                <li key={index} className="text-sm text-cosiaca-brown/80">
+                                                    {highlight}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     ))}
