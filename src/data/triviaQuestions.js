@@ -342,6 +342,16 @@ export const triviaDatabase = {
   master: [
     {
       id: 1,
+      period: "1616",
+      difficulty: "Maestro",
+      question: "¿Qué pueblo indígena habitaba el Valle de Aburrá antes de la llegada española?",
+      options: ["Aná", "Nutabe", "Tahamí", "Guaca"],
+      correctAnswer: "Aná",
+      feedback: "¡Eso es, mijito! Los indígenas Aná fueron los primeros habitantes del Valle de Aburrá. Cultivaban maíz, yuca y comerciaban con otras tribus. Antes de los españoles, esta tierra ya tenía dueños verracos que sabían trabajarla con respeto.",
+      points: 10
+    },
+    {
+      id: 2,
       period: "1675-1700",
       difficulty: "Maestro",
       question: "¿En qué año se fundó oficialmente Medellín?",
@@ -351,7 +361,7 @@ export const triviaDatabase = {
       points: 10
     },
     {
-      id: 2,
+      id: 3,
       period: "1675-1700",
       difficulty: "Maestro",
       question: "¿Cuál era el nombre completo original de Medellín?",
@@ -361,7 +371,7 @@ export const triviaDatabase = {
       points: 10
     },
     {
-      id: 3,
+      id: 4,
       period: "1675-1700",
       difficulty: "Maestro",
       question: "¿Quién fue el fundador de Medellín?",

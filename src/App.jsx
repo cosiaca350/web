@@ -13,6 +13,7 @@ import Timeline from './components/Timeline';
 import Archivo from './components/Archivo';
 import PlanTrabajo from './components/PlanTrabajo';
 import CosiacaBot from './components/CosiacaBot';
+import HistoriaAmpliada from './components/HistoriaAmpliada';
 import AccessibilityControls from './components/AccessibilityControls';
 import './App.css';
 
@@ -79,6 +80,8 @@ const App = () => {
                 return <Podcast />;
             case 'timeline':
                 return <Timeline />;
+            case 'historia':
+                return <HistoriaAmpliada />;
             case 'archivo':
                 return <Archivo />;
             case 'plan':

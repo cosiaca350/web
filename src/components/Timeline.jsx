@@ -7,6 +7,24 @@ const Timeline = () => {
     const timelinePeriods = [
         {
             id: 1,
+            year: "1616",
+            date: "",
+            title: "Aná, Poblado Indígena",
+            category: "fundacion",
+            icon: "🏔️",
+            population: "Población indígena",
+            keyFigure: "Cacique Aná",
+            description: "Poblado indígena Aná en el Valle de Aburrá, origen ancestral del territorio",
+            details: "Antes de los españoles, aquí ya había gente verraca, mijito. Los indígenas Aná vivían de la tierra, cultivaban maíz y yuca. Cuando llegaron los de España, les tocó compartir sus montañas. '¡De caciques a arrieros, qué cambio tan grande!', diría Cosiaca.",
+            milestones: [
+                "Asentamiento del pueblo Aná",
+                "Agricultura y comercio indígena",
+                "Primera cultura del Valle de Aburrá"
+            ],
+            color: "bg-emerald-700"
+        },
+        {
+            id: 2,
             year: "1675",
             date: "2 de noviembre",
             title: "Fundación de Medellín",
@@ -24,7 +42,43 @@ const Timeline = () => {
             color: "bg-amber-600"
         },
         {
-            id: 2,
+            id: 3,
+            year: "1803",
+            date: "",
+            title: "Colegio de Franciscanos",
+            category: "educacion",
+            icon: "📚",
+            population: "~5,000 habitantes",
+            keyFigure: "Fray Rafael de la Serna",
+            description: "Fundación del Colegio de Franciscanos, semilla de la Universidad de Antioquia",
+            details: "'¡Ahí empezó la cosa seria con los libros!', dice Cosiaca. Los frailes franciscanos trajeron la educación formal al Valle de Aburrá. Primero rezaban y después enseñaban matemáticas. ¡Así de verraquitos éramos!",
+            milestones: [
+                "Primera institución educativa formal",
+                "Formación de élites locales",
+                "Base de la Universidad de Antioquia"
+            ],
+            color: "bg-blue-700"
+        },
+        {
+            id: 4,
+            year: "1813",
+            date: "",
+            title: "Título de Ciudad",
+            category: "politica",
+            icon: "👑",
+            population: "~8,000 habitantes",
+            keyFigure: "Juan del Corral",
+            description: "Medellín recibe el título de ciudad durante las guerras de independencia",
+            details: "'¡De villa a ciudad en plena guerra!', cuenta Cosiaca. Juan del Corral, el verraco que firmó la primera declaración de independencia de una provincia en América, le dio el título de ciudad a Medellín. ¡En medio de los balazos, pero con orgullo paisa!",
+            milestones: [
+                "Elevación a rango de ciudad",
+                "Declaración de independencia absoluta",
+                "Juan del Corral como líder visionario"
+            ],
+            color: "bg-red-700"
+        },
+        {
+            id: 5,
             year: "1826",
             date: "17 de abril",
             title: "Capital de Antioquia",
@@ -42,7 +96,25 @@ const Timeline = () => {
             color: "bg-red-700"
         },
         {
-            id: 3,
+            id: 6,
+            year: "1840",
+            date: "",
+            title: "Colonización Antioqueña",
+            category: "economia",
+            icon: "🥾",
+            population: "~12,000 habitantes",
+            keyFigure: "Arrieros y colonos",
+            description: "La colonización antioqueña expande el territorio hacia el sur",
+            details: "'¡Los paisas con machete y verraquera conquistamos el Viejo Caldas!', exclama Cosiaca. Familias enteras salieron con sus mulas y sus ganas de trabajar a fundar pueblos en tierras vírgenes. Así nacieron Manizales, Pereira y Armenia. ¡Puro tesón paisa!",
+            milestones: [
+                "Fundación de nuevas poblaciones",
+                "Expansión del café y la agricultura",
+                "Consolidación del espíritu arriero"
+            ],
+            color: "bg-amber-800"
+        },
+        {
+            id: 7,
             year: "1851",
             date: "12 de julio",
             title: "Universidad de Antioquia",
@@ -60,7 +132,7 @@ const Timeline = () => {
             color: "bg-blue-700"
         },
         {
-            id: 4,
+            id: 8,
             year: "1875",
             date: "20 de octubre",
             title: "Ferrocarril de Antioquia",
@@ -78,7 +150,25 @@ const Timeline = () => {
             color: "bg-gray-700"
         },
         {
-            id: 5,
+            id: 9,
+            year: "1887",
+            date: "",
+            title: "José García 'Cosiaca'",
+            category: "cultura",
+            icon: "🎭",
+            population: "~35,000 habitantes",
+            keyFigure: "José García 'Cosiaca'",
+            description: "Aparece en escena el pícaro y cuentero más famoso de Antioquia",
+            details: "'¡Yo soy Cosiaca, el que vive a costillas de los demás!', decía con gracia. Este personaje real se convirtió en leyenda por su ingenio, sus cuentos y su humor ácido. Criticaba a políticos y ricachones sin pelos en la lengua. ¡El primer comediante popular de estas tierras!",
+            milestones: [
+                "Símbolo del humor paisa",
+                "Crítica social a través del humor",
+                "Inspiración para generaciones futuras"
+            ],
+            color: "bg-orange-600"
+        },
+        {
+            id: 10,
             year: "1890",
             date: "",
             title: "Auge Cafetero",
@@ -96,7 +186,7 @@ const Timeline = () => {
             color: "bg-amber-700"
         },
         {
-            id: 6,
+            id: 11,
             year: "1905",
             date: "",
             title: "Industrialización Textil",
@@ -114,7 +204,25 @@ const Timeline = () => {
             color: "bg-slate-700"
         },
         {
-            id: 7,
+            id: 12,
+            year: "1920",
+            date: "",
+            title: "Teatro Junín",
+            category: "cultura",
+            icon: "🎬",
+            population: "~80,000 habitantes",
+            keyFigure: "Agustín Goovaerts",
+            description: "Inauguración del Teatro Junín, templo de la cultura paisa",
+            details: "'¡Un teatro de verdad, como los de Europa!', decía la gente maravillada. El arquitecto belga Agustín Goovaerts diseñó este palacio del arte donde se presentaban las mejores obras de teatro, óperas y películas. ¡Los paisas demostrando que también sabíamos de cultura fina!",
+            milestones: [
+                "Primer gran teatro de la ciudad",
+                "Centro cultural por excelencia",
+                "Arquitectura europea en Medellín"
+            ],
+            color: "bg-purple-600"
+        },
+        {
+            id: 13,
             year: "1925",
             date: "",
             title: "Fundación EPM",
@@ -132,10 +240,46 @@ const Timeline = () => {
             color: "bg-yellow-600"
         },
         {
-            id: 8,
-            year: "1955",
+            id: 14,
+            year: "1932",
             date: "",
             title: "Aeropuerto Olaya Herrera",
+            category: "infraestructura",
+            icon: "✈️",
+            population: "~150,000 habitantes",
+            keyFigure: "Enrique Olaya Herrera",
+            description: "Se inaugura el primer aeropuerto de Medellín",
+            details: "'¡Del tren a las nubes!', gritaban los paisas emocionados al ver los primeros aviones. El aeropuerto nos conectó con el país y el mundo. Ya no teníamos que pasar días en tren o a lomo de mula. ¡La modernidad llegó volando!",
+            milestones: [
+                "Primer aeropuerto de la ciudad",
+                "Conexión aérea nacional",
+                "Impulso al comercio y turismo"
+            ],
+            color: "bg-sky-700"
+        },
+        {
+            id: 15,
+            year: "1955",
+            date: "",
+            title: "Explosión Calle Junín",
+            category: "historia",
+            icon: "💥",
+            population: "~500,000 habitantes",
+            keyFigure: "",
+            description: "Trágico atentado con explosivo en pleno centro de Medellín",
+            details: "'Ese día negro que nunca olvidaremos', cuenta Cosiaca con tristeza. Un camión cargado con dinamita explotó en la calle Junín durante la celebración del 7 de agosto. Más de 1,000 personas murieron o resultaron heridas. Medellín lloró unida y después se levantó con más fuerza.",
+            milestones: [
+                "Tragedia que unió a la ciudad",
+                "Reconstrucción del centro",
+                "Memoria colectiva del dolor"
+            ],
+            color: "bg-gray-600"
+        },
+        {
+            id: 16,
+            year: "1968",
+            date: "",
+            title: "Expansión Universitaria",
             category: "infraestructura",
             icon: "✈️",
             population: "~500,000 habitantes",
@@ -150,7 +294,7 @@ const Timeline = () => {
             color: "bg-sky-600"
         },
         {
-            id: 9,
+            id: 17,
             year: "1968",
             date: "",
             title: "EAFIT y Universidad Nacional",
@@ -168,7 +312,7 @@ const Timeline = () => {
             color: "bg-blue-600"
         },
         {
-            id: 10,
+            id: 18,
             year: "1982",
             date: "",
             title: "Feria de las Flores",
@@ -186,7 +330,7 @@ const Timeline = () => {
             color: "bg-pink-600"
         },
         {
-            id: 11,
+            id: 19,
             year: "1995",
             date: "",
             title: "Metro de Medellín",
@@ -204,7 +348,7 @@ const Timeline = () => {
             color: "bg-green-600"
         },
         {
-            id: 12,
+            id: 20,
             year: "2004",
             date: "",
             title: "Metrocable",
@@ -222,7 +366,7 @@ const Timeline = () => {
             color: "bg-teal-600"
         },
         {
-            id: 13,
+            id: 21,
             year: "2007",
             date: "",
             title: "Parque Biblioteca España",
@@ -240,7 +384,7 @@ const Timeline = () => {
             color: "bg-orange-600"
         },
         {
-            id: 14,
+            id: 22,
             year: "2012",
             date: "",
             title: "Ciudad Más Innovadora",
@@ -258,7 +402,7 @@ const Timeline = () => {
             color: "bg-yellow-500"
         },
         {
-            id: 15,
+            id: 23,
             year: "2015",
             date: "",
             title: "Tranvía de Ayacucho",
@@ -276,7 +420,7 @@ const Timeline = () => {
             color: "bg-lime-600"
         },
         {
-            id: 16,
+            id: 24,
             year: "2019",
             date: "",
             title: "Corredor Verde Ayacucho",
@@ -294,7 +438,7 @@ const Timeline = () => {
             color: "bg-emerald-600"
         },
         {
-            id: 17,
+            id: 25,
             year: "2025",
             date: "",
             title: "350 Años de Historia",

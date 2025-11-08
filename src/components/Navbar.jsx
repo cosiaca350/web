@@ -56,6 +56,7 @@ const Navbar = ({ view, setView }) => {
         { name: 'Podcast Histórico', view: 'podcast' },
         { name: 'Libros', view: 'libros' },
         { name: 'Línea de Tiempo', view: 'timeline' },
+        { name: 'Historia Ampliada', view: 'historia' },
         { name: 'Archivo', view: 'archivo' },
         { name: 'Plan de Trabajo', view: 'plan' },
         { name: 'Equipo', view: 'team' },
