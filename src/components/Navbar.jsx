@@ -58,7 +58,6 @@ const Navbar = ({ view, setView }) => {
         { name: 'Línea de Tiempo', view: 'timeline' },
         { name: 'Historia Ampliada', view: 'historia' },
         { name: 'Archivo', view: 'archivo' },
-        { name: 'Plan de Trabajo', view: 'plan' },
         { name: 'Equipo', view: 'team' },
         { name: 'Redes', view: 'redes' },
     ];
