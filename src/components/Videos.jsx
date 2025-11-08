@@ -15,7 +15,7 @@ const Videos = () => {
     return (
         <div className="animate-fade-in max-w-4xl mx-auto text-cosiaca-brown space-y-8">
             <header className="text-center">
-                <h1 className="text-4xl md:text-5xl font-bold font-serif text-cosiaca-brown">
+                <h1 className="text-4xl md:text-5xl font-bold font-anton text-cosiaca-brown">
                     🎥 Videos con Inteligencia Artificial
                 </h1>
                 <p className="text-xl mt-2 text-cosiaca-brown-light/70">
@@ -24,7 +24,7 @@ const Videos = () => {
             </header>
             
             <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige text-center">
-                <h2 className="text-2xl font-bold font-serif text-cosiaca-brown mb-4">
+                <h2 className="text-2xl font-bold font-anton text-cosiaca-brown mb-4">
                     "Cuando la Historia se Encuentra con la Tecnología"
                 </h2>
                 <p className="text-lg text-cosiaca-brown/80 lead">
@@ -37,7 +37,7 @@ const Videos = () => {
                         href="https://www.youtube.com/watch?v=GP0kzjU5XxQ" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="inline-flex items-center bg-cosiaca-red text-white px-6 py-3 rounded-full hover:bg-cosiaca-red-dark transition-all duration-300 transform hover:scale-105 shadow-lg font-bold"
+                        className="inline-flex items-center bg-cosiaca-enfasis text-white px-6 py-3 rounded-full hover:bg-cosiaca-enfasis transition-all duration-300 transform hover:scale-105 shadow-lg font-bold"
                     >
                         🎥 Ver Video Principal
                     </a>
@@ -60,12 +60,12 @@ const Videos = () => {
                         </div>
                         <div className="p-6">
                             <div className="flex items-center justify-between mb-3">
-                                <span className="bg-cosiaca-red text-white px-3 py-1 rounded-full text-sm font-medium">
+                                <span className="bg-cosiaca-enfasis text-white px-3 py-1 rounded-full text-sm font-medium">
                                     {video.category}
                                 </span>
                                 <span className="text-sm text-cosiaca-brown/60">🎥 Video IA</span>
                             </div>
-                            <h3 className="text-xl font-bold text-cosiaca-brown mb-3 font-serif">
+                            <h3 className="text-xl font-bold text-cosiaca-brown mb-3 font-anton">
                                 {video.title}
                             </h3>
                             <p className="text-cosiaca-brown/80 leading-relaxed">
@@ -79,7 +79,7 @@ const Videos = () => {
             {/* Información Técnica */}
             <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-cosiaca-beige/30 p-6 rounded-xl border border-cosiaca-beige">
-                    <h3 className="text-xl font-bold text-cosiaca-brown mb-3 font-serif">🤖 Tecnologías IA Utilizadas</h3>
+                    <h3 className="text-xl font-bold text-cosiaca-brown mb-3 font-anton">🤖 Tecnologías IA Utilizadas</h3>
                     <p className="text-cosiaca-brown-light/80">
                         <strong>• Animación de fotografías históricas</strong><br/>
                         <strong>• Recreación de personajes del pasado</strong><br/>
@@ -89,7 +89,7 @@ const Videos = () => {
                     </p>
                 </div>
                 <div className="bg-cosiaca-beige/30 p-6 rounded-xl border border-cosiaca-beige">
-                    <h3 className="text-xl font-bold text-cosiaca-brown mb-3 font-serif">🎭 Narrativa de Cosiaca</h3>
+                    <h3 className="text-xl font-bold text-cosiaca-brown mb-3 font-anton">🎭 Narrativa de Cosiaca</h3>
                     <p className="text-cosiaca-brown-light/80">
                         Cada video está <em>narrado por la voz de Cosiaca</em>, combinando <strong>rigor histórico</strong> 
                         con el <em>humor y la picardía paisa</em>. La IA nos permite recrear su personalidad única 
@@ -100,7 +100,7 @@ const Videos = () => {
 
             {/* Próximos Videos */}
             <div className="bg-gradient-to-r from-cosiaca-red/10 to-cosiaca-brown/10 p-8 rounded-xl border border-cosiaca-beige/50">
-                <h3 className="text-2xl font-bold text-cosiaca-brown mb-4 font-serif text-center">
+                <h3 className="text-2xl font-bold text-cosiaca-brown mb-4 font-anton text-center">
                     🎬 Próximos Videos en Producción
                 </h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">

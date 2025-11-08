@@ -4,7 +4,7 @@ const Libros = () => {
     return (
         <div className="animate-fade-in max-w-4xl mx-auto text-cosiaca-brown space-y-8">
             <header className="text-center">
-                <h1 className="text-4xl md:text-5xl font-bold font-serif text-cosiaca-brown">
+                <h1 className="text-4xl md:text-5xl font-bold font-anton text-cosiaca-brown">
                     📖 Libros: La Base Narrativa
                 </h1>
                 <p className="text-xl mt-2 text-cosiaca-brown-light/70">La crónica que inspira nuestro universo transmedia.</p>
@@ -22,14 +22,14 @@ const Libros = () => {
                             href="https://www.youtube.com/watch?v=rYi4ZQXZWaU" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="inline-flex items-center bg-cosiaca-red text-white px-4 py-2 rounded-full hover:bg-cosiaca-red-dark transition-colors font-medium"
+                            className="inline-flex items-center bg-cosiaca-enfasis text-white px-4 py-2 rounded-full hover:bg-cosiaca-enfasis transition-colors font-medium"
                         >
                             📺 Ver Presentación
                         </a>
                     </div>
                 </div>
                 <div className="md:w-2/3">
-                    <h2 className="text-3xl font-serif text-cosiaca-brown mb-4">
+                    <h2 className="text-3xl font-anton text-cosiaca-brown mb-4">
                         "País de Cosiacas, ciegos y puritanos"
                     </h2>
                     <p className="text-lg mb-4">
@@ -47,7 +47,7 @@ const Libros = () => {
             </div>
             
             <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige text-center">
-                <h2 className="text-2xl font-serif text-cafe-oscuro mb-4">
+                <h2 className="text-2xl font-anton text-cafe-oscuro mb-4">
                     📖 Sobre el Libro
                 </h2>
                 <div className="grid md:grid-cols-3 gap-6 mt-6">

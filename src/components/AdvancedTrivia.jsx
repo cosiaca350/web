@@ -265,7 +265,7 @@ const AdvancedTrivia = () => {
     const renderMenu = () => (
         <div className="space-y-8">
             <div className="text-center">
-                <h2 className="text-4xl font-bold font-serif text-cosiaca-brown mb-4">
+                <h2 className="text-4xl font-bold font-anton text-cosiaca-brown mb-4">
                     🏆 Trivia Histórica de Medellín
                 </h2>
                 <p className="text-xl text-cosiaca-brown/70 mb-6">
@@ -318,7 +318,7 @@ const AdvancedTrivia = () => {
                                     className={`w-full py-2 px-4 rounded-full font-bold transition-all duration-300 ${
                                         isLocked ? 'bg-gray-300 text-gray-500 cursor-not-allowed' :
                                         isCompleted ? 'bg-green-500 text-white hover:bg-green-600' :
-                                        'bg-cosiaca-red text-white hover:bg-cosiaca-red-dark'
+                                        'bg-cosiaca-enfasis text-white hover:bg-cosiaca-enfasis'
                                     }`}
                                 >
                                     {isCompleted ? 'Repetir' : isLocked ? 'Bloqueado' : 'Comenzar'}
@@ -332,7 +332,7 @@ const AdvancedTrivia = () => {
             {totalScore > 0 && (
                 <div className="text-center bg-cosiaca-cream p-6 rounded-xl border border-cosiaca-beige">
                     <h3 className="text-2xl font-bold text-cosiaca-brown mb-2">🏆 Tu Progreso</h3>
-                    <p className="text-xl text-cosiaca-red font-bold">{totalScore} / {maxScore} puntos</p>
+                    <p className="text-xl text-cosiaca-enfasis font-bold">{totalScore} / {maxScore} puntos</p>
                     <p className="text-sm text-cosiaca-brown/70">Niveles completados: {completedLevels.length}/5</p>
                 </div>
             )}
@@ -353,15 +353,15 @@ const AdvancedTrivia = () => {
                     </div>
                     <div className="flex items-center gap-6">
                         <div className="text-center">
-                            <div className="text-2xl font-bold text-cosiaca-red">{timeLeft}s</div>
+                            <div className="text-2xl font-bold text-cosiaca-enfasis">{timeLeft}s</div>
                             <div className="text-xs text-cosiaca-brown/60">Tiempo</div>
                         </div>
                         <div className="text-center">
-                            <div className="text-2xl font-bold text-cosiaca-red">{levelScore}</div>
+                            <div className="text-2xl font-bold text-cosiaca-enfasis">{levelScore}</div>
                             <div className="text-xs text-cosiaca-brown/60">Puntos</div>
                         </div>
                         <div className="text-center">
-                            <div className="text-2xl font-bold text-cosiaca-red">
+                            <div className="text-2xl font-bold text-cosiaca-enfasis">
                                 {currentQuestionIndex + 1}/{currentQuestions.length}
                             </div>
                             <div className="text-xs text-cosiaca-brown/60">Pregunta</div>
@@ -373,7 +373,7 @@ const AdvancedTrivia = () => {
                 <div className="mt-4">
                     <div className="w-full bg-cosiaca-beige rounded-full h-3">
                         <div 
-                            className="bg-cosiaca-red h-3 rounded-full transition-all duration-300"
+                            className="bg-cosiaca-enfasis h-3 rounded-full transition-all duration-300"
                             style={{ width: `${((currentQuestionIndex + 1) / currentQuestions.length) * 100}%` }}
                         />
                     </div>
@@ -465,9 +465,9 @@ const AdvancedTrivia = () => {
                     {showFeedback && (
                         <div className="bg-cosiaca-cream p-6 rounded-xl shadow-lg border-2 border-cosiaca-red/50 animate-fade-in">
                             <div className="flex items-start space-x-4">
-                                <BotIcon className="w-10 h-10 text-cosiaca-red flex-shrink-0 mt-1" />
+                                <BotIcon className="w-10 h-10 text-cosiaca-enfasis flex-shrink-0 mt-1" />
                                 <div className="flex-1">
-                                    <p className="font-bold text-cosiaca-red mb-3 text-lg">
+                                    <p className="font-bold text-cosiaca-enfasis mb-3 text-lg">
                                         {selectedAnswer === 'timeout' ? '⏰ ¡Se acabó el tiempo!' : 
                                          isCorrect ? '🎉 ¡Correcto!' : '❌ Incorrecto'}
                                     </p>
@@ -487,7 +487,7 @@ const AdvancedTrivia = () => {
                             <div className="mt-6 text-center">
                                 <button
                                     onClick={nextQuestion}
-                                    className="bg-cosiaca-red text-white font-bold py-3 px-8 rounded-full hover:bg-cosiaca-red-dark transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                    className="bg-cosiaca-enfasis text-white font-bold py-3 px-8 rounded-full hover:bg-cosiaca-enfasis transition-all duration-300 transform hover:scale-105 shadow-lg"
                                 >
                                     {currentQuestionIndex < currentQuestions.length - 1 ? 'Siguiente Pregunta →' : 'Ver Resultados 🏆'}
                                 </button>
@@ -527,19 +527,19 @@ const AdvancedTrivia = () => {
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                         <div className="bg-cosiaca-beige/50 p-4 rounded-lg">
-                            <div className="text-2xl font-bold text-cosiaca-red">{questionsCorrect}</div>
+                            <div className="text-2xl font-bold text-cosiaca-enfasis">{questionsCorrect}</div>
                             <div className="text-sm text-cosiaca-brown/60">Correctas</div>
                         </div>
                         <div className="bg-cosiaca-beige/50 p-4 rounded-lg">
-                            <div className="text-2xl font-bold text-cosiaca-red">{currentQuestions.length}</div>
+                            <div className="text-2xl font-bold text-cosiaca-enfasis">{currentQuestions.length}</div>
                             <div className="text-sm text-cosiaca-brown/60">Total</div>
                         </div>
                         <div className="bg-cosiaca-beige/50 p-4 rounded-lg">
-                            <div className="text-2xl font-bold text-cosiaca-red">{percentage}%</div>
+                            <div className="text-2xl font-bold text-cosiaca-enfasis">{percentage}%</div>
                             <div className="text-sm text-cosiaca-brown/60">Precisión</div>
                         </div>
                         <div className="bg-cosiaca-beige/50 p-4 rounded-lg">
-                            <div className="text-2xl font-bold text-cosiaca-red">{levelScore}</div>
+                            <div className="text-2xl font-bold text-cosiaca-enfasis">{levelScore}</div>
                             <div className="text-sm text-cosiaca-brown/60">Puntos</div>
                         </div>
                     </div>
@@ -553,7 +553,7 @@ const AdvancedTrivia = () => {
                                 {nextLevel ? (
                                     <button
                                         onClick={continueToNextLevel}
-                                        className="bg-cosiaca-red text-white font-bold py-3 px-8 rounded-full hover:bg-cosiaca-red-dark transition-all duration-300 transform hover:scale-105 shadow-lg mr-4"
+                                        className="bg-cosiaca-enfasis text-white font-bold py-3 px-8 rounded-full hover:bg-cosiaca-enfasis transition-all duration-300 transform hover:scale-105 shadow-lg mr-4"
                                     >
                                         Continuar al Nivel {levelConfig[nextLevel].name} →
                                     </button>
@@ -618,19 +618,19 @@ const AdvancedTrivia = () => {
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                         <div className="bg-cosiaca-beige/50 p-4 rounded-lg">
-                            <div className="text-3xl font-bold text-cosiaca-red">{totalScore}</div>
+                            <div className="text-3xl font-bold text-cosiaca-enfasis">{totalScore}</div>
                             <div className="text-sm text-cosiaca-brown/60">Puntos Totales</div>
                         </div>
                         <div className="bg-cosiaca-beige/50 p-4 rounded-lg">
-                            <div className="text-3xl font-bold text-cosiaca-red">{completedLevels.length}</div>
+                            <div className="text-3xl font-bold text-cosiaca-enfasis">{completedLevels.length}</div>
                             <div className="text-sm text-cosiaca-brown/60">Niveles Completados</div>
                         </div>
                         <div className="bg-cosiaca-beige/50 p-4 rounded-lg">
-                            <div className="text-3xl font-bold text-cosiaca-red">{totalCorrectAnswers}</div>
+                            <div className="text-3xl font-bold text-cosiaca-enfasis">{totalCorrectAnswers}</div>
                             <div className="text-sm text-cosiaca-brown/60">Respuestas Correctas</div>
                         </div>
                         <div className="bg-cosiaca-beige/50 p-4 rounded-lg">
-                            <div className="text-3xl font-bold text-cosiaca-red">{Math.round((totalCorrectAnswers / totalQuestionsAnswered) * 100)}%</div>
+                            <div className="text-3xl font-bold text-cosiaca-enfasis">{Math.round((totalCorrectAnswers / totalQuestionsAnswered) * 100)}%</div>
                             <div className="text-sm text-cosiaca-brown/60">Precisión</div>
                         </div>
                     </div>
@@ -644,7 +644,7 @@ const AdvancedTrivia = () => {
                         </button>
                         <button
                             onClick={resetGame}
-                            className="bg-cosiaca-red text-white font-bold py-3 px-8 rounded-full hover:bg-cosiaca-red-dark transition-all duration-300 transform hover:scale-105 shadow-lg mr-4"
+                            className="bg-cosiaca-enfasis text-white font-bold py-3 px-8 rounded-full hover:bg-cosiaca-enfasis transition-all duration-300 transform hover:scale-105 shadow-lg mr-4"
                         >
                             🔄 Jugar de Nuevo
                         </button>

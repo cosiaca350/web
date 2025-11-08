@@ -163,7 +163,7 @@ const Juegos = () => {
     return (
         <div className="animate-fade-in max-w-6xl mx-auto text-cosiaca-brown space-y-6 sm:space-y-8 px-4">
             <header className="text-center">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-serif text-cosiaca-brown">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold font-anton text-cosiaca-brown">
                     🎮 Juegos y AR
                 </h1>
                 <p className="text-lg sm:text-xl mt-2 text-cosiaca-brown-light/70">¡Humor, conocimiento y rima paisa!</p>
@@ -171,7 +171,7 @@ const Juegos = () => {
             
             {/* Banner Principal */}
             <div className="bg-gradient-to-r from-cosiaca-brown to-cosiaca-brown/80 rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 text-center text-white">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight font-serif mb-4 text-white">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight font-anton mb-4 text-white">
                     ✨ Experiencias Interactivas
                 </h2>
                 <p className="text-lg sm:text-xl opacity-90 text-white">Aprende jugando con Cosiaca</p>
@@ -182,7 +182,7 @@ const Juegos = () => {
                 <button
                     className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 transform hover:scale-105 ${
                         activeTab === 'trivia' 
-                            ? 'bg-cosiaca-red text-white shadow-lg' 
+                            ? 'bg-cosiaca-enfasis text-white shadow-lg' 
                             : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
                     }`}
                     onClick={() => setActiveTab('trivia')}
@@ -192,7 +192,7 @@ const Juegos = () => {
                 <button
                     className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 transform hover:scale-105 ${
                         activeTab === 'standup' 
-                            ? 'bg-cosiaca-red text-white shadow-lg' 
+                            ? 'bg-cosiaca-enfasis text-white shadow-lg' 
                             : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
                     }`}
                     onClick={() => setActiveTab('standup')}
@@ -202,7 +202,7 @@ const Juegos = () => {
                 <button
                     className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 transform hover:scale-105 ${
                         activeTab === 'trovas' 
-                            ? 'bg-cosiaca-red text-white shadow-lg' 
+                            ? 'bg-cosiaca-enfasis text-white shadow-lg' 
                             : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
                     }`}
                     onClick={() => setActiveTab('trovas')}
@@ -222,7 +222,7 @@ const Juegos = () => {
             {activeTab === 'standup' && (
                 <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 border border-cosiaca-beige animate-fade-in">
                     <div className="text-center mb-6 sm:mb-8">
-                        <h3 className="text-2xl sm:text-3xl font-bold font-serif text-cosiaca-brown mb-2">
+                        <h3 className="text-2xl sm:text-3xl font-bold font-anton text-cosiaca-brown mb-2">
                             😂 Stand Up Paisa con IA
                         </h3>
                         <p className="text-base sm:text-lg text-cosiaca-brown/70">
@@ -234,7 +234,7 @@ const Juegos = () => {
                         <div className="bg-cosiaca-beige/30 rounded-xl p-4 sm:p-6 lg:p-8 border border-cosiaca-beige min-h-[150px] sm:min-h-[200px] flex items-center justify-center">
                             {isGeneratingJoke ? (
                                 <div className="text-center">
-                                    <SparklesIcon className="w-8 h-8 sm:w-12 sm:h-12 text-cosiaca-red animate-spin mx-auto mb-4" />
+                                    <SparklesIcon className="w-8 h-8 sm:w-12 sm:h-12 text-cosiaca-enfasis animate-spin mx-auto mb-4" />
                                     <p className="text-base sm:text-lg text-cosiaca-brown animate-pulse">
                                         Cosiaca está pensando un chiste...
                                     </p>
@@ -250,7 +250,7 @@ const Juegos = () => {
                             <button
                                 onClick={generateAIJoke}
                                 disabled={isGeneratingJoke}
-                                className="bg-cosiaca-red text-white font-bold py-3 px-6 sm:px-8 rounded-full hover:bg-cosiaca-red-dark transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
+                                className="bg-cosiaca-enfasis text-white font-bold py-3 px-6 sm:px-8 rounded-full hover:bg-cosiaca-enfasis transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                             >
                                 <SparklesIcon className="inline-block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                                 Generar Chiste con IA
@@ -270,7 +270,7 @@ const Juegos = () => {
             {activeTab === 'trovas' && (
                 <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 border border-cosiaca-beige animate-fade-in">
                     <div className="text-center mb-6 sm:mb-8">
-                        <h3 className="text-2xl sm:text-3xl font-bold font-serif text-cosiaca-brown mb-2">
+                        <h3 className="text-2xl sm:text-3xl font-bold font-anton text-cosiaca-brown mb-2">
                             🎵 Trovas Paisas con IA
                         </h3>
                         <p className="text-base sm:text-lg text-cosiaca-brown/70">
@@ -282,7 +282,7 @@ const Juegos = () => {
                         <div className="bg-cosiaca-beige/30 rounded-xl p-4 sm:p-6 lg:p-8 border border-cosiaca-beige min-h-[150px] sm:min-h-[200px] flex items-center justify-center">
                             {isGeneratingTrova ? (
                                 <div className="text-center">
-                                    <SparklesIcon className="w-8 h-8 sm:w-12 sm:h-12 text-cosiaca-red animate-spin mx-auto mb-4" />
+                                    <SparklesIcon className="w-8 h-8 sm:w-12 sm:h-12 text-cosiaca-enfasis animate-spin mx-auto mb-4" />
                                     <p className="text-base sm:text-lg text-cosiaca-brown animate-pulse">
                                         Cosiaca está componiendo una trova...
                                     </p>
@@ -299,7 +299,7 @@ const Juegos = () => {
                             <button
                                 onClick={generateAITrova}
                                 disabled={isGeneratingTrova}
-                                className="bg-cosiaca-red text-white font-bold py-3 px-6 sm:px-8 rounded-full hover:bg-cosiaca-red-dark transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
+                                className="bg-cosiaca-enfasis text-white font-bold py-3 px-6 sm:px-8 rounded-full hover:bg-cosiaca-enfasis transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                             >
                                 <SparklesIcon className="inline-block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                                 Generar Trova con IA

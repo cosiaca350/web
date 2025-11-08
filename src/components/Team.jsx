@@ -22,7 +22,7 @@ const Team = () => {
     return (
         <div className="animate-fade-in max-w-5xl mx-auto text-cosiaca-brown space-y-12">
             <header className="text-center">
-                <h1 className="text-4xl md:text-5xl font-bold font-serif text-cosiaca-brown">Nuestro Equipo</h1>
+                <h1 className="text-4xl md:text-5xl font-bold font-anton text-cosiaca-brown">Nuestro Equipo</h1>
                 <p className="text-xl mt-2 text-cosiaca-brown-light/70">Los artífices detrás de la Re-evolución de Cosiaca.</p>
             </header>
             

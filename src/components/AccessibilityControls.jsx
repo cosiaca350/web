@@ -90,7 +90,7 @@ const AccessibilityControls = () => {
             {/* Accessibility Button */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="fixed top-4 right-4 z-50 bg-cosiaca-red dark:bg-cosiaca-red-dark text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
+                className="fixed top-4 right-4 z-50 bg-cosiaca-enfasis dark:bg-cosiaca-enfasis text-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
                 aria-label="Abrir panel de accesibilidad"
                 title="Opciones de accesibilidad"
             >
@@ -108,7 +108,7 @@ const AccessibilityControls = () => {
                         </h3>
                         <button
                             onClick={() => setIsOpen(false)}
-                            className="text-cosiaca-brown dark:text-cosiaca-cream hover:text-cosiaca-red transition-colors"
+                            className="text-cosiaca-brown dark:text-cosiaca-cream hover:text-cosiaca-enfasis transition-colors"
                             aria-label="Cerrar panel"
                         >
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -129,7 +129,7 @@ const AccessibilityControls = () => {
                                     announceToScreenReader(darkMode ? "Modo claro activado" : "Modo oscuro activado");
                                 }}
                                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                                    darkMode ? 'bg-cosiaca-red' : 'bg-gray-300'
+                                    darkMode ? 'bg-cosiaca-enfasis' : 'bg-gray-300'
                                 }`}
                                 aria-label={darkMode ? "Desactivar modo oscuro" : "Activar modo oscuro"}
                             >
@@ -156,8 +156,8 @@ const AccessibilityControls = () => {
                                         }}
                                         className={`px-2 py-1 text-xs rounded transition-colors ${
                                             fontSize === size
-                                                ? 'bg-cosiaca-red text-white'
-                                                : 'bg-cosiaca-beige dark:bg-cosiaca-brown-medium text-cosiaca-brown dark:text-cosiaca-cream hover:bg-cosiaca-red/20'
+                                                ? 'bg-cosiaca-enfasis text-white'
+                                                : 'bg-cosiaca-beige dark:bg-cosiaca-brown-medium text-cosiaca-brown dark:text-cosiaca-cream hover:bg-cosiaca-enfasis/20'
                                         }`}
                                         aria-label={`Tamaño ${size}`}
                                     >
@@ -178,7 +178,7 @@ const AccessibilityControls = () => {
                                     announceToScreenReader(highContrast ? "Alto contraste desactivado" : "Alto contraste activado");
                                 }}
                                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                                    highContrast ? 'bg-cosiaca-red' : 'bg-gray-300'
+                                    highContrast ? 'bg-cosiaca-enfasis' : 'bg-gray-300'
                                 }`}
                                 aria-label={highContrast ? "Desactivar alto contraste" : "Activar alto contraste"}
                             >
@@ -205,7 +205,7 @@ const AccessibilityControls = () => {
                                 </button>
                                 <button
                                     onClick={stopReading}
-                                    className="bg-cosiaca-red text-white px-3 py-2 rounded-lg text-sm font-medium hover:bg-cosiaca-red-dark transition-colors"
+                                    className="bg-cosiaca-enfasis text-white px-3 py-2 rounded-lg text-sm font-medium hover:bg-cosiaca-enfasis transition-colors"
                                     aria-label="Detener lectura"
                                 >
                                     ⏹️ Detener
@@ -216,7 +216,7 @@ const AccessibilityControls = () => {
                         {/* Keyboard Navigation Help */}
                         <div className="border-t border-cosiaca-beige dark:border-cosiaca-brown-medium pt-4">
                             <details className="text-sm">
-                                <summary className="font-medium text-cosiaca-brown dark:text-cosiaca-cream cursor-pointer hover:text-cosiaca-red">
+                                <summary className="font-medium text-cosiaca-brown dark:text-cosiaca-cream cursor-pointer hover:text-cosiaca-enfasis">
                                     ⌨️ Atajos de Teclado
                                 </summary>
                                 <div className="mt-2 text-xs text-cosiaca-brown/70 dark:text-cosiaca-cream/70 space-y-1">
