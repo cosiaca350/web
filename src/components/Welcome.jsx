@@ -80,44 +80,51 @@ const Welcome = ({ setView }) => {
                     </h2>
                 </section>
 
-                {/* Información Principal */}
+                {/* Información Principal Unificada */}
                 <section className="animate-fade-in mb-8 sm:mb-12">
                 <div className="bg-white/90 backdrop-blur-sm p-8 xl:p-1920 rounded-2xl shadow-2xl border border-cosiaca-beige max-w-6xl xl:max-w-7xl mx-auto">
-                    <div className="text-center mb-6">
+                    <div className="text-center mb-8">
                         <div className="text-4xl xl:text-6xl mb-4">🎭</div>
                         <h3 className="text-2xl xl:text-1920-lg font-bold text-cosiaca-brown font-anton mb-4">
-                            Una Experiencia Transmedia Única
+                            Cosiaca 350: Una Experiencia Transmedia Única
                         </h3>
+                        <p className="text-lg xl:text-1920-base text-cosiaca-brown/80 max-w-4xl mx-auto">
+                            En el marco de la conmemoración de los <strong>350 años de la fundación de Medellín</strong>,
+                            revivimos al mítico cuentero <strong>José García "Cosiaca"</strong>, el <em>primer comediante
+                            popular de Antioquia</em>, como guía y narrador a través de <strong>tres siglos y medio de historia local</strong>.
+                        </p>
                     </div>
-                    
-                    <div className="responsive-grid text-left">
+
+                    <div className="responsive-grid text-left gap-8">
                         <div>
                             <h4 className="font-bold text-cosiaca-red mb-4 text-lg xl:text-1920-base">
-                                🌟 Lo que encontrarás:
+                                🌟 Componentes Transmedia:
                             </h4>
                             <ul className="space-y-2 text-cosiaca-brown/80 xl:text-1920-base">
-                                <li>• <strong>CosiacaBot:</strong> Conversa con la historia</li>
-                                <li>• <strong>Podcast Histórico:</strong> <strong>350</strong> años narrados</li>
-                                <li>• <strong>Juegos Interactivos:</strong> Trivia y diversión</li>
-                                <li>• <strong>Videos con IA:</strong> Historia visual</li>
-                                <li>• <strong>Línea de Tiempo:</strong> Viaje temporal</li>
-                                <li>• <strong>Archivo Histórico:</strong> Documentos reales</li>
+                                <li>• <strong>CosiacaBot:</strong> Asistente virtual para conversar con la historia</li>
+                                <li>• <strong>Podcast Histórico:</strong> <strong>350</strong> años narrados con humor paisa</li>
+                                <li>• <strong>Juegos Interactivos:</strong> Trivia histórica y diversión educativa</li>
+                                <li>• <strong>Videos con IA:</strong> Recreación visual de escenas históricas</li>
+                                <li>• <strong>Línea de Tiempo:</strong> Viaje temporal 1675-2025</li>
+                                <li>• <strong>Archivo Histórico:</strong> Documentos y fotografías reales</li>
                             </ul>
                         </div>
                         <div>
                             <h4 className="font-bold text-cosiaca-red mb-4 text-lg xl:text-1920-base">
-                                🎯 Nuestra Misión:
+                                🎯 Nuestra Propuesta:
                             </h4>
                             <p className="text-cosiaca-brown/80 xl:text-1920-base leading-relaxed mb-4">
-                                Revivir la historia de Medellín a través del <strong>humor paisa</strong> 
-                                y la <em>picardía de Cosiaca</em>. Combinamos <strong>rigor histórico</strong> 
-                                con <em>tecnología innovadora</em> para crear una experiencia cultural
-                                <strong>accesible, educativa y entretenida</strong>.
+                                "Contar la historia para vivirla riendo": mediante <strong>humor pícaro, oralidad paisa
+                                y participación del público</strong>, convertimos hechos y personajes de Medellín en una
+                                experiencia cultural <em>accesible, educativa y entretenida</em>.
                             </p>
-                            <div className="text-sm xl:text-base text-cosiaca-brown/60 space-y-1">
-                                <p><strong>Período:</strong> 1675 - 2025 (<strong>350</strong> años)</p>
-                                <p><strong>Personaje:</strong> José García "Cosiaca"</p>
-                                <p><strong>Enfoque:</strong> Humor + Historia + Tecnología</p>
+                            <div className="bg-cosiaca-cream/50 p-4 rounded-xl border border-cosiaca-beige">
+                                <p className="text-sm xl:text-base text-cosiaca-brown/80 space-y-1">
+                                    <strong>📅 Período:</strong> 1675 - 2025 (<strong>350</strong> años)<br/>
+                                    <strong>🎭 Personaje:</strong> José García "Cosiaca"<br/>
+                                    <strong>🎯 Enfoque:</strong> Humor + Historia + Tecnología<br/>
+                                    <strong>📚 Base literaria:</strong> "País de Cosiacas, ciegos y puritanos"
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -185,36 +192,53 @@ const Welcome = ({ setView }) => {
                 </div>
                 </section>
 
-                {/* Información del Proyecto */}
+                {/* Fuentes e Inspiración */}
                 <section className="animate-fade-in mb-8 sm:mb-12">
-                <div className="bg-gradient-to-r from-cosiaca-red/10 to-cosiaca-brown/10 p-8 xl:p-1920 rounded-2xl border border-cosiaca-beige/50 max-w-6xl xl:max-w-7xl mx-auto">
-                    <h3 className="text-3xl xl:text-1920-lg font-bold text-cosiaca-brown mb-4 font-anton">
-                        🏛️ Proyecto Oficial
+                <div className="bg-white/90 backdrop-blur-sm p-8 xl:p-1920 rounded-2xl shadow-2xl border border-cosiaca-beige max-w-6xl xl:max-w-7xl mx-auto">
+                    <h3 className="text-2xl xl:text-1920-lg font-bold text-cosiaca-brown mb-6 font-anton text-center">
+                        🔍 Inspiración y Fuentes Históricas
                     </h3>
-                    <p className="text-xl xl:text-1920-base text-cosiaca-brown/80 leading-relaxed mb-6 max-w-5xl xl:max-w-6xl mx-auto">
-                        <strong>{"{COSIACA "}<strong>350</strong>{"}"}</strong> es una propuesta transmedia beneficiada de las 
-                        <em> Convocatorias de Fomento y Estímulos para el Arte y la Cultura 2025</em>
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-3 text-sm xl:text-base text-cosiaca-brown/60">
-                        <span className="bg-cosiaca-beige/50 px-4 xl:px-6 py-2 xl:py-3 rounded-full">📚 Investigación Histórica</span>
-                        <span className="bg-cosiaca-beige/50 px-4 xl:px-6 py-2 xl:py-3 rounded-full">🤖 Inteligencia Artificial</span>
-                        <span className="bg-cosiaca-beige/50 px-4 xl:px-6 py-2 xl:py-3 rounded-full">🎭 Cultura Paisa</span>
-                        <span className="bg-cosiaca-beige/50 px-4 xl:px-6 py-2 xl:py-3 rounded-full">🌐 Transmedia</span>
-                        <span className="bg-cosiaca-beige/50 px-4 xl:px-6 py-2 xl:py-3 rounded-full">🎪 Entretenimiento</span>
-                        <span className="bg-cosiaca-beige/50 px-4 xl:px-6 py-2 xl:py-3 rounded-full">📖 Educación</span>
+                    <div className="responsive-grid gap-8">
+                        <div>
+                            <p className="text-base xl:text-1920-base text-cosiaca-brown/80 leading-relaxed mb-4">
+                                La elección de <strong>archivos históricos y centros de documentación</strong> ancla
+                                la narrativa en <em>fuentes auténticas, ricas en valor simbólico y documental</em>,
+                                permitiendo reconstruir con <strong>rigor y sensibilidad</strong> el pasado de la ciudad.
+                            </p>
+                        </div>
+                        <div>
+                            <ul className="space-y-3 text-cosiaca-brown/80 text-sm xl:text-base">
+                                <li><span className="text-cosiaca-red">📸</span> <strong>Fuentes primarias:</strong> Fotografías de los fondos <em>Rodríguez e Ignacio Gómez</em></li>
+                                <li><span className="text-cosiaca-red">🏛️</span> <strong>Centros aliados:</strong> <em>Biblioteca Pública Piloto, Museo de Antioquia</em></li>
+                                <li><span className="text-cosiaca-red">📰</span> <strong>Hemeroteca:</strong> Prensa satírica y mapas del <em>Archivo Histórico de Medellín</em></li>
+                                <li><span className="text-cosiaca-red">🤖</span> <strong>IA Generativa:</strong> Para crear <strong>imágenes, sonidos y estilos visuales únicos</strong></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 </section>
 
-                {/* Botón para ver más detalles */}
-                <div className="text-center mb-8 sm:mb-12">
-                    <button
-                        onClick={() => setView('proyecto')}
-                        className="bg-gradient-to-r from-cosiaca-brown to-cosiaca-brown/80 hover:from-cosiaca-brown/80 hover:to-cosiaca-brown text-white font-bold py-4 xl:py-6 px-8 xl:px-12 rounded-full text-lg xl:text-1920-base transition-all duration-300 transform hover:scale-105 shadow-xl"
-                    >
-                        Ver Detalles del Proyecto
-                    </button>
+                {/* Proyecto Oficial */}
+                <section className="animate-fade-in mb-8 sm:mb-12">
+                <div className="bg-gradient-to-r from-cosiaca-red/10 to-cosiaca-brown/10 p-6 xl:p-8 rounded-2xl border border-cosiaca-beige/50 max-w-6xl xl:max-w-7xl mx-auto text-center">
+                    <h3 className="text-2xl xl:text-1920-lg font-bold text-cosiaca-brown mb-3 font-anton">
+                        🏛️ Proyecto Oficial
+                    </h3>
+                    <p className="text-lg xl:text-1920-base text-cosiaca-brown/80 leading-relaxed mb-4">
+                        <strong>{"{COSIACA "}<strong>350</strong>{"}"}</strong> es una propuesta transmedia beneficiada de las
+                        <em> Convocatorias de Fomento y Estímulos para el Arte y la Cultura 2025</em><br/>
+                        <strong>Secretaría de Cultura Ciudadana de Medellín</strong>
+                    </p>
+                    <div className="flex flex-wrap justify-center gap-2 text-xs xl:text-sm text-cosiaca-brown/60">
+                        <span className="bg-cosiaca-beige/50 px-3 xl:px-4 py-2 rounded-full">📚 Investigación Histórica</span>
+                        <span className="bg-cosiaca-beige/50 px-3 xl:px-4 py-2 rounded-full">🤖 Inteligencia Artificial</span>
+                        <span className="bg-cosiaca-beige/50 px-3 xl:px-4 py-2 rounded-full">🎭 Cultura Paisa</span>
+                        <span className="bg-cosiaca-beige/50 px-3 xl:px-4 py-2 rounded-full">🌐 Transmedia</span>
+                        <span className="bg-cosiaca-beige/50 px-3 xl:px-4 py-2 rounded-full">🎪 Entretenimiento</span>
+                        <span className="bg-cosiaca-beige/50 px-3 xl:px-4 py-2 rounded-full">📖 Educación</span>
+                    </div>
                 </div>
+                </section>
             </div>
         </div>
     );

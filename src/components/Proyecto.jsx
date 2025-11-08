@@ -5,42 +5,40 @@ const Proyecto = () => {
         <div className="animate-fade-in space-y-8 max-w-6xl mx-auto text-cosiaca-brown px-4">
             <header className="text-center">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-black font-anton text-cosiaca-brown mb-4">
-                    El Proyecto: Cosiaca 350
+                    Detalles Técnicos del Proyecto
                 </h1>
                 <p className="text-lg sm:text-xl text-cosiaca-brown-light/70 lead font-medium max-w-4xl mx-auto">
-                    <em>Un Viaje Inmersivo a la Historia de Medellín</em>
+                    <em>Metodología, Fuentes y Componentes Transmedia</em>
                 </p>
             </header>
             
             <section className="bg-white/90 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-xl border border-cosiaca-beige">
                 <h2 className="text-2xl sm:text-3xl font-bold font-anton text-cosiaca-brown mb-6 text-center">
-                    💡 Introducción y Concepto General
+                    🔍 Metodología de Investigación
                 </h2>
-                <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="grid lg:grid-cols-2 gap-8">
                     <div className="space-y-4">
                         <p className="text-base sm:text-lg leading-relaxed">
-                    En el marco de la conmemoración de los <strong>350 años de la fundación de Medellín</strong>, presentamos <span className="text-emphasis">Cosiaca 350</span>, 
-                    una <strong>propuesta artística transmedia-multiplataforma</strong> que dialoga con la historia, la identidad y el futuro 
-                    de la ciudad. El proyecto busca rendir homenaje a Medellín integrando <em>narrativa histórica y tecnología 
-                    interactiva</em>, en sintonía con los lineamientos de la convocatoria que promueven obras inspiradas en 
-                    <strong>archivos históricos e innovación digital</strong>.
+                            El proyecto se sustenta en un <strong>trabajo riguroso de investigación histórica</strong>,
+                            combinando <em>fuentes documentales primarias</em> con <strong>tecnología de inteligencia artificial</strong>
+                            para crear contenidos educativos y entretenidos.
                         </p>
                         <p className="text-base sm:text-lg leading-relaxed">
-                    La obra se basa en revivir al mítico cuentero <strong>José García "Cosiaca"</strong>, considerado el <em>primer comediante 
-                    popular de Antioquia</em> como guía y narrador a través de anécdotas de <strong>tres siglos y medio de historia local</strong>. 
-                    Proponemos <span className="text-highlight">"contar la historia para vivirla riendo"</span>: mediante <em>humor pícaro, oralidad paisa y 
-                    participación del público</em>, convertiremos hechos y personajes de Medellín <strong>(1675–2025)</strong> en una experiencia 
-                    cultural <em>accesible, educativa y entretenida</em>.
+                            Utilizamos una <strong>narrativa transmedia</strong> que permite al público acceder a la historia
+                            de Medellín desde <em>múltiples plataformas y formatos</em>, respetando siempre el
+                            <strong>rigor académico</strong> y la <em>autenticidad histórica</em>.
                         </p>
                     </div>
-                    <div className="text-center">
-                        <div className="bg-cosiaca-cream/50 p-6 rounded-xl border border-cosiaca-beige">
-                            <div className="text-6xl mb-4">🎭</div>
-                            <h3 className="text-xl font-bold text-cosiaca-brown mb-3">José García "Cosiaca"</h3>
-                            <p className="text-cosiaca-brown/80 text-sm">
-                                El primer comediante popular de Antioquia, nuestro guía a través de <strong>350</strong> años de historia paisa.
-                            </p>
-                        </div>
+                    <div className="bg-cosiaca-cream/50 p-6 rounded-xl border border-cosiaca-beige">
+                        <h4 className="font-bold text-cosiaca-brown mb-3 text-lg">Proceso Creativo:</h4>
+                        <ul className="space-y-2 text-cosiaca-brown/80 text-sm">
+                            <li>✅ Investigación en archivos históricos</li>
+                            <li>✅ Selección de fuentes primarias</li>
+                            <li>✅ Creación narrativa con rigor académico</li>
+                            <li>✅ Desarrollo de contenidos transmedia</li>
+                            <li>✅ Integración de tecnología IA</li>
+                            <li>✅ Validación con expertos locales</li>
+                        </ul>
                     </div>
                 </div>
             </section>
