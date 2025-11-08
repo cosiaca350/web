@@ -4,46 +4,21 @@ const Videos = () => {
     // Playlist completa de YouTube: Cosiaca 350
     const playlistId = "PLLldviceNkKeURfhsKQ_uqFqg-Kyx-tjA";
 
-    // Videos individuales de la playlist (actualizar manualmente según necesidad)
+    // Todos los videos de la playlist de YouTube
     const videoList = [
         {
             id: 1,
-            title: "COSIACA 350 - Un viaje inmersivo a la historia de Medellín",
-            description: "Video promocional del proyecto transmedia que celebra los 350 años de Medellín a través del humor, la historia y la tecnología.",
-            embedId: "GP0kzjU5XxQ",
-            category: "Promocional"
+            title: "COSIACA 350 - Video 1",
+            description: "Parte 1 de la serie histórica sobre los 350 años de Medellín. Un viaje inmersivo contado por Cosiaca con inteligencia artificial.",
+            embedId: "UPIzJ_I4Em8",
+            category: "Historia de Medellín"
         },
         {
             id: 2,
-            title: "Historias de Medellín con IA",
-            description: "Explora la historia de Medellín contada por Cosiaca con inteligencia artificial y efectos visuales generativos.",
-            embedId: "", // Agregar ID cuando esté disponible
-            category: "Historia",
-            coming: true
-        },
-        {
-            id: 3,
-            title: "La Fundación de Medellín 1675",
-            description: "Recreación con IA de los primeros días de la Villa de Nuestra Señora de la Candelaria de Medellín.",
-            embedId: "", // Agregar ID cuando esté disponible
-            category: "Época Colonial",
-            coming: true
-        },
-        {
-            id: 4,
-            title: "Los Arrieros Paisas",
-            description: "La cultura arriera del siglo XIX que construyó caminos y llevó progreso a Antioquia.",
-            embedId: "", // Agregar ID cuando esté disponible
-            category: "Siglo XIX",
-            coming: true
-        },
-        {
-            id: 5,
-            title: "De Ciudad Violenta a Innovadora",
-            description: "La increíble transformación de Medellín en el siglo XXI: del dolor a la esperanza.",
-            embedId: "", // Agregar ID cuando esté disponible
-            category: "Transformación",
-            coming: true
+            title: "COSIACA 350 - Video 2",
+            description: "Parte 2 de la serie histórica. Continuamos explorando las historias, personajes y anécdotas que marcaron la historia de nuestra ciudad.",
+            embedId: "k077YMXVcsg",
+            category: "Historia de Medellín"
         }
     ];
 
