@@ -78,10 +78,10 @@ const Home = ({ setView }) => {
                             <SparklesIcon className="w-4 h-4 sm:w-5 sm:h-5 ml-2" style={{ color: '#FFFFFF' }} />
                         </button>
 
-                        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+                        <div className="flex justify-center pt-2">
                             <button
-                                onClick={() => setView('historia')}
-                                className="font-bold py-2 px-6 rounded-full text-sm md:text-base transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center font-montserrat border-2"
+                                onClick={() => setView('timeline')}
+                                className="font-bold py-3 px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl inline-flex items-center font-montserrat border-2"
                                 style={{
                                     backgroundColor: '#C92C3D',
                                     color: '#FFFFFF',
@@ -96,27 +96,7 @@ const Home = ({ setView }) => {
                                     e.currentTarget.style.borderColor = '#C92C3D';
                                 }}
                             >
-                                📜 Historia Ampliada
-                            </button>
-
-                            <button
-                                onClick={() => setView('timeline')}
-                                className="font-bold py-2 px-6 rounded-full text-sm md:text-base transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center font-montserrat border-2"
-                                style={{
-                                    backgroundColor: '#6B4226',
-                                    color: '#FFFFFF',
-                                    borderColor: '#6B4226'
-                                }}
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.backgroundColor = '#C92C3D';
-                                    e.currentTarget.style.borderColor = '#C92C3D';
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.backgroundColor = '#6B4226';
-                                    e.currentTarget.style.borderColor = '#6B4226';
-                                }}
-                            >
-                                ⏳ Línea de Tiempo
+                                ⏳ Explorar Historia Completa
                             </button>
                         </div>
                         <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-1920-base text-cosiaca-principal/60 font-montserrat mt-3 sm:mt-4 lg:mt-6">

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { historicalCharacters, culturalTraditions, infrastructureMilestones } from '../data/historicalData';
+import { criticalPeriod, emblematicProjects, transformationLessons } from '../data/modernHistory';
 
 const Timeline = () => {
     const [selectedPeriod, setSelectedPeriod] = useState(null);
     const [filterCategory, setFilterCategory] = useState('all');
+    const [activeView, setActiveView] = useState('timeline'); // 'timeline' o 'historia'
 
     const timelinePeriods = [
         {
@@ -492,6 +495,30 @@ const Timeline = () => {
                     De Villa de Mulas a Ciudad Inteligente
                 </p>
 
+                {/* Selector de Vista: Línea de Tiempo o Historia Ampliada */}
+                <div className="flex justify-center gap-4 pt-4">
+                    <button
+                        onClick={() => setActiveView('timeline')}
+                        className={`px-8 py-3 rounded-full font-bold transition-all duration-300 transform hover:scale-105 ${
+                            activeView === 'timeline'
+                                ? 'bg-cosiaca-red text-white shadow-xl scale-105'
+                                : 'bg-white text-cosiaca-brown border-2 border-cosiaca-brown/30 hover:border-cosiaca-red'
+                        }`}
+                    >
+                        ⏳ Línea de Tiempo
+                    </button>
+                    <button
+                        onClick={() => setActiveView('historia')}
+                        className={`px-8 py-3 rounded-full font-bold transition-all duration-300 transform hover:scale-105 ${
+                            activeView === 'historia'
+                                ? 'bg-cosiaca-red text-white shadow-xl scale-105'
+                                : 'bg-white text-cosiaca-brown border-2 border-cosiaca-brown/30 hover:border-cosiaca-red'
+                        }`}
+                    >
+                        📜 Historia Ampliada
+                    </button>
+                </div>
+
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-8">
                     <div className="bg-cosiaca-beige/40 p-4 rounded-xl border border-cosiaca-brown/20">
                         <div className="text-3xl font-bold text-cosiaca-red">{stats.total}</div>
@@ -512,6 +539,9 @@ const Timeline = () => {
                 </div>
             </header>
 
+            {/* VISTA: LÍNEA DE TIEMPO */}
+            {activeView === 'timeline' && (
+                <>
             <div className="bg-gradient-to-br from-cosiaca-beige/50 to-cosiaca-cream/50 p-6 md:p-8 rounded-2xl shadow-xl border-2 border-cosiaca-brown/20">
                 <h2 className="text-2xl md:text-3xl font-anton text-cosiaca-brown mb-6 text-center">
                     🔍 Filtrar por Categoría
@@ -639,6 +669,206 @@ const Timeline = () => {
                     </div>
                 </div>
             </div>
+            </>
+            )}
+
+            {/* VISTA: HISTORIA AMPLIADA */}
+            {activeView === 'historia' && (
+                <div className="space-y-8 animate-fade-in">
+                    {/* El Milagro de Medellín */}
+                    <section className="bg-gradient-to-br from-cosiaca-beige/50 to-cosiaca-cream/50 p-8 rounded-2xl shadow-xl border-2 border-cosiaca-brown/20">
+                        <h2 className="text-3xl md:text-4xl font-anton text-cosiaca-brown mb-6 text-center">
+                            ✨ El Milagro de Medellín (1991-2025)
+                        </h2>
+
+                        <div className="grid md:grid-cols-3 gap-6 mb-8">
+                            {/* Crisis */}
+                            <div className="bg-red-50 p-6 rounded-xl border-2 border-red-200">
+                                <h3 className="text-xl font-bold text-red-700 mb-3">{criticalPeriod.violence.title}</h3>
+                                <p className="text-sm text-cosiaca-brown/80 mb-4">{criticalPeriod.violence.description}</p>
+                                <div className="space-y-2">
+                                    <div className="bg-white p-3 rounded-lg">
+                                        <p className="text-2xl font-bold text-red-600">6,349</p>
+                                        <p className="text-xs text-cosiaca-brown/70">Homicidios en 1991</p>
+                                    </div>
+                                    <div className="bg-white p-3 rounded-lg">
+                                        <p className="text-2xl font-bold text-red-600">381</p>
+                                        <p className="text-xs text-cosiaca-brown/70">por 100,000 hab.</p>
+                                    </div>
+                                </div>
+                                <div className="mt-4 bg-red-100 p-3 rounded-lg">
+                                    <p className="text-xs italic text-cosiaca-brown">"{criticalPeriod.violence.cosiacaSays}"</p>
+                                </div>
+                            </div>
+
+                            {/* Transformación */}
+                            <div className="bg-blue-50 p-6 rounded-xl border-2 border-blue-200">
+                                <h3 className="text-xl font-bold text-blue-700 mb-3">{criticalPeriod.transformation.title}</h3>
+                                <p className="text-sm text-cosiaca-brown/80 mb-4">{criticalPeriod.transformation.description}</p>
+                                <div className="space-y-2">
+                                    {criticalPeriod.transformation.keyProjects.slice(0, 4).map((project, idx) => (
+                                        <div key={idx} className="bg-white p-2 rounded-lg">
+                                            <p className="text-sm font-bold text-cosiaca-brown">{project.name}</p>
+                                            <p className="text-xs text-cosiaca-brown/60">{project.year}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Innovación */}
+                            <div className="bg-green-50 p-6 rounded-xl border-2 border-green-200">
+                                <h3 className="text-xl font-bold text-green-700 mb-3">{criticalPeriod.innovation.title}</h3>
+                                <p className="text-sm text-cosiaca-brown/80 mb-4">{criticalPeriod.innovation.description}</p>
+                                <div className="space-y-2">
+                                    <div className="bg-white p-3 rounded-lg">
+                                        <p className="text-2xl font-bold text-green-600">~600</p>
+                                        <p className="text-xs text-cosiaca-brown/70">Homicidios en 2024</p>
+                                    </div>
+                                    <div className="bg-white p-3 rounded-lg">
+                                        <p className="text-2xl font-bold text-green-600">95%</p>
+                                        <p className="text-xs text-cosiaca-brown/70">Reducción</p>
+                                    </div>
+                                </div>
+                                <div className="mt-4 bg-green-100 p-3 rounded-lg">
+                                    <p className="text-xs italic text-cosiaca-brown">"{criticalPeriod.innovation.cosiacaSays}"</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Premios */}
+                        <div className="bg-yellow-50 p-6 rounded-xl border-2 border-yellow-200">
+                            <h3 className="text-xl font-bold text-cosiaca-brown mb-4 text-center">🏆 Reconocimientos Internacionales</h3>
+                            <div className="grid md:grid-cols-3 gap-4">
+                                {criticalPeriod.innovation.awards.map((award, idx) => (
+                                    <div key={idx} className="bg-white p-4 rounded-lg text-center">
+                                        <p className="text-3xl font-bold text-yellow-600">{award.year}</p>
+                                        <p className="font-bold text-cosiaca-brown mt-2">{award.award}</p>
+                                        <p className="text-xs text-cosiaca-brown/60 mt-1">{award.organization}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Proyectos Emblemáticos */}
+                    <section className="space-y-6">
+                        <h2 className="text-3xl font-anton text-cosiaca-brown text-center">
+                            🏛️ Proyectos Emblemáticos
+                        </h2>
+
+                        {/* Urbanismo Social */}
+                        <div className="bg-white p-6 rounded-2xl border-2 border-cosiaca-brown/20 shadow-lg">
+                            <h3 className="text-2xl font-bold text-cosiaca-red mb-4">{emblematicProjects.urbanismo_social.title}</h3>
+                            <p className="text-cosiaca-brown/80 mb-4">{emblematicProjects.urbanismo_social.description}</p>
+                            <p className="text-lg font-bold text-cosiaca-brown mb-4 italic">"{emblematicProjects.urbanismo_social.philosophy}"</p>
+
+                            <div className="grid md:grid-cols-2 gap-4">
+                                {emblematicProjects.urbanismo_social.projects.slice(0, 2).map((project, idx) => (
+                                    <div key={idx} className="bg-cosiaca-beige/30 p-4 rounded-xl">
+                                        <h4 className="font-bold text-cosiaca-brown mb-2">{project.name}</h4>
+                                        {project.year && <p className="text-sm text-cosiaca-brown/60 mb-2">{project.year}</p>}
+                                        {project.elements && (
+                                            <ul className="space-y-1">
+                                                {project.elements.slice(0, 3).map((elem, i) => (
+                                                    <li key={i} className="text-xs text-cosiaca-brown/80 flex items-start">
+                                                        <span className="text-cosiaca-red mr-2">•</span>
+                                                        {elem}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                        {project.investment && (
+                                            <p className="text-sm font-bold text-green-600 mt-2">💰 {project.investment}</p>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Movilidad */}
+                        <div className="bg-white p-6 rounded-2xl border-2 border-cosiaca-brown/20 shadow-lg">
+                            <h3 className="text-2xl font-bold text-cosiaca-red mb-4">{emblematicProjects.movilidad.title}</h3>
+                            <p className="text-cosiaca-brown/80 mb-4">{emblematicProjects.movilidad.description}</p>
+
+                            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                {emblematicProjects.movilidad.components.map((comp, idx) => (
+                                    <div key={idx} className="bg-gradient-to-br from-cosiaca-beige/40 to-cosiaca-cream/30 p-4 rounded-xl text-center">
+                                        <h4 className="font-bold text-cosiaca-brown mb-2">{comp.name}</h4>
+                                        {comp.ridership && (
+                                            <p className="text-lg font-bold text-cosiaca-red">{comp.ridership}</p>
+                                        )}
+                                        {comp.lines && typeof comp.lines === 'string' && (
+                                            <p className="text-xs text-cosiaca-brown/70 mt-1">{comp.lines}</p>
+                                        )}
+                                        {comp.total_lines && (
+                                            <p className="text-sm text-cosiaca-brown/70 mt-1">{comp.total_lines}</p>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Lecciones */}
+                        <div className="bg-gradient-to-br from-cosiaca-beige/50 to-cosiaca-cream/50 p-8 rounded-2xl border-2 border-cosiaca-brown/20 shadow-xl">
+                            <h3 className="text-2xl font-anton text-cosiaca-brown mb-6 text-center">
+                                📚 Las 8 Claves del Milagro de Medellín
+                            </h3>
+                            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                {transformationLessons.principles.map((principle, idx) => (
+                                    <div key={idx} className="bg-white p-4 rounded-xl border border-cosiaca-brown/20 hover:shadow-lg transition-all">
+                                        <div className="text-3xl font-bold text-cosiaca-red mb-2">{principle.number}</div>
+                                        <h4 className="font-bold text-cosiaca-brown mb-2 text-sm">{principle.title}</h4>
+                                        <p className="text-xs text-cosiaca-brown/70">{principle.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Personajes Históricos */}
+                        <div className="bg-white p-6 rounded-2xl border-2 border-cosiaca-brown/20 shadow-lg">
+                            <h3 className="text-2xl font-bold text-cosiaca-red mb-6 text-center">👤 Personajes Históricos Clave</h3>
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                {Object.values(historicalCharacters).map((char, idx) => (
+                                    <div key={idx} className="bg-cosiaca-beige/30 p-4 rounded-xl hover:shadow-lg transition-all">
+                                        <h4 className="font-bold text-cosiaca-brown mb-1">{char.name}</h4>
+                                        <p className="text-xs text-cosiaca-brown/60 mb-2">{char.years}</p>
+                                        <p className="text-sm text-cosiaca-brown/80">{char.description}</p>
+                                        <div className="mt-3 bg-white/60 px-3 py-2 rounded-lg">
+                                            <p className="text-xs font-bold text-cosiaca-red">Legado:</p>
+                                            <p className="text-xs text-cosiaca-brown/80">{char.legacy}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Mensaje Final */}
+                    <div className="bg-gradient-to-br from-cosiaca-red/10 to-cosiaca-brown/10 p-8 rounded-2xl border-2 border-cosiaca-brown/20 shadow-xl">
+                        <div className="text-center space-y-4">
+                            <h3 className="text-3xl font-anton text-cosiaca-brown flex items-center justify-center gap-3">
+                                <span className="text-4xl">🎭</span>
+                                Cosiaca lo Resume Así
+                            </h3>
+                            <p className="text-lg text-cosiaca-brown/80 max-w-4xl mx-auto leading-relaxed">
+                                "Mijito, pasamos de ser la <strong className="text-red-600">ciudad más violenta del mundo</strong> en 1991
+                                a ser la <strong className="text-green-600">ciudad más innovadora</strong> en 2013.
+                                De <strong>6,349 muertos</strong> al año a menos de <strong>600</strong>.
+                                Eso es una <strong className="text-cosiaca-red">reducción del 95%</strong>.
+                            </p>
+                            <p className="text-lg text-cosiaca-brown/80 max-w-4xl mx-auto leading-relaxed">
+                                ¿Cómo lo hicimos? Con <em>educación, cultura, innovación y mucha verraquera paisa</em>.
+                                Construimos el Metro, el Metrocable, los Parques Biblioteca, y le mostramos al mundo
+                                que <strong>una ciudad sí puede reinventarse</strong>.
+                            </p>
+                            <p className="text-2xl font-anton text-cosiaca-red mt-6">
+                                "¡De villa de mulas a ciudad inteligente, qué viaje tan berraco!"
+                            </p>
+                            <p className="text-cosiaca-brown/60">- José García 'Cosiaca', eternamente orgulloso paisa</p>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

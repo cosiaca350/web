@@ -79,8 +79,6 @@ const App = () => {
                 return <Podcast />;
             case 'timeline':
                 return <Timeline />;
-            case 'historia':
-                return <HistoriaAmpliada />;
             case 'archivo':
                 return <Archivo />;
             case 'libros':
