@@ -58,11 +58,24 @@ const Home = ({ setView }) => {
                     <div className="animate-fade-in-up pt-4 lg:pt-8">
                         <button
                             onClick={() => setView('welcome')}
-                            className="bg-gradient-to-r from-cosiaca-enfasis to-cosiaca-enfasis/80 hover:from-cosiaca-brown-dark hover:to-cosiaca-brown text-white font-bold py-2 sm:py-3 md:py-3 px-4 sm:px-6 md:px-8 rounded-full text-sm sm:text-base md:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-cosiaca-enfasis/50 mx-auto inline-flex items-center font-montserrat"
+                            className="font-bold py-2 sm:py-3 md:py-3 px-4 sm:px-6 md:px-8 rounded-full text-sm sm:text-base md:text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl mx-auto inline-flex items-center font-montserrat border-2"
+                            style={{
+                                backgroundColor: '#3A2B21',
+                                color: '#FFFFFF',
+                                borderColor: '#3A2B21'
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.backgroundColor = '#C92C3D';
+                                e.currentTarget.style.borderColor = '#C92C3D';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.backgroundColor = '#3A2B21';
+                                e.currentTarget.style.borderColor = '#3A2B21';
+                            }}
                         >
-                            <SparklesIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                            <SparklesIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2" style={{ color: '#FFFFFF' }} />
                             Comenzar el Viaje Histórico
-                            <SparklesIcon className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                            <SparklesIcon className="w-4 h-4 sm:w-5 sm:h-5 ml-2" style={{ color: '#FFFFFF' }} />
                         </button>
                         <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-1920-base text-cosiaca-principal/60 font-montserrat mt-3 sm:mt-4 lg:mt-6">
                             ✨ <em>Prepárate para un viaje único por <strong className="text-cosiaca-enfasis">350</strong> años de historia paisa</em> ✨
