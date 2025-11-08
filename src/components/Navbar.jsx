@@ -58,14 +58,13 @@ const Navbar = ({ view, setView }) => {
         { name: 'Línea de Tiempo', view: 'timeline' },
         { name: 'Archivo', view: 'archivo' },
         { name: 'Equipo', view: 'team' },
-        { name: 'Redes', view: 'redes' },
     ];
     
     return (
         <nav className="bg-cosiaca-brown-dark backdrop-blur-lg text-cosiaca-cream p-2 sm:p-3 md:p-4 sticky top-0 z-50 border-b-2 border-cosiaca-acento/30 shadow-lg">
             <div className="container mx-auto flex justify-between items-center">
                 <div
-                    className="cursor-pointer flex items-center"
+                    className="cursor-pointer flex items-center flex-shrink-0"
                     onClick={() => setView('home')}
                     role="button"
                     tabIndex="0"
@@ -75,8 +74,7 @@ const Navbar = ({ view, setView }) => {
                     <img
                         src="/Logo_blanco.svg"
                         alt="Cosiaca 350"
-                        className="h-8 sm:h-10 md:h-12 w-auto object-contain"
-                        style={{ minWidth: '120px' }}
+                        className="h-8 sm:h-10 md:h-12 w-auto object-contain max-w-[100px] sm:max-w-[140px] md:max-w-[160px]"
                     />
                 </div>
 

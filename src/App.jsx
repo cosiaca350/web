@@ -6,6 +6,7 @@ import Proyecto from './components/Proyecto';
 import Libros from './components/Libros';
 import Team from './components/Team';
 import Redes from './components/Redes';
+import { TikTokIcon, InstagramIcon, FacebookIcon, YoutubeIcon } from './icons/Icons';
 import Videos from './components/Videos';
 import Juegos from './components/Juegos';
 import Podcast from './components/Podcast';
@@ -85,8 +86,6 @@ const App = () => {
                 return user ? <Libros /> : <div className="text-center text-gray-400 mt-20">Cargando...</div>;
             case 'team':
                 return <Team />;
-            case 'redes':
-                return <Redes />;
             case 'videos':
                 return <Videos />;
             default:
@@ -139,20 +138,96 @@ const App = () => {
                 </>
             )}
             
-            <footer className="bg-cosiaca-brown-dark p-4 text-center border-t-2 border-cosiaca-acento/30">
-                <div className="container-1920 mx-auto space-y-2">
-                    <p className="text-xs font-semibold font-montserrat" style={{ color: '#F5E9D4' }}>
-                        © 2025 {"{COSIACA "}<strong style={{ color: '#C92C3D' }}>350</strong>{"}"} - Un Viaje Inmersivo a la Historia de Medellín
-                    </p>
-                    <p className="text-xs font-montserrat" style={{ color: '#F5E9D4' }}>
-                        Todos los derechos reservados. Un proyecto de <strong style={{ color: '#C92C3D' }}>Núcleo Colectivo</strong>
-                    </p>
-                    <p className="text-xs font-montserrat" style={{ color: '#D4C5B3' }}>
-                        Propuesta transmedia para la celebración de los <strong style={{ color: '#C92C3D' }}>350</strong> años de Medellín
-                    </p>
-                    <p className="text-xs font-montserrat" style={{ color: '#D4C5B3' }}>
-                        Proyecto beneficiado de las Convocatorias de Fomento y Estímulos para el Arte y la Cultura 2025 | Secretaría de Cultura Ciudadana de Medellín
-                    </p>
+            <footer className="bg-cosiaca-brown-dark p-6 md:p-8 text-center border-t-2 border-cosiaca-acento/30">
+                <div className="container-1920 mx-auto space-y-6">
+                    {/* Redes Sociales */}
+                    <div className="border-b border-cosiaca-beige/30 pb-6">
+                        <h3 className="text-xl md:text-2xl font-bold font-anton mb-4" style={{ color: '#F5E9D4' }}>
+                            🔗 Redes Sociales y Contacto
+                        </h3>
+                        <p className="text-sm md:text-base mb-4" style={{ color: '#D4C5B3' }}>
+                            Síguenos y mantente al tanto de todas las novedades de Cosiaca 350.
+                        </p>
+
+                        {/* Íconos de Redes Sociales */}
+                        <div className="flex justify-center space-x-6 mb-6">
+                            <a
+                                href="https://www.tiktok.com/@ncleo.colectivo?_t=ZS-8zo20sFpiBY&_r=1"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-cosiaca-red hover:text-cosiaca-acento transition-all transform hover:scale-110"
+                                aria-label="Síguenos en TikTok"
+                            >
+                                <TikTokIcon className="w-10 h-10 md:w-12 md:h-12" />
+                            </a>
+                            <a
+                                href="https://www.instagram.com/cosiaca350?igsh=MTNtZjB3a3V4dXRwOQ=="
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-cosiaca-red hover:text-cosiaca-acento transition-all transform hover:scale-110"
+                                aria-label="Síguenos en Instagram"
+                            >
+                                <InstagramIcon className="w-10 h-10 md:w-12 md:h-12" />
+                            </a>
+                            <a
+                                href="https://www.facebook.com/NucleoColectivoFaro"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-cosiaca-red hover:text-cosiaca-acento transition-all transform hover:scale-110"
+                                aria-label="Síguenos en Facebook"
+                            >
+                                <FacebookIcon className="w-10 h-10 md:w-12 md:h-12" />
+                            </a>
+                            <a
+                                href="https://www.youtube.com/@NucleoColectivoFaro"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-cosiaca-red hover:text-cosiaca-acento transition-all transform hover:scale-110"
+                                aria-label="Síguenos en YouTube"
+                            >
+                                <YoutubeIcon className="w-10 h-10 md:w-12 md:h-12" />
+                            </a>
+                        </div>
+
+                        {/* Contacto Directo */}
+                        <div className="mt-6">
+                            <h4 className="text-lg font-semibold font-anton mb-3" style={{ color: '#F5E9D4' }}>
+                                📧 Contacto Directo
+                            </h4>
+                            <div className="flex flex-col items-center space-y-2 text-sm">
+                                <a
+                                    href="mailto:nucleo.colectivo.art@gmail.com"
+                                    className="hover:text-cosiaca-acento transition-colors"
+                                    style={{ color: '#D4C5B3' }}
+                                >
+                                    nucleo.colectivo.art@gmail.com
+                                </a>
+                                <a
+                                    href="mailto:cosiaca350@gmail.com"
+                                    className="hover:text-cosiaca-acento transition-colors"
+                                    style={{ color: '#D4C5B3' }}
+                                >
+                                    cosiaca350@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Copyright y Créditos */}
+                    <div className="space-y-2">
+                        <p className="text-xs md:text-sm font-semibold font-montserrat" style={{ color: '#F5E9D4' }}>
+                            © 2025 {"{COSIACA "}<strong style={{ color: '#C92C3D' }}>350</strong>{"}"} - Un Viaje Inmersivo a la Historia de Medellín
+                        </p>
+                        <p className="text-xs font-montserrat" style={{ color: '#F5E9D4' }}>
+                            Todos los derechos reservados. Un proyecto de <strong style={{ color: '#C92C3D' }}>Núcleo Colectivo</strong>
+                        </p>
+                        <p className="text-xs font-montserrat" style={{ color: '#D4C5B3' }}>
+                            Propuesta transmedia para la celebración de los <strong style={{ color: '#C92C3D' }}>350</strong> años de Medellín
+                        </p>
+                        <p className="text-xs font-montserrat" style={{ color: '#D4C5B3' }}>
+                            Proyecto beneficiado de las Convocatorias de Fomento y Estímulos para el Arte y la Cultura 2025 | Secretaría de Cultura Ciudadana de Medellín
+                        </p>
+                    </div>
                 </div>
             </footer>
         </div>
