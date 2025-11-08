@@ -74,10 +74,11 @@ const Navbar = ({ view, setView }) => {
                     onKeyDown={(e) => e.key === 'Enter' && setView('home')}
                     aria-label="Ir al inicio"
                 >
-                    <img 
-                        src="/logo-cosiaca.svg" 
+                    <img
+                        src="/logo-cosiaca.svg"
                         alt="Cosiaca 350"
-                        className="h-8 sm:h-10 md:h-12 w-auto"
+                        className="h-8 sm:h-10 md:h-12 w-auto object-contain"
+                        style={{ minWidth: '120px' }}
                     />
                 </div>
                 
