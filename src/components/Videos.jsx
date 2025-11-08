@@ -90,11 +90,12 @@ const Videos = () => {
                 <div className="relative pt-[56.25%] bg-black">
                     <iframe
                         className="absolute inset-0 w-full h-full"
-                        src={`https://www.youtube.com/embed/videoseries?list=${playlistId}&rel=0`}
+                        src={`https://www.youtube-nocookie.com/embed/videoseries?list=${playlistId}&rel=0&modestbranding=1`}
                         title="COSIACA 350 - Playlist Completa"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
+                        loading="lazy"
                     />
                 </div>
                 <div className="p-6 bg-cosiaca-beige/20">
@@ -110,6 +111,14 @@ const Videos = () => {
                 <h2 className="text-3xl font-bold font-anton text-cosiaca-brown text-center">
                     🎬 Videos Destacados
                 </h2>
+
+                {/* Mensaje informativo sobre embeds */}
+                <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg text-center">
+                    <p className="text-blue-900 text-sm">
+                        💡 <strong>Nota:</strong> Si los videos no se cargan aquí, puedes verlos directamente en YouTube usando los botones debajo de cada video.
+                    </p>
+                </div>
+
                 {videoList
                     .filter(video => !video.coming && video.embedId)
                     .map((video) => (
@@ -117,11 +126,12 @@ const Videos = () => {
                             <div className="relative pt-[56.25%] bg-black">
                                 <iframe
                                     className="absolute inset-0 w-full h-full"
-                                    src={`https://www.youtube.com/embed/${video.embedId}`}
+                                    src={`https://www.youtube-nocookie.com/embed/${video.embedId}?rel=0&modestbranding=1&enablejsapi=1`}
                                     title={video.title}
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                     allowFullScreen
+                                    loading="lazy"
                                 />
                             </div>
                             <div className="p-6">
@@ -138,7 +148,7 @@ const Videos = () => {
                                     {video.description}
                                 </p>
                                 {video.highlights && (
-                                    <div className="bg-cosiaca-beige/30 rounded-lg p-4 border border-cosiaca-beige">
+                                    <div className="bg-cosiaca-beige/30 rounded-lg p-4 border border-cosiaca-beige mb-3">
                                         <h4 className="font-bold text-cosiaca-brown mb-2 text-sm">✨ Lo que descubrirás:</h4>
                                         <ul className="space-y-1">
                                             {video.highlights.map((highlight, index) => (
@@ -149,6 +159,24 @@ const Videos = () => {
                                         </ul>
                                     </div>
                                 )}
+                                <div className="flex gap-3 pt-3 border-t border-cosiaca-beige">
+                                    <a
+                                        href={`https://www.youtube.com/watch?v=${video.embedId}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex-1 text-center bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors duration-200 text-sm font-semibold"
+                                    >
+                                        ▶ Ver en YouTube
+                                    </a>
+                                    <a
+                                        href={`https://www.youtube.com/watch?v=${video.embedId}&list=${playlistId}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex-1 text-center bg-cosiaca-brown hover:bg-cosiaca-brown-dark text-white px-4 py-2 rounded-lg transition-colors duration-200 text-sm font-semibold"
+                                    >
+                                        📺 Ver en Playlist
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     ))}
