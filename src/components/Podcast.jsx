@@ -51,7 +51,7 @@ const Podcast = () => {
             title: "El Encuentro en la Trocha",
             description: "Cosiaca nos cuenta sobre los antiguos caminos de herradura que conectaban a Medellín con el mundo exterior.",
             duration: "7:20",
-            audioFile: "/PODCAST/el_encuentro_en_la_trocha.mp3",
+            audioFile: "/PODCAST/el_encuentro_en_la_trocha.mp3.mp3",
             category: "Historia Colonial",
             image: "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=600"
         },
