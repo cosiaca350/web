@@ -29,6 +29,15 @@ const Podcast = () => {
         },
         {
             id: 2,
+            title: "Saludo Introductorio",
+            description: "Un saludo especial de Cosiaca presentando la historia y el proyecto de los 350 años de Medellín.",
+            duration: "2:45",
+            audioFile: "/AUDIOS_historias/01_SALUDO.mp3",
+            category: "Bienvenida",
+            image: "https://images.pexels.com/photos/6044266/pexels-photo-6044266.jpeg?auto=compress&cs=tinysrgb&w=600"
+        },
+        {
+            id: 3,
             title: "El Encuentro en la Trocha",
             description: "Cosiaca nos cuenta sobre los antiguos caminos de herradura que conectaban a Medellín con el mundo exterior.",
             duration: "8:45",
@@ -37,7 +46,7 @@ const Podcast = () => {
             image: "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=600"
         },
         {
-            id: 3,
+            id: 4,
             title: "La Canción del Valle de Aburrá",
             description: "Una melodiosa narración sobre los orígenes musicales y culturales del valle que acogió a Medellín.",
             duration: "12:30",
@@ -46,31 +55,22 @@ const Podcast = () => {
             image: "https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=600"
         },
         {
-            id: 4,
-            title: "Sobre la Medellín de los Cafetales",
-            description: "El auge del café y cómo transformó la economía y la sociedad paisa, contado con el humor característico de Cosiaca.",
-            duration: "15:20",
-            audioFile: "/AUDIOS_historias/Sobre_la_Medellin_de_los_cafetales.mp3",
-            category: "Economía",
-            image: "https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=600"
-        },
-        {
             id: 5,
-            title: "De la Violencia a la Esperanza",
-            description: "Un episodio emotivo sobre cómo Medellín superó sus momentos más difíciles y se transformó en ciudad de innovación.",
-            duration: "18:45",
-            audioFile: "/AUDIOS_historias/De_la_violencia_a_la_esperanza.mp3",
-            category: "Transformación",
-            image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=600"
-        },
-        {
-            id: 6,
             title: "La Verraquera Arriera",
             description: "Historias de los arrieros antioqueños y su papel fundamental en el desarrollo económico de la región.",
             duration: "14:10",
             audioFile: "/AUDIOS_historias/La_verraquera_arriera.mp3",
             category: "Tradiciones",
             image: "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=600"
+        },
+        {
+            id: 6,
+            title: "Sobre la Medellín de los Cafetales",
+            description: "El auge del café y cómo transformó la economía y la sociedad paisa, contado con el humor característico de Cosiaca.",
+            duration: "15:20",
+            audioFile: "/AUDIOS_historias/Sobre_la_Medellin_de_los_cafetales.mp3",
+            category: "Economía",
+            image: "https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=600"
         },
         {
             id: 7,
@@ -83,6 +83,15 @@ const Podcast = () => {
         },
         {
             id: 8,
+            title: "De la Violencia a la Esperanza",
+            description: "Un episodio emotivo sobre cómo Medellín superó sus momentos más difíciles y se transformó en ciudad de innovación.",
+            duration: "18:45",
+            audioFile: "/AUDIOS_historias/De_la_violencia_a_la_esperanza.mp3",
+            category: "Transformación",
+            image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=600"
+        },
+        {
+            id: 9,
             title: "Cosiaca el Culebreo",
             description: "Una historia divertida sobre las travesuras y picardías del personaje más querido de Antioquia.",
             duration: "12:45",
@@ -91,7 +100,7 @@ const Podcast = () => {
             image: "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=600"
         },
         {
-            id: 9,
+            id: 10,
             title: "Fernando García - Entrevista Especial",
             description: "Conversación profunda con Fernando García sobre la historia y legado de Cosiaca en la cultura antioqueña.",
             duration: "25:30",
@@ -100,7 +109,7 @@ const Podcast = () => {
             image: "https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=600"
         },
         {
-            id: 10,
+            id: 11,
             title: "Francisco Mejía - Testimonios Históricos",
             description: "Francisco Mejía comparte testimonios y anécdotas sobre la época dorada de la comedia paisa.",
             duration: "22:15",
