@@ -468,9 +468,9 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                                 <div className="flex items-center gap-3">
                                     <span className="text-4xl">{selectedNode.icon}</span>
                                     <div>
-                                        <h3 className="text-3xl font-bold">{selectedNode.year}</h3>
+                                        <h3 className="text-3xl font-bold text-white">{selectedNode.year}</h3>
                                         {selectedNode.date && (
-                                            <p className="text-xs opacity-90 mt-1">{selectedNode.date}</p>
+                                            <p className="text-xs text-white opacity-90 mt-1">{selectedNode.date}</p>
                                         )}
                                     </div>
                                 </div>

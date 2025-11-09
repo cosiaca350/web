@@ -616,9 +616,9 @@ const Timeline = () => {
                                                 <div className="flex items-center gap-3 flex-1">
                                                     <span className="text-3xl md:hidden">{period.icon}</span>
                                                     <div>
-                                                        <h3 className="text-2xl md:text-3xl font-bold">{period.year}</h3>
+                                                        <h3 className="text-2xl md:text-3xl font-bold text-white">{period.year}</h3>
                                                         {period.date && (
-                                                            <p className="text-xs opacity-90 mt-1">{period.date}</p>
+                                                            <p className="text-xs text-white opacity-90 mt-1">{period.date}</p>
                                                         )}
                                                     </div>
                                                 </div>
@@ -726,9 +726,9 @@ const Timeline = () => {
                                         <div className="flex items-center gap-3 flex-1">
                                             <span className="text-3xl md:hidden">{period.icon}</span>
                                             <div>
-                                                <h3 className="text-3xl md:text-4xl font-bold">{period.year}</h3>
+                                                <h3 className="text-3xl md:text-4xl font-bold text-white">{period.year}</h3>
                                                 {period.date && (
-                                                    <p className="text-sm opacity-90">{period.date}</p>
+                                                    <p className="text-sm text-white opacity-90">{period.date}</p>
                                                 )}
                                             </div>
                                         </div>
