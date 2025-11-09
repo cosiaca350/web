@@ -173,10 +173,10 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
     });
 
     return (
-        <div className="relative w-full min-h-screen -mx-4 md:-mx-8">
+        <div className="fixed inset-0 w-full h-screen pointer-events-none z-0">
             <div
                 ref={containerRef}
-                className="fixed inset-0 w-full h-full bg-gradient-to-br from-gray-950 via-cosiaca-brown/95 to-black overflow-hidden"
+                className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-950 via-cosiaca-brown/95 to-black overflow-hidden pointer-events-auto"
                 style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
                 onWheel={handleWheel}
                 onMouseDown={handleMouseDown}
@@ -323,7 +323,7 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                 </svg>
             </div>
 
-            <div className="relative z-10 min-h-screen flex flex-col pointer-events-none">
+            <div className="absolute inset-0 z-10 flex flex-col pointer-events-none">
                 <div className="flex-none pt-4 px-4 pointer-events-auto">
                     <div className="flex gap-2 flex-wrap justify-center mb-3">
                         <button
@@ -439,7 +439,16 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                     )}
                 </div>
 
-                <div className="flex-1" />
+                <div className="flex-1 flex items-end justify-center pb-8 pointer-events-none">
+                    <div className="text-center animate-bounce pointer-events-none">
+                        <div className="text-white/80 text-sm font-bold mb-2">
+                            Desplázate hacia abajo
+                        </div>
+                        <div className="text-white/60 text-3xl">
+                            ↓
+                        </div>
+                    </div>
+                </div>
 
                 <div className="flex-none pb-4 px-4 pointer-events-auto">
                     <div className="bg-white/10 backdrop-blur-md text-white px-3 py-2 rounded-lg inline-block text-xs">

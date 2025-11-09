@@ -542,7 +542,118 @@ const Timeline = () => {
 
             {/* VISTA: LÍNEA DE TIEMPO 3D */}
             {activeView === 'timeline' && (
-                <Timeline3D periods={filteredPeriods} categories={categories} filterCategory={filterCategory} setFilterCategory={setFilterCategory} stats={stats} />
+                <>
+                    <Timeline3D periods={filteredPeriods} categories={categories} filterCategory={filterCategory} setFilterCategory={setFilterCategory} stats={stats} />
+
+                    <div className="relative z-20 mt-[100vh]">
+                        <div className="relative max-w-5xl mx-auto px-4 pb-12 bg-gradient-to-b from-transparent via-cosiaca-cream/80 to-cosiaca-cream backdrop-blur-sm">
+                            <div className="text-center pt-12 pb-8">
+                                <h2 className="text-3xl md:text-4xl font-anton text-cosiaca-brown mb-4">
+                                    📜 Línea de Tiempo Detallada
+                                </h2>
+                                <p className="text-cosiaca-brown/70 max-w-2xl mx-auto">
+                                    Desplázate para explorar cada período histórico de Medellín en detalle
+                                </p>
+                            </div>
+
+                            <div className="hidden md:block absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-cosiaca-red via-cosiaca-brown to-cosiaca-red"></div>
+
+                            <div className="space-y-8">
+                                {filteredPeriods.map((period, index) => (
+                                    <div
+                                        key={period.id}
+                                        className="relative animate-fade-in"
+                                        style={{ animationDelay: `${index * 50}ms` }}
+                                    >
+                                        <div className="hidden md:flex absolute left-4 w-9 h-9 rounded-full items-center justify-center text-xl bg-white border-4 border-cosiaca-red shadow-lg z-10">
+                                            {period.icon}
+                                        </div>
+
+                                        <div className="md:ml-20 bg-gradient-to-br from-white to-cosiaca-beige/30 rounded-2xl border-2 border-cosiaca-brown/20 overflow-hidden hover:shadow-2xl transition-all duration-300">
+                                            <div className={`${period.color} p-4 md:p-5 text-white`}>
+                                                <div className="flex items-center gap-4">
+                                                    <div className="flex items-center gap-3 flex-1">
+                                                        <span className="text-3xl md:hidden">{period.icon}</span>
+                                                        <div>
+                                                            <h3 className="text-3xl md:text-4xl font-bold">{period.year}</h3>
+                                                            {period.date && (
+                                                                <p className="text-sm opacity-90">{period.date}</p>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                    <button
+                                                        onClick={() => setSelectedPeriod(selectedPeriod === period.id ? null : period.id)}
+                                                        className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-all duration-300 font-bold text-sm backdrop-blur-sm"
+                                                    >
+                                                        {selectedPeriod === period.id ? '✕' : '+'}
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div className="p-4 md:p-6">
+                                                <h4 className="text-xl md:text-2xl font-anton text-cosiaca-brown mb-4">{period.title}</h4>
+
+                                                <div className="flex flex-wrap gap-2 mb-4">
+                                                    <div className="flex items-center gap-2 bg-cosiaca-beige/40 px-3 py-2 rounded-lg text-sm">
+                                                        <span>👥</span>
+                                                        <span className="font-medium">{period.population}</span>
+                                                    </div>
+                                                    {period.keyFigure && (
+                                                        <div className="flex items-center gap-2 bg-cosiaca-beige/40 px-3 py-2 rounded-lg text-sm">
+                                                            <span>👤</span>
+                                                            <span className="font-medium text-cosiaca-brown/80">{period.keyFigure}</span>
+                                                        </div>
+                                                    )}
+                                                </div>
+
+                                                <p className="text-base text-cosiaca-brown/80 leading-relaxed mb-4">
+                                                    {period.description}
+                                                </p>
+
+                                                {selectedPeriod === period.id && (
+                                                    <div className="space-y-4 animate-fade-in">
+                                                        <div className="bg-gradient-to-r from-cosiaca-cream/80 to-cosiaca-beige/50 p-5 rounded-xl border-l-4 border-cosiaca-red">
+                                                            <h5 className="font-bold text-cosiaca-brown mb-2 flex items-center gap-2">
+                                                                <span>💬</span> Cosiaca cuenta:
+                                                            </h5>
+                                                            <p className="text-sm text-cosiaca-brown italic leading-relaxed">{period.details}</p>
+                                                        </div>
+
+                                                        <div className="bg-white p-5 rounded-xl border border-cosiaca-brown/20">
+                                                            <h5 className="font-bold text-cosiaca-brown mb-3 flex items-center gap-2">
+                                                                <span>📌</span> Hitos Destacados:
+                                                            </h5>
+                                                            <ul className="space-y-2">
+                                                                {period.milestones.map((milestone, idx) => (
+                                                                    <li key={idx} className="flex items-start gap-2 text-sm text-cosiaca-brown/80">
+                                                                        <span className="text-cosiaca-red font-bold mt-1">•</span>
+                                                                        <span>{milestone}</span>
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="mt-12 text-center bg-gradient-to-br from-white to-cosiaca-beige/50 p-8 rounded-2xl border-2 border-cosiaca-brown/20">
+                                <p className="text-lg text-cosiaca-brown/80 leading-relaxed mb-4">
+                                    <strong className="text-cosiaca-red">Medellín</strong> ha transformado su historia de desafíos en una narrativa de resiliencia, innovación y esperanza.
+                                </p>
+                                <div className="pt-4">
+                                    <p className="text-2xl font-anton text-cosiaca-red">
+                                        "¡De villa de mulas a ciudad inteligente, qué viaje tan berraco!"
+                                    </p>
+                                    <p className="text-cosiaca-brown/60 mt-2">- Cosiaca, 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>
             )}
 
             <div className="relative max-w-5xl mx-auto px-4 hidden">
