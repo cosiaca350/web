@@ -64,6 +64,25 @@ const Videos = () => {
                 "🎭 30 años de autoexilio tras censura",
                 "🎨 Recreación histórica con IA"
             ]
+        },
+        {
+            id: 4,
+            title: "Santa Laura Montoya: La Primera Santa Colombiana (1874-1949)",
+            description: "Conoce la inspiradora vida de Laura Montoya Upegui, nacida en Jericó, Antioquia, quien se convirtió en la primera santa colombiana y la segunda santa latinoamericana. Cosiaca nos narra con respeto y admiración cómo esta mujer extraordinaria, huérfana de padre a los dos años, superó la pobreza extrema para dedicar su vida a evangelizar y educar a las comunidades indígenas más vulnerables de Colombia. Fundadora de las Misioneras de María Inmaculada y Santa Catalina de Siena, su obra humanitaria en la selva amazónica y su método pedagógico revolucionario basado en el amor y el respeto cultural transformaron la vida de miles de personas. Beatificada por Juan Pablo II en 2004 y canonizada por Benedicto XVI en 2013, su legado perdura en más de 19 países.",
+            embedId: "HJWu0MtU49o",
+            category: "Fe y Humanidad",
+            duration: "Video generado con IA",
+            thumbnail: `https://img.youtube.com/vi/HJWu0MtU49o/maxresdefault.jpg`,
+            highlights: [
+                "🙏 Primera santa colombiana (canonizada 2013)",
+                "👩‍🏫 Fundadora de las Misioneras de María Inmaculada",
+                "🌳 Evangelizadora de comunidades indígenas en el Amazonas",
+                "📚 Revolucionó la educación con método basado en amor y respeto",
+                "💪 Superó pobreza extrema tras quedar huérfana",
+                "🌎 Su obra llegó a más de 19 países",
+                "✝️ Beatificada (2004) y canonizada (2013)",
+                "🎨 Recreación histórica con IA"
+            ]
         }
     ];
 
