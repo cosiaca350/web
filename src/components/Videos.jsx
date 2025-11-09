@@ -10,34 +10,36 @@ const Videos = () => {
     const videoList = [
         {
             id: 1,
-            title: "Gildardo Montoya: El Compositor de las Montañas",
-            description: "Conoce la vida de Gildardo Montoya, el compositor antioqueño que le cantó al campo, a los arrieros y a la vida paisa. Desde sus inicios en los pueblos cafeteros hasta convertirse en uno de los exponentes más importantes de la música carranga colombiana, Cosiaca nos narra con humor y picardía cómo este artista capturó la esencia de Antioquia en sus canciones. Descubre las historias detrás de sus composiciones más emblemáticas y el legado musical que dejó para Colombia. Video generado con IA que recrea los paisajes y momentos que inspiraron su obra.",
+            title: "Gildardo Montoya: El Trovador del Valle (1939-1976)",
+            description: "Conoce la fascinante vida de Gildardo Montoya Ortiz, nacido en Palermo, Támesis, quien pasó de recolector de café en el Suroeste antioqueño a convertirse en una leyenda de la música parrandera paisa. Cosiaca nos cuenta con humor cómo este genio musical, que aprendió acordeón tras ganarlo en una rifa entre carniceros, creó clásicos inmortales como 'El Arruinao', 'El Trovador del Valle', 'El Aguardientoski' y la célebre 'Plegaria Vallenata'. Descubre sus historias de parranda, sus composiciones para Los Graduados y Nelson Henríquez, y su legado como director artístico de Codiscos. Un homenaje al único compositor paisa incluido en la lista de los 100 vallenatos más importantes de la historia.",
             embedId: "UPIzJ_I4Em8",
-            category: "Personajes Históricos",
+            category: "Música Parrandera Paisa",
             duration: "Video generado con IA",
             thumbnail: `https://img.youtube.com/vi/UPIzJ_I4Em8/maxresdefault.jpg`,
             highlights: [
-                "🎵 Compositor de música carranga colombiana",
-                "🏔️ Cantor de los paisajes antioqueños",
-                "🐴 Historias de arrieros y campesinos",
-                "☕ Cultura cafetera en sus canciones",
-                "🎨 Recreación de paisajes con IA"
+                "🎵 Compositor de música parrandera paisa",
+                "🎶 'El Arruinao', 'Plegaria Vallenata', 'El Trovador del Valle'",
+                "🎸 Intérprete de tiple, guitarra y acordeón",
+                "🎭 De recolector de café a leyenda musical",
+                "⭐ Único paisa en top 100 vallenatos de la historia",
+                "🎨 Recreación histórica con IA"
             ]
         },
         {
             id: 2,
-            title: "Coriolano Amador: El Poeta del Pueblo Paisa",
-            description: "Viaja a través de la vida de Coriolano Amador, el poeta y trovador que inmortalizó las costumbres, el habla y el espíritu del pueblo antioqueño. Nacido en Santa Rosa de Osos, este personaje ilustre recorrió pueblos y veredas compartiendo sus décimas, versos y coplas que retrataban la vida paisa con humor, ingenio y profunda sabiduría popular. Cosiaca nos cuenta con su característico estilo las anécdotas, amores y aventuras de este cronista de la cultura montañera que dejó un legado literario invaluable. Video generado con IA que recrea la época dorada de los trovadores antioqueños.",
+            title: "Carlos Coriolano Amador: El 'Burro de Oro' (1835-1919)",
+            description: "Viaja al Medellín del siglo XIX y descubre la vida del excentrición empresario Carlos Coriolano Amador Fernández, apodado 'El Burro de Oro'. Cosiaca nos narra con humor cómo este visionario abogado y empresario, cuyo nombre honraba al militar romano Cayo Marcio Coriolano, transformó Antioquia con su espíritu innovador. Desde su matrimonio con Lorenza Uribe Lema (heredera de la mina El Zancudo en Tiritibi) hasta la llegada del primer automóvil a Colombia en 1899 –un De Dion-Bouton traído desde Francia–, conoce las anécdotas de quien construyó los palacios más lujosos de Medellín y rompió el estereotipo del empresario paisa austero. Un personaje tan peculiar como su nombre, que dejó huella imborrable en la historia empresarial colombiana.",
             embedId: "k077YMXVcsg",
-            category: "Personajes Históricos",
+            category: "Empresarios Visionarios",
             duration: "Video generado con IA",
             thumbnail: `https://img.youtube.com/vi/k077YMXVcsg/maxresdefault.jpg`,
             highlights: [
-                "📜 Poeta y trovador popular antioqueño",
-                "✍️ Décimas, coplas y versos paisas",
-                "🎭 Cronista de costumbres y tradiciones",
-                "🏔️ Recorridos por pueblos de Antioquia",
-                "🎨 Recreación de la época con IA"
+                "🚗 Trajo el primer automóvil a Colombia (1899)",
+                "⛏️ Dueño de la mina El Zancudo, la más productiva del país",
+                "🏗️ Construyó los palacios más lujosos de Medellín",
+                "💼 Empresario visionario y excentrición del siglo XIX",
+                "🎭 Apodado 'El Burro de Oro'",
+                "🎨 Recreación histórica con IA"
             ]
         }
     ];
