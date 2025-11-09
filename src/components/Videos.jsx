@@ -8,33 +8,34 @@ const Videos = () => {
     const videoList = [
         {
             id: 1,
-            title: "Coriolano Amador: El Trovador del Valle de Aburrá",
-            description: "Conoce la vida de Coriolano Amador, uno de los poetas y trovadores más queridos de Antioquia. Desde su humilde origen en Santa Rosa de Osos hasta convertirse en cronista de la cultura paisa, Cosiaca nos narra con humor cómo este personaje ilustre capturó la esencia del pueblo antioqueño en sus versos. Descubre anécdotas, décimas y el legado literario que dejó para las futuras generaciones. Video generado con IA que recrea momentos clave de su vida.",
+            title: "Gildardo Montoya: El Compositor de las Montañas",
+            description: "Conoce la vida de Gildardo Montoya, el compositor antioqueño que le cantó al campo, a los arrieros y a la vida paisa. Desde sus inicios en los pueblos cafeteros hasta convertirse en uno de los exponentes más importantes de la música carranga colombiana, Cosiaca nos narra con humor y picardía cómo este artista capturó la esencia de Antioquia en sus canciones. Descubre las historias detrás de sus composiciones más emblemáticas y el legado musical que dejó para Colombia. Video generado con IA que recrea los paisajes y momentos que inspiraron su obra.",
             embedId: "UPIzJ_I4Em8",
             category: "Personajes Históricos",
             duration: "Video generado con IA",
             thumbnail: `https://img.youtube.com/vi/UPIzJ_I4Em8/maxresdefault.jpg`,
             highlights: [
-                "📜 Trovador y poeta popular antioqueño",
-                "✍️ Décimas y versos del alma paisa",
-                "🎭 Cronista de la cultura montañera",
-                "🎨 Recreación histórica con IA"
+                "🎵 Compositor de música carranga colombiana",
+                "🏔️ Cantor de los paisajes antioqueños",
+                "🐴 Historias de arrieros y campesinos",
+                "☕ Cultura cafetera en sus canciones",
+                "🎨 Recreación de paisajes con IA"
             ]
         },
         {
             id: 2,
-            title: "Gildardo Montoya: La Voz de las Montañas",
-            description: "Viaja a través de la vida de Gildardo Montoya, el compositor que le cantó a Antioquia con el corazón. Cosiaca nos lleva por las troches y caminos donde nació la música carranga, las inspiraciones que dieron vida a sus canciones más emblemáticas, y cómo este artista humilde se convirtió en ícono de la identidad paisa. Con recreaciones visuales generadas por IA, reviviremos los paisajes cafeteros y pueblos que inspiraron su obra musical inmortal.",
+            title: "Coriolano Amador: El Poeta del Pueblo Paisa",
+            description: "Viaja a través de la vida de Coriolano Amador, el poeta y trovador que inmortalizó las costumbres, el habla y el espíritu del pueblo antioqueño. Nacido en Santa Rosa de Osos, este personaje ilustre recorrió pueblos y veredas compartiendo sus décimas, versos y coplas que retrataban la vida paisa con humor, ingenio y profunda sabiduría popular. Cosiaca nos cuenta con su característico estilo las anécdotas, amores y aventuras de este cronista de la cultura montañera que dejó un legado literario invaluable. Video generado con IA que recrea la época dorada de los trovadores antioqueños.",
             embedId: "k077YMXVcsg",
             category: "Personajes Históricos",
             duration: "Video generado con IA",
             thumbnail: `https://img.youtube.com/vi/k077YMXVcsg/maxresdefault.jpg`,
             highlights: [
-                "🎵 Compositor de la música carranga",
-                "🏔️ Cantor de los paisajes antioqueños",
-                "🎸 Ícono de la identidad paisa",
-                "☕ Inspiración en la cultura cafetera",
-                "🎨 Recreaciones visuales con IA"
+                "📜 Poeta y trovador popular antioqueño",
+                "✍️ Décimas, coplas y versos paisas",
+                "🎭 Cronista de costumbres y tradiciones",
+                "🏔️ Recorridos por pueblos de Antioquia",
+                "🎨 Recreación de la época con IA"
             ]
         }
     ];
