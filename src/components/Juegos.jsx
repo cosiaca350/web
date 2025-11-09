@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BotIcon, CheckCircleIcon, XCircleIcon, SparklesIcon } from '../icons/Icons';
 import AdvancedTrivia from './AdvancedTrivia';
 import GeminiService from '../services/geminiService';
+import historicalGossipData from '../data/historicalGossip';
 
 const Juegos = () => {
     const [activeTab, setActiveTab] = useState('trivia');
@@ -18,6 +19,12 @@ const Juegos = () => {
     const [customJokeTopic, setCustomJokeTopic] = useState('');
     const [customTrovaTopic, setCustomTrovaTopic] = useState('');
     const [showApiWarning, setShowApiWarning] = useState(false);
+
+    // Estados para Chismes Históricos
+    const [currentGossip, setCurrentGossip] = useState(null);
+    const [gossipCategory, setGossipCategory] = useState('all');
+    const [isGeneratingGossip, setIsGeneratingGossip] = useState(false);
+    const [customGossipTopic, setCustomGossipTopic] = useState('');
 
     // Trivia Data
     const triviaQuestions = [
@@ -91,6 +98,9 @@ const Juegos = () => {
         }
         if (activeTab === 'trovas') {
             setCurrentTrova(getRandomTrova());
+        }
+        if (activeTab === 'chismes') {
+            setCurrentGossip(getRandomGossip());
         }
     }, [activeTab]);
 
@@ -235,6 +245,135 @@ const Juegos = () => {
         return trovasPaisa[randomIndex].replace(/\n/g, '<br>');
     };
 
+    // Funciones para Chismes Históricos
+    const getAllGossips = () => {
+        return [
+            ...historicalGossipData.colonialGossip,
+            ...historicalGossipData.independenceGossip,
+            ...historicalGossipData.coffeeBoomGossip,
+            ...historicalGossipData.industrializationGossip,
+            ...historicalGossipData.modernGossip,
+            ...historicalGossipData.characterGossip
+        ];
+    };
+
+    const getGossipsByCategory = (category) => {
+        if (category === 'all') return getAllGossips();
+        return historicalGossipData[category] || [];
+    };
+
+    const getRandomGossip = (category = 'all') => {
+        const gossips = getGossipsByCategory(category);
+        const randomIndex = Math.floor(Math.random() * gossips.length);
+        return gossips[randomIndex];
+    };
+
+    const generateAIGossip = async () => {
+        const gemini = new GeminiService();
+        setIsGeneratingGossip(true);
+        setShowApiWarning(false);
+
+        try {
+            const topic = customGossipTopic.trim();
+
+            let prompt;
+            if (topic) {
+                prompt = `Cuenta un chisme histórico auténtico y curioso de Medellín o Antioquia relacionado con: "${topic}".
+
+El chisme debe:
+- Ser real o basado en hechos históricos verificables
+- Tener un tono divertido y pícaro como Cosiaca
+- Incluir detalles curiosos que sorprendan
+- Usar expresiones paisas: "mijito", "uy", "pues", "¿o qué?"
+- Máximo 4-5 líneas
+- Terminar con algo memorable o gracioso
+
+FORMATO REQUERIDO:
+**Título del chisme:** [Título corto y llamativo]
+**Época:** [Año o período]
+
+[Contenido del chisme con humor paisa]
+
+**Dato curioso:** [Un dato adicional interesante]`;
+            } else {
+                prompt = `Cuenta un chisme histórico auténtico y curioso de Medellín o Antioquia de cualquier época (1675-2025).
+
+El chisme debe:
+- Ser real o basado en hechos históricos verificables
+- Tener un tono divertido y pícaro como Cosiaca
+- Incluir detalles curiosos que sorprendan
+- Usar expresiones paisas: "mijito", "uy", "pues", "¿o qué?"
+- Máximo 4-5 líneas
+- Terminar con algo memorable o gracioso
+
+FORMATO REQUERIDO:
+**Título del chisme:** [Título corto y llamativo]
+**Época:** [Año o período]
+
+[Contenido del chisme con humor paisa]
+
+**Dato curioso:** [Un dato adicional interesante]`;
+            }
+
+            const systemInstruction = `Eres José García "Cosiaca", el primer comediante y chismógrafo popular de Antioquia.
+Conoces TODOS los chismes históricos de Medellín desde su fundación en 1675 hasta el 2025.
+Tu especialidad es contar anécdotas reales, curiosas y picantes de la historia paisa con humor e ingenio.`;
+
+            const response = await gemini.generateContent(prompt, systemInstruction);
+
+            // Parsear la respuesta de IA
+            const lines = response.split('\n');
+            const titleMatch = response.match(/\*\*Título.*?:\*\*\s*(.+)/);
+            const periodMatch = response.match(/\*\*Época.*?:\*\*\s*(.+)/);
+            const funFactMatch = response.match(/\*\*Dato curioso.*?:\*\*\s*(.+)/);
+
+            const gossipText = response
+                .replace(/\*\*Título.*?:\*\*.*?\n/, '')
+                .replace(/\*\*Época.*?:\*\*.*?\n/, '')
+                .replace(/\*\*Dato curioso.*?:\*\*.*?\n/, '')
+                .trim();
+
+            const aiGossip = {
+                title: titleMatch ? titleMatch[1].trim() : 'Chisme Histórico Paisa',
+                period: periodMatch ? periodMatch[1].trim() : 'Época histórica',
+                gossip: gossipText,
+                funFact: funFactMatch ? funFactMatch[1].trim() : 'Generado por IA con conocimiento histórico',
+                source: 'Generado por IA'
+            };
+
+            setCurrentGossip(aiGossip);
+            setCustomGossipTopic('');
+
+        } catch (error) {
+            console.error('Error generando chisme:', error);
+
+            if (error.message && error.message.includes('API key')) {
+                setShowApiWarning(true);
+            }
+
+            // Fallback con template dinámico
+            const topic = customGossipTopic.trim();
+            let fallbackGossip;
+
+            if (topic) {
+                fallbackGossip = {
+                    title: `El chisme de "${topic}"`,
+                    period: 'Época paisa',
+                    gossip: `¡Uy mijito, te voy a contar un chisme histórico sobre "${topic}"! Resulta que en los viejos tiempos de Medellín, cuando "${topic}" era tema de conversación en todas las esquinas, la gente decía que hasta las mulas de los arrieros se detenían a escuchar. ¡Imagínate qué tanto chisme había! Los viejos contaban que eso era tan importante que hasta en las misas se hablaba de "${topic}". ¡Qué tiempos aquellos, pues!`,
+                    funFact: `En Medellín todo tiene historia, hasta "${topic}"`,
+                    source: 'Memoria histórica paisa'
+                };
+            } else {
+                fallbackGossip = getRandomGossip();
+            }
+
+            setCurrentGossip(fallbackGossip);
+            setCustomGossipTopic('');
+        } finally {
+            setIsGeneratingGossip(false);
+        }
+    };
+
     return (
         <div className="animate-fade-in max-w-6xl mx-auto text-cosiaca-brown space-y-6 sm:space-y-8 px-4">
             <header className="text-center">
@@ -283,6 +422,16 @@ const Juegos = () => {
                     onClick={() => setActiveTab('trovas')}
                 >
                     🎵 Trovas Paisas
+                </button>
+                <button
+                    className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 transform hover:scale-105 ${
+                        activeTab === 'chismes'
+                            ? 'bg-cosiaca-red text-white shadow-lg'
+                            : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
+                    }`}
+                    onClick={() => setActiveTab('chismes')}
+                >
+                    👂 Chismes Históricos
                 </button>
             </div>
 
@@ -476,6 +625,238 @@ const Juegos = () => {
                             >
                                 🎲 Trova Tradicional
                             </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Chismes Históricos Content */}
+            {activeTab === 'chismes' && (
+                <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 border border-cosiaca-beige animate-fade-in">
+                    <div className="text-center mb-6 sm:mb-8">
+                        <h3 className="text-2xl sm:text-3xl font-bold font-anton text-cosiaca-brown mb-2">
+                            👂 Chismes Históricos de Medellín
+                        </h3>
+                        <p className="text-base sm:text-lg text-cosiaca-brown/70">
+                            Anécdotas reales, curiosas y picantes de 350 años de historia paisa
+                        </p>
+                    </div>
+
+                    <div className="space-y-6 sm:space-y-8">
+                        {showApiWarning && activeTab === 'chismes' && (
+                            <div className="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded-lg animate-fade-in">
+                                <div className="flex items-start">
+                                    <div className="flex-shrink-0">
+                                        <svg className="h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div className="ml-3">
+                                        <p className="text-sm text-yellow-800">
+                                            <strong>Modo clásico activado:</strong> Usando chismes históricos verificados. Los chismes se adaptan a tu tema cuando es posible.
+                                        </p>
+                                    </div>
+                                    <button
+                                        onClick={() => setShowApiWarning(false)}
+                                        className="ml-auto -mx-1.5 -my-1.5 bg-yellow-100 text-yellow-500 rounded-lg p-1.5 hover:bg-yellow-200 transition-colors"
+                                    >
+                                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Selector de Categorías */}
+                        <div className="bg-gradient-to-r from-cosiaca-beige/50 to-cosiaca-brown/10 rounded-xl p-4 sm:p-6 border-2 border-cosiaca-beige shadow-md">
+                            <label className="block text-cosiaca-brown font-bold mb-3 text-center text-base sm:text-lg">
+                                📚 Selecciona una época o personaje:
+                            </label>
+                            <div className="flex flex-wrap justify-center gap-2 mb-4">
+                                <button
+                                    onClick={() => { setGossipCategory('all'); setCurrentGossip(getRandomGossip('all')); }}
+                                    className={`px-3 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 transform hover:scale-105 ${
+                                        gossipCategory === 'all'
+                                            ? 'bg-cosiaca-red text-white shadow-lg'
+                                            : 'bg-white text-cosiaca-brown hover:bg-cosiaca-beige/50'
+                                    }`}
+                                >
+                                    📖 Todos
+                                </button>
+                                <button
+                                    onClick={() => { setGossipCategory('colonialGossip'); setCurrentGossip(getRandomGossip('colonialGossip')); }}
+                                    className={`px-3 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 transform hover:scale-105 ${
+                                        gossipCategory === 'colonialGossip'
+                                            ? 'bg-cosiaca-red text-white shadow-lg'
+                                            : 'bg-white text-cosiaca-brown hover:bg-cosiaca-beige/50'
+                                    }`}
+                                >
+                                    🏛️ Colonial (1675-1810)
+                                </button>
+                                <button
+                                    onClick={() => { setGossipCategory('independenceGossip'); setCurrentGossip(getRandomGossip('independenceGossip')); }}
+                                    className={`px-3 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 transform hover:scale-105 ${
+                                        gossipCategory === 'independenceGossip'
+                                            ? 'bg-cosiaca-red text-white shadow-lg'
+                                            : 'bg-white text-cosiaca-brown hover:bg-cosiaca-beige/50'
+                                    }`}
+                                >
+                                    ⚔️ Independencia (1810-1850)
+                                </button>
+                                <button
+                                    onClick={() => { setGossipCategory('coffeeBoomGossip'); setCurrentGossip(getRandomGossip('coffeeBoomGossip')); }}
+                                    className={`px-3 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 transform hover:scale-105 ${
+                                        gossipCategory === 'coffeeBoomGossip'
+                                            ? 'bg-cosiaca-red text-white shadow-lg'
+                                            : 'bg-white text-cosiaca-brown hover:bg-cosiaca-beige/50'
+                                    }`}
+                                >
+                                    ☕ Café (1850-1900)
+                                </button>
+                                <button
+                                    onClick={() => { setGossipCategory('industrializationGossip'); setCurrentGossip(getRandomGossip('industrializationGossip')); }}
+                                    className={`px-3 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 transform hover:scale-105 ${
+                                        gossipCategory === 'industrializationGossip'
+                                            ? 'bg-cosiaca-red text-white shadow-lg'
+                                            : 'bg-white text-cosiaca-brown hover:bg-cosiaca-beige/50'
+                                    }`}
+                                >
+                                    🏭 Industrial (1900-1950)
+                                </button>
+                                <button
+                                    onClick={() => { setGossipCategory('modernGossip'); setCurrentGossip(getRandomGossip('modernGossip')); }}
+                                    className={`px-3 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 transform hover:scale-105 ${
+                                        gossipCategory === 'modernGossip'
+                                            ? 'bg-cosiaca-red text-white shadow-lg'
+                                            : 'bg-white text-cosiaca-brown hover:bg-cosiaca-beige/50'
+                                    }`}
+                                >
+                                    🌆 Moderno (1950-2025)
+                                </button>
+                                <button
+                                    onClick={() => { setGossipCategory('characterGossip'); setCurrentGossip(getRandomGossip('characterGossip')); }}
+                                    className={`px-3 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 transform hover:scale-105 ${
+                                        gossipCategory === 'characterGossip'
+                                            ? 'bg-cosiaca-red text-white shadow-lg'
+                                            : 'bg-white text-cosiaca-brown hover:bg-cosiaca-beige/50'
+                                    }`}
+                                >
+                                    👤 Personajes
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Input para IA */}
+                        <div className="bg-gradient-to-r from-cosiaca-beige/50 to-cosiaca-brown/10 rounded-xl p-4 sm:p-6 border-2 border-cosiaca-beige shadow-md">
+                            <label className="block text-cosiaca-brown font-bold mb-3 text-center text-base sm:text-lg">
+                                🤖 Pídele a Cosiaca un chisme histórico sobre:
+                            </label>
+                            <div className="flex flex-col sm:flex-row gap-3">
+                                <input
+                                    type="text"
+                                    value={customGossipTopic}
+                                    onChange={(e) => setCustomGossipTopic(e.target.value)}
+                                    onKeyPress={(e) => e.key === 'Enter' && !isGeneratingGossip && generateAIGossip()}
+                                    placeholder="Escribe: Metro, Botero, café, arrieros, violencia..."
+                                    className="flex-1 px-4 py-3 rounded-full border-2 border-cosiaca-beige focus:border-cosiaca-red focus:ring-2 focus:ring-cosiaca-red/20 focus:outline-none text-cosiaca-brown text-sm sm:text-base transition-all"
+                                    disabled={isGeneratingGossip}
+                                />
+                                <button
+                                    onClick={generateAIGossip}
+                                    disabled={isGeneratingGossip}
+                                    className="bg-cosiaca-red text-white font-bold py-3 px-6 rounded-full hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base whitespace-nowrap flex items-center justify-center gap-2"
+                                >
+                                    <SparklesIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                                    {customGossipTopic.trim() ? 'Buscar Chisme' : 'Sorpréndeme'}
+                                </button>
+                            </div>
+                            <p className="text-xs sm:text-sm text-cosiaca-brown/60 mt-3 text-center leading-relaxed">
+                                💡 Escribe cualquier tema histórico de Medellín y Cosiaca te contará un chisme. Presiona <kbd className="px-2 py-1 bg-white rounded text-cosiaca-brown font-mono text-xs">Enter</kbd>
+                            </p>
+                        </div>
+
+                        {/* Tarjeta de Chisme */}
+                        <div className="bg-gradient-to-br from-cosiaca-beige/40 via-white to-cosiaca-brown/5 rounded-xl p-6 sm:p-8 border-2 border-cosiaca-beige shadow-lg min-h-[300px] flex items-center justify-center">
+                            {isGeneratingGossip ? (
+                                <div className="text-center">
+                                    <SparklesIcon className="w-8 h-8 sm:w-12 sm:h-12 text-cosiaca-red animate-spin mx-auto mb-4" />
+                                    <p className="text-base sm:text-lg text-cosiaca-brown animate-pulse">
+                                        Cosiaca está recordando un chisme jugoso...
+                                    </p>
+                                </div>
+                            ) : currentGossip ? (
+                                <div className="w-full space-y-4">
+                                    <div className="text-center border-b-2 border-cosiaca-beige pb-4">
+                                        <h4 className="text-xl sm:text-2xl font-bold text-cosiaca-brown mb-2">
+                                            {currentGossip.title}
+                                        </h4>
+                                        <span className="inline-block bg-cosiaca-red text-white px-4 py-1 rounded-full text-xs sm:text-sm font-semibold">
+                                            📅 {currentGossip.period || currentGossip.year}
+                                        </span>
+                                    </div>
+
+                                    <div className="bg-white/50 rounded-lg p-4 sm:p-6">
+                                        <p className="text-base sm:text-lg leading-relaxed text-cosiaca-brown whitespace-pre-line">
+                                            {currentGossip.gossip}
+                                        </p>
+                                    </div>
+
+                                    {currentGossip.funFact && (
+                                        <div className="bg-gradient-to-r from-yellow-50 to-amber-50 border-l-4 border-yellow-500 rounded-lg p-4">
+                                            <p className="text-sm sm:text-base text-cosiaca-brown">
+                                                <strong className="text-yellow-700">💡 Dato curioso:</strong> {currentGossip.funFact}
+                                            </p>
+                                        </div>
+                                    )}
+
+                                    {currentGossip.source && (
+                                        <div className="text-center">
+                                            <p className="text-xs sm:text-sm text-cosiaca-brown/60 italic">
+                                                📚 Fuente: {currentGossip.source}
+                                            </p>
+                                        </div>
+                                    )}
+
+                                    {currentGossip.character && (
+                                        <div className="text-center bg-cosiaca-beige/30 rounded-lg p-3">
+                                            <p className="text-sm sm:text-base text-cosiaca-brown font-semibold">
+                                                👤 Personaje: <span className="text-cosiaca-red">{currentGossip.character}</span>
+                                            </p>
+                                        </div>
+                                    )}
+                                </div>
+                            ) : (
+                                <p className="text-center text-cosiaca-brown/60 text-base sm:text-lg">
+                                    Selecciona una categoría o pide un chisme con IA
+                                </p>
+                            )}
+                        </div>
+
+                        {/* Botones de acción */}
+                        <div className="flex flex-col sm:flex-row justify-center gap-3">
+                            <button
+                                onClick={() => setCurrentGossip(getRandomGossip(gossipCategory))}
+                                className="bg-cosiaca-brown text-white font-bold py-3 px-6 sm:px-8 rounded-full hover:bg-cosiaca-brown/80 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm sm:text-base flex items-center justify-center gap-2"
+                            >
+                                🎲 Otro Chisme
+                            </button>
+                            <button
+                                onClick={() => setCurrentGossip(getRandomGossip('all'))}
+                                className="bg-cosiaca-red text-white font-bold py-3 px-6 sm:px-8 rounded-full hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm sm:text-base flex items-center justify-center gap-2"
+                            >
+                                🔀 Chisme Aleatorio
+                            </button>
+                        </div>
+
+                        {/* Info adicional */}
+                        <div className="bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-xl p-4 sm:p-6 text-center">
+                            <p className="text-sm sm:text-base text-cosiaca-brown leading-relaxed">
+                                <strong className="text-blue-700">📖 Sobre los chismes:</strong> Todos estos chismes están basados en hechos históricos reales, documentos verificados y memoria oral paisa. Cosiaca te los cuenta con humor, pero la historia es auténtica.
+                            </p>
+                            <p className="text-xs sm:text-sm text-cosiaca-brown/70 mt-2">
+                                ¡350 años de historia dan para muchos chismes, mijito! 😉
+                            </p>
                         </div>
                     </div>
                 </div>
