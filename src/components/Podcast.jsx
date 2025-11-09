@@ -23,7 +23,7 @@ const Podcast = () => {
             title: "Saludo de Cosiaca",
             description: "El mítico personaje nos da la bienvenida a este viaje por la historia de Medellín con su característico humor paisa.",
             duration: "3:15",
-            audioFile: "/AUDIOS_historias/SALUDO_cosiaca.mp3",
+            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/SALUDO_cosiaca.mp3",
             category: "Bienvenida",
             image: "https://images.pexels.com/photos/1386604/pexels-photo-1386604.jpeg?auto=compress&cs=tinysrgb&w=600"
         },
@@ -32,7 +32,7 @@ const Podcast = () => {
             title: "Saludo Introductorio",
             description: "Un saludo especial de Cosiaca presentando la historia y el proyecto de los 350 años de Medellín.",
             duration: "2:45",
-            audioFile: "/AUDIOS_historias/01_SALUDO.mp3",
+            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/_SALUDO.mp3",
             category: "Bienvenida",
             image: "https://images.pexels.com/photos/6044266/pexels-photo-6044266.jpeg?auto=compress&cs=tinysrgb&w=600"
         },
@@ -41,7 +41,7 @@ const Podcast = () => {
             title: "El Encuentro en la Trocha",
             description: "Cosiaca nos cuenta sobre los antiguos caminos de herradura que conectaban a Medellín con el mundo exterior.",
             duration: "8:45",
-            audioFile: "/AUDIOS_historias/El_encuentro_en_la_trocha.mp3",
+            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/El_encuentro_en_la_trocha.mp3",
             category: "Historia Colonial",
             image: "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=600"
         },
@@ -50,7 +50,7 @@ const Podcast = () => {
             title: "La Canción del Valle de Aburrá",
             description: "Una melodiosa narración sobre los orígenes musicales y culturales del valle que acogió a Medellín.",
             duration: "12:30",
-            audioFile: "/AUDIOS_historias/La_cancion_del_valle_de_aburra.mp3",
+            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/La_cancion_del_valle_de aburra.mp3",
             category: "Cultura",
             image: "https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=600"
         },
@@ -59,7 +59,7 @@ const Podcast = () => {
             title: "La Verraquera Arriera",
             description: "Historias de los arrieros antioqueños y su papel fundamental en el desarrollo económico de la región.",
             duration: "14:10",
-            audioFile: "/AUDIOS_historias/La_verraquera_arriera.mp3",
+            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/La_verraquera_arriera.mp3",
             category: "Tradiciones",
             image: "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=600"
         },
@@ -68,7 +68,7 @@ const Podcast = () => {
             title: "Sobre la Medellín de los Cafetales",
             description: "El auge del café y cómo transformó la economía y la sociedad paisa, contado con el humor característico de Cosiaca.",
             duration: "15:20",
-            audioFile: "/AUDIOS_historias/Sobre_la_Medellin_de_los_cafetales.mp3",
+            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/sobre_la_medellin_de_los_cafetales.mp3",
             category: "Economía",
             image: "https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=600"
         },
@@ -77,7 +77,7 @@ const Podcast = () => {
             title: "Sobre la Medellín de Hoy",
             description: "Reflexiones de Cosiaca sobre la Medellín moderna, sus logros y desafíos en el siglo XXI.",
             duration: "16:30",
-            audioFile: "/AUDIOS_historias/Sobre_la_Medellin_de_hoy.mp3",
+            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/Sobre_la_medellin_de_hoy.mp3",
             category: "Actualidad",
             image: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=600"
         },
@@ -86,7 +86,7 @@ const Podcast = () => {
             title: "De la Violencia a la Esperanza",
             description: "Un episodio emotivo sobre cómo Medellín superó sus momentos más difíciles y se transformó en ciudad de innovación.",
             duration: "18:45",
-            audioFile: "/AUDIOS_historias/De_la_violencia_a_la_esperanza.mp3",
+            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/sobre_la_violencia_a_la_esperanza.mp3",
             category: "Transformación",
             image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=600"
         },
@@ -95,7 +95,7 @@ const Podcast = () => {
             title: "Cosiaca el Culebreo",
             description: "Una historia divertida sobre las travesuras y picardías del personaje más querido de Antioquia.",
             duration: "12:45",
-            audioFile: "/AUDIOS_historias/Cosiaca_el_culebreo.mp3",
+            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/Cosiaca_el_culebreo.mp3",
             category: "Humor",
             image: "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=600"
         },
@@ -104,7 +104,7 @@ const Podcast = () => {
             title: "Fernando García - Entrevista Especial",
             description: "Conversación profunda con Fernando García sobre la historia y legado de Cosiaca en la cultura antioqueña.",
             duration: "25:30",
-            audioFile: "/fernando_2_master.mp3",
+            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/fernando 2 master.mp3",
             category: "Entrevistas",
             image: "https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=600"
         },
@@ -113,7 +113,7 @@ const Podcast = () => {
             title: "Francisco Mejía - Testimonios Históricos",
             description: "Francisco Mejía comparte testimonios y anécdotas sobre la época dorada de la comedia paisa.",
             duration: "22:15",
-            audioFile: "/fransisco_master.mp3",
+            audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/fransisco master.mp3",
             category: "Entrevistas",
             image: "https://images.pexels.com/photos/8111849/pexels-photo-8111849.jpeg?auto=compress&cs=tinysrgb&w=600"
         }
