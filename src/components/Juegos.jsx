@@ -1138,7 +1138,7 @@ TU MISIÓN: Contar chismes históricos TAN BUENOS que la gente los recuerde y qu
                                 </p>
                             </div>
                         </div>
-                        </div>
+                    </div>
                     )}
                 </div>
             )}
