@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, stats }) => {
     const [selectedNode, setSelectedNode] = useState(null);
@@ -6,27 +6,30 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
     const [viewMode, setViewMode] = useState('spiral');
     const [rotation, setRotation] = useState(0);
     const [zoom, setZoom] = useState(1);
+    const [autoRotate, setAutoRotate] = useState(true);
     const containerRef = useRef(null);
     const animationRef = useRef(null);
     const [isDragging, setIsDragging] = useState(false);
     const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
     const [particles, setParticles] = useState([]);
     const [showFilters, setShowFilters] = useState(false);
+    const [showInfo, setShowInfo] = useState(true);
+    const [animationSpeed, setAnimationSpeed] = useState(0.003);
 
     useEffect(() => {
-        const particleArray = Array.from({ length: 80 }, (_, i) => ({
+        const particleArray = Array.from({ length: 100 }, (_, i) => ({
             id: i,
             x: Math.random() * 100,
             y: Math.random() * 100,
-            size: Math.random() * 3 + 1,
-            speed: Math.random() * 0.5 + 0.2,
-            opacity: Math.random() * 0.5 + 0.2
+            size: Math.random() * 2.5 + 0.5,
+            speed: Math.random() * 0.3 + 0.1,
+            opacity: Math.random() * 0.4 + 0.1
         }));
         setParticles(particleArray);
     }, []);
 
     useEffect(() => {
-        if (!isDragging) {
+        if (!isDragging && autoRotate) {
             animationRef.current = requestAnimationFrame(animate);
             return () => {
                 if (animationRef.current) {
@@ -34,24 +37,24 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                 }
             };
         }
-    }, [rotation, isDragging, viewMode, zoom]);
+    }, [rotation, isDragging, autoRotate, animationSpeed]);
 
     const animate = () => {
-        if (!isDragging) {
-            setRotation(prev => (prev + 0.003) % (Math.PI * 2));
+        if (!isDragging && autoRotate) {
+            setRotation(prev => (prev + animationSpeed) % (Math.PI * 2));
             animationRef.current = requestAnimationFrame(animate);
         }
     };
 
-    const getNodePosition = (index, total) => {
+    const getNodePosition = useCallback((index, total) => {
         const centerX = 50;
         const centerY = 50;
 
         if (viewMode === 'spiral') {
             const angle = (index / total) * Math.PI * 6 + rotation;
-            const radius = 15 + (index / total) * 25;
-            const z = (index / total) * 300 - 150;
-            const scale = 1 + z / 400;
+            const radius = 12 + (index / total) * 28;
+            const z = (index / total) * 400 - 200;
+            const scale = 1 + z / 500;
 
             return {
                 x: centerX + Math.cos(angle) * radius * scale,
@@ -60,11 +63,14 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                 scale: scale * zoom
             };
         } else if (viewMode === 'orbit') {
-            const angle = (index / total) * Math.PI * 2 + rotation;
-            const layer = Math.floor(index / (total / 3));
-            const radius = (25 - layer * 5) * zoom;
-            const z = Math.sin(angle * 3) * 150;
-            const scale = 1 + z / 400;
+            const rings = 3;
+            const ringIndex = Math.floor(index / Math.ceil(total / rings));
+            const posInRing = index % Math.ceil(total / rings);
+            const totalInRing = Math.ceil(total / rings);
+            const angle = (posInRing / totalInRing) * Math.PI * 2 + rotation;
+            const radius = (30 - ringIndex * 8) * zoom;
+            const z = Math.sin(angle * 2 + ringIndex) * 120;
+            const scale = 1 + z / 500;
 
             return {
                 x: centerX + Math.cos(angle) * radius * scale,
@@ -72,12 +78,12 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                 z: z,
                 scale: scale
             };
-        } else {
+        } else if (viewMode === 'wave') {
             const angle = (index / total) * Math.PI * 2 + rotation;
-            const waveRadius = 30;
-            const waveHeight = Math.sin(angle * 4) * 10;
-            const z = waveHeight * 10;
-            const scale = 1 + z / 400;
+            const waveRadius = 32;
+            const waveHeight = Math.sin(angle * 5) * 8;
+            const z = waveHeight * 15;
+            const scale = 1 + z / 500;
 
             return {
                 x: centerX + Math.cos(angle) * waveRadius * scale,
@@ -85,21 +91,39 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                 z: z,
                 scale: scale
             };
+        } else {
+            const cols = Math.ceil(Math.sqrt(total));
+            const row = Math.floor(index / cols);
+            const col = index % cols;
+            const spacing = 15;
+            const offsetX = centerX - (cols * spacing) / 2;
+            const offsetY = centerY - (Math.ceil(total / cols) * spacing) / 2;
+            const z = Math.sin((row + col) * 0.5 + rotation) * 50;
+            const scale = 1 + z / 500;
+
+            return {
+                x: offsetX + col * spacing * scale,
+                y: offsetY + row * spacing * scale,
+                z: z,
+                scale: scale * zoom
+            };
         }
-    };
+    }, [viewMode, rotation, zoom]);
 
     const handleNodeClick = (period) => {
         setSelectedNode(selectedNode?.id === period.id ? null : period);
+        setAutoRotate(false);
     };
 
     const handleWheel = (e) => {
         e.preventDefault();
-        const delta = e.deltaY > 0 ? 0.95 : 1.05;
-        setZoom(prev => Math.max(0.5, Math.min(2.5, prev * delta)));
+        const delta = e.deltaY > 0 ? 0.92 : 1.08;
+        setZoom(prev => Math.max(0.4, Math.min(3, prev * delta)));
     };
 
     const handleMouseDown = (e) => {
         setIsDragging(true);
+        setAutoRotate(false);
         setDragStart({ x: e.clientX, y: e.clientY });
     };
 
@@ -110,9 +134,36 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
     const handleDragMove = (e) => {
         if (isDragging) {
             const deltaX = e.clientX - dragStart.x;
-            setRotation(prev => prev + deltaX * 0.01);
+            setRotation(prev => prev + deltaX * 0.008);
             setDragStart({ x: e.clientX, y: e.clientY });
         }
+    };
+
+    const handleTouchStart = (e) => {
+        if (e.touches.length === 1) {
+            setIsDragging(true);
+            setAutoRotate(false);
+            setDragStart({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+        }
+    };
+
+    const handleTouchMove = (e) => {
+        if (isDragging && e.touches.length === 1) {
+            const deltaX = e.touches[0].clientX - dragStart.x;
+            setRotation(prev => prev + deltaX * 0.008);
+            setDragStart({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+        }
+    };
+
+    const handleTouchEnd = () => {
+        setIsDragging(false);
+    };
+
+    const resetView = () => {
+        setZoom(1);
+        setRotation(0);
+        setAutoRotate(true);
+        setSelectedNode(null);
     };
 
     const sortedPeriods = [...periods].sort((a, b) => {
@@ -132,8 +183,11 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                 onMouseUp={handleMouseUp}
                 onMouseMove={handleDragMove}
                 onMouseLeave={handleMouseUp}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
             >
-                <div className="absolute inset-0 opacity-30">
+                <div className="absolute inset-0 opacity-20">
                     {particles.map(p => (
                         <div
                             key={p.id}
@@ -144,7 +198,8 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                                 width: `${p.size}px`,
                                 height: `${p.size}px`,
                                 opacity: p.opacity,
-                                animationDuration: `${3 + p.speed}s`
+                                animationDuration: `${2 + p.speed * 3}s`,
+                                animationDelay: `${p.speed}s`
                             }}
                         />
                     ))}
@@ -153,20 +208,20 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                 <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
                     <defs>
                         <radialGradient id="nodeGlow">
-                            <stop offset="0%" stopColor="rgba(255,255,255,0.9)" />
+                            <stop offset="0%" stopColor="rgba(255,255,255,0.95)" />
                             <stop offset="100%" stopColor="rgba(255,255,255,0)" />
                         </radialGradient>
                         <filter id="glow">
-                            <feGaussianBlur stdDeviation="0.5" result="coloredBlur"/>
+                            <feGaussianBlur stdDeviation="0.4" result="coloredBlur"/>
                             <feMerge>
                                 <feMergeNode in="coloredBlur"/>
                                 <feMergeNode in="SourceGraphic"/>
                             </feMerge>
                         </filter>
                         <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stopColor="rgba(255,255,255,0.1)" />
-                            <stop offset="50%" stopColor="rgba(255,255,255,0.4)" />
-                            <stop offset="100%" stopColor="rgba(255,255,255,0.1)" />
+                            <stop offset="0%" stopColor="rgba(255,255,255,0.05)" />
+                            <stop offset="50%" stopColor="rgba(255,255,255,0.3)" />
+                            <stop offset="100%" stopColor="rgba(255,255,255,0.05)" />
                         </linearGradient>
                     </defs>
 
@@ -185,8 +240,8 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                                 x2={pos2.x}
                                 y2={pos2.y}
                                 stroke="url(#lineGradient)"
-                                strokeWidth={0.15 * Math.min(pos1.scale, pos2.scale)}
-                                opacity={0.6}
+                                strokeWidth={0.12 * Math.min(pos1.scale, pos2.scale)}
+                                opacity={0.5}
                             />
                         );
                     })}
@@ -195,7 +250,7 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                         const pos = getNodePosition(periods.indexOf(period), periods.length);
                         const isHovered = hoveredNode?.id === period.id;
                         const isSelected = selectedNode?.id === period.id;
-                        const baseSize = (isSelected ? 3.5 : isHovered ? 2.8 : 2.2) * pos.scale;
+                        const baseSize = (isSelected ? 4 : isHovered ? 3.2 : 2.5) * pos.scale;
 
                         return (
                             <g
@@ -205,13 +260,13 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                                 onMouseEnter={() => setHoveredNode(period)}
                                 onMouseLeave={() => setHoveredNode(null)}
                                 style={{ cursor: 'pointer' }}
-                                className="transition-all duration-300"
+                                className="transition-all duration-200"
                             >
                                 {(isHovered || isSelected) && (
                                     <circle
-                                        r={baseSize * 1.8}
+                                        r={baseSize * 2}
                                         fill="url(#nodeGlow)"
-                                        opacity="0.5"
+                                        opacity="0.4"
                                         filter="url(#glow)"
                                         className="animate-pulse"
                                     />
@@ -219,19 +274,19 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
 
                                 <circle
                                     r={baseSize}
-                                    fill={`hsl(${(periods.indexOf(period) / periods.length) * 360}, 75%, ${isSelected ? 60 : 55}%)`}
+                                    fill={`hsl(${(periods.indexOf(period) / periods.length) * 360}, 80%, ${isSelected ? 65 : 58}%)`}
                                     stroke="white"
-                                    strokeWidth={0.2 * pos.scale}
-                                    filter={isSelected ? "url(#glow)" : "none"}
-                                    className="transition-all duration-300"
-                                    opacity={isHovered || isSelected ? 1 : 0.85}
+                                    strokeWidth={0.25 * pos.scale}
+                                    filter={isSelected || isHovered ? "url(#glow)" : "none"}
+                                    className="transition-all duration-200"
+                                    opacity={isHovered || isSelected ? 1 : 0.9}
                                 />
 
                                 <text
                                     textAnchor="middle"
-                                    dy="0.35em"
+                                    dy="0.4em"
                                     fill="white"
-                                    fontSize={1.2 * pos.scale}
+                                    fontSize={1.4 * pos.scale}
                                     fontWeight="bold"
                                     pointerEvents="none"
                                 >
@@ -242,9 +297,9 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                                     <>
                                         <text
                                             textAnchor="middle"
-                                            y={baseSize + 1.5 * pos.scale}
+                                            y={baseSize + 1.8 * pos.scale}
                                             fill="white"
-                                            fontSize={0.9 * pos.scale}
+                                            fontSize={1 * pos.scale}
                                             fontWeight="bold"
                                             pointerEvents="none"
                                         >
@@ -252,13 +307,13 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                                         </text>
                                         <text
                                             textAnchor="middle"
-                                            y={baseSize + 2.8 * pos.scale}
+                                            y={baseSize + 3.2 * pos.scale}
                                             fill="white"
-                                            fontSize={0.6 * pos.scale}
+                                            fontSize={0.65 * pos.scale}
                                             pointerEvents="none"
-                                            opacity="0.9"
+                                            opacity="0.95"
                                         >
-                                            {period.title.substring(0, 20)}
+                                            {period.title.substring(0, 18)}
                                         </text>
                                     </>
                                 )}
@@ -269,48 +324,85 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
             </div>
 
             <div className="relative z-10 min-h-screen flex flex-col pointer-events-none">
-                <div className="flex-none pt-6 px-4 pointer-events-auto">
-                    <div className="flex gap-2 flex-wrap justify-center mb-4">
+                <div className="flex-none pt-4 px-4 pointer-events-auto">
+                    <div className="flex gap-2 flex-wrap justify-center mb-3">
                         <button
-                            onClick={() => setViewMode('spiral')}
-                            className={`px-4 py-2 rounded-full font-bold transition-all backdrop-blur-md ${
+                            onClick={() => { setViewMode('spiral'); setAutoRotate(true); }}
+                            className={`px-3 py-2 rounded-full text-sm font-bold transition-all backdrop-blur-md ${
                                 viewMode === 'spiral'
-                                    ? 'bg-white/90 text-cosiaca-brown shadow-xl scale-105'
-                                    : 'bg-white/20 text-white border border-white/30 hover:bg-white/30'
+                                    ? 'bg-white/95 text-cosiaca-brown shadow-xl scale-105'
+                                    : 'bg-white/15 text-white border border-white/25 hover:bg-white/25'
                             }`}
                         >
                             🌀 Espiral
                         </button>
                         <button
-                            onClick={() => setViewMode('orbit')}
-                            className={`px-4 py-2 rounded-full font-bold transition-all backdrop-blur-md ${
+                            onClick={() => { setViewMode('orbit'); setAutoRotate(true); }}
+                            className={`px-3 py-2 rounded-full text-sm font-bold transition-all backdrop-blur-md ${
                                 viewMode === 'orbit'
-                                    ? 'bg-white/90 text-cosiaca-brown shadow-xl scale-105'
-                                    : 'bg-white/20 text-white border border-white/30 hover:bg-white/30'
+                                    ? 'bg-white/95 text-cosiaca-brown shadow-xl scale-105'
+                                    : 'bg-white/15 text-white border border-white/25 hover:bg-white/25'
                             }`}
                         >
                             🪐 Órbita
                         </button>
                         <button
-                            onClick={() => setViewMode('wave')}
-                            className={`px-4 py-2 rounded-full font-bold transition-all backdrop-blur-md ${
+                            onClick={() => { setViewMode('wave'); setAutoRotate(true); }}
+                            className={`px-3 py-2 rounded-full text-sm font-bold transition-all backdrop-blur-md ${
                                 viewMode === 'wave'
-                                    ? 'bg-white/90 text-cosiaca-brown shadow-xl scale-105'
-                                    : 'bg-white/20 text-white border border-white/30 hover:bg-white/30'
+                                    ? 'bg-white/95 text-cosiaca-brown shadow-xl scale-105'
+                                    : 'bg-white/15 text-white border border-white/25 hover:bg-white/25'
                             }`}
                         >
                             〰️ Onda
                         </button>
                         <button
-                            onClick={() => setShowFilters(!showFilters)}
-                            className="px-4 py-2 rounded-full font-bold transition-all backdrop-blur-md bg-white/20 text-white border border-white/30 hover:bg-white/30"
+                            onClick={() => { setViewMode('grid'); setAutoRotate(true); }}
+                            className={`px-3 py-2 rounded-full text-sm font-bold transition-all backdrop-blur-md ${
+                                viewMode === 'grid'
+                                    ? 'bg-white/95 text-cosiaca-brown shadow-xl scale-105'
+                                    : 'bg-white/15 text-white border border-white/25 hover:bg-white/25'
+                            }`}
                         >
-                            🔍 Filtros
+                            ⬜ Red
+                        </button>
+                    </div>
+
+                    <div className="flex gap-2 flex-wrap justify-center mb-3">
+                        {categories && (
+                            <button
+                                onClick={() => setShowFilters(!showFilters)}
+                                className="px-3 py-2 rounded-full text-sm font-bold transition-all backdrop-blur-md bg-white/15 text-white border border-white/25 hover:bg-white/25"
+                            >
+                                {showFilters ? '✕ Cerrar Filtros' : '🔍 Filtros'}
+                            </button>
+                        )}
+                        <button
+                            onClick={() => setAutoRotate(!autoRotate)}
+                            className={`px-3 py-2 rounded-full text-sm font-bold transition-all backdrop-blur-md ${
+                                autoRotate
+                                    ? 'bg-green-500/80 text-white'
+                                    : 'bg-white/15 text-white border border-white/25'
+                            }`}
+                        >
+                            {autoRotate ? '⏸️ Pausar' : '▶️ Auto'}
+                        </button>
+                        <button
+                            onClick={resetView}
+                            className="px-3 py-2 rounded-full text-sm font-bold transition-all backdrop-blur-md bg-white/15 text-white border border-white/25 hover:bg-white/25"
+                        >
+                            ↺ Reset
+                        </button>
+                        <button
+                            onClick={() => setShowInfo(!showInfo)}
+                            className="px-3 py-2 rounded-full text-sm font-bold transition-all backdrop-blur-md bg-white/15 text-white border border-white/25 hover:bg-white/25"
+                        >
+                            {showInfo ? '👁️' : 'ℹ️'}
                         </button>
                     </div>
 
                     {showFilters && categories && (
-                        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 mb-4 animate-fade-in">
+                        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 mb-3 animate-fade-in max-w-4xl mx-auto">
                             <div className="flex flex-wrap gap-2 justify-center">
                                 {categories.map(cat => (
                                     <button
@@ -319,107 +411,110 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                                         className={`px-3 py-1.5 rounded-full font-medium text-xs transition-all ${
                                             filterCategory === cat.id
                                                 ? 'bg-white text-cosiaca-brown shadow-lg scale-105'
-                                                : 'bg-white/20 text-white border border-white/30 hover:bg-white/30'
+                                                : 'bg-white/15 text-white border border-white/20 hover:bg-white/25'
                                         }`}
                                     >
-                                        <span className="mr-1">{cat.icon}</span>
-                                        {cat.name}
+                                        {cat.icon} {cat.name}
                                     </button>
                                 ))}
                             </div>
                             {stats && (
-                                <div className="mt-2 text-center text-white/80 text-xs">
-                                    <strong>{periods.length}</strong> de <strong>{stats.total}</strong> eventos
+                                <div className="mt-2 text-center text-white/90 text-xs font-medium">
+                                    Mostrando <strong>{periods.length}</strong> de <strong>{stats.total}</strong> eventos históricos
                                 </div>
                             )}
                         </div>
                     )}
 
-                    <div className="text-center bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-xl inline-block mx-auto">
-                        <div className="flex items-center justify-center gap-3 text-xs md:text-sm">
-                            <span className="font-bold">🖱️ Arrastra</span>
-                            <span className="opacity-50">|</span>
-                            <span className="font-bold">🔍 Scroll Zoom</span>
-                            <span className="opacity-50">|</span>
-                            <span className="font-bold">✨ Click</span>
+                    {showInfo && (
+                        <div className="text-center bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-xl inline-block mx-auto animate-fade-in">
+                            <div className="flex items-center justify-center gap-3 text-xs">
+                                <span>🖱️ <strong>Arrastra</strong></span>
+                                <span className="opacity-40">|</span>
+                                <span>🔍 <strong>Scroll Zoom</strong></span>
+                                <span className="opacity-40">|</span>
+                                <span>✨ <strong>Click Nodos</strong></span>
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
 
                 <div className="flex-1" />
 
-                <div className="flex-none pb-6 px-4 pointer-events-auto">
-                    <div className="bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-lg inline-block text-sm">
-                        <div className="font-bold">{periods.length} Eventos • Zoom: {(zoom * 100).toFixed(0)}%</div>
+                <div className="flex-none pb-4 px-4 pointer-events-auto">
+                    <div className="bg-white/10 backdrop-blur-md text-white px-3 py-2 rounded-lg inline-block text-xs">
+                        <div className="font-bold">
+                            {periods.length} Eventos • Zoom {(zoom * 100).toFixed(0)}% • {autoRotate ? '🔄 Auto' : '⏸️ Manual'}
+                        </div>
                     </div>
                 </div>
             </div>
 
             {selectedNode && (
                 <div
-                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-fade-in"
-                    onClick={() => setSelectedNode(null)}
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-lg animate-fade-in"
+                    onClick={() => { setSelectedNode(null); setAutoRotate(true); }}
                 >
                     <div
-                        className="relative max-w-2xl w-full max-h-[85vh] overflow-y-auto bg-gradient-to-br from-white via-cosiaca-cream to-cosiaca-beige/50 rounded-3xl shadow-2xl animate-scale-in"
+                        className="relative max-w-2xl w-full max-h-[88vh] overflow-y-auto bg-gradient-to-br from-white via-cosiaca-cream to-cosiaca-beige/50 rounded-3xl shadow-2xl animate-scale-in"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <div className={`${selectedNode.color} p-6 text-white sticky top-0 z-10 rounded-t-3xl`}>
+                        <div className={`${selectedNode.color} p-5 text-white sticky top-0 z-10 rounded-t-3xl backdrop-blur-sm`}>
                             <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-4">
-                                    <span className="text-5xl">{selectedNode.icon}</span>
+                                <div className="flex items-center gap-3">
+                                    <span className="text-4xl">{selectedNode.icon}</span>
                                     <div>
-                                        <h3 className="text-3xl md:text-4xl font-bold">{selectedNode.year}</h3>
+                                        <h3 className="text-3xl font-bold">{selectedNode.year}</h3>
                                         {selectedNode.date && (
-                                            <p className="text-sm opacity-90">{selectedNode.date}</p>
+                                            <p className="text-xs opacity-90 mt-1">{selectedNode.date}</p>
                                         )}
                                     </div>
                                 </div>
                                 <button
-                                    onClick={() => setSelectedNode(null)}
-                                    className="bg-white/20 hover:bg-white/30 text-white w-10 h-10 rounded-full transition-all duration-300 font-bold backdrop-blur-sm hover:scale-110 flex items-center justify-center text-xl"
+                                    onClick={() => { setSelectedNode(null); setAutoRotate(true); }}
+                                    className="bg-white/20 hover:bg-white/30 text-white w-9 h-9 rounded-full transition-all duration-300 font-bold backdrop-blur-sm hover:scale-110 flex items-center justify-center text-lg"
                                 >
                                     ✕
                                 </button>
                             </div>
                         </div>
 
-                        <div className="p-6 space-y-4">
-                            <h4 className="text-2xl font-anton text-cosiaca-brown">{selectedNode.title}</h4>
+                        <div className="p-5 space-y-4">
+                            <h4 className="text-2xl font-anton text-cosiaca-brown leading-tight">{selectedNode.title}</h4>
 
                             <div className="flex flex-wrap gap-2">
-                                <div className="flex items-center gap-2 bg-cosiaca-beige/60 px-3 py-2 rounded-lg text-sm">
+                                <div className="flex items-center gap-2 bg-cosiaca-beige/60 px-3 py-1.5 rounded-lg text-sm">
                                     <span>👥</span>
                                     <span className="font-medium">{selectedNode.population}</span>
                                 </div>
                                 {selectedNode.keyFigure && (
-                                    <div className="flex items-center gap-2 bg-cosiaca-beige/60 px-3 py-2 rounded-lg text-sm">
+                                    <div className="flex items-center gap-2 bg-cosiaca-beige/60 px-3 py-1.5 rounded-lg text-sm">
                                         <span>👤</span>
                                         <span className="font-medium text-cosiaca-brown/80">{selectedNode.keyFigure}</span>
                                     </div>
                                 )}
                             </div>
 
-                            <p className="text-base text-cosiaca-brown/80 leading-relaxed">
+                            <p className="text-base text-cosiaca-brown/85 leading-relaxed">
                                 {selectedNode.description}
                             </p>
 
-                            <div className="bg-gradient-to-r from-cosiaca-cream to-cosiaca-beige/70 p-5 rounded-2xl border-l-4 border-cosiaca-red">
-                                <h5 className="font-bold text-cosiaca-brown mb-2 flex items-center gap-2">
+                            <div className="bg-gradient-to-r from-cosiaca-cream to-cosiaca-beige/70 p-4 rounded-2xl border-l-4 border-cosiaca-red">
+                                <h5 className="font-bold text-cosiaca-brown mb-2 flex items-center gap-2 text-sm">
                                     <span>💬</span> Cosiaca cuenta:
                                 </h5>
                                 <p className="text-sm text-cosiaca-brown italic leading-relaxed">{selectedNode.details}</p>
                             </div>
 
-                            <div className="bg-white/80 p-5 rounded-2xl border border-cosiaca-brown/20">
-                                <h5 className="font-bold text-cosiaca-brown mb-3 flex items-center gap-2">
+                            <div className="bg-white/90 p-4 rounded-2xl border border-cosiaca-brown/15">
+                                <h5 className="font-bold text-cosiaca-brown mb-3 flex items-center gap-2 text-sm">
                                     <span>📌</span> Hitos Destacados:
                                 </h5>
                                 <ul className="space-y-2">
                                     {selectedNode.milestones.map((milestone, idx) => (
                                         <li key={idx} className="flex items-start gap-2 text-sm text-cosiaca-brown/80">
-                                            <span className="text-cosiaca-red font-bold mt-1">•</span>
-                                            <span>{milestone}</span>
+                                            <span className="text-cosiaca-red font-bold mt-0.5 text-xs">●</span>
+                                            <span className="leading-snug">{milestone}</span>
                                         </li>
                                     ))}
                                 </ul>
