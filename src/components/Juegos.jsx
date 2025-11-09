@@ -320,100 +320,12 @@ const Juegos = () => {
 
         const topic = customGossipTopic.trim();
 
-        // Si no hay API o hay error, usar fallback inmediatamente
         try {
+            // Usar el servicio de IA mejorado con método especializado
             const gemini = new GeminiService();
 
-            let prompt;
-            if (topic) {
-                prompt = `¡Uy mijito, necesito que me cuentes el chisme MÁS JUGOSO y sorprendente de la historia de Medellín o Antioquia relacionado con: "${topic}"!
-
-IMPORTANTE - El chisme debe ser:
-🔥 PICANTE: Incluye detalles inesperados, divertidos o escandalosos (sin vulgaridades)
-😂 GRACIOSO: Usa humor paisa inteligente con expresiones auténticas
-📚 REAL: Basado en hechos históricos verificables o anécdotas documentadas
-✨ MEMORABLE: Que la gente diga "¡No sabía eso!" o "¡Qué ocurrencia!"
-🗣️ CONVERSACIONAL: Como si estuvieras contándolo en una tienda de barrio
-
-Elementos que DEBES incluir:
-- Nombres reales de personas o lugares cuando sea posible
-- Cifras, fechas o datos específicos que den credibilidad
-- Un giro inesperado o detalle sorprendente
-- Expresiones paisas auténticas: "mijito", "uy qué va", "pues", "¿o qué?", "ja ja ja"
-- Comparaciones graciosas con la actualidad cuando sea apropiado
-- 5-7 líneas de puro sabor paisa
-
-FORMATO EXACTO:
-**Título del chisme:** [Título corto, llamativo y pícaro que genere curiosidad]
-**Época:** [Año específico o período exacto]
-
-[Aquí va el chisme completo con todos los detalles jugosos, nombres, anécdotas y humor paisa. Incluye al menos un diálogo o quote si es posible. Termina con una observación graciosa o reflexión pícara.]
-
-**Dato curioso:** [Un dato adicional sorprendente que complemente el chisme y haga que la gente diga "¡wow!"]`;
-            } else {
-                prompt = `¡Uy mijito, necesito que me cuentes el chisme MÁS JUGOSO, escandaloso y sorprendente de TODA la historia de Medellín (1675-2025)!
-
-Busca en tu memoria histórica el chisme que:
-🔥 Sea el más picante y divertido (sin vulgaridades)
-😱 Sorprenda hasta a los paisas más sabidos
-📰 Tenga todos los detalles suculentos
-🎭 Involucre personajes famosos o situaciones insólitas
-💎 Sea una joya histórica poco conocida
-
-IMPORTANTE - El chisme debe ser:
-📚 REAL: Basado en hechos históricos verificables
-😂 GRACIOSO: Con humor paisa inteligente
-✨ MEMORABLE: Que la gente no lo olvide
-🗣️ CONVERSACIONAL: Como contándolo en una esquina
-
-Elementos OBLIGATORIOS:
-- Nombres reales de personas, lugares o eventos
-- Cifras, fechas o datos específicos
-- Un giro inesperado que sorprenda
-- Expresiones paisas: "mijito", "uy qué va", "pues", "¿o qué?"
-- Comparaciones con la actualidad
-- Al menos un diálogo o quote
-- 5-7 líneas de puro sabor paisa
-
-FORMATO EXACTO:
-**Título del chisme:** [Título súper llamativo que genere curiosidad inmediata]
-**Época:** [Año específico o período exacto]
-
-[Aquí va el chisme COMPLETO con TODOS los detalles jugosos, nombres, anécdotas, diálogos y humor paisa. Debe ser tan bueno que la gente quiera compartirlo. Termina con una reflexión graciosa.]
-
-**Dato curioso:** [Un dato adicional IMPACTANTE que haga que la gente diga "¡No puede ser!"]`;
-            }
-
-            const systemInstruction = `Eres José García "Cosiaca", el primer comediante y chismógrafo popular de Antioquia del siglo XIX.
-
-PERSONALIDAD:
-- Pícaro, divertido e ingenioso
-- Conoces TODOS los chismes de 350 años de historia paisa
-- Cuentas anécdotas reales con humor y gracia
-- Eres el alma de las tertulias y reuniones
-- Tienes memoria fotográfica para detalles jugosos
-- Combinas respeto por la historia con humor irreverente
-
-ESTILO AL CONTAR CHISMES:
-- Usas expresiones paisas auténticas en cada frase
-- Incluyes nombres, fechas y lugares reales
-- Añades detalles que hacen el chisme más creíble
-- Haces comparaciones graciosas con el presente
-- Terminas con reflexiones pícaras
-- Citas diálogos o frases memorables cuando es posible
-
-CONOCIMIENTO HISTÓRICO:
-- Época colonial (1675-1810): fundación, iglesias, costumbres
-- Independencia (1810-1850): próceres, batallas, política
-- Bonanza cafetera (1850-1900): arrieros, comercio, ferrocarril
-- Industrialización (1900-1950): fábricas, aviación, tranvía
-- Época moderna (1950-2025): Metro, transformación, innovación
-- Personajes: Botero, Pedro Nel, Débora Arango, Madre Laura
-
-TU MISIÓN: Contar chismes históricos TAN BUENOS que la gente los recuerde y quiera compartirlos.`;
-
             console.log('🤖 Llamando a la IA...');
-            const response = await gemini.generateContent(prompt, systemInstruction);
+            const response = await gemini.generateHistoricalGossip(topic);
             console.log('✅ Respuesta recibida de IA');
 
             // Parsear la respuesta de IA
@@ -930,9 +842,15 @@ Y eso que no te he contado la mejor parte... Dicen que en todas las tertulias de
 
                         {/* Input para IA */}
                         <div className="bg-gradient-to-r from-cosiaca-beige/50 to-cosiaca-brown/10 rounded-xl p-4 sm:p-6 border-2 border-cosiaca-beige shadow-md">
-                            <label className="block text-cosiaca-brown font-bold mb-3 text-center text-base sm:text-lg">
-                                🤖 Pídele a Cosiaca un chisme histórico sobre:
-                            </label>
+                            <div className="flex items-center justify-center gap-2 mb-3">
+                                <label className="text-cosiaca-brown font-bold text-center text-base sm:text-lg">
+                                    🤖 Pídele a Cosiaca un chisme histórico sobre:
+                                </label>
+                                <div className="flex items-center gap-1 bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-bold">
+                                    <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                    <span>IA Activa</span>
+                                </div>
+                            </div>
                             <div className="flex flex-col sm:flex-row gap-3">
                                 <input
                                     type="text"

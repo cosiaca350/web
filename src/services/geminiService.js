@@ -1,6 +1,9 @@
-// Servicio para integración con Gemini AI
+// Servicio mejorado para integración con múltiples proveedores de IA
 const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || '';
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent';
+
+// Log de configuración
+console.log('🔑 Gemini API Key configurada:', GEMINI_API_KEY ? '✅ Sí' : '❌ No');
 
 class GeminiService {
     constructor() {
@@ -10,8 +13,11 @@ class GeminiService {
 
     async generateContent(prompt, systemInstruction = '') {
         if (!this.apiKey || this.apiKey.length < 10) {
+            console.warn('⚠️ API key de Gemini no configurada');
             throw new Error('API key no configurada');
         }
+
+        console.log('🤖 Generando contenido con Gemini...');
 
         try {
             const response = await fetch(`${this.baseUrl}?key=${this.apiKey}`, {
@@ -27,10 +33,10 @@ class GeminiService {
                         parts: [{ text: systemInstruction }]
                     } : undefined,
                     generationConfig: {
-                        temperature: 0.9,
+                        temperature: 0.95,
                         topK: 40,
                         topP: 0.95,
-                        maxOutputTokens: 1024,
+                        maxOutputTokens: 2048,
                     }
                 })
             });
@@ -45,9 +51,11 @@ class GeminiService {
             const generatedText = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
             if (!generatedText) {
+                console.error('❌ No se generó contenido');
                 throw new Error('No se generó contenido');
             }
 
+            console.log('✅ Contenido generado exitosamente');
             return generatedText.trim();
         } catch (error) {
             console.error('Error calling Gemini API:', error);
@@ -240,11 +248,120 @@ Explicación: Medellín fue fundada el 2 de noviembre de 1675 por Francisco Herr
         }
     }
 
+    // Generar chismes históricos con IA
+    async generateHistoricalGossip(topic = '') {
+        if (!this.apiKey || this.apiKey.length < 10) {
+            console.warn('⚠️ API key no configurada, usando fallback');
+            throw new Error('API key no configurada');
+        }
+
+        const systemInstruction = `Eres José García "Cosiaca", el primer comediante y chismógrafo popular de Antioquia del siglo XIX.
+
+PERSONALIDAD:
+- Pícaro, divertido e ingenioso
+- Conoces TODOS los chismes de 350 años de historia paisa
+- Cuentas anécdotas reales con humor y gracia
+- Eres el alma de las tertulias y reuniones
+- Tienes memoria fotográfica para detalles jugosos
+- Combinas respeto por la historia con humor irreverente
+
+ESTILO AL CONTAR CHISMES:
+- Usas expresiones paisas auténticas en cada frase
+- Incluyes nombres, fechas y lugares reales
+- Añades detalles que hacen el chisme más creíble
+- Haces comparaciones graciosas con el presente
+- Terminas con reflexiones pícaras
+- Citas diálogos o frases memorables cuando es posible
+
+CONOCIMIENTO HISTÓRICO:
+- Época colonial (1675-1810): fundación, iglesias, costumbres
+- Independencia (1810-1850): próceres, batallas, política
+- Bonanza cafetera (1850-1900): arrieros, comercio, ferrocarril
+- Industrialización (1900-1950): fábricas, aviación, tranvía
+- Época moderna (1950-2025): Metro, transformación, innovación
+- Personajes: Botero, Pedro Nel, Débora Arango, Madre Laura
+
+TU MISIÓN: Contar chismes históricos TAN BUENOS que la gente los recuerde y quiera compartirlos.`;
+
+        let prompt;
+        if (topic && topic.trim().length > 0) {
+            prompt = `¡Uy mijito, necesito que me cuentes el chisme MÁS JUGOSO y sorprendente de la historia de Medellín o Antioquia relacionado con: "${topic}"!
+
+IMPORTANTE - El chisme debe ser:
+🔥 PICANTE: Incluye detalles inesperados, divertidos o escandalosos (sin vulgaridades)
+😂 GRACIOSO: Usa humor paisa inteligente con expresiones auténticas
+📚 REAL: Basado en hechos históricos verificables o anécdotas documentadas
+✨ MEMORABLE: Que la gente diga "¡No sabía eso!" o "¡Qué ocurrencia!"
+🗣️ CONVERSACIONAL: Como si estuvieras contándolo en una tienda de barrio
+
+Elementos que DEBES incluir:
+- Nombres reales de personas o lugares cuando sea posible
+- Cifras, fechas o datos específicos que den credibilidad
+- Un giro inesperado o detalle sorprendente
+- Expresiones paisas auténticas: "mijito", "uy qué va", "pues", "¿o qué?", "ja ja ja"
+- Comparaciones graciosas con la actualidad cuando sea apropiado
+- 5-8 líneas de puro sabor paisa
+
+FORMATO EXACTO:
+**Título del chisme:** [Título corto, llamativo y pícaro que genere curiosidad]
+**Época:** [Año específico o período exacto]
+
+[Aquí va el chisme completo con todos los detalles jugosos, nombres, anécdotas y humor paisa. Incluye al menos un diálogo o quote si es posible. Termina con una observación graciosa o reflexión pícara.]
+
+**Dato curioso:** [Un dato adicional sorprendente que complemente el chisme y haga que la gente diga "¡wow!"]`;
+        } else {
+            prompt = `¡Uy mijito, necesito que me cuentes el chisme MÁS JUGOSO, escandaloso y sorprendente de TODA la historia de Medellín (1675-2025)!
+
+Busca en tu memoria histórica el chisme que:
+🔥 Sea el más picante y divertido (sin vulgaridades)
+😱 Sorprenda hasta a los paisas más sabidos
+📰 Tenga todos los detalles suculentos
+🎭 Involucre personajes famosos o situaciones insólitas
+💎 Sea una joya histórica poco conocida
+
+IMPORTANTE - El chisme debe ser:
+📚 REAL: Basado en hechos históricos verificables
+😂 GRACIOSO: Con humor paisa inteligente
+✨ MEMORABLE: Que la gente no lo olvide
+🗣️ CONVERSACIONAL: Como contándolo en una esquina
+
+Elementos OBLIGATORIOS:
+- Nombres reales de personas, lugares o eventos
+- Cifras, fechas o datos específicos
+- Un giro inesperado que sorprenda
+- Expresiones paisas: "mijito", "uy qué va", "pues", "¿o qué?"
+- Comparaciones con la actualidad
+- Al menos un diálogo o quote
+- 6-8 líneas de puro sabor paisa
+
+FORMATO EXACTO:
+**Título del chisme:** [Título súper llamativo que genere curiosidad inmediata]
+**Época:** [Año específico o período exacto]
+
+[Aquí va el chisme COMPLETO con TODOS los detalles jugosos, nombres, anécdotas, diálogos y humor paisa. Debe ser tan bueno que la gente quiera compartirlo. Termina con una reflexión graciosa.]
+
+**Dato curioso:** [Un dato adicional IMPACTANTE que haga que la gente diga "¡No puede ser!"]`;
+        }
+
+        console.log('🎭 Generando chisme histórico sobre:', topic || 'tema sorpresa');
+        return await this.generateContent(prompt, systemInstruction);
+    }
+
     // Función de prueba
     async testConnection() {
-        // Sin API key válida
-        console.log('Gemini API key inválida');
-        return false;
+        try {
+            if (!this.apiKey || this.apiKey.length < 10) {
+                console.log('❌ Gemini API key no configurada');
+                return false;
+            }
+            const testPrompt = 'Di solo "OK" si estás funcionando';
+            const response = await this.generateContent(testPrompt, '');
+            console.log('✅ Gemini API funcionando correctamente');
+            return true;
+        } catch (error) {
+            console.error('❌ Error probando Gemini API:', error);
+            return false;
+        }
     }
 }
 
