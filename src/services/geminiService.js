@@ -1,6 +1,6 @@
 // Servicio para integración con Gemini AI
-const GEMINI_API_KEY = ''; // API key inválida
-const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || '';
+const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent';
 
 class GeminiService {
     constructor() {
@@ -8,41 +8,119 @@ class GeminiService {
         this.baseUrl = GEMINI_API_URL;
     }
 
-    async generateContent(prompt, context = '') {
-        // Sin API key válida, usar fallback directo
-        console.log('API key inválida - usando fallback');
-        throw new Error('API key inválida');
+    async generateContent(prompt, systemInstruction = '') {
+        if (!this.apiKey || this.apiKey.length < 10) {
+            throw new Error('API key no configurada');
+        }
+
+        try {
+            const response = await fetch(`${this.baseUrl}?key=${this.apiKey}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    contents: [{
+                        parts: [{ text: prompt }]
+                    }],
+                    systemInstruction: systemInstruction ? {
+                        parts: [{ text: systemInstruction }]
+                    } : undefined,
+                    generationConfig: {
+                        temperature: 0.9,
+                        topK: 40,
+                        topP: 0.95,
+                        maxOutputTokens: 1024,
+                    }
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Gemini API Error:', errorData);
+                throw new Error(`API Error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const generatedText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+            if (!generatedText) {
+                throw new Error('No se generó contenido');
+            }
+
+            return generatedText.trim();
+        } catch (error) {
+            console.error('Error calling Gemini API:', error);
+            throw error;
+        }
     }
 
     // Generar chistes paisas con contexto histórico
     async generatePaisaJoke() {
-        const context = `Eres José García "Cosiaca", el primer comediante popular de Antioquia (siglo XIX). 
-        Tienes un humor pícaro, inteligente y muy paisa. Conoces toda la historia de Medellín desde 1675 hasta hoy.
-        Tu estilo es contar chistes con referencias históricas, usando expresiones paisas auténticas como "mijito", "pues", "¿o qué?", etc.`;
-        
-        const prompt = `Cuenta un chiste corto y divertido sobre la historia de Medellín o la cultura paisa. 
-        Debe ser familiar, gracioso y con tu personalidad característica. Máximo 3 líneas.`;
-        
+        const systemInstruction = `Eres José García "Cosiaca", el primer comediante popular de Antioquia (siglo XIX).
+Tienes un humor pícaro, inteligente y muy paisa. Conoces toda la historia de Medellín desde 1675 hasta 2025.
+Tu estilo característico:
+- Usas expresiones paisas auténticas: "mijito", "pues", "¿o qué?", "¿cierto?", "sumercé"
+- Combinas humor con referencias históricas reales
+- Tus chistes son ingeniosos, familiares y educativos
+- Siempre terminas con risa: "Ja ja ja", "¡Qué ocurrencia!", etc.
+- Eres pícaro pero nunca vulgar`;
+
+        const prompt = `Cuenta un chiste corto y divertido sobre la historia de Medellín o la cultura paisa.
+Puede ser sobre: arrieros, café, el Metro, Fernando Botero, la Feria de las Flores, los textileros, o cualquier aspecto histórico.
+IMPORTANTE: Máximo 3 líneas. Debe ser gracioso y memorable.`;
+
         try {
-            return await this.generateContent(prompt, context);
+            const joke = await this.generateContent(prompt, systemInstruction);
+            return joke;
         } catch (error) {
-            return "¡Uy mijito! ¿Sabés por qué los paisas somos tan trabajadores? ¡Porque desde que nacemos ya estamos 'ocupados' en el vientre de la mamá! Ja ja ja, ¡qué ocurrencia!";
+            console.error('Error generando chiste:', error);
+            const fallbackJokes = [
+                "¡Uy mijito! ¿Sabés por qué los paisas somos tan trabajadores? ¡Porque desde que nacemos ya estamos 'ocupados' en el vientre de la mamá! Ja ja ja, ¡qué ocurrencia!",
+                "¿Por qué en Medellín nunca llueve dinero? ¡Porque los paisas ya lo habríamos recogido todo antes de que toque el suelo! Ja ja ja.",
+                "¿Sabés cuál es el colmo de un paisa? ¡Que le regalen algo y pregunte cuánto vale para saber si le gustó! Ja ja ja.",
+                "¿Por qué Fernando Botero hace figuras gorditas? ¡Porque en Antioquia hasta el arte está bien alimentado, pues! Ja ja ja.",
+                "¿Cuál es la diferencia entre un paisa y un arriero? ¡Que el arriero solo carga mulas, pero el paisa carga con toda la familia! Ja ja ja."
+            ];
+            return fallbackJokes[Math.floor(Math.random() * fallbackJokes.length)];
         }
     }
 
     // Generar trovas paisas
     async generatePaisaTrova() {
-        const context = `Eres José García "Cosiaca", trovador y cuentero antioqueño del siglo XIX.
-        Conoces la tradición oral paisa y puedes improvisar trovas sobre Medellín y Antioquia.
-        Las trovas son versos de 4 líneas que riman, con métrica tradicional y sabor paisa.`;
-        
-        const prompt = `Crea una trova paisa de 4 líneas sobre Medellín, su historia o su gente. 
-        Debe rimar, tener métrica tradicional y reflejar el orgullo paisa. Usa un lenguaje poético pero accesible.`;
-        
+        const systemInstruction = `Eres José García "Cosiaca", trovador y cuentero antioqueño del siglo XIX.
+Conoces la tradición oral paisa y la historia de Medellín desde su fundación en 1675.
+Tu especialidad son las trovas: versos de 4 líneas con rima y métrica tradicional.
+
+Características de tus trovas:
+- 4 líneas que riman (esquema ABAB o ABCB)
+- Métrica tradicional (octosílabos o decasílabos)
+- Temas: historia de Medellín, arrieros, café, montañas, valores paisas
+- Lenguaje poético pero accesible
+- Reflejan orgullo paisa y sabiduría popular
+- Pueden tener toque nostálgico o celebratorio`;
+
+        const prompt = `Crea una trova paisa de 4 líneas sobre Medellín, su historia o su gente.
+Temas sugeridos: fundación de la ciudad, arrieros, café, montañas, trabajo, familia, tradiciones, transformación de la ciudad.
+IMPORTANTE:
+- Exactamente 4 líneas
+- Deben rimar
+- Métrica equilibrada
+- Sin explicaciones adicionales, solo la trova`;
+
         try {
-            return await this.generateContent(prompt, context);
+            const trova = await this.generateContent(prompt, systemInstruction);
+            return trova.replace(/\n/g, '<br>');
         } catch (error) {
-            return "En las montañas de Antioquia,\ndonde el café es tradición,\nvive el paisa trabajador\ncon mucho amor y pasión.";
+            console.error('Error generando trova:', error);
+            const fallbackTrovas = [
+                "En las montañas de Antioquia,<br>donde el café es tradición,<br>vive el paisa trabajador<br>con mucho amor y pasión.",
+                "Medellín, ciudad querida,<br>de arrieros y soñadores,<br>tus calles guardan la vida<br>de nobles trabajadores.",
+                "En el Valle de Aburrá,<br>donde el río canta y fluye,<br>la historia paisa está<br>en cada alma que construye.",
+                "Cosiaca cuenta con gracia<br>las historias del pasado,<br>de esta tierra de Antioquia<br>que siempre ha prosperado.",
+                "Desde mil seiscientos setenta,<br>cuando se fundó la villa,<br>los paisas con su destreza<br>hicieron grande esta orilla."
+            ];
+            return fallbackTrovas[Math.floor(Math.random() * fallbackTrovas.length)];
         }
     }
 

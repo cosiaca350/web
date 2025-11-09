@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BotIcon, CheckCircleIcon, XCircleIcon, SparklesIcon } from '../icons/Icons';
 import AdvancedTrivia from './AdvancedTrivia';
-import AIService from '../services/aiService';
+import GeminiService from '../services/geminiService';
 
 const Juegos = () => {
     const [activeTab, setActiveTab] = useState('trivia');
@@ -15,6 +15,13 @@ const Juegos = () => {
     const [currentTrova, setCurrentTrova] = useState('');
     const [isGeneratingJoke, setIsGeneratingJoke] = useState(false);
     const [isGeneratingTrova, setIsGeneratingTrova] = useState(false);
+
+    // Memory Game State
+    const [memoryCards, setMemoryCards] = useState([]);
+    const [flippedCards, setFlippedCards] = useState([]);
+    const [matchedCards, setMatchedCards] = useState([]);
+    const [memoryMoves, setMemoryMoves] = useState(0);
+    const [memoryGameStarted, setMemoryGameStarted] = useState(false);
 
     // Trivia Data
     const triviaQuestions = [
@@ -111,19 +118,19 @@ const Juegos = () => {
     const generateAIJoke = async () => {
         setIsGeneratingJoke(true);
         try {
-            // Usar directamente fallback ya que no hay API válida
+            const joke = await GeminiService.generatePaisaJoke();
+            setCurrentJoke(joke);
+        } catch (error) {
+            console.error('Error generating joke:', error);
             const fallbackJokes = [
                 "¡Uy mijito! ¿Sabés por qué los paisas somos tan trabajadores? ¡Porque desde que nacemos ya estamos 'ocupados' en el vientre de la mamá! Ja ja ja, ¡qué ocurrencia!",
                 "¿Por qué en Medellín nunca llueve dinero? ¡Porque los paisas ya lo habríamos recogido todo antes de que toque el suelo! Ja ja ja.",
                 "¿Sabés cuál es el colmo de un paisa? ¡Que le regalen algo y pregunte cuánto vale para saber si le gustó! Ja ja ja.",
-                "¿Por qué los paisas somos tan buenos para los negocios? ¡Porque vendemos hasta la sombra y después cobramos por el fresco! Ja ja ja.",
+                "¿Por qué Fernando Botero hace figuras gorditas? ¡Porque en Antioquia hasta el arte está bien alimentado, pues! Ja ja ja.",
                 "¿Cuál es la diferencia entre un paisa y un arriero? ¡Que el arriero solo carga mulas, pero el paisa carga con toda la familia! Ja ja ja."
             ];
             const randomJoke = fallbackJokes[Math.floor(Math.random() * fallbackJokes.length)];
             setCurrentJoke(randomJoke);
-        } catch (error) {
-            console.error('Error generating joke:', error);
-            setCurrentJoke("¡Uy mijito! ¿Sabés por qué los paisas somos tan trabajadores? ¡Porque desde que nacemos ya estamos 'ocupados' en el vientre de la mamá! Ja ja ja, ¡qué ocurrencia!");
         } finally {
             setIsGeneratingJoke(false);
         }
@@ -132,7 +139,10 @@ const Juegos = () => {
     const generateAITrova = async () => {
         setIsGeneratingTrova(true);
         try {
-            // Usar directamente fallback ya que no hay API válida
+            const trova = await GeminiService.generatePaisaTrova();
+            setCurrentTrova(trova);
+        } catch (error) {
+            console.error('Error generating trova:', error);
             const fallbackTrovas = [
                 "En las montañas de Antioquia,<br>donde el café es tradición,<br>vive el paisa trabajador<br>con mucho amor y pasión.",
                 "Medellín, ciudad querida,<br>de arrieros y soñadores,<br>tus calles guardan la vida<br>de nobles trabajadores.",
@@ -142,9 +152,6 @@ const Juegos = () => {
             ];
             const randomTrova = fallbackTrovas[Math.floor(Math.random() * fallbackTrovas.length)];
             setCurrentTrova(randomTrova);
-        } catch (error) {
-            console.error('Error generating trova:', error);
-            setCurrentTrova("En las montañas de Antioquia,<br>donde el café es tradición,<br>vive el paisa trabajador<br>con mucho amor y pasión.");
         } finally {
             setIsGeneratingTrova(false);
         }
@@ -159,7 +166,80 @@ const Juegos = () => {
         const randomIndex = Math.floor(Math.random() * trovasPaisa.length);
         return trovasPaisa[randomIndex].replace(/\n/g, '<br>');
     };
-    
+
+    // Historical Memory Game Data
+    const historicalPairs = [
+        { id: 1, content: '1675', pair: 'Fundación', emoji: '🏛️' },
+        { id: 2, content: '1813', pair: 'Ciudad', emoji: '🏙️' },
+        { id: 3, content: 'Botero', pair: 'Esculturas', emoji: '🎨' },
+        { id: 4, content: 'Metro', pair: '1995', emoji: '🚇' },
+        { id: 5, content: 'Arrieros', pair: 'Café', emoji: '☕' },
+        { id: 6, content: 'Flores', pair: 'Feria', emoji: '🌸' }
+    ];
+
+    const initializeMemoryGame = () => {
+        const allCards = [];
+        historicalPairs.forEach((pair, index) => {
+            allCards.push({
+                id: `${index}-a`,
+                pairId: pair.id,
+                content: pair.content,
+                emoji: pair.emoji,
+                type: 'a'
+            });
+            allCards.push({
+                id: `${index}-b`,
+                pairId: pair.id,
+                content: pair.pair,
+                emoji: pair.emoji,
+                type: 'b'
+            });
+        });
+
+        // Shuffle cards
+        const shuffled = allCards.sort(() => Math.random() - 0.5);
+        setMemoryCards(shuffled);
+        setFlippedCards([]);
+        setMatchedCards([]);
+        setMemoryMoves(0);
+        setMemoryGameStarted(true);
+    };
+
+    const handleCardClick = (cardId) => {
+        if (flippedCards.length === 2 || flippedCards.includes(cardId) || matchedCards.includes(cardId)) {
+            return;
+        }
+
+        const newFlipped = [...flippedCards, cardId];
+        setFlippedCards(newFlipped);
+
+        if (newFlipped.length === 2) {
+            setMemoryMoves(moves => moves + 1);
+            const [firstId, secondId] = newFlipped;
+            const firstCard = memoryCards.find(c => c.id === firstId);
+            const secondCard = memoryCards.find(c => c.id === secondId);
+
+            if (firstCard.pairId === secondCard.pairId) {
+                setTimeout(() => {
+                    setMatchedCards(prev => [...prev, firstId, secondId]);
+                    setFlippedCards([]);
+                }, 600);
+            } else {
+                setTimeout(() => {
+                    setFlippedCards([]);
+                }, 1000);
+            }
+        }
+    };
+
+    const resetMemoryGame = () => {
+        setMemoryGameStarted(false);
+        setMemoryCards([]);
+        setFlippedCards([]);
+        setMatchedCards([]);
+        setMemoryMoves(0);
+    };
+
     return (
         <div className="animate-fade-in max-w-6xl mx-auto text-cosiaca-brown space-y-6 sm:space-y-8 px-4">
             <header className="text-center">
@@ -181,8 +261,8 @@ const Juegos = () => {
             <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-6 sm:mb-8">
                 <button
                     className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 transform hover:scale-105 ${
-                        activeTab === 'trivia' 
-                            ? 'bg-cosiaca-red text-white shadow-lg' 
+                        activeTab === 'trivia'
+                            ? 'bg-cosiaca-red text-white shadow-lg'
                             : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
                     }`}
                     onClick={() => setActiveTab('trivia')}
@@ -191,8 +271,18 @@ const Juegos = () => {
                 </button>
                 <button
                     className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 transform hover:scale-105 ${
-                        activeTab === 'standup' 
-                            ? 'bg-cosiaca-red text-white shadow-lg' 
+                        activeTab === 'memory'
+                            ? 'bg-cosiaca-red text-white shadow-lg'
+                            : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
+                    }`}
+                    onClick={() => setActiveTab('memory')}
+                >
+                    🎴 Memoria Histórica
+                </button>
+                <button
+                    className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 transform hover:scale-105 ${
+                        activeTab === 'standup'
+                            ? 'bg-cosiaca-red text-white shadow-lg'
                             : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
                     }`}
                     onClick={() => setActiveTab('standup')}
@@ -201,8 +291,8 @@ const Juegos = () => {
                 </button>
                 <button
                     className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 transform hover:scale-105 ${
-                        activeTab === 'trovas' 
-                            ? 'bg-cosiaca-red text-white shadow-lg' 
+                        activeTab === 'trovas'
+                            ? 'bg-cosiaca-red text-white shadow-lg'
                             : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
                     }`}
                     onClick={() => setActiveTab('trovas')}
@@ -217,7 +307,105 @@ const Juegos = () => {
                     <AdvancedTrivia />
                 </div>
             )}
-            
+
+            {/* Memory Game Content */}
+            {activeTab === 'memory' && (
+                <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 border border-cosiaca-beige animate-fade-in">
+                    <div className="text-center mb-6 sm:mb-8">
+                        <h3 className="text-2xl sm:text-3xl font-bold font-anton text-cosiaca-brown mb-2">
+                            🎴 Memoria Histórica de Medellín
+                        </h3>
+                        <p className="text-base sm:text-lg text-cosiaca-brown/70">
+                            Encuentra las parejas de eventos históricos importantes
+                        </p>
+                    </div>
+
+                    {!memoryGameStarted ? (
+                        <div className="text-center space-y-6">
+                            <div className="bg-cosiaca-beige/30 p-8 rounded-xl">
+                                <p className="text-lg text-cosiaca-brown mb-4">
+                                    ¡Pon a prueba tu memoria con los eventos más importantes de la historia de Medellín!
+                                </p>
+                                <p className="text-base text-cosiaca-brown/70">
+                                    Encuentra las 6 parejas de fechas y eventos históricos.
+                                </p>
+                            </div>
+                            <button
+                                onClick={initializeMemoryGame}
+                                className="bg-cosiaca-red text-white font-bold py-3 px-8 rounded-full hover:bg-cosiaca-red-dark transition-all duration-300 transform hover:scale-105 shadow-lg text-base sm:text-lg"
+                            >
+                                🎮 Iniciar Juego
+                            </button>
+                        </div>
+                    ) : (
+                        <div className="space-y-6">
+                            <div className="flex justify-between items-center bg-cosiaca-beige/30 p-4 rounded-xl">
+                                <div className="text-cosiaca-brown font-bold">
+                                    Movimientos: <span className="text-cosiaca-red text-xl">{memoryMoves}</span>
+                                </div>
+                                <div className="text-cosiaca-brown font-bold">
+                                    Parejas: <span className="text-green-600 text-xl">{matchedCards.length / 2}/6</span>
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 sm:gap-4">
+                                {memoryCards.map((card) => {
+                                    const isFlipped = flippedCards.includes(card.id);
+                                    const isMatched = matchedCards.includes(card.id);
+
+                                    return (
+                                        <div
+                                            key={card.id}
+                                            onClick={() => handleCardClick(card.id)}
+                                            className={`aspect-square cursor-pointer transition-all duration-300 transform hover:scale-105 ${
+                                                isFlipped || isMatched ? 'rotate-0' : ''
+                                            }`}
+                                        >
+                                            <div className={`w-full h-full rounded-xl shadow-lg flex items-center justify-center font-bold text-center p-2 transition-all duration-300 ${
+                                                isMatched
+                                                    ? 'bg-green-500 text-white'
+                                                    : isFlipped
+                                                    ? 'bg-cosiaca-red text-white'
+                                                    : 'bg-cosiaca-brown text-transparent hover:bg-cosiaca-brown/80'
+                                            }`}>
+                                                {(isFlipped || isMatched) ? (
+                                                    <div className="flex flex-col items-center space-y-1">
+                                                        <span className="text-2xl">{card.emoji}</span>
+                                                        <span className="text-xs sm:text-sm">{card.content}</span>
+                                                    </div>
+                                                ) : (
+                                                    <span className="text-3xl">?</span>
+                                                )}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+
+                            {matchedCards.length === memoryCards.length && memoryCards.length > 0 && (
+                                <div className="bg-green-50 border-2 border-green-500 p-6 rounded-xl text-center animate-fade-in">
+                                    <h4 className="text-2xl font-bold text-green-700 mb-2">
+                                        🎉 ¡Felicitaciones!
+                                    </h4>
+                                    <p className="text-lg text-green-600">
+                                        Completaste el juego en {memoryMoves} movimientos
+                                    </p>
+                                </div>
+                            )}
+
+                            <div className="flex justify-center">
+                                <button
+                                    onClick={resetMemoryGame}
+                                    className="bg-cosiaca-brown text-white font-bold py-3 px-6 rounded-full hover:bg-cosiaca-brown/80 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                >
+                                    🔄 Nuevo Juego
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            )}
+
             {/* Stand Up Content */}
             {activeTab === 'standup' && (
                 <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 border border-cosiaca-beige animate-fade-in">
