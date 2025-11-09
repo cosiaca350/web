@@ -839,8 +839,7 @@ TU MISIÓN: Contar chismes históricos TAN BUENOS que la gente los recuerde y qu
                             )}
                         </div>
                     ) : (
-                        <div className="space-y-6 sm:space-y-8"
->
+                        <div className="space-y-6 sm:space-y-8">
                             {showApiWarning && activeTab === 'chismes' && (
                                 <div className="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded-lg animate-fade-in">
                                     <div className="flex items-start">
