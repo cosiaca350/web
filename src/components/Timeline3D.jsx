@@ -283,67 +283,75 @@ const Timeline3D = ({ periods }) => {
             </div>
 
             {selectedNode && (
-                <div className="mt-6 bg-gradient-to-br from-white to-cosiaca-beige/30 rounded-2xl border-2 border-cosiaca-brown/20 overflow-hidden shadow-2xl animate-fade-in">
-                    <div className={`${selectedNode.color} p-6 text-white`}>
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-4">
-                                <span className="text-5xl">{selectedNode.icon}</span>
-                                <div>
-                                    <h3 className="text-4xl font-bold">{selectedNode.year}</h3>
-                                    {selectedNode.date && (
-                                        <p className="text-sm opacity-90">{selectedNode.date}</p>
-                                    )}
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
+                    onClick={() => setSelectedNode(null)}
+                >
+                    <div
+                        className="relative max-w-3xl w-full max-h-[90vh] overflow-y-auto bg-gradient-to-br from-white to-cosiaca-beige/30 rounded-2xl border-2 border-cosiaca-brown/20 shadow-2xl animate-scale-in"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className={`${selectedNode.color} p-6 text-white sticky top-0 z-10`}>
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-4">
+                                    <span className="text-5xl">{selectedNode.icon}</span>
+                                    <div>
+                                        <h3 className="text-4xl font-bold">{selectedNode.year}</h3>
+                                        {selectedNode.date && (
+                                            <p className="text-sm opacity-90">{selectedNode.date}</p>
+                                        )}
+                                    </div>
                                 </div>
+                                <button
+                                    onClick={() => setSelectedNode(null)}
+                                    className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-all duration-300 font-bold backdrop-blur-sm hover:scale-110"
+                                >
+                                    ✕
+                                </button>
                             </div>
-                            <button
-                                onClick={() => setSelectedNode(null)}
-                                className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-all duration-300 font-bold backdrop-blur-sm"
-                            >
-                                ✕
-                            </button>
                         </div>
-                    </div>
 
-                    <div className="p-6">
-                        <h4 className="text-2xl font-anton text-cosiaca-brown mb-4">{selectedNode.title}</h4>
+                        <div className="p-6">
+                            <h4 className="text-2xl font-anton text-cosiaca-brown mb-4">{selectedNode.title}</h4>
 
-                        <div className="flex flex-wrap gap-2 mb-4">
-                            <div className="flex items-center gap-2 bg-cosiaca-beige/40 px-3 py-2 rounded-lg text-sm">
-                                <span>👥</span>
-                                <span className="font-medium">{selectedNode.population}</span>
-                            </div>
-                            {selectedNode.keyFigure && (
+                            <div className="flex flex-wrap gap-2 mb-4">
                                 <div className="flex items-center gap-2 bg-cosiaca-beige/40 px-3 py-2 rounded-lg text-sm">
-                                    <span>👤</span>
-                                    <span className="font-medium text-cosiaca-brown/80">{selectedNode.keyFigure}</span>
+                                    <span>👥</span>
+                                    <span className="font-medium">{selectedNode.population}</span>
                                 </div>
-                            )}
-                        </div>
-
-                        <p className="text-base text-cosiaca-brown/80 leading-relaxed mb-4">
-                            {selectedNode.description}
-                        </p>
-
-                        <div className="space-y-4">
-                            <div className="bg-gradient-to-r from-cosiaca-cream/80 to-cosiaca-beige/50 p-5 rounded-xl border-l-4 border-cosiaca-red">
-                                <h5 className="font-bold text-cosiaca-brown mb-2 flex items-center gap-2">
-                                    <span>💬</span> Cosiaca cuenta:
-                                </h5>
-                                <p className="text-sm text-cosiaca-brown italic leading-relaxed">{selectedNode.details}</p>
+                                {selectedNode.keyFigure && (
+                                    <div className="flex items-center gap-2 bg-cosiaca-beige/40 px-3 py-2 rounded-lg text-sm">
+                                        <span>👤</span>
+                                        <span className="font-medium text-cosiaca-brown/80">{selectedNode.keyFigure}</span>
+                                    </div>
+                                )}
                             </div>
 
-                            <div className="bg-white p-5 rounded-xl border border-cosiaca-brown/20">
-                                <h5 className="font-bold text-cosiaca-brown mb-3 flex items-center gap-2">
-                                    <span>📌</span> Hitos Destacados:
-                                </h5>
-                                <ul className="space-y-2">
-                                    {selectedNode.milestones.map((milestone, idx) => (
-                                        <li key={idx} className="flex items-start gap-2 text-sm text-cosiaca-brown/80">
-                                            <span className="text-cosiaca-red font-bold mt-1">•</span>
-                                            <span>{milestone}</span>
-                                        </li>
-                                    ))}
-                                </ul>
+                            <p className="text-base text-cosiaca-brown/80 leading-relaxed mb-4">
+                                {selectedNode.description}
+                            </p>
+
+                            <div className="space-y-4">
+                                <div className="bg-gradient-to-r from-cosiaca-cream/80 to-cosiaca-beige/50 p-5 rounded-xl border-l-4 border-cosiaca-red">
+                                    <h5 className="font-bold text-cosiaca-brown mb-2 flex items-center gap-2">
+                                        <span>💬</span> Cosiaca cuenta:
+                                    </h5>
+                                    <p className="text-sm text-cosiaca-brown italic leading-relaxed">{selectedNode.details}</p>
+                                </div>
+
+                                <div className="bg-white p-5 rounded-xl border border-cosiaca-brown/20">
+                                    <h5 className="font-bold text-cosiaca-brown mb-3 flex items-center gap-2">
+                                        <span>📌</span> Hitos Destacados:
+                                    </h5>
+                                    <ul className="space-y-2">
+                                        {selectedNode.milestones.map((milestone, idx) => (
+                                            <li key={idx} className="flex items-start gap-2 text-sm text-cosiaca-brown/80">
+                                                <span className="text-cosiaca-red font-bold mt-1">•</span>
+                                                <span>{milestone}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
