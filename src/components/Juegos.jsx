@@ -15,6 +15,8 @@ const Juegos = () => {
     const [currentTrova, setCurrentTrova] = useState('');
     const [isGeneratingJoke, setIsGeneratingJoke] = useState(false);
     const [isGeneratingTrova, setIsGeneratingTrova] = useState(false);
+    const [customJokeTopic, setCustomJokeTopic] = useState('');
+    const [customTrovaTopic, setCustomTrovaTopic] = useState('');
 
     // Trivia Data
     const triviaQuestions = [
@@ -125,8 +127,9 @@ const Juegos = () => {
     const generateAIJoke = async () => {
         setIsGeneratingJoke(true);
         try {
-            const joke = await GeminiService.generatePaisaJoke();
+            const joke = await GeminiService.generatePaisaJoke(customJokeTopic);
             setCurrentJoke(joke);
+            setCustomJokeTopic('');
         } catch (error) {
             console.error('Error generating joke:', error);
             const fallbackJokes = [
@@ -146,8 +149,9 @@ const Juegos = () => {
     const generateAITrova = async () => {
         setIsGeneratingTrova(true);
         try {
-            const trova = await GeminiService.generatePaisaTrova();
+            const trova = await GeminiService.generatePaisaTrova(customTrovaTopic);
             setCurrentTrova(trova);
+            setCustomTrovaTopic('');
         } catch (error) {
             console.error('Error generating trova:', error);
             const fallbackTrovas = [
@@ -246,6 +250,34 @@ const Juegos = () => {
                     </div>
 
                     <div className="space-y-6 sm:space-y-8">
+                        <div className="bg-gradient-to-r from-cosiaca-beige/50 to-cosiaca-brown/10 rounded-xl p-4 sm:p-6 border-2 border-cosiaca-beige">
+                            <label className="block text-cosiaca-brown font-bold mb-3 text-center text-base sm:text-lg">
+                                💬 Escribe un tema y Cosiaca te contará un chiste:
+                            </label>
+                            <div className="flex flex-col sm:flex-row gap-3">
+                                <input
+                                    type="text"
+                                    value={customJokeTopic}
+                                    onChange={(e) => setCustomJokeTopic(e.target.value)}
+                                    onKeyPress={(e) => e.key === 'Enter' && !isGeneratingJoke && generateAIJoke()}
+                                    placeholder="Ej: Metro, Botero, café, arrieros..."
+                                    className="flex-1 px-4 py-3 rounded-full border-2 border-cosiaca-beige focus:border-cosiaca-red focus:outline-none text-cosiaca-brown text-sm sm:text-base"
+                                    disabled={isGeneratingJoke}
+                                />
+                                <button
+                                    onClick={generateAIJoke}
+                                    disabled={isGeneratingJoke}
+                                    className="bg-cosiaca-red text-white font-bold py-3 px-6 rounded-full hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base whitespace-nowrap"
+                                >
+                                    <SparklesIcon className="inline-block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                                    {customJokeTopic.trim() ? 'Generar Chiste' : 'Sorpréndeme'}
+                                </button>
+                            </div>
+                            <p className="text-xs sm:text-sm text-cosiaca-brown/60 mt-2 text-center">
+                                Escribe un tema o deja vacío para un chiste sorpresa. Presiona Enter para generar.
+                            </p>
+                        </div>
+
                         <div className="bg-cosiaca-beige/30 rounded-xl p-4 sm:p-6 lg:p-8 border border-cosiaca-beige min-h-[150px] sm:min-h-[200px] flex items-center justify-center">
                             {isGeneratingJoke ? (
                                 <div className="text-center">
@@ -260,21 +292,13 @@ const Juegos = () => {
                                 </p>
                             )}
                         </div>
-                        
-                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                            <button
-                                onClick={generateAIJoke}
-                                disabled={isGeneratingJoke}
-                                className="bg-cosiaca-red text-white font-bold py-3 px-6 sm:px-8 rounded-full hover:bg-cosiaca-red-dark transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
-                            >
-                                <SparklesIcon className="inline-block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                                Generar Chiste con IA
-                            </button>
+
+                        <div className="flex justify-center">
                             <button
                                 onClick={() => setCurrentJoke(getRandomJoke())}
                                 className="bg-cosiaca-brown text-white font-bold py-3 px-6 sm:px-8 rounded-full hover:bg-cosiaca-brown/80 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm sm:text-base"
                             >
-                                Chiste Clásico
+                                🎲 Chiste Clásico
                             </button>
                         </div>
                     </div>
@@ -294,6 +318,34 @@ const Juegos = () => {
                     </div>
 
                     <div className="space-y-6 sm:space-y-8">
+                        <div className="bg-gradient-to-r from-cosiaca-beige/50 to-cosiaca-brown/10 rounded-xl p-4 sm:p-6 border-2 border-cosiaca-beige">
+                            <label className="block text-cosiaca-brown font-bold mb-3 text-center text-base sm:text-lg">
+                                🎸 Pídele a Cosiaca que improvise una trova sobre:
+                            </label>
+                            <div className="flex flex-col sm:flex-row gap-3">
+                                <input
+                                    type="text"
+                                    value={customTrovaTopic}
+                                    onChange={(e) => setCustomTrovaTopic(e.target.value)}
+                                    onKeyPress={(e) => e.key === 'Enter' && !isGeneratingTrova && generateAITrova()}
+                                    placeholder="Ej: mi ciudad, el amor, mi familia, el trabajo..."
+                                    className="flex-1 px-4 py-3 rounded-full border-2 border-cosiaca-beige focus:border-cosiaca-red focus:outline-none text-cosiaca-brown text-sm sm:text-base"
+                                    disabled={isGeneratingTrova}
+                                />
+                                <button
+                                    onClick={generateAITrova}
+                                    disabled={isGeneratingTrova}
+                                    className="bg-cosiaca-red text-white font-bold py-3 px-6 rounded-full hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base whitespace-nowrap"
+                                >
+                                    <SparklesIcon className="inline-block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                                    {customTrovaTopic.trim() ? 'Improvisar' : 'Sorpréndeme'}
+                                </button>
+                            </div>
+                            <p className="text-xs sm:text-sm text-cosiaca-brown/60 mt-2 text-center">
+                                Escribe un tema o deja vacío para una trova sorpresa. Presiona Enter para generar.
+                            </p>
+                        </div>
+
                         <div className="bg-cosiaca-beige/30 rounded-xl p-4 sm:p-6 lg:p-8 border border-cosiaca-beige min-h-[150px] sm:min-h-[200px] flex items-center justify-center">
                             {isGeneratingTrova ? (
                                 <div className="text-center">
@@ -303,27 +355,19 @@ const Juegos = () => {
                                     </p>
                                 </div>
                             ) : (
-                                <p 
-                                    className="text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed text-cosiaca-brown text-center italic" 
+                                <p
+                                    className="text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed text-cosiaca-brown text-center italic"
                                     dangerouslySetInnerHTML={{ __html: `"${currentTrova}"` }}
                                 />
                             )}
                         </div>
-                        
-                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                            <button
-                                onClick={generateAITrova}
-                                disabled={isGeneratingTrova}
-                                className="bg-cosiaca-red text-white font-bold py-3 px-6 sm:px-8 rounded-full hover:bg-cosiaca-red-dark transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
-                            >
-                                <SparklesIcon className="inline-block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                                Generar Trova con IA
-                            </button>
+
+                        <div className="flex justify-center">
                             <button
                                 onClick={() => setCurrentTrova(getRandomTrova())}
                                 className="bg-cosiaca-brown text-white font-bold py-3 px-6 sm:px-8 rounded-full hover:bg-cosiaca-brown/80 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm sm:text-base"
                             >
-                                Trova Tradicional
+                                🎲 Trova Tradicional
                             </button>
                         </div>
                     </div>

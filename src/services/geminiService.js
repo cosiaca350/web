@@ -56,7 +56,7 @@ class GeminiService {
     }
 
     // Generar chistes paisas con contexto histórico
-    async generatePaisaJoke() {
+    async generatePaisaJoke(customTopic = '') {
         const systemInstruction = `Eres José García "Cosiaca", el primer comediante popular de Antioquia (siglo XIX).
 Tienes un humor pícaro, inteligente y muy paisa. Conoces toda la historia de Medellín desde 1675 hasta 2025.
 Tu estilo característico:
@@ -66,9 +66,16 @@ Tu estilo característico:
 - Siempre terminas con risa: "Ja ja ja", "¡Qué ocurrencia!", etc.
 - Eres pícaro pero nunca vulgar`;
 
-        const prompt = `Cuenta un chiste corto y divertido sobre la historia de Medellín o la cultura paisa.
+        let prompt;
+        if (customTopic && customTopic.trim().length > 0) {
+            prompt = `Cuenta un chiste corto y divertido sobre: "${customTopic}"
+Relaciona este tema con la historia de Medellín o la cultura paisa de manera ingeniosa.
+IMPORTANTE: Máximo 3 líneas. Debe ser gracioso, memorable y muy paisa.`;
+        } else {
+            prompt = `Cuenta un chiste corto y divertido sobre la historia de Medellín o la cultura paisa.
 Puede ser sobre: arrieros, café, el Metro, Fernando Botero, la Feria de las Flores, los textileros, o cualquier aspecto histórico.
 IMPORTANTE: Máximo 3 líneas. Debe ser gracioso y memorable.`;
+        }
 
         try {
             const joke = await this.generateContent(prompt, systemInstruction);
@@ -87,7 +94,7 @@ IMPORTANTE: Máximo 3 líneas. Debe ser gracioso y memorable.`;
     }
 
     // Generar trovas paisas
-    async generatePaisaTrova() {
+    async generatePaisaTrova(customTopic = '') {
         const systemInstruction = `Eres José García "Cosiaca", trovador y cuentero antioqueño del siglo XIX.
 Conoces la tradición oral paisa y la historia de Medellín desde su fundación en 1675.
 Tu especialidad son las trovas: versos de 4 líneas con rima y métrica tradicional.
@@ -100,13 +107,25 @@ Características de tus trovas:
 - Reflejan orgullo paisa y sabiduría popular
 - Pueden tener toque nostálgico o celebratorio`;
 
-        const prompt = `Crea una trova paisa de 4 líneas sobre Medellín, su historia o su gente.
+        let prompt;
+        if (customTopic && customTopic.trim().length > 0) {
+            prompt = `Crea una trova paisa de 4 líneas sobre: "${customTopic}"
+Relaciona este tema con Medellín, Antioquia o la cultura paisa de manera poética.
+IMPORTANTE:
+- Exactamente 4 líneas
+- Deben rimar (ABAB o ABCB)
+- Métrica equilibrada
+- Lenguaje poético y paisa
+- Sin explicaciones adicionales, solo la trova`;
+        } else {
+            prompt = `Crea una trova paisa de 4 líneas sobre Medellín, su historia o su gente.
 Temas sugeridos: fundación de la ciudad, arrieros, café, montañas, trabajo, familia, tradiciones, transformación de la ciudad.
 IMPORTANTE:
 - Exactamente 4 líneas
 - Deben rimar
 - Métrica equilibrada
 - Sin explicaciones adicionales, solo la trova`;
+        }
 
         try {
             const trova = await this.generateContent(prompt, systemInstruction);
