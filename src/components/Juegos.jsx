@@ -312,12 +312,17 @@ const Juegos = () => {
     };
 
     const generateAIGossip = async () => {
-        const gemini = new GeminiService();
+        console.log('🔍 Iniciando búsqueda de chisme...');
+        console.log('📝 Tema:', customGossipTopic);
+
         setIsGeneratingGossip(true);
         setShowApiWarning(false);
 
+        const topic = customGossipTopic.trim();
+
+        // Si no hay API o hay error, usar fallback inmediatamente
         try {
-            const topic = customGossipTopic.trim();
+            const gemini = new GeminiService();
 
             let prompt;
             if (topic) {
@@ -407,7 +412,9 @@ CONOCIMIENTO HISTÓRICO:
 
 TU MISIÓN: Contar chismes históricos TAN BUENOS que la gente los recuerde y quiera compartirlos.`;
 
+            console.log('🤖 Llamando a la IA...');
             const response = await gemini.generateContent(prompt, systemInstruction);
+            console.log('✅ Respuesta recibida de IA');
 
             // Parsear la respuesta de IA
             const lines = response.split('\n');
@@ -429,36 +436,51 @@ TU MISIÓN: Contar chismes históricos TAN BUENOS que la gente los recuerde y qu
                 source: 'Generado por IA'
             };
 
+            console.log('✨ Chisme generado:', aiGossip.title);
             setCurrentGossip(aiGossip);
             setCustomGossipTopic('');
 
         } catch (error) {
-            console.error('Error generando chisme:', error);
+            console.error('⚠️ Error generando chisme:', error);
 
             if (error.message && error.message.includes('API key')) {
                 setShowApiWarning(true);
+                console.log('🔑 No hay API key configurada');
             }
 
-            // Fallback con template dinámico
-            const topic = customGossipTopic.trim();
+            // Fallback mejorado con template dinámico
+            console.log('📚 Usando chisme de fallback...');
             let fallbackGossip;
 
             if (topic) {
+                // Crear chisme personalizado basado en el tema
                 fallbackGossip = {
-                    title: `El chisme de "${topic}"`,
-                    period: 'Época paisa',
-                    gossip: `¡Uy mijito, te voy a contar un chisme histórico sobre "${topic}"! Resulta que en los viejos tiempos de Medellín, cuando "${topic}" era tema de conversación en todas las esquinas, la gente decía que hasta las mulas de los arrieros se detenían a escuchar. ¡Imagínate qué tanto chisme había! Los viejos contaban que eso era tan importante que hasta en las misas se hablaba de "${topic}". ¡Qué tiempos aquellos, pues!`,
-                    funFact: `En Medellín todo tiene historia, hasta "${topic}"`,
-                    source: 'Memoria histórica paisa'
+                    title: `El chisme histórico de "${topic}"`,
+                    period: 'Historia de Medellín',
+                    gossip: `¡Uy mijito, te voy a contar un chisme jugoso sobre "${topic}"!
+
+Resulta que en los viejos tiempos de Medellín, cuando la gente se reunía en las esquinas a conversar, uno de los temas más comentados era "${topic}".
+
+Los viejos paisas contaban que hasta las mulas de los arrieros se detenían a escuchar cuando alguien mencionaba "${topic}". ¡Imagínate qué tanto chisme había!
+
+Y eso que no te he contado la mejor parte... Dicen que en todas las tertulias de La Playa, en cada tienda de barrio, y hasta en las misas del domingo, la gente no paraba de hablar de "${topic}".
+
+¡Qué tiempos aquellos, pues! Cuando "${topic}" era el tema de moda en toda Medellín.`,
+                    funFact: `En Medellín todo tiene su historia y sus chismes, hasta "${topic}" tiene anécdotas que contar.`,
+                    source: 'Memoria histórica paisa (Modo clásico)'
                 };
+                console.log(`✅ Chisme fallback creado para: ${topic}`);
             } else {
-                fallbackGossip = getRandomGossip();
+                // Si no hay tema, usar chisme aleatorio
+                fallbackGossip = getRandomGossip('all');
+                console.log('🎲 Chisme aleatorio seleccionado');
             }
 
             setCurrentGossip(fallbackGossip);
             setCustomGossipTopic('');
         } finally {
             setIsGeneratingGossip(false);
+            console.log('🏁 Búsqueda finalizada');
         }
     };
 
