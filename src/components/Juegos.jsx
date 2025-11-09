@@ -140,26 +140,30 @@ const Juegos = () => {
                 setShowApiWarning(true);
             }
 
-            // Fallback inteligente basado en el tema del usuario
-            const topic = customJokeTopic.toLowerCase().trim();
+            // Generador de chistes dinámico para CUALQUIER palabra
+            const topic = customJokeTopic.trim();
             let fallbackJoke = '';
 
-            if (topic.includes('metro')) {
-                fallbackJoke = "¡Uy mijito! ¿Sabés por qué el Metro de Medellín es tan limpio? ¡Porque los paisas hasta barren antes de entrar, pa' no quedar mal! Ja ja ja, ¡qué cultura!";
-            } else if (topic.includes('botero')) {
-                fallbackJoke = "¿Por qué Fernando Botero hace figuras gorditas? ¡Porque en Antioquia hasta el arte está bien alimentado, pues! Ja ja ja.";
-            } else if (topic.includes('café') || topic.includes('cafe')) {
-                fallbackJoke = "¿Sabés por qué los arrieros tomaban tanto café? ¡Porque las mulas no se llevaban solas, mijito! Ja ja ja, ¡qué berraquera!";
-            } else if (topic.includes('arriero')) {
-                fallbackJoke = "¿Cuál es la diferencia entre un paisa y un arriero? ¡Que el arriero solo carga mulas, pero el paisa carga con toda la familia! Ja ja ja.";
-            } else if (topic.includes('flores')) {
-                fallbackJoke = "¿Por qué la Feria de las Flores es tan famosa? ¡Porque los paisas hasta a las flores las ponemos a trabajar en desfiles! Ja ja ja.";
+            if (topic) {
+                // Generar chiste personalizado sobre CUALQUIER tema
+                const jokeTemplates = [
+                    `¡Uy mijito! ¿Y vos sabés qué es lo más paisa de "${topic}"? ¡Que los antioqueños le encontramos el lado trabajador hasta a eso! Ja ja ja, ¡qué ocurrencia!`,
+                    `¿Sabés qué diferencia hay entre "${topic}" y un paisa? ¡Que el paisa ya le está buscando cómo hacerle negocio! Ja ja ja, ¡qué berraquera!`,
+                    `¡Ave María pues! Si a los paisas nos ponen a hablar de "${topic}", hasta le sacamos historia y le montamos un museo. Ja ja ja, ¡así somos!`,
+                    `¿Por qué cuando un paisa habla de "${topic}" se emociona tanto? ¡Porque encontró algo nuevo sobre qué echarle cuentos! Ja ja ja.`,
+                    `Mijito, ¿sabés cuál es el colmo sobre "${topic}"? ¡Que un paisa lo venda tres veces antes de comprarlo! Ja ja ja, ¡qué vivos somos!`,
+                    `¡Uy sumercé! Si "${topic}" fuera paisa, ya estaría trabajando en dos ciudades a la vez. Ja ja ja, ¡qué cultura tenemos!`,
+                    `¿Sabés por qué "${topic}" es tan importante en Antioquia? ¡Porque los paisas hasta a eso le metemos el corazón! Ja ja ja.`
+                ];
+                fallbackJoke = jokeTemplates[Math.floor(Math.random() * jokeTemplates.length)];
             } else {
-                // Fallback general
+                // Si no hay tema, chiste general
                 const generalJokes = [
                     "¡Uy mijito! ¿Sabés por qué los paisas somos tan trabajadores? ¡Porque desde que nacemos ya estamos 'ocupados' en el vientre de la mamá! Ja ja ja, ¡qué ocurrencia!",
                     "¿Por qué en Medellín nunca llueve dinero? ¡Porque los paisas ya lo habríamos recogido todo antes de que toque el suelo! Ja ja ja.",
-                    "¿Sabés cuál es el colmo de un paisa? ¡Que le regalen algo y pregunte cuánto vale para saber si le gustó! Ja ja ja."
+                    "¿Sabés cuál es el colmo de un paisa? ¡Que le regalen algo y pregunte cuánto vale para saber si le gustó! Ja ja ja.",
+                    "¿Por qué Fernando Botero hace figuras gorditas? ¡Porque en Antioquia hasta el arte está bien alimentado, pues! Ja ja ja.",
+                    "¿Cuál es la diferencia entre un paisa y un arriero? ¡Que el arriero solo carga mulas, pero el paisa carga con toda la familia! Ja ja ja."
                 ];
                 fallbackJoke = generalJokes[Math.floor(Math.random() * generalJokes.length)];
             }
@@ -186,28 +190,30 @@ const Juegos = () => {
                 setShowApiWarning(true);
             }
 
-            // Fallback inteligente basado en el tema del usuario
-            const topic = customTrovaTopic.toLowerCase().trim();
+            // Generador de trovas dinámico para CUALQUIER palabra
+            const topic = customTrovaTopic.trim();
             let fallbackTrova = '';
 
-            if (topic.includes('amor')) {
-                fallbackTrova = "Con amor paisa sincero,<br>como el café de montaña,<br>te quiero con alma entera<br>mi tierra que me acompaña.";
-            } else if (topic.includes('familia')) {
-                fallbackTrova = "La familia paisa unida,<br>como arrieros en camino,<br>es la fuerza compartida<br>que guía nuestro destino.";
-            } else if (topic.includes('trabajo')) {
-                fallbackTrova = "El trabajo del paisa honrado,<br>con el sol de la mañana,<br>es esfuerzo consagrado<br>que florece cada semana.";
-            } else if (topic.includes('ciudad') || topic.includes('medellín') || topic.includes('medellin')) {
-                fallbackTrova = "Medellín, ciudad querida,<br>de arrieros y soñadores,<br>tus calles guardan la vida<br>de nobles trabajadores.";
-            } else if (topic.includes('café') || topic.includes('cafe')) {
-                fallbackTrova = "En las montañas de Antioquia,<br>donde el café es tradición,<br>vive el paisa trabajador<br>con mucho amor y pasión.";
-            } else if (topic.includes('montaña')) {
-                fallbackTrova = "Entre montañas verdes crecí,<br>donde el aire es puro y sano,<br>la tierra que me vio partir<br>siempre llevo en mi mano.";
+            if (topic) {
+                // Generar trova personalizada sobre CUALQUIER tema
+                const trovaTemplates = [
+                    `De "${topic}" te canto yo,<br>con el alma del paisa,<br>que en mi tierra se forjó<br>esta trova que te avisa.`,
+                    `En las montañas de Antioquia,<br>donde "${topic}" resuena,<br>el corazón se aplica<br>a esta trova tan serena.`,
+                    `"${topic}" que me inspira,<br>como el café en la mañana,<br>mi trova paisa gira<br>con pasión antioqueña.`,
+                    `Hablo de "${topic}" con amor,<br>al estilo del arriero,<br>que con fuerza y con valor<br>canta este trova sincero.`,
+                    `De "${topic}" en Medellín,<br>te improviso este cantar,<br>con el alma del confín<br>que me enseñó a trovar.`,
+                    `"${topic}" en mi memoria,<br>como el Valle de Aburrá,<br>se convierte en historia<br>que mi trova cantará.`,
+                    `Con "${topic}" de bandera,<br>trovador yo me declaro,<br>a la usanza paisa entera<br>mi sentimiento preparo.`
+                ];
+                fallbackTrova = trovaTemplates[Math.floor(Math.random() * trovaTemplates.length)];
             } else {
-                // Fallback general
+                // Si no hay tema, trova general
                 const generalTrovas = [
                     "En el Valle de Aburrá,<br>donde el río canta y fluye,<br>la historia paisa está<br>en cada alma que construye.",
                     "Cosiaca cuenta con gracia<br>las historias del pasado,<br>de esta tierra de Antioquia<br>que siempre ha prosperado.",
-                    "Desde mil seiscientos setenta,<br>cuando se fundó la villa,<br>los paisas con su destreza<br>hicieron grande esta orilla."
+                    "Desde mil seiscientos setenta,<br>cuando se fundó la villa,<br>los paisas con su destreza<br>hicieron grande esta orilla.",
+                    "En las montañas de Antioquia,<br>donde el café es tradición,<br>vive el paisa trabajador<br>con mucho amor y pasión.",
+                    "Medellín, ciudad querida,<br>de arrieros y soñadores,<br>tus calles guardan la vida<br>de nobles trabajadores."
                 ];
                 fallbackTrova = generalTrovas[Math.floor(Math.random() * generalTrovas.length)];
             }
@@ -336,7 +342,7 @@ const Juegos = () => {
                                     value={customJokeTopic}
                                     onChange={(e) => setCustomJokeTopic(e.target.value)}
                                     onKeyPress={(e) => e.key === 'Enter' && !isGeneratingJoke && generateAIJoke()}
-                                    placeholder="Ej: Metro, Botero, café, arrieros, flores..."
+                                    placeholder="Escribe cualquier palabra: fútbol, arepas, lluvia, perro..."
                                     className="flex-1 px-4 py-3 rounded-full border-2 border-cosiaca-beige focus:border-cosiaca-red focus:ring-2 focus:ring-cosiaca-red/20 focus:outline-none text-cosiaca-brown text-sm sm:text-base transition-all"
                                     disabled={isGeneratingJoke}
                                 />
@@ -350,7 +356,7 @@ const Juegos = () => {
                                 </button>
                             </div>
                             <p className="text-xs sm:text-sm text-cosiaca-brown/60 mt-3 text-center leading-relaxed">
-                                💡 Escribe cualquier tema (Metro, Botero, café...) o deja vacío para sorpresa. Presiona <kbd className="px-2 py-1 bg-white rounded text-cosiaca-brown font-mono text-xs">Enter</kbd>
+                                💡 Escribe CUALQUIER palabra (amor, pizza, carro, música...) y Cosiaca hará un chiste. Presiona <kbd className="px-2 py-1 bg-white rounded text-cosiaca-brown font-mono text-xs">Enter</kbd>
                             </p>
                         </div>
 
@@ -429,7 +435,7 @@ const Juegos = () => {
                                     value={customTrovaTopic}
                                     onChange={(e) => setCustomTrovaTopic(e.target.value)}
                                     onKeyPress={(e) => e.key === 'Enter' && !isGeneratingTrova && generateAITrova()}
-                                    placeholder="Ej: amor, familia, trabajo, ciudad, montañas..."
+                                    placeholder="Escribe cualquier palabra: esperanza, noche, libro, amigo..."
                                     className="flex-1 px-4 py-3 rounded-full border-2 border-cosiaca-beige focus:border-cosiaca-red focus:ring-2 focus:ring-cosiaca-red/20 focus:outline-none text-cosiaca-brown text-sm sm:text-base transition-all"
                                     disabled={isGeneratingTrova}
                                 />
@@ -443,7 +449,7 @@ const Juegos = () => {
                                 </button>
                             </div>
                             <p className="text-xs sm:text-sm text-cosiaca-brown/60 mt-3 text-center leading-relaxed">
-                                💡 Escribe un tema (amor, familia, trabajo...) o deja vacío para sorpresa. Presiona <kbd className="px-2 py-1 bg-white rounded text-cosiaca-brown font-mono text-xs">Enter</kbd>
+                                💡 Escribe CUALQUIER palabra (sol, río, mamá, sueños...) y Cosiaca improvisará una trova. Presiona <kbd className="px-2 py-1 bg-white rounded text-cosiaca-brown font-mono text-xs">Enter</kbd>
                             </p>
                         </div>
 
