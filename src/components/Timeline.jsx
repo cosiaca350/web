@@ -7,6 +7,7 @@ const Timeline = () => {
     const [selectedPeriod, setSelectedPeriod] = useState(null);
     const [filterCategory, setFilterCategory] = useState('all');
     const [activeView, setActiveView] = useState('timeline'); // 'timeline' o 'historia'
+    const [show3DModal, setShow3DModal] = useState(false);
 
     const timelinePeriods = [
         {
@@ -540,10 +541,170 @@ const Timeline = () => {
                 </div>
             </header>
 
-            {/* VISTA: LÍNEA DE TIEMPO 3D */}
+            {/* VISTA: LÍNEA DE TIEMPO */}
             {activeView === 'timeline' && (
-                <Timeline3D periods={filteredPeriods} categories={categories} filterCategory={filterCategory} setFilterCategory={setFilterCategory} stats={stats} />
+                <div className="relative min-h-screen bg-gradient-to-b from-cosiaca-cream/30 via-cosiaca-cream to-cosiaca-beige">
+                    <div className="sticky top-0 z-40 bg-cosiaca-brown/95 backdrop-blur-lg shadow-xl">
+                        <div className="max-w-6xl mx-auto px-4 py-4">
+                            <div className="flex flex-col md:flex-row gap-3 items-center justify-between">
+                                <div>
+                                    <h2 className="text-xl md:text-2xl font-anton text-white">
+                                        📜 Línea de Tiempo Detallada
+                                    </h2>
+                                    <p className="text-white/70 text-xs mt-1">
+                                        {filteredPeriods.length} eventos históricos de Medellín
+                                    </p>
+                                </div>
+                                <div className="flex gap-2">
+                                    <button
+                                        onClick={() => setShow3DModal(true)}
+                                        className="px-4 py-2 rounded-lg text-sm font-bold bg-gradient-to-r from-cosiaca-red to-red-600 text-white hover:shadow-2xl shadow-lg transition-all hover:scale-105 flex items-center gap-2"
+                                    >
+                                        <span className="text-lg">✨</span>
+                                        <span>Ver Línea de Tiempo Interactiva 3D</span>
+                                    </button>
+                                    {categories && (
+                                        <button
+                                            onClick={() => setFilterCategory('all')}
+                                            className="px-3 py-2 rounded-lg text-xs font-bold bg-white/20 text-white hover:bg-white/30"
+                                        >
+                                            🔍
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
+
+                            {categories && filterCategory !== 'all' && (
+                                <div className="mt-3 pt-3 border-t border-white/20 animate-fade-in">
+                                    <div className="flex flex-wrap gap-2">
+                                        {categories.map(cat => (
+                                            <button
+                                                key={cat.id}
+                                                onClick={() => setFilterCategory(cat.id)}
+                                                className={`px-3 py-1.5 rounded-lg font-medium text-xs transition-all ${
+                                                    filterCategory === cat.id
+                                                        ? 'bg-white text-cosiaca-brown'
+                                                        : 'bg-white/15 text-white hover:bg-white/25'
+                                                }`}
+                                            >
+                                                {cat.icon} {cat.name}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    <div className="relative max-w-5xl mx-auto px-4 py-12">
+                        <div className="hidden md:block absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-cosiaca-red via-cosiaca-brown to-cosiaca-red"></div>
+
+                        <div className="space-y-8">
+                            {filteredPeriods.map((period, index) => (
+                                <div
+                                    key={period.id}
+                                    className="relative animate-fade-in"
+                                    style={{ animationDelay: `${index * 30}ms` }}
+                                >
+                                    <div className="hidden md:flex absolute left-4 w-9 h-9 rounded-full items-center justify-center text-xl bg-white border-4 border-cosiaca-red shadow-lg z-10">
+                                        {period.icon}
+                                    </div>
+
+                                    <div className="md:ml-20 bg-white rounded-2xl border-2 border-cosiaca-brown/20 overflow-hidden hover:shadow-2xl transition-all duration-300">
+                                        <div className={`${period.color} p-4 md:p-5 text-white`}>
+                                            <div className="flex items-center gap-4">
+                                                <div className="flex items-center gap-3 flex-1">
+                                                    <span className="text-3xl md:hidden">{period.icon}</span>
+                                                    <div>
+                                                        <h3 className="text-2xl md:text-3xl font-bold">{period.year}</h3>
+                                                        {period.date && (
+                                                            <p className="text-xs opacity-90 mt-1">{period.date}</p>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                                <button
+                                                    onClick={() => setSelectedPeriod(selectedPeriod === period.id ? null : period.id)}
+                                                    className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-all duration-300 font-bold text-sm backdrop-blur-sm"
+                                                >
+                                                    {selectedPeriod === period.id ? '−' : '+'}
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div className="p-4 md:p-6">
+                                            <h4 className="text-xl md:text-2xl font-anton text-cosiaca-brown mb-3 leading-tight">{period.title}</h4>
+
+                                            <div className="flex flex-wrap gap-2 mb-4">
+                                                <div className="flex items-center gap-2 bg-cosiaca-beige/50 px-3 py-1.5 rounded-lg text-sm">
+                                                    <span>👥</span>
+                                                    <span className="font-medium">{period.population}</span>
+                                                </div>
+                                                {period.keyFigure && (
+                                                    <div className="flex items-center gap-2 bg-cosiaca-beige/50 px-3 py-1.5 rounded-lg text-sm">
+                                                        <span>👤</span>
+                                                        <span className="font-medium text-cosiaca-brown/80">{period.keyFigure}</span>
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                            <p className="text-base text-cosiaca-brown/80 leading-relaxed mb-4">
+                                                {period.description}
+                                            </p>
+
+                                            {selectedPeriod === period.id && (
+                                                <div className="space-y-4 animate-fade-in">
+                                                    <div className="bg-gradient-to-r from-cosiaca-cream to-cosiaca-beige/70 p-4 rounded-xl border-l-4 border-cosiaca-red">
+                                                        <h5 className="font-bold text-cosiaca-brown mb-2 flex items-center gap-2 text-sm">
+                                                            <span>💬</span> Cosiaca cuenta:
+                                                        </h5>
+                                                        <p className="text-sm text-cosiaca-brown italic leading-relaxed">{period.details}</p>
+                                                    </div>
+
+                                                    <div className="bg-cosiaca-beige/30 p-4 rounded-xl border border-cosiaca-brown/20">
+                                                        <h5 className="font-bold text-cosiaca-brown mb-3 flex items-center gap-2 text-sm">
+                                                            <span>📌</span> Hitos Destacados:
+                                                        </h5>
+                                                        <ul className="space-y-2">
+                                                            {period.milestones.map((milestone, idx) => (
+                                                                <li key={idx} className="flex items-start gap-2 text-sm text-cosiaca-brown/80">
+                                                                    <span className="text-cosiaca-red font-bold mt-0.5 text-xs">●</span>
+                                                                    <span className="leading-snug">{milestone}</span>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="mt-12 text-center bg-white p-8 rounded-2xl border-2 border-cosiaca-brown/20 shadow-xl">
+                            <p className="text-lg text-cosiaca-brown/80 leading-relaxed mb-4">
+                                <strong className="text-cosiaca-red">Medellín</strong> ha transformado su historia de desafíos en una narrativa de resiliencia, innovación y esperanza.
+                            </p>
+                            <div className="pt-4">
+                                <p className="text-2xl font-anton text-cosiaca-red">
+                                    "¡De villa de mulas a ciudad inteligente, qué viaje tan berraco!"
+                                </p>
+                                <p className="text-cosiaca-brown/60 mt-2">- Cosiaca, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             )}
+
+            <Timeline3D
+                periods={filteredPeriods}
+                categories={categories}
+                filterCategory={filterCategory}
+                setFilterCategory={setFilterCategory}
+                stats={stats}
+                isOpen={show3DModal}
+                onClose={() => setShow3DModal(false)}
+            />
 
             <div className="relative max-w-5xl mx-auto px-4 hidden">
                 <div className="hidden md:block absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-cosiaca-red via-cosiaca-brown to-cosiaca-red"></div>

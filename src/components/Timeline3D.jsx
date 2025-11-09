@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
-const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, stats }) => {
+const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, stats, isOpen, onClose }) => {
     const [selectedNode, setSelectedNode] = useState(null);
     const [hoveredNode, setHoveredNode] = useState(null);
     const [viewMode, setViewMode] = useState('spiral');
     const [rotation, setRotation] = useState(0);
     const [zoom, setZoom] = useState(1);
     const [autoRotate, setAutoRotate] = useState(true);
-    const [showMode, setShowMode] = useState('3d');
     const containerRef = useRef(null);
     const animationRef = useRef(null);
     const [isDragging, setIsDragging] = useState(false);
@@ -15,7 +14,6 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
     const [particles, setParticles] = useState([]);
     const [showFilters, setShowFilters] = useState(false);
     const [animationSpeed] = useState(0.003);
-    const [selectedPeriod, setSelectedPeriod] = useState(null);
 
     useEffect(() => {
         const particleArray = Array.from({ length: 120 }, (_, i) => ({
@@ -30,7 +28,7 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
     }, []);
 
     useEffect(() => {
-        if (!isDragging && autoRotate && showMode === '3d') {
+        if (!isDragging && autoRotate && isOpen) {
             animationRef.current = requestAnimationFrame(animate);
             return () => {
                 if (animationRef.current) {
@@ -38,10 +36,10 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                 }
             };
         }
-    }, [rotation, isDragging, autoRotate, showMode]);
+    }, [rotation, isDragging, autoRotate, isOpen]);
 
     const animate = () => {
-        if (!isDragging && autoRotate && showMode === '3d') {
+        if (!isDragging && autoRotate && isOpen) {
             setRotation(prev => (prev + animationSpeed) % (Math.PI * 2));
             animationRef.current = requestAnimationFrame(animate);
         }
@@ -117,19 +115,15 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
     };
 
     const handleWheel = (e) => {
-        if (showMode === '3d') {
-            e.preventDefault();
-            const delta = e.deltaY > 0 ? 0.92 : 1.08;
-            setZoom(prev => Math.max(0.4, Math.min(3, prev * delta)));
-        }
+        e.preventDefault();
+        const delta = e.deltaY > 0 ? 0.92 : 1.08;
+        setZoom(prev => Math.max(0.4, Math.min(3, prev * delta)));
     };
 
     const handleMouseDown = (e) => {
-        if (showMode === '3d') {
-            setIsDragging(true);
-            setAutoRotate(false);
-            setDragStart({ x: e.clientX, y: e.clientY });
-        }
+        setIsDragging(true);
+        setAutoRotate(false);
+        setDragStart({ x: e.clientX, y: e.clientY });
     };
 
     const handleMouseUp = () => {
@@ -137,7 +131,7 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
     };
 
     const handleDragMove = (e) => {
-        if (isDragging && showMode === '3d') {
+        if (isDragging) {
             const deltaX = e.clientX - dragStart.x;
             setRotation(prev => prev + deltaX * 0.008);
             setDragStart({ x: e.clientX, y: e.clientY });
@@ -145,7 +139,7 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
     };
 
     const handleTouchStart = (e) => {
-        if (e.touches.length === 1 && showMode === '3d') {
+        if (e.touches.length === 1) {
             setIsDragging(true);
             setAutoRotate(false);
             setDragStart({ x: e.touches[0].clientX, y: e.touches[0].clientY });
@@ -153,7 +147,7 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
     };
 
     const handleTouchMove = (e) => {
-        if (isDragging && e.touches.length === 1 && showMode === '3d') {
+        if (isDragging && e.touches.length === 1) {
             const deltaX = e.touches[0].clientX - dragStart.x;
             setRotation(prev => prev + deltaX * 0.008);
             setDragStart({ x: e.touches[0].clientX, y: e.touches[0].clientY });
@@ -171,17 +165,10 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
         setSelectedNode(null);
     };
 
-    const switchToList = () => {
-        setShowMode('list');
-        setAutoRotate(false);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-
-    const switchTo3D = () => {
-        setShowMode('3d');
+    const handleClose = () => {
+        setSelectedNode(null);
         setAutoRotate(true);
-        setSelectedPeriod(null);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        onClose();
     };
 
     const sortedPeriods = [...periods].sort((a, b) => {
@@ -190,427 +177,286 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
         return aZ - bZ;
     });
 
+    if (!isOpen) return null;
+
     return (
-        <div className="relative">
-            {showMode === '3d' ? (
-                <div className="fixed inset-0 w-full h-screen z-0">
-                    <div
-                        ref={containerRef}
-                        className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-950 via-cosiaca-brown/95 to-black overflow-hidden"
-                        style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
-                        onWheel={handleWheel}
-                        onMouseDown={handleMouseDown}
-                        onMouseUp={handleMouseUp}
-                        onMouseMove={handleDragMove}
-                        onMouseLeave={handleMouseUp}
-                        onTouchStart={handleTouchStart}
-                        onTouchMove={handleTouchMove}
-                        onTouchEnd={handleTouchEnd}
-                    >
-                        <div className="absolute inset-0 opacity-20">
-                            {particles.map(p => (
-                                <div
-                                    key={p.id}
-                                    className="absolute rounded-full bg-white animate-pulse"
-                                    style={{
-                                        left: `${p.x}%`,
-                                        top: `${p.y}%`,
-                                        width: `${p.size}px`,
-                                        height: `${p.size}px`,
-                                        opacity: p.opacity,
-                                        animationDuration: `${2 + p.speed * 3}s`,
-                                        animationDelay: `${p.speed}s`
-                                    }}
-                                />
-                            ))}
-                        </div>
+        <div className="fixed inset-0 z-50 animate-fade-in">
+            <div
+                ref={containerRef}
+                className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-950 via-cosiaca-brown/95 to-black overflow-hidden"
+                style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+                onWheel={handleWheel}
+                onMouseDown={handleMouseDown}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleDragMove}
+                onMouseLeave={handleMouseUp}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+            >
+                <div className="absolute inset-0 opacity-20">
+                    {particles.map(p => (
+                        <div
+                            key={p.id}
+                            className="absolute rounded-full bg-white animate-pulse"
+                            style={{
+                                left: `${p.x}%`,
+                                top: `${p.y}%`,
+                                width: `${p.size}px`,
+                                height: `${p.size}px`,
+                                opacity: p.opacity,
+                                animationDuration: `${2 + p.speed * 3}s`,
+                                animationDelay: `${p.speed}s`
+                            }}
+                        />
+                    ))}
+                </div>
 
-                        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-                            <defs>
-                                <radialGradient id="nodeGlow">
-                                    <stop offset="0%" stopColor="rgba(255,255,255,0.95)" />
-                                    <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-                                </radialGradient>
-                                <filter id="glow">
-                                    <feGaussianBlur stdDeviation="0.4" result="coloredBlur"/>
-                                    <feMerge>
-                                        <feMergeNode in="coloredBlur"/>
-                                        <feMergeNode in="SourceGraphic"/>
-                                    </feMerge>
-                                </filter>
-                                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" stopColor="rgba(255,255,255,0.05)" />
-                                    <stop offset="50%" stopColor="rgba(255,255,255,0.3)" />
-                                    <stop offset="100%" stopColor="rgba(255,255,255,0.05)" />
-                                </linearGradient>
-                            </defs>
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <radialGradient id="nodeGlow">
+                            <stop offset="0%" stopColor="rgba(255,255,255,0.95)" />
+                            <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+                        </radialGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="0.4" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="rgba(255,255,255,0.05)" />
+                            <stop offset="50%" stopColor="rgba(255,255,255,0.3)" />
+                            <stop offset="100%" stopColor="rgba(255,255,255,0.05)" />
+                        </linearGradient>
+                    </defs>
 
-                            {sortedPeriods.map((period, i) => {
-                                const nextPeriod = sortedPeriods[i + 1];
-                                if (!nextPeriod) return null;
+                    {sortedPeriods.map((period, i) => {
+                        const nextPeriod = sortedPeriods[i + 1];
+                        if (!nextPeriod) return null;
 
-                                const pos1 = getNodePosition(periods.indexOf(period), periods.length);
-                                const pos2 = getNodePosition(periods.indexOf(nextPeriod), periods.length);
+                        const pos1 = getNodePosition(periods.indexOf(period), periods.length);
+                        const pos2 = getNodePosition(periods.indexOf(nextPeriod), periods.length);
 
-                                return (
-                                    <line
-                                        key={`line-${period.id}`}
-                                        x1={pos1.x}
-                                        y1={pos1.y}
-                                        x2={pos2.x}
-                                        y2={pos2.y}
-                                        stroke="url(#lineGradient)"
-                                        strokeWidth={0.12 * Math.min(pos1.scale, pos2.scale)}
-                                        opacity={0.5}
+                        return (
+                            <line
+                                key={`line-${period.id}`}
+                                x1={pos1.x}
+                                y1={pos1.y}
+                                x2={pos2.x}
+                                y2={pos2.y}
+                                stroke="url(#lineGradient)"
+                                strokeWidth={0.12 * Math.min(pos1.scale, pos2.scale)}
+                                opacity={0.5}
+                            />
+                        );
+                    })}
+
+                    {sortedPeriods.map((period) => {
+                        const pos = getNodePosition(periods.indexOf(period), periods.length);
+                        const isHovered = hoveredNode?.id === period.id;
+                        const isSelected = selectedNode?.id === period.id;
+                        const baseSize = (isSelected ? 4 : isHovered ? 3.2 : 2.5) * pos.scale;
+
+                        return (
+                            <g
+                                key={period.id}
+                                transform={`translate(${pos.x}, ${pos.y})`}
+                                onClick={() => handleNodeClick(period)}
+                                onMouseEnter={() => setHoveredNode(period)}
+                                onMouseLeave={() => setHoveredNode(null)}
+                                style={{ cursor: 'pointer' }}
+                                className="transition-all duration-200"
+                            >
+                                {(isHovered || isSelected) && (
+                                    <circle
+                                        r={baseSize * 2}
+                                        fill="url(#nodeGlow)"
+                                        opacity="0.4"
+                                        filter="url(#glow)"
+                                        className="animate-pulse"
                                     />
-                                );
-                            })}
+                                )}
 
-                            {sortedPeriods.map((period) => {
-                                const pos = getNodePosition(periods.indexOf(period), periods.length);
-                                const isHovered = hoveredNode?.id === period.id;
-                                const isSelected = selectedNode?.id === period.id;
-                                const baseSize = (isSelected ? 4 : isHovered ? 3.2 : 2.5) * pos.scale;
+                                <circle
+                                    r={baseSize}
+                                    fill={`hsl(${(periods.indexOf(period) / periods.length) * 360}, 80%, ${isSelected ? 65 : 58}%)`}
+                                    stroke="white"
+                                    strokeWidth={0.25 * pos.scale}
+                                    filter={isSelected || isHovered ? "url(#glow)" : "none"}
+                                    className="transition-all duration-200"
+                                    opacity={isHovered || isSelected ? 1 : 0.9}
+                                />
 
-                                return (
-                                    <g
-                                        key={period.id}
-                                        transform={`translate(${pos.x}, ${pos.y})`}
-                                        onClick={() => handleNodeClick(period)}
-                                        onMouseEnter={() => setHoveredNode(period)}
-                                        onMouseLeave={() => setHoveredNode(null)}
-                                        style={{ cursor: 'pointer' }}
-                                        className="transition-all duration-200"
-                                    >
-                                        {(isHovered || isSelected) && (
-                                            <circle
-                                                r={baseSize * 2}
-                                                fill="url(#nodeGlow)"
-                                                opacity="0.4"
-                                                filter="url(#glow)"
-                                                className="animate-pulse"
-                                            />
-                                        )}
+                                <text
+                                    textAnchor="middle"
+                                    dy="0.4em"
+                                    fill="white"
+                                    fontSize={1.4 * pos.scale}
+                                    fontWeight="bold"
+                                    pointerEvents="none"
+                                >
+                                    {period.icon}
+                                </text>
 
-                                        <circle
-                                            r={baseSize}
-                                            fill={`hsl(${(periods.indexOf(period) / periods.length) * 360}, 80%, ${isSelected ? 65 : 58}%)`}
-                                            stroke="white"
-                                            strokeWidth={0.25 * pos.scale}
-                                            filter={isSelected || isHovered ? "url(#glow)" : "none"}
-                                            className="transition-all duration-200"
-                                            opacity={isHovered || isSelected ? 1 : 0.9}
-                                        />
-
+                                {(isHovered || isSelected) && (
+                                    <>
                                         <text
                                             textAnchor="middle"
-                                            dy="0.4em"
+                                            y={baseSize + 1.8 * pos.scale}
                                             fill="white"
-                                            fontSize={1.4 * pos.scale}
+                                            fontSize={1 * pos.scale}
                                             fontWeight="bold"
                                             pointerEvents="none"
                                         >
-                                            {period.icon}
+                                            {period.year}
                                         </text>
-
-                                        {(isHovered || isSelected) && (
-                                            <>
-                                                <text
-                                                    textAnchor="middle"
-                                                    y={baseSize + 1.8 * pos.scale}
-                                                    fill="white"
-                                                    fontSize={1 * pos.scale}
-                                                    fontWeight="bold"
-                                                    pointerEvents="none"
-                                                >
-                                                    {period.year}
-                                                </text>
-                                                <text
-                                                    textAnchor="middle"
-                                                    y={baseSize + 3.2 * pos.scale}
-                                                    fill="white"
-                                                    fontSize={0.65 * pos.scale}
-                                                    pointerEvents="none"
-                                                    opacity="0.95"
-                                                >
-                                                    {period.title.substring(0, 18)}
-                                                </text>
-                                            </>
-                                        )}
-                                    </g>
-                                );
-                            })}
-                        </svg>
-                    </div>
-
-                    <div className="fixed inset-0 z-10 flex flex-col pointer-events-none">
-                        <div className="flex-none pt-4 px-4 pointer-events-auto">
-                            <div className="bg-black/40 backdrop-blur-lg rounded-2xl p-4 max-w-6xl mx-auto shadow-2xl">
-                                <div className="flex flex-col md:flex-row gap-3 items-center justify-between">
-                                    <div className="flex gap-2 flex-wrap justify-center">
-                                        <button
-                                            onClick={() => { setViewMode('spiral'); setAutoRotate(true); }}
-                                            className={`px-3 py-2 rounded-full text-xs font-bold transition-all ${
-                                                viewMode === 'spiral'
-                                                    ? 'bg-white text-cosiaca-brown shadow-lg'
-                                                    : 'bg-white/20 text-white hover:bg-white/30'
-                                            }`}
+                                        <text
+                                            textAnchor="middle"
+                                            y={baseSize + 3.2 * pos.scale}
+                                            fill="white"
+                                            fontSize={0.65 * pos.scale}
+                                            pointerEvents="none"
+                                            opacity="0.95"
                                         >
-                                            🌀 Espiral
-                                        </button>
-                                        <button
-                                            onClick={() => { setViewMode('orbit'); setAutoRotate(true); }}
-                                            className={`px-3 py-2 rounded-full text-xs font-bold transition-all ${
-                                                viewMode === 'orbit'
-                                                    ? 'bg-white text-cosiaca-brown shadow-lg'
-                                                    : 'bg-white/20 text-white hover:bg-white/30'
-                                            }`}
-                                        >
-                                            🪐 Órbita
-                                        </button>
-                                        <button
-                                            onClick={() => { setViewMode('wave'); setAutoRotate(true); }}
-                                            className={`px-3 py-2 rounded-full text-xs font-bold transition-all ${
-                                                viewMode === 'wave'
-                                                    ? 'bg-white text-cosiaca-brown shadow-lg'
-                                                    : 'bg-white/20 text-white hover:bg-white/30'
-                                            }`}
-                                        >
-                                            〰️ Onda
-                                        </button>
-                                        <button
-                                            onClick={() => { setViewMode('grid'); setAutoRotate(true); }}
-                                            className={`px-3 py-2 rounded-full text-xs font-bold transition-all ${
-                                                viewMode === 'grid'
-                                                    ? 'bg-white text-cosiaca-brown shadow-lg'
-                                                    : 'bg-white/20 text-white hover:bg-white/30'
-                                            }`}
-                                        >
-                                            ⬜ Red
-                                        </button>
-                                    </div>
-
-                                    <div className="flex gap-2 flex-wrap justify-center">
-                                        {categories && (
-                                            <button
-                                                onClick={() => setShowFilters(!showFilters)}
-                                                className="px-3 py-2 rounded-full text-xs font-bold transition-all bg-white/20 text-white hover:bg-white/30"
-                                            >
-                                                {showFilters ? '✕' : '🔍'}
-                                            </button>
-                                        )}
-                                        <button
-                                            onClick={() => setAutoRotate(!autoRotate)}
-                                            className={`px-3 py-2 rounded-full text-xs font-bold transition-all ${
-                                                autoRotate
-                                                    ? 'bg-green-500/80 text-white'
-                                                    : 'bg-white/20 text-white hover:bg-white/30'
-                                            }`}
-                                        >
-                                            {autoRotate ? '⏸️' : '▶️'}
-                                        </button>
-                                        <button
-                                            onClick={resetView}
-                                            className="px-3 py-2 rounded-full text-xs font-bold transition-all bg-white/20 text-white hover:bg-white/30"
-                                        >
-                                            ↺
-                                        </button>
-                                        <button
-                                            onClick={switchToList}
-                                            className="px-4 py-2 rounded-full text-xs font-bold transition-all bg-cosiaca-red text-white hover:bg-cosiaca-red/80 shadow-lg"
-                                        >
-                                            📜 Lista
-                                        </button>
-                                    </div>
-                                </div>
-
-                                {showFilters && categories && (
-                                    <div className="mt-3 pt-3 border-t border-white/20 animate-fade-in">
-                                        <div className="flex flex-wrap gap-2 justify-center">
-                                            {categories.map(cat => (
-                                                <button
-                                                    key={cat.id}
-                                                    onClick={() => setFilterCategory(cat.id)}
-                                                    className={`px-3 py-1.5 rounded-full font-medium text-xs transition-all ${
-                                                        filterCategory === cat.id
-                                                            ? 'bg-white text-cosiaca-brown shadow-lg'
-                                                            : 'bg-white/15 text-white hover:bg-white/25'
-                                                    }`}
-                                                >
-                                                    {cat.icon} {cat.name}
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </div>
+                                            {period.title.substring(0, 18)}
+                                        </text>
+                                    </>
                                 )}
+                            </g>
+                        );
+                    })}
+                </svg>
+            </div>
 
-                                <div className="mt-3 text-center">
-                                    <div className="text-white/80 text-xs">
-                                        <span className="font-bold">{periods.length}</span> eventos •
-                                        <span className="ml-2">Zoom {(zoom * 100).toFixed(0)}%</span> •
-                                        <span className="ml-2">🖱️ Arrastra • 🔍 Scroll • ✨ Click</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            ) : (
-                <div className="relative min-h-screen bg-gradient-to-b from-cosiaca-cream/30 via-cosiaca-cream to-cosiaca-beige">
-                    <div className="sticky top-0 z-50 bg-cosiaca-brown/95 backdrop-blur-lg shadow-xl">
-                        <div className="max-w-6xl mx-auto px-4 py-4">
-                            <div className="flex flex-col md:flex-row gap-3 items-center justify-between">
-                                <div>
-                                    <h2 className="text-xl md:text-2xl font-anton text-white">
-                                        📜 Línea de Tiempo Detallada
-                                    </h2>
-                                    <p className="text-white/70 text-xs mt-1">
-                                        {periods.length} eventos históricos de Medellín
-                                    </p>
-                                </div>
-                                <div className="flex gap-2">
-                                    {categories && (
-                                        <button
-                                            onClick={() => setShowFilters(!showFilters)}
-                                            className="px-3 py-2 rounded-lg text-xs font-bold bg-white/20 text-white hover:bg-white/30"
-                                        >
-                                            {showFilters ? '✕' : '🔍'}
-                                        </button>
-                                    )}
-                                    <button
-                                        onClick={switchTo3D}
-                                        className="px-4 py-2 rounded-lg text-xs font-bold bg-white text-cosiaca-brown hover:bg-white/90 shadow-lg"
-                                    >
-                                        🌀 Vista 3D
-                                    </button>
-                                </div>
-                            </div>
-
-                            {showFilters && categories && (
-                                <div className="mt-3 pt-3 border-t border-white/20 animate-fade-in">
-                                    <div className="flex flex-wrap gap-2">
-                                        {categories.map(cat => (
-                                            <button
-                                                key={cat.id}
-                                                onClick={() => setFilterCategory(cat.id)}
-                                                className={`px-3 py-1.5 rounded-lg font-medium text-xs transition-all ${
-                                                    filterCategory === cat.id
-                                                        ? 'bg-white text-cosiaca-brown'
-                                                        : 'bg-white/15 text-white hover:bg-white/25'
-                                                }`}
-                                            >
-                                                {cat.icon} {cat.name}
-                                            </button>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    <div className="relative max-w-5xl mx-auto px-4 py-12">
-                        <div className="hidden md:block absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-cosiaca-red via-cosiaca-brown to-cosiaca-red"></div>
-
-                        <div className="space-y-8">
-                            {periods.map((period, index) => (
-                                <div
-                                    key={period.id}
-                                    className="relative animate-fade-in"
-                                    style={{ animationDelay: `${index * 30}ms` }}
-                                >
-                                    <div className="hidden md:flex absolute left-4 w-9 h-9 rounded-full items-center justify-center text-xl bg-white border-4 border-cosiaca-red shadow-lg z-10">
-                                        {period.icon}
-                                    </div>
-
-                                    <div className="md:ml-20 bg-white rounded-2xl border-2 border-cosiaca-brown/20 overflow-hidden hover:shadow-2xl transition-all duration-300">
-                                        <div className={`${period.color} p-4 md:p-5 text-white`}>
-                                            <div className="flex items-center gap-4">
-                                                <div className="flex items-center gap-3 flex-1">
-                                                    <span className="text-3xl md:hidden">{period.icon}</span>
-                                                    <div>
-                                                        <h3 className="text-2xl md:text-3xl font-bold">{period.year}</h3>
-                                                        {period.date && (
-                                                            <p className="text-xs opacity-90 mt-1">{period.date}</p>
-                                                        )}
-                                                    </div>
-                                                </div>
-                                                <button
-                                                    onClick={() => setSelectedPeriod(selectedPeriod === period.id ? null : period.id)}
-                                                    className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-all duration-300 font-bold text-sm backdrop-blur-sm"
-                                                >
-                                                    {selectedPeriod === period.id ? '−' : '+'}
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        <div className="p-4 md:p-6">
-                                            <h4 className="text-xl md:text-2xl font-anton text-cosiaca-brown mb-3 leading-tight">{period.title}</h4>
-
-                                            <div className="flex flex-wrap gap-2 mb-4">
-                                                <div className="flex items-center gap-2 bg-cosiaca-beige/50 px-3 py-1.5 rounded-lg text-sm">
-                                                    <span>👥</span>
-                                                    <span className="font-medium">{period.population}</span>
-                                                </div>
-                                                {period.keyFigure && (
-                                                    <div className="flex items-center gap-2 bg-cosiaca-beige/50 px-3 py-1.5 rounded-lg text-sm">
-                                                        <span>👤</span>
-                                                        <span className="font-medium text-cosiaca-brown/80">{period.keyFigure}</span>
-                                                    </div>
-                                                )}
-                                            </div>
-
-                                            <p className="text-base text-cosiaca-brown/80 leading-relaxed mb-4">
-                                                {period.description}
-                                            </p>
-
-                                            {selectedPeriod === period.id && (
-                                                <div className="space-y-4 animate-fade-in">
-                                                    <div className="bg-gradient-to-r from-cosiaca-cream to-cosiaca-beige/70 p-4 rounded-xl border-l-4 border-cosiaca-red">
-                                                        <h5 className="font-bold text-cosiaca-brown mb-2 flex items-center gap-2 text-sm">
-                                                            <span>💬</span> Cosiaca cuenta:
-                                                        </h5>
-                                                        <p className="text-sm text-cosiaca-brown italic leading-relaxed">{period.details}</p>
-                                                    </div>
-
-                                                    <div className="bg-cosiaca-beige/30 p-4 rounded-xl border border-cosiaca-brown/20">
-                                                        <h5 className="font-bold text-cosiaca-brown mb-3 flex items-center gap-2 text-sm">
-                                                            <span>📌</span> Hitos Destacados:
-                                                        </h5>
-                                                        <ul className="space-y-2">
-                                                            {period.milestones.map((milestone, idx) => (
-                                                                <li key={idx} className="flex items-start gap-2 text-sm text-cosiaca-brown/80">
-                                                                    <span className="text-cosiaca-red font-bold mt-0.5 text-xs">●</span>
-                                                                    <span className="leading-snug">{milestone}</span>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="mt-12 text-center bg-white p-8 rounded-2xl border-2 border-cosiaca-brown/20 shadow-xl">
-                            <p className="text-lg text-cosiaca-brown/80 leading-relaxed mb-4">
-                                <strong className="text-cosiaca-red">Medellín</strong> ha transformado su historia de desafíos en una narrativa de resiliencia, innovación y esperanza.
-                            </p>
-                            <div className="pt-4">
-                                <p className="text-2xl font-anton text-cosiaca-red">
-                                    "¡De villa de mulas a ciudad inteligente, qué viaje tan berraco!"
+            <div className="absolute inset-0 z-10 flex flex-col pointer-events-none">
+                <div className="flex-none pt-4 px-4 pointer-events-auto">
+                    <div className="bg-black/40 backdrop-blur-lg rounded-2xl p-4 max-w-6xl mx-auto shadow-2xl">
+                        <div className="flex flex-col md:flex-row gap-3 items-center justify-between">
+                            <div>
+                                <h2 className="text-xl md:text-2xl font-anton text-white mb-1">
+                                    ✨ Línea de Tiempo Interactiva 3D
+                                </h2>
+                                <p className="text-white/70 text-xs">
+                                    Explora 350 años de historia de Medellín
                                 </p>
-                                <p className="text-cosiaca-brown/60 mt-2">- Cosiaca, 2025</p>
+                            </div>
+
+                            <button
+                                onClick={handleClose}
+                                className="px-4 py-2 rounded-full text-sm font-bold bg-cosiaca-red text-white hover:bg-cosiaca-red/80 shadow-lg transition-all"
+                            >
+                                ✕ Cerrar
+                            </button>
+                        </div>
+
+                        <div className="mt-4 flex flex-col md:flex-row gap-3 items-center justify-between border-t border-white/20 pt-3">
+                            <div className="flex gap-2 flex-wrap justify-center">
+                                <button
+                                    onClick={() => { setViewMode('spiral'); setAutoRotate(true); }}
+                                    className={`px-3 py-2 rounded-full text-xs font-bold transition-all ${
+                                        viewMode === 'spiral'
+                                            ? 'bg-white text-cosiaca-brown shadow-lg'
+                                            : 'bg-white/20 text-white hover:bg-white/30'
+                                    }`}
+                                >
+                                    🌀 Espiral
+                                </button>
+                                <button
+                                    onClick={() => { setViewMode('orbit'); setAutoRotate(true); }}
+                                    className={`px-3 py-2 rounded-full text-xs font-bold transition-all ${
+                                        viewMode === 'orbit'
+                                            ? 'bg-white text-cosiaca-brown shadow-lg'
+                                            : 'bg-white/20 text-white hover:bg-white/30'
+                                    }`}
+                                >
+                                    🪐 Órbita
+                                </button>
+                                <button
+                                    onClick={() => { setViewMode('wave'); setAutoRotate(true); }}
+                                    className={`px-3 py-2 rounded-full text-xs font-bold transition-all ${
+                                        viewMode === 'wave'
+                                            ? 'bg-white text-cosiaca-brown shadow-lg'
+                                            : 'bg-white/20 text-white hover:bg-white/30'
+                                    }`}
+                                >
+                                    〰️ Onda
+                                </button>
+                                <button
+                                    onClick={() => { setViewMode('grid'); setAutoRotate(true); }}
+                                    className={`px-3 py-2 rounded-full text-xs font-bold transition-all ${
+                                        viewMode === 'grid'
+                                            ? 'bg-white text-cosiaca-brown shadow-lg'
+                                            : 'bg-white/20 text-white hover:bg-white/30'
+                                    }`}
+                                >
+                                    ⬜ Red
+                                </button>
+                            </div>
+
+                            <div className="flex gap-2 flex-wrap justify-center">
+                                {categories && (
+                                    <button
+                                        onClick={() => setShowFilters(!showFilters)}
+                                        className="px-3 py-2 rounded-full text-xs font-bold transition-all bg-white/20 text-white hover:bg-white/30"
+                                    >
+                                        {showFilters ? '✕' : '🔍'}
+                                    </button>
+                                )}
+                                <button
+                                    onClick={() => setAutoRotate(!autoRotate)}
+                                    className={`px-3 py-2 rounded-full text-xs font-bold transition-all ${
+                                        autoRotate
+                                            ? 'bg-green-500/80 text-white'
+                                            : 'bg-white/20 text-white hover:bg-white/30'
+                                    }`}
+                                >
+                                    {autoRotate ? '⏸️' : '▶️'}
+                                </button>
+                                <button
+                                    onClick={resetView}
+                                    className="px-3 py-2 rounded-full text-xs font-bold transition-all bg-white/20 text-white hover:bg-white/30"
+                                >
+                                    ↺
+                                </button>
+                            </div>
+                        </div>
+
+                        {showFilters && categories && (
+                            <div className="mt-3 pt-3 border-t border-white/20 animate-fade-in">
+                                <div className="flex flex-wrap gap-2 justify-center">
+                                    {categories.map(cat => (
+                                        <button
+                                            key={cat.id}
+                                            onClick={() => setFilterCategory(cat.id)}
+                                            className={`px-3 py-1.5 rounded-full font-medium text-xs transition-all ${
+                                                filterCategory === cat.id
+                                                    ? 'bg-white text-cosiaca-brown shadow-lg'
+                                                    : 'bg-white/15 text-white hover:bg-white/25'
+                                            }`}
+                                        >
+                                            {cat.icon} {cat.name}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        <div className="mt-3 text-center">
+                            <div className="text-white/80 text-xs">
+                                <span className="font-bold">{periods.length}</span> eventos •
+                                <span className="ml-2">Zoom {(zoom * 100).toFixed(0)}%</span> •
+                                <span className="ml-2">🖱️ Arrastra • 🔍 Scroll • ✨ Click</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            )}
+            </div>
 
-            {selectedNode && showMode === '3d' && (
+            {selectedNode && (
                 <div
-                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-lg animate-fade-in"
+                    className="absolute inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-lg animate-fade-in"
                     onClick={() => { setSelectedNode(null); setAutoRotate(true); }}
                 >
                     <div
