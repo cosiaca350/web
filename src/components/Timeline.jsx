@@ -567,86 +567,77 @@ const Timeline = () => {
                 </div>
             </div>
 
-            <div className="relative">
-                <div className="hidden md:block absolute left-12 top-0 bottom-0 w-1 bg-gradient-to-b from-cosiaca-red via-cosiaca-brown to-cosiaca-red"></div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {filteredPeriods.map((period, index) => (
+                    <div
+                        key={period.id}
+                        className="bg-gradient-to-br from-white to-cosiaca-beige/30 rounded-2xl border-2 border-cosiaca-brown/20 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col animate-fade-in"
+                        style={{ animationDelay: `${index * 30}ms` }}
+                    >
+                        <div className={`${period.color} p-6 text-white text-center`}>
+                            <div className="text-5xl mb-3">{period.icon}</div>
+                            <div className="text-4xl font-bold mb-1">{period.year}</div>
+                            {period.date && (
+                                <div className="text-sm opacity-90">{period.date}</div>
+                            )}
+                        </div>
 
-                <div className="space-y-6">
-                    {filteredPeriods.map((period, index) => (
-                        <div
-                            key={period.id}
-                            className="relative flex items-start animate-fade-in"
-                            style={{ animationDelay: `${index * 50}ms` }}
-                        >
-                            <div className="hidden md:flex absolute left-8 w-9 h-9 rounded-full items-center justify-center text-xl bg-white border-4 border-cosiaca-red shadow-lg z-10">
-                                {period.icon}
-                            </div>
+                        <div className="p-5 flex-1 flex flex-col space-y-3">
+                            <h3 className="text-xl font-anton text-cosiaca-brown leading-tight min-h-[3rem]">
+                                {period.title}
+                            </h3>
 
-                            <div className="w-full md:ml-20 bg-gradient-to-br from-white to-cosiaca-beige/30 p-6 rounded-2xl border-2 border-cosiaca-brown/20 hover:shadow-2xl hover:scale-[1.01] transition-all duration-300">
-                                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
-                                    <div className="flex-1">
-                                        <div className="flex items-center gap-3 mb-2">
-                                            <span className="text-2xl md:hidden">{period.icon}</span>
-                                            <div>
-                                                <h3 className="text-3xl md:text-4xl font-bold text-cosiaca-red">{period.year}</h3>
-                                                {period.date && (
-                                                    <p className="text-sm text-cosiaca-brown/60">{period.date}</p>
-                                                )}
-                                            </div>
-                                        </div>
-                                        <h4 className="text-xl md:text-2xl font-anton text-cosiaca-brown mb-3">{period.title}</h4>
-
-                                        <div className="grid md:grid-cols-2 gap-2 mb-3 text-sm">
-                                            <div className="flex items-center gap-2 bg-cosiaca-beige/40 px-3 py-1 rounded-full">
-                                                <span>👥</span>
-                                                <span className="font-medium">{period.population}</span>
-                                            </div>
-                                            {period.keyFigure && (
-                                                <div className="flex items-center gap-2 bg-cosiaca-beige/40 px-3 py-1 rounded-full">
-                                                    <span>👤</span>
-                                                    <span className="font-medium text-cosiaca-brown/80">{period.keyFigure}</span>
-                                                </div>
-                                            )}
-                                        </div>
-
-                                        <p className="text-cosiaca-brown/80 leading-relaxed">{period.description}</p>
-                                    </div>
-
-                                    <button
-                                        onClick={() => setSelectedPeriod(selectedPeriod === period.id ? null : period.id)}
-                                        className="self-start bg-cosiaca-red text-white px-6 py-3 rounded-full hover:bg-cosiaca-brown transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 whitespace-nowrap"
-                                    >
-                                        {selectedPeriod === period.id ? '✕ Ocultar' : '+ Ver más'}
-                                    </button>
+                            <div className="space-y-2 text-xs">
+                                <div className="flex items-center gap-2 bg-cosiaca-beige/40 px-3 py-2 rounded-lg">
+                                    <span>👥</span>
+                                    <span className="font-medium truncate">{period.population}</span>
                                 </div>
-
-                                {selectedPeriod === period.id && (
-                                    <div className="mt-6 space-y-4 animate-fade-in">
-                                        <div className="bg-gradient-to-r from-cosiaca-cream/80 to-cosiaca-beige/50 p-5 rounded-xl border-l-4 border-cosiaca-red">
-                                            <h5 className="font-bold text-cosiaca-brown mb-2 flex items-center gap-2">
-                                                <span>💬</span> Cosiaca cuenta:
-                                            </h5>
-                                            <p className="text-cosiaca-brown italic leading-relaxed">{period.details}</p>
-                                        </div>
-
-                                        <div className="bg-white/80 p-5 rounded-xl border border-cosiaca-brown/20">
-                                            <h5 className="font-bold text-cosiaca-brown mb-3 flex items-center gap-2">
-                                                <span>📌</span> Hitos Destacados:
-                                            </h5>
-                                            <ul className="space-y-2">
-                                                {period.milestones.map((milestone, idx) => (
-                                                    <li key={idx} className="flex items-start gap-2 text-cosiaca-brown/80">
-                                                        <span className="text-cosiaca-red font-bold mt-1">•</span>
-                                                        <span>{milestone}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
+                                {period.keyFigure && (
+                                    <div className="flex items-center gap-2 bg-cosiaca-beige/40 px-3 py-2 rounded-lg">
+                                        <span>👤</span>
+                                        <span className="font-medium text-cosiaca-brown/80 truncate">{period.keyFigure}</span>
                                     </div>
                                 )}
                             </div>
+
+                            <p className="text-sm text-cosiaca-brown/80 leading-relaxed line-clamp-4 flex-1">
+                                {period.description}
+                            </p>
+
+                            <button
+                                onClick={() => setSelectedPeriod(selectedPeriod === period.id ? null : period.id)}
+                                className="w-full bg-cosiaca-red text-white px-4 py-3 rounded-xl hover:bg-cosiaca-brown transition-all duration-300 font-bold shadow-md hover:shadow-xl text-sm mt-auto"
+                            >
+                                {selectedPeriod === period.id ? '✕ Cerrar' : '📖 Leer más'}
+                            </button>
+
+                            {selectedPeriod === period.id && (
+                                <div className="pt-3 space-y-3 border-t-2 border-cosiaca-brown/10 animate-fade-in">
+                                    <div className="bg-gradient-to-r from-cosiaca-cream/80 to-cosiaca-beige/50 p-4 rounded-xl border-l-4 border-cosiaca-red">
+                                        <h5 className="font-bold text-cosiaca-brown mb-2 flex items-center gap-2 text-sm">
+                                            <span>💬</span> Cosiaca cuenta:
+                                        </h5>
+                                        <p className="text-xs text-cosiaca-brown italic leading-relaxed">{period.details}</p>
+                                    </div>
+
+                                    <div className="bg-white p-4 rounded-xl border border-cosiaca-brown/20">
+                                        <h5 className="font-bold text-cosiaca-brown mb-2 flex items-center gap-2 text-sm">
+                                            <span>📌</span> Hitos destacados:
+                                        </h5>
+                                        <ul className="space-y-2">
+                                            {period.milestones.map((milestone, idx) => (
+                                                <li key={idx} className="flex items-start gap-2 text-xs text-cosiaca-brown/80">
+                                                    <span className="text-cosiaca-red font-bold mt-0.5">✓</span>
+                                                    <span>{milestone}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            )}
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
 
             <div className="bg-gradient-to-br from-cosiaca-red/10 to-cosiaca-brown/10 p-8 rounded-2xl border-2 border-cosiaca-brown/20 shadow-xl">
