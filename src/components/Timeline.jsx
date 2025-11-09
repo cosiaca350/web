@@ -542,33 +542,8 @@ const Timeline = () => {
 
             {/* VISTA: LÍNEA DE TIEMPO 3D */}
             {activeView === 'timeline' && (
-                <>
-            <div className="bg-gradient-to-br from-cosiaca-beige/50 to-cosiaca-cream/50 p-6 md:p-8 rounded-2xl shadow-xl border-2 border-cosiaca-brown/20">
-                <h2 className="text-2xl md:text-3xl font-anton text-cosiaca-brown mb-6 text-center">
-                    🔍 Filtrar por Categoría
-                </h2>
-                <div className="flex flex-wrap justify-center gap-2 md:gap-3">
-                    {categories.map(cat => (
-                        <button
-                            key={cat.id}
-                            onClick={() => setFilterCategory(cat.id)}
-                            className={`px-4 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${
-                                filterCategory === cat.id
-                                    ? 'bg-cosiaca-red text-white shadow-lg scale-105'
-                                    : 'bg-white text-cosiaca-brown border border-cosiaca-brown/30 hover:border-cosiaca-red'
-                            }`}
-                        >
-                            <span className="mr-1">{cat.icon}</span>
-                            {cat.name}
-                        </button>
-                    ))}
-                </div>
-                <div className="mt-4 text-center text-cosiaca-brown/70">
-                    Mostrando <strong>{filteredPeriods.length}</strong> de <strong>{stats.total}</strong> hitos
-                </div>
-            </div>
-
-            <Timeline3D periods={filteredPeriods} />
+                <Timeline3D periods={filteredPeriods} categories={categories} filterCategory={filterCategory} setFilterCategory={setFilterCategory} stats={stats} />
+            )}
 
             <div className="relative max-w-5xl mx-auto px-4 hidden">
                 <div className="hidden md:block absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-cosiaca-red via-cosiaca-brown to-cosiaca-red"></div>
@@ -676,7 +651,6 @@ const Timeline = () => {
                     </div>
                 </div>
             </div>
-            </>
             )}
 
             {/* VISTA: HISTORIA AMPLIADA */}
