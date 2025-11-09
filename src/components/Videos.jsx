@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 
 const Videos = () => {
     const [modalVideo, setModalVideo] = useState(null);
+    const [playingVideos, setPlayingVideos] = useState({});
+
+    const handlePlayVideo = (videoId) => {
+        setPlayingVideos(prev => ({ ...prev, [videoId]: true }));
+    };
 
     // Playlist completa de YouTube: Cosiaca 350
     const playlistId = "PLLldviceNkKeURfhsKQ_uqFqg-Kyx-tjA";
@@ -85,16 +90,41 @@ const Videos = () => {
 
                 {videoList.map((video) => (
                     <div key={video.id} className="bg-white rounded-xl shadow-lg border-2 border-cosiaca-beige overflow-hidden hover:border-cosiaca-red transition-all duration-300">
-                        {/* Video embebido directo */}
+                        {/* Video con thumbnail o embebido */}
                         <div className="relative pt-[56.25%] bg-black overflow-hidden">
-                            <iframe
-                                className="absolute inset-0 w-full h-full"
-                                src={`https://www.youtube.com/embed/${video.embedId}?rel=0&modestbranding=1`}
-                                title={video.title}
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                            />
+                            {!playingVideos[video.id] ? (
+                                <>
+                                    <img
+                                        src={video.thumbnail}
+                                        alt={video.title}
+                                        className="absolute inset-0 w-full h-full object-cover"
+                                        onError={(e) => {
+                                            e.target.src = `https://img.youtube.com/vi/${video.embedId}/hqdefault.jpg`;
+                                        }}
+                                    />
+                                    {/* Overlay con play button */}
+                                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center hover:bg-black/60 transition-all duration-300">
+                                        <button
+                                            onClick={() => handlePlayVideo(video.id)}
+                                            className="w-24 h-24 bg-red-600 rounded-full flex items-center justify-center transform hover:scale-110 transition-transform duration-300 shadow-xl"
+                                            aria-label="Reproducir video"
+                                        >
+                                            <svg className="w-12 h-12 text-white ml-2" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M8 5v14l11-7z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </>
+                            ) : (
+                                <iframe
+                                    className="absolute inset-0 w-full h-full"
+                                    src={`https://www.youtube.com/embed/${video.embedId}?autoplay=1&rel=0&modestbranding=1`}
+                                    title={video.title}
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowFullScreen
+                                />
+                            )}
                         </div>
 
                         {/* Contenido */}
