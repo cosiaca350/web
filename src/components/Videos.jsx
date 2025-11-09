@@ -46,6 +46,24 @@ const Videos = () => {
                 "🎭 Apodado 'El Burro de Oro'",
                 "🎨 Recreación histórica con IA"
             ]
+        },
+        {
+            id: 3,
+            title: "Débora Arango: La Rebelde del Arte Colombiano (1907-2005)",
+            description: "Descubre la vida revolucionaria de Débora Arango Pérez, la pintora antioqueña que desafió las convenciones sociales de su época. Cosiaca nos cuenta con admiración cómo esta valiente artista nacida en Medellín rompió tabúes al pintar desnudos, denunciar la violencia política y retratar la realidad social colombiana con una honestidad brutal. Desde su formación con Pedro Nel Gómez hasta su autoexilio artístico de 30 años tras la censura, conoce la historia de quien enfrentó el rechazo de la sociedad conservadora para convertirse en un ícono del arte latinoamericano. Sus obras sobre La Violencia, la crítica social y la dignidad humana la posicionaron como una de las artistas más importantes del siglo XX en Colombia.",
+            embedId: "9UOOJNsKrXY",
+            category: "Arte y Revolución",
+            duration: "Video generado con IA",
+            thumbnail: `https://img.youtube.com/vi/9UOOJNsKrXY/maxresdefault.jpg`,
+            highlights: [
+                "🎨 Primera mujer en pintar desnudos en Colombia",
+                "✊ Arte de denuncia social y política",
+                "🖼️ Discípula de Pedro Nel Gómez",
+                "💪 Desafió convenciones conservadoras de su época",
+                "🏆 Reconocida como ícono del arte latinoamericano",
+                "🎭 30 años de autoexilio tras censura",
+                "🎨 Recreación histórica con IA"
+            ]
         }
     ];
 
