@@ -16,13 +16,6 @@ const Juegos = () => {
     const [isGeneratingJoke, setIsGeneratingJoke] = useState(false);
     const [isGeneratingTrova, setIsGeneratingTrova] = useState(false);
 
-    // Memory Game State
-    const [memoryCards, setMemoryCards] = useState([]);
-    const [flippedCards, setFlippedCards] = useState([]);
-    const [matchedCards, setMatchedCards] = useState([]);
-    const [memoryMoves, setMemoryMoves] = useState(0);
-    const [memoryGameStarted, setMemoryGameStarted] = useState(false);
-
     // Trivia Data
     const triviaQuestions = [
         {
@@ -57,22 +50,36 @@ const Juegos = () => {
         }
     ];
 
-    // Stand Up Data
+    // Stand Up Data - Chistes Paisas con Humor Histórico
     const standUpJokes = [
-        "¿Cuál es el colmo de un electricista? Que su mujer se llame Luz y sus hijos le sigan la corriente.",
-        "¿Qué le dice un semáforo a otro? No me mires, que me estoy cambiando.",
-        "Iba Caperucita Roja por el bosque, cuando se encuentra al lobo y el lobo le dice: '¿A dónde vas tan sola?' Y Caperucita responde: 'A la casa de mi abuela'. Y el lobo le dice: '¡Ah, bueno, pues yo me voy a mi casa, chao!'",
-        "¿Qué hace una abeja en un gimnasio? ¡Zumba!",
-        "¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter."
+        "¡Uy mijito! ¿Sabés por qué los paisas somos tan trabajadores? ¡Porque desde que nacemos ya estamos 'ocupados' en el vientre de la mamá! Ja ja ja.",
+        "¿Por qué en Medellín nunca llueve dinero? ¡Porque los paisas ya lo habríamos recogido todo antes de que toque el suelo! Ja ja ja.",
+        "¿Sabés cuál es el colmo de un paisa? ¡Que le regalen algo y pregunte cuánto vale para saber si le gustó! Ja ja ja.",
+        "¿Por qué Fernando Botero hace figuras gorditas? ¡Porque en Antioquia hasta el arte está bien alimentado, pues! Ja ja ja.",
+        "¿Cuál es la diferencia entre un paisa y un arriero? ¡Que el arriero solo carga mulas, pero el paisa carga con toda la familia! Ja ja ja.",
+        "¿Sabés por qué el Metro de Medellín es tan limpio? ¡Porque los paisas lo cuidamos más que a la mamá! ¿O qué?",
+        "¿Por qué los arrieros antioqueños eran tan fuertes? ¡Porque cargaban café en mula de día y chismes en la noche! Ja ja ja.",
+        "¿Sabés qué pasaba en la Feria de las Flores? ¡Que los silleteros cargaban más flores que los novios enamorados! ¡Qué verraquera!",
+        "¿Por qué Medellín se llama 'La Ciudad de la Eterna Primavera'? ¡Porque hasta el clima es paisa y no se decide por nada! Ja ja ja.",
+        "¿Cuál es el secreto del éxito paisa? ¡Trabajar más que el que más trabaja y todavía tener tiempo para un tinto! Ja ja ja.",
+        "¿Sabés por qué en Antioquia todo es 'verraco'? ¡Porque hasta para decir que algo es difícil, lo hacemos con orgullo! Ja ja ja.",
+        "¿Por qué los textileros de Medellín eran tan exitosos? ¡Porque hilaban telas de día y cuentos de noche! Ja ja ja."
     ];
 
-    // Trovas Data
+    // Trovas Paisas - Versos Tradicionales de Antioquia
     const trovasPaisa = [
-        "Con la guitarra en la mano\ny un sombrero de ocasión,\nles vengo a dar la bienvenida\ncon un verso y con amor.",
-        "De la montaña antioqueña\nle vengo a traer un verso,\npara que quede contento\ncon el cantar de mi voz.",
-        "Vengo de la capital\ndonde todo es progreso,\ndonde se canta y se baila\ny se olvida del regreso.",
-        "En esta fiesta tan linda\ncon la gente tan contenta,\nles prometo que esta trova\nno tiene nada de cuenta.",
-        "En este hermoso lugar\nla gente es muy querendona,\ny en la palma de mi mano\nllevo a una antioqueña hermosa."
+        "En las montañas de Antioquia,\ndonde el café es tradición,\nvive el paisa trabajador\ncon mucho amor y pasión.",
+        "Medellín, ciudad querida,\nde arrieros y soñadores,\ntus calles guardan la vida\nde nobles trabajadores.",
+        "En el Valle de Aburrá,\ndonde el río canta y fluye,\nla historia paisa está\nen cada alma que construye.",
+        "Mil seiscientos setenta y cinco,\nnació esta villa de honor,\ncon veinticuatro familias\ny un futuro de esplendor.",
+        "Los arrieros con su mula,\npor las trochas del café,\nllevaron el progreso\ncon verracos pies de fe.",
+        "En la Feria de las Flores,\nlos silleteros brillan,\ncargando en sus espaldas\nlas más hermosas orillas.",
+        "Botero con sus esculturas,\nle dio al mundo un gran regalo,\nde Medellín para el mundo\nun arte que es un regalo.",
+        "El Metro vino en noventa,\ny cinco fue el gran año,\nMedellín se transformó\ncon orgullo y sin engaño.",
+        "De la violencia a la luz,\nla ciudad se levantó,\ncon trabajo y esperanza\nun milagro se forjó.",
+        "En Antioquia se respira,\nun aire de tradición,\ndonde el paisa trabaja\ncon orgullo y corazón.",
+        "Por las calles empedradas,\nde esta ciudad colonial,\ncaminaron los ancestros\ncon su espíritu inmortal.",
+        "Cosiaca cuenta con gracia,\nlas historias del pasado,\nde esta tierra de Antioquia\nque siempre ha prosperado."
     ];
     
     useEffect(() => {
@@ -167,79 +174,6 @@ const Juegos = () => {
         return trovasPaisa[randomIndex].replace(/\n/g, '<br>');
     };
 
-    // Historical Memory Game Data
-    const historicalPairs = [
-        { id: 1, content: '1675', pair: 'Fundación', emoji: '🏛️' },
-        { id: 2, content: '1813', pair: 'Ciudad', emoji: '🏙️' },
-        { id: 3, content: 'Botero', pair: 'Esculturas', emoji: '🎨' },
-        { id: 4, content: 'Metro', pair: '1995', emoji: '🚇' },
-        { id: 5, content: 'Arrieros', pair: 'Café', emoji: '☕' },
-        { id: 6, content: 'Flores', pair: 'Feria', emoji: '🌸' }
-    ];
-
-    const initializeMemoryGame = () => {
-        const allCards = [];
-        historicalPairs.forEach((pair, index) => {
-            allCards.push({
-                id: `${index}-a`,
-                pairId: pair.id,
-                content: pair.content,
-                emoji: pair.emoji,
-                type: 'a'
-            });
-            allCards.push({
-                id: `${index}-b`,
-                pairId: pair.id,
-                content: pair.pair,
-                emoji: pair.emoji,
-                type: 'b'
-            });
-        });
-
-        // Shuffle cards
-        const shuffled = allCards.sort(() => Math.random() - 0.5);
-        setMemoryCards(shuffled);
-        setFlippedCards([]);
-        setMatchedCards([]);
-        setMemoryMoves(0);
-        setMemoryGameStarted(true);
-    };
-
-    const handleCardClick = (cardId) => {
-        if (flippedCards.length === 2 || flippedCards.includes(cardId) || matchedCards.includes(cardId)) {
-            return;
-        }
-
-        const newFlipped = [...flippedCards, cardId];
-        setFlippedCards(newFlipped);
-
-        if (newFlipped.length === 2) {
-            setMemoryMoves(moves => moves + 1);
-            const [firstId, secondId] = newFlipped;
-            const firstCard = memoryCards.find(c => c.id === firstId);
-            const secondCard = memoryCards.find(c => c.id === secondId);
-
-            if (firstCard.pairId === secondCard.pairId) {
-                setTimeout(() => {
-                    setMatchedCards(prev => [...prev, firstId, secondId]);
-                    setFlippedCards([]);
-                }, 600);
-            } else {
-                setTimeout(() => {
-                    setFlippedCards([]);
-                }, 1000);
-            }
-        }
-    };
-
-    const resetMemoryGame = () => {
-        setMemoryGameStarted(false);
-        setMemoryCards([]);
-        setFlippedCards([]);
-        setMatchedCards([]);
-        setMemoryMoves(0);
-    };
-
     return (
         <div className="animate-fade-in max-w-6xl mx-auto text-cosiaca-brown space-y-6 sm:space-y-8 px-4">
             <header className="text-center">
@@ -271,16 +205,6 @@ const Juegos = () => {
                 </button>
                 <button
                     className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 transform hover:scale-105 ${
-                        activeTab === 'memory'
-                            ? 'bg-cosiaca-red text-white shadow-lg'
-                            : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
-                    }`}
-                    onClick={() => setActiveTab('memory')}
-                >
-                    🎴 Memoria Histórica
-                </button>
-                <button
-                    className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base lg:text-lg transition-all duration-300 transform hover:scale-105 ${
                         activeTab === 'standup'
                             ? 'bg-cosiaca-red text-white shadow-lg'
                             : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
@@ -308,103 +232,6 @@ const Juegos = () => {
                 </div>
             )}
 
-            {/* Memory Game Content */}
-            {activeTab === 'memory' && (
-                <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 border border-cosiaca-beige animate-fade-in">
-                    <div className="text-center mb-6 sm:mb-8">
-                        <h3 className="text-2xl sm:text-3xl font-bold font-anton text-cosiaca-brown mb-2">
-                            🎴 Memoria Histórica de Medellín
-                        </h3>
-                        <p className="text-base sm:text-lg text-cosiaca-brown/70">
-                            Encuentra las parejas de eventos históricos importantes
-                        </p>
-                    </div>
-
-                    {!memoryGameStarted ? (
-                        <div className="text-center space-y-6">
-                            <div className="bg-cosiaca-beige/30 p-8 rounded-xl">
-                                <p className="text-lg text-cosiaca-brown mb-4">
-                                    ¡Pon a prueba tu memoria con los eventos más importantes de la historia de Medellín!
-                                </p>
-                                <p className="text-base text-cosiaca-brown/70">
-                                    Encuentra las 6 parejas de fechas y eventos históricos.
-                                </p>
-                            </div>
-                            <button
-                                onClick={initializeMemoryGame}
-                                className="bg-cosiaca-red text-white font-bold py-3 px-8 rounded-full hover:bg-cosiaca-red-dark transition-all duration-300 transform hover:scale-105 shadow-lg text-base sm:text-lg"
-                            >
-                                🎮 Iniciar Juego
-                            </button>
-                        </div>
-                    ) : (
-                        <div className="space-y-6">
-                            <div className="flex justify-between items-center bg-cosiaca-beige/30 p-4 rounded-xl">
-                                <div className="text-cosiaca-brown font-bold">
-                                    Movimientos: <span className="text-cosiaca-red text-xl">{memoryMoves}</span>
-                                </div>
-                                <div className="text-cosiaca-brown font-bold">
-                                    Parejas: <span className="text-green-600 text-xl">{matchedCards.length / 2}/6</span>
-                                </div>
-                            </div>
-
-                            <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 sm:gap-4">
-                                {memoryCards.map((card) => {
-                                    const isFlipped = flippedCards.includes(card.id);
-                                    const isMatched = matchedCards.includes(card.id);
-
-                                    return (
-                                        <div
-                                            key={card.id}
-                                            onClick={() => handleCardClick(card.id)}
-                                            className={`aspect-square cursor-pointer transition-all duration-300 transform hover:scale-105 ${
-                                                isFlipped || isMatched ? 'rotate-0' : ''
-                                            }`}
-                                        >
-                                            <div className={`w-full h-full rounded-xl shadow-lg flex items-center justify-center font-bold text-center p-2 transition-all duration-300 ${
-                                                isMatched
-                                                    ? 'bg-green-500 text-white'
-                                                    : isFlipped
-                                                    ? 'bg-cosiaca-red text-white'
-                                                    : 'bg-cosiaca-brown text-transparent hover:bg-cosiaca-brown/80'
-                                            }`}>
-                                                {(isFlipped || isMatched) ? (
-                                                    <div className="flex flex-col items-center space-y-1">
-                                                        <span className="text-2xl">{card.emoji}</span>
-                                                        <span className="text-xs sm:text-sm">{card.content}</span>
-                                                    </div>
-                                                ) : (
-                                                    <span className="text-3xl">?</span>
-                                                )}
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-
-                            {matchedCards.length === memoryCards.length && memoryCards.length > 0 && (
-                                <div className="bg-green-50 border-2 border-green-500 p-6 rounded-xl text-center animate-fade-in">
-                                    <h4 className="text-2xl font-bold text-green-700 mb-2">
-                                        🎉 ¡Felicitaciones!
-                                    </h4>
-                                    <p className="text-lg text-green-600">
-                                        Completaste el juego en {memoryMoves} movimientos
-                                    </p>
-                                </div>
-                            )}
-
-                            <div className="flex justify-center">
-                                <button
-                                    onClick={resetMemoryGame}
-                                    className="bg-cosiaca-brown text-white font-bold py-3 px-6 rounded-full hover:bg-cosiaca-brown/80 transition-all duration-300 transform hover:scale-105 shadow-lg"
-                                >
-                                    🔄 Nuevo Juego
-                                </button>
-                            </div>
-                        </div>
-                    )}
-                </div>
-            )}
 
             {/* Stand Up Content */}
             {activeTab === 'standup' && (
