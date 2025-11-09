@@ -17,6 +17,7 @@ const Juegos = () => {
     const [isGeneratingTrova, setIsGeneratingTrova] = useState(false);
     const [customJokeTopic, setCustomJokeTopic] = useState('');
     const [customTrovaTopic, setCustomTrovaTopic] = useState('');
+    const [showApiWarning, setShowApiWarning] = useState(false);
 
     // Trivia Data
     const triviaQuestions = [
@@ -126,21 +127,45 @@ const Juegos = () => {
 
     const generateAIJoke = async () => {
         setIsGeneratingJoke(true);
+        setShowApiWarning(false);
         try {
             const joke = await GeminiService.generatePaisaJoke(customJokeTopic);
             setCurrentJoke(joke);
             setCustomJokeTopic('');
         } catch (error) {
             console.error('Error generating joke:', error);
-            const fallbackJokes = [
-                "¡Uy mijito! ¿Sabés por qué los paisas somos tan trabajadores? ¡Porque desde que nacemos ya estamos 'ocupados' en el vientre de la mamá! Ja ja ja, ¡qué ocurrencia!",
-                "¿Por qué en Medellín nunca llueve dinero? ¡Porque los paisas ya lo habríamos recogido todo antes de que toque el suelo! Ja ja ja.",
-                "¿Sabés cuál es el colmo de un paisa? ¡Que le regalen algo y pregunte cuánto vale para saber si le gustó! Ja ja ja.",
-                "¿Por qué Fernando Botero hace figuras gorditas? ¡Porque en Antioquia hasta el arte está bien alimentado, pues! Ja ja ja.",
-                "¿Cuál es la diferencia entre un paisa y un arriero? ¡Que el arriero solo carga mulas, pero el paisa carga con toda la familia! Ja ja ja."
-            ];
-            const randomJoke = fallbackJokes[Math.floor(Math.random() * fallbackJokes.length)];
-            setCurrentJoke(randomJoke);
+
+            // Mostrar advertencia si no hay API key
+            if (error.message.includes('API key')) {
+                setShowApiWarning(true);
+            }
+
+            // Fallback inteligente basado en el tema del usuario
+            const topic = customJokeTopic.toLowerCase().trim();
+            let fallbackJoke = '';
+
+            if (topic.includes('metro')) {
+                fallbackJoke = "¡Uy mijito! ¿Sabés por qué el Metro de Medellín es tan limpio? ¡Porque los paisas hasta barren antes de entrar, pa' no quedar mal! Ja ja ja, ¡qué cultura!";
+            } else if (topic.includes('botero')) {
+                fallbackJoke = "¿Por qué Fernando Botero hace figuras gorditas? ¡Porque en Antioquia hasta el arte está bien alimentado, pues! Ja ja ja.";
+            } else if (topic.includes('café') || topic.includes('cafe')) {
+                fallbackJoke = "¿Sabés por qué los arrieros tomaban tanto café? ¡Porque las mulas no se llevaban solas, mijito! Ja ja ja, ¡qué berraquera!";
+            } else if (topic.includes('arriero')) {
+                fallbackJoke = "¿Cuál es la diferencia entre un paisa y un arriero? ¡Que el arriero solo carga mulas, pero el paisa carga con toda la familia! Ja ja ja.";
+            } else if (topic.includes('flores')) {
+                fallbackJoke = "¿Por qué la Feria de las Flores es tan famosa? ¡Porque los paisas hasta a las flores las ponemos a trabajar en desfiles! Ja ja ja.";
+            } else {
+                // Fallback general
+                const generalJokes = [
+                    "¡Uy mijito! ¿Sabés por qué los paisas somos tan trabajadores? ¡Porque desde que nacemos ya estamos 'ocupados' en el vientre de la mamá! Ja ja ja, ¡qué ocurrencia!",
+                    "¿Por qué en Medellín nunca llueve dinero? ¡Porque los paisas ya lo habríamos recogido todo antes de que toque el suelo! Ja ja ja.",
+                    "¿Sabés cuál es el colmo de un paisa? ¡Que le regalen algo y pregunte cuánto vale para saber si le gustó! Ja ja ja."
+                ];
+                fallbackJoke = generalJokes[Math.floor(Math.random() * generalJokes.length)];
+            }
+
+            setCurrentJoke(fallbackJoke);
+            setCustomJokeTopic('');
         } finally {
             setIsGeneratingJoke(false);
         }
@@ -148,21 +173,47 @@ const Juegos = () => {
 
     const generateAITrova = async () => {
         setIsGeneratingTrova(true);
+        setShowApiWarning(false);
         try {
             const trova = await GeminiService.generatePaisaTrova(customTrovaTopic);
             setCurrentTrova(trova);
             setCustomTrovaTopic('');
         } catch (error) {
             console.error('Error generating trova:', error);
-            const fallbackTrovas = [
-                "En las montañas de Antioquia,<br>donde el café es tradición,<br>vive el paisa trabajador<br>con mucho amor y pasión.",
-                "Medellín, ciudad querida,<br>de arrieros y soñadores,<br>tus calles guardan la vida<br>de nobles trabajadores.",
-                "En el Valle de Aburrá,<br>donde el río canta y fluye,<br>la historia paisa está<br>en cada alma que construye.",
-                "Cosiaca cuenta con gracia<br>las historias del pasado,<br>de esta tierra de Antioquia<br>que siempre ha prosperado.",
-                "Desde mil seiscientos setenta,<br>cuando se fundó la villa,<br>los paisas con su destreza<br>hicieron grande esta orilla."
-            ];
-            const randomTrova = fallbackTrovas[Math.floor(Math.random() * fallbackTrovas.length)];
-            setCurrentTrova(randomTrova);
+
+            // Mostrar advertencia si no hay API key
+            if (error.message.includes('API key')) {
+                setShowApiWarning(true);
+            }
+
+            // Fallback inteligente basado en el tema del usuario
+            const topic = customTrovaTopic.toLowerCase().trim();
+            let fallbackTrova = '';
+
+            if (topic.includes('amor')) {
+                fallbackTrova = "Con amor paisa sincero,<br>como el café de montaña,<br>te quiero con alma entera<br>mi tierra que me acompaña.";
+            } else if (topic.includes('familia')) {
+                fallbackTrova = "La familia paisa unida,<br>como arrieros en camino,<br>es la fuerza compartida<br>que guía nuestro destino.";
+            } else if (topic.includes('trabajo')) {
+                fallbackTrova = "El trabajo del paisa honrado,<br>con el sol de la mañana,<br>es esfuerzo consagrado<br>que florece cada semana.";
+            } else if (topic.includes('ciudad') || topic.includes('medellín') || topic.includes('medellin')) {
+                fallbackTrova = "Medellín, ciudad querida,<br>de arrieros y soñadores,<br>tus calles guardan la vida<br>de nobles trabajadores.";
+            } else if (topic.includes('café') || topic.includes('cafe')) {
+                fallbackTrova = "En las montañas de Antioquia,<br>donde el café es tradición,<br>vive el paisa trabajador<br>con mucho amor y pasión.";
+            } else if (topic.includes('montaña')) {
+                fallbackTrova = "Entre montañas verdes crecí,<br>donde el aire es puro y sano,<br>la tierra que me vio partir<br>siempre llevo en mi mano.";
+            } else {
+                // Fallback general
+                const generalTrovas = [
+                    "En el Valle de Aburrá,<br>donde el río canta y fluye,<br>la historia paisa está<br>en cada alma que construye.",
+                    "Cosiaca cuenta con gracia<br>las historias del pasado,<br>de esta tierra de Antioquia<br>que siempre ha prosperado.",
+                    "Desde mil seiscientos setenta,<br>cuando se fundó la villa,<br>los paisas con su destreza<br>hicieron grande esta orilla."
+                ];
+                fallbackTrova = generalTrovas[Math.floor(Math.random() * generalTrovas.length)];
+            }
+
+            setCurrentTrova(fallbackTrova);
+            setCustomTrovaTopic('');
         } finally {
             setIsGeneratingTrova(false);
         }
@@ -250,7 +301,32 @@ const Juegos = () => {
                     </div>
 
                     <div className="space-y-6 sm:space-y-8">
-                        <div className="bg-gradient-to-r from-cosiaca-beige/50 to-cosiaca-brown/10 rounded-xl p-4 sm:p-6 border-2 border-cosiaca-beige">
+                        {showApiWarning && (
+                            <div className="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded-lg animate-fade-in">
+                                <div className="flex items-start">
+                                    <div className="flex-shrink-0">
+                                        <svg className="h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div className="ml-3">
+                                        <p className="text-sm text-yellow-800">
+                                            <strong>Modo clásico activado:</strong> Estoy usando mis mejores chistes tradicionales porque no tengo conexión con IA. Los chistes se adaptan a tu tema cuando es posible.
+                                        </p>
+                                    </div>
+                                    <button
+                                        onClick={() => setShowApiWarning(false)}
+                                        className="ml-auto -mx-1.5 -my-1.5 bg-yellow-100 text-yellow-500 rounded-lg p-1.5 hover:bg-yellow-200 transition-colors"
+                                    >
+                                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+                        <div className="bg-gradient-to-r from-cosiaca-beige/50 to-cosiaca-brown/10 rounded-xl p-4 sm:p-6 border-2 border-cosiaca-beige shadow-md">
                             <label className="block text-cosiaca-brown font-bold mb-3 text-center text-base sm:text-lg">
                                 💬 Escribe un tema y Cosiaca te contará un chiste:
                             </label>
@@ -260,21 +336,21 @@ const Juegos = () => {
                                     value={customJokeTopic}
                                     onChange={(e) => setCustomJokeTopic(e.target.value)}
                                     onKeyPress={(e) => e.key === 'Enter' && !isGeneratingJoke && generateAIJoke()}
-                                    placeholder="Ej: Metro, Botero, café, arrieros..."
-                                    className="flex-1 px-4 py-3 rounded-full border-2 border-cosiaca-beige focus:border-cosiaca-red focus:outline-none text-cosiaca-brown text-sm sm:text-base"
+                                    placeholder="Ej: Metro, Botero, café, arrieros, flores..."
+                                    className="flex-1 px-4 py-3 rounded-full border-2 border-cosiaca-beige focus:border-cosiaca-red focus:ring-2 focus:ring-cosiaca-red/20 focus:outline-none text-cosiaca-brown text-sm sm:text-base transition-all"
                                     disabled={isGeneratingJoke}
                                 />
                                 <button
                                     onClick={generateAIJoke}
                                     disabled={isGeneratingJoke}
-                                    className="bg-cosiaca-red text-white font-bold py-3 px-6 rounded-full hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base whitespace-nowrap"
+                                    className="bg-cosiaca-red text-white font-bold py-3 px-6 rounded-full hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base whitespace-nowrap flex items-center justify-center gap-2"
                                 >
-                                    <SparklesIcon className="inline-block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                                    <SparklesIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                                     {customJokeTopic.trim() ? 'Generar Chiste' : 'Sorpréndeme'}
                                 </button>
                             </div>
-                            <p className="text-xs sm:text-sm text-cosiaca-brown/60 mt-2 text-center">
-                                Escribe un tema o deja vacío para un chiste sorpresa. Presiona Enter para generar.
+                            <p className="text-xs sm:text-sm text-cosiaca-brown/60 mt-3 text-center leading-relaxed">
+                                💡 Escribe cualquier tema (Metro, Botero, café...) o deja vacío para sorpresa. Presiona <kbd className="px-2 py-1 bg-white rounded text-cosiaca-brown font-mono text-xs">Enter</kbd>
                             </p>
                         </div>
 
@@ -318,7 +394,32 @@ const Juegos = () => {
                     </div>
 
                     <div className="space-y-6 sm:space-y-8">
-                        <div className="bg-gradient-to-r from-cosiaca-beige/50 to-cosiaca-brown/10 rounded-xl p-4 sm:p-6 border-2 border-cosiaca-beige">
+                        {showApiWarning && activeTab === 'trovas' && (
+                            <div className="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded-lg animate-fade-in">
+                                <div className="flex items-start">
+                                    <div className="flex-shrink-0">
+                                        <svg className="h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div className="ml-3">
+                                        <p className="text-sm text-yellow-800">
+                                            <strong>Modo clásico activado:</strong> Usando trovas tradicionales paisas. Las trovas se adaptan a tu tema cuando es posible.
+                                        </p>
+                                    </div>
+                                    <button
+                                        onClick={() => setShowApiWarning(false)}
+                                        className="ml-auto -mx-1.5 -my-1.5 bg-yellow-100 text-yellow-500 rounded-lg p-1.5 hover:bg-yellow-200 transition-colors"
+                                    >
+                                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+                        <div className="bg-gradient-to-r from-cosiaca-beige/50 to-cosiaca-brown/10 rounded-xl p-4 sm:p-6 border-2 border-cosiaca-beige shadow-md">
                             <label className="block text-cosiaca-brown font-bold mb-3 text-center text-base sm:text-lg">
                                 🎸 Pídele a Cosiaca que improvise una trova sobre:
                             </label>
@@ -328,21 +429,21 @@ const Juegos = () => {
                                     value={customTrovaTopic}
                                     onChange={(e) => setCustomTrovaTopic(e.target.value)}
                                     onKeyPress={(e) => e.key === 'Enter' && !isGeneratingTrova && generateAITrova()}
-                                    placeholder="Ej: mi ciudad, el amor, mi familia, el trabajo..."
-                                    className="flex-1 px-4 py-3 rounded-full border-2 border-cosiaca-beige focus:border-cosiaca-red focus:outline-none text-cosiaca-brown text-sm sm:text-base"
+                                    placeholder="Ej: amor, familia, trabajo, ciudad, montañas..."
+                                    className="flex-1 px-4 py-3 rounded-full border-2 border-cosiaca-beige focus:border-cosiaca-red focus:ring-2 focus:ring-cosiaca-red/20 focus:outline-none text-cosiaca-brown text-sm sm:text-base transition-all"
                                     disabled={isGeneratingTrova}
                                 />
                                 <button
                                     onClick={generateAITrova}
                                     disabled={isGeneratingTrova}
-                                    className="bg-cosiaca-red text-white font-bold py-3 px-6 rounded-full hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base whitespace-nowrap"
+                                    className="bg-cosiaca-red text-white font-bold py-3 px-6 rounded-full hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base whitespace-nowrap flex items-center justify-center gap-2"
                                 >
-                                    <SparklesIcon className="inline-block w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                                    <SparklesIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                                     {customTrovaTopic.trim() ? 'Improvisar' : 'Sorpréndeme'}
                                 </button>
                             </div>
-                            <p className="text-xs sm:text-sm text-cosiaca-brown/60 mt-2 text-center">
-                                Escribe un tema o deja vacío para una trova sorpresa. Presiona Enter para generar.
+                            <p className="text-xs sm:text-sm text-cosiaca-brown/60 mt-3 text-center leading-relaxed">
+                                💡 Escribe un tema (amor, familia, trabajo...) o deja vacío para sorpresa. Presiona <kbd className="px-2 py-1 bg-white rounded text-cosiaca-brown font-mono text-xs">Enter</kbd>
                             </p>
                         </div>
 
