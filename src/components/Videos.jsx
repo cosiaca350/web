@@ -8,33 +8,33 @@ const Videos = () => {
     const videoList = [
         {
             id: 1,
-            title: "Los Orígenes: De Aná a Medellín (1541-1675)",
-            description: "Descubre cómo el Valle de Aburrá pasó de ser territorio indígena Aburraé a convertirse en la Villa de Nuestra Señora de la Candelaria. Cosiaca nos cuenta con humor y picardía sobre las 24 familias fundadoras, los primeros colonos españoles, y cómo era la vida en esta pequeña villa rodeada de montañas. Con recreaciones visuales generadas por IA de la época colonial.",
+            title: "Coriolano Amador: El Trovador del Valle de Aburrá",
+            description: "Conoce la vida de Coriolano Amador, uno de los poetas y trovadores más queridos de Antioquia. Desde su humilde origen en Santa Rosa de Osos hasta convertirse en cronista de la cultura paisa, Cosiaca nos narra con humor cómo este personaje ilustre capturó la esencia del pueblo antioqueño en sus versos. Descubre anécdotas, décimas y el legado literario que dejó para las futuras generaciones. Video generado con IA que recrea momentos clave de su vida.",
             embedId: "UPIzJ_I4Em8",
-            category: "Época Colonial (1541-1810)",
+            category: "Personajes Históricos",
             duration: "Video generado con IA",
             thumbnail: `https://img.youtube.com/vi/UPIzJ_I4Em8/maxresdefault.jpg`,
             highlights: [
-                "🏛️ Pueblos indígenas originarios",
-                "⛪ Fundación oficial en 1675",
-                "👨‍👩‍👧‍👦 Las 24 familias fundadoras",
-                "🎨 Recreaciones visuales con IA"
+                "📜 Trovador y poeta popular antioqueño",
+                "✍️ Décimas y versos del alma paisa",
+                "🎭 Cronista de la cultura montañera",
+                "🎨 Recreación histórica con IA"
             ]
         },
         {
             id: 2,
-            title: "Independencia y Café: El Despertar Paisa (1810-1900)",
-            description: "Un recorrido por la época más transformadora de Medellín. Desde la declaración de independencia con Juan del Corral, pasando por la cultura arriera que conectó montañas, hasta el boom cafetero que nos puso en el mapa mundial. Cosiaca narra con su característico humor cómo los paisas construyeron caminos imposibles, fundaron pueblos y se convirtieron en los mejores comerciantes de café. Incluye animaciones de personajes históricos y fotografías colorizadas con IA.",
+            title: "Gildardo Montoya: La Voz de las Montañas",
+            description: "Viaja a través de la vida de Gildardo Montoya, el compositor que le cantó a Antioquia con el corazón. Cosiaca nos lleva por las troches y caminos donde nació la música carranga, las inspiraciones que dieron vida a sus canciones más emblemáticas, y cómo este artista humilde se convirtió en ícono de la identidad paisa. Con recreaciones visuales generadas por IA, reviviremos los paisajes cafeteros y pueblos que inspiraron su obra musical inmortal.",
             embedId: "k077YMXVcsg",
-            category: "Siglo XIX (1810-1900)",
+            category: "Personajes Históricos",
             duration: "Video generado con IA",
             thumbnail: `https://img.youtube.com/vi/k077YMXVcsg/maxresdefault.jpg`,
             highlights: [
-                "⚔️ Independencia de Antioquia (1813)",
-                "🐴 La cultura arriera paisa",
-                "☕ El boom cafetero",
-                "🛤️ Colonización antioqueña",
-                "🎨 Personajes históricos animados con IA"
+                "🎵 Compositor de la música carranga",
+                "🏔️ Cantor de los paisajes antioqueños",
+                "🎸 Ícono de la identidad paisa",
+                "☕ Inspiración en la cultura cafetera",
+                "🎨 Recreaciones visuales con IA"
             ]
         }
     ];
@@ -55,9 +55,10 @@ const Videos = () => {
                     "Cuando la Historia se Encuentra con la Tecnología"
                 </h2>
                 <p className="text-lg text-cosiaca-brown/80 lead">
-                    Utilizamos <strong>inteligencia artificial de última generación</strong> para dar vida a <em>fotografías históricas,
-                    recrear personajes del pasado</em> y crear experiencias visuales que transportan al espectador a través de
-                    <strong> 350 años de historia medellinense</strong>.
+                    Utilizamos <strong>inteligencia artificial de última generación</strong> para dar vida a <em>personajes históricos,
+                    recrear momentos memorables</em> y crear experiencias visuales que transportan al espectador a través de la rica
+                    <strong> historia cultural de Medellín y Antioquia</strong>. Desde trovadores hasta compositores, cada video es un homenaje
+                    a quienes forjaron nuestra identidad paisa.
                 </p>
                 <div className="mt-6">
                     <a
@@ -164,19 +165,19 @@ const Videos = () => {
                 <div className="bg-cosiaca-beige/30 p-6 rounded-xl border border-cosiaca-beige">
                     <h3 className="text-xl font-bold text-cosiaca-brown mb-3 font-anton">🤖 Tecnologías IA Utilizadas</h3>
                     <p className="text-cosiaca-brown-light/80">
-                        <strong>• Animación de fotografías históricas</strong><br/>
-                        <strong>• Recreación de personajes del pasado</strong><br/>
-                        <strong>• Efectos visuales generativos</strong><br/>
-                        <strong>• Síntesis de voz histórica</strong><br/>
-                        <strong>• Colorización automática</strong>
+                        <strong>• Recreación de personajes históricos</strong><br/>
+                        <strong>• Animación de escenas del pasado</strong><br/>
+                        <strong>• Síntesis de paisajes antioqueños</strong><br/>
+                        <strong>• Narrativa con voz de Cosiaca</strong><br/>
+                        <strong>• Efectos visuales generativos</strong>
                     </p>
                 </div>
                 <div className="bg-cosiaca-beige/30 p-6 rounded-xl border border-cosiaca-beige">
                     <h3 className="text-xl font-bold text-cosiaca-brown mb-3 font-anton">🎭 Narrativa de Cosiaca</h3>
                     <p className="text-cosiaca-brown-light/80">
-                        Cada video está <em>narrado por la voz de Cosiaca</em>, combinando <strong>rigor histórico</strong>
-                        con el <em>humor y la picardía paisa</em>. La IA nos permite recrear su personalidad única
-                        para hacer la historia <strong>accesible y entretenida</strong> para todas las edades.
+                        Cada video está <em>narrado por la voz de Cosiaca</em>, quien con su característico <strong>humor pícaro y paisa</strong>
+                        nos guía por la vida de estos personajes ilustres. La IA recrea momentos históricos, <em>paisajes del pasado</em>
+                        y el ambiente cultural que rodeó a trovadores, compositores y poetas que definieron nuestra identidad antioqueña.
                     </p>
                 </div>
             </div>
