@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Videos = () => {
+    const [modalVideo, setModalVideo] = useState(null);
+
     // Playlist completa de YouTube: Cosiaca 350
     const playlistId = "PLLldviceNkKeURfhsKQ_uqFqg-Kyx-tjA";
 
@@ -81,32 +83,17 @@ const Videos = () => {
 
                 {videoList.map((video) => (
                     <div key={video.id} className="bg-white rounded-xl shadow-lg border-2 border-cosiaca-beige overflow-hidden hover:border-cosiaca-red transition-all duration-300">
-                        {/* Thumbnail con enlace */}
-                        <a
-                            href={`https://www.youtube.com/watch?v=${video.embedId}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block relative group"
-                        >
-                            <div className="relative pt-[56.25%] bg-black overflow-hidden">
-                                <img
-                                    src={video.thumbnail}
-                                    alt={video.title}
-                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                    onError={(e) => {
-                                        e.target.src = `https://img.youtube.com/vi/${video.embedId}/hqdefault.jpg`;
-                                    }}
-                                />
-                                {/* Overlay con play button */}
-                                <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/60 transition-all duration-300">
-                                    <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-xl">
-                                        <svg className="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M8 5v14l11-7z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                        {/* Video embebido directo */}
+                        <div className="relative pt-[56.25%] bg-black overflow-hidden">
+                            <iframe
+                                className="absolute inset-0 w-full h-full"
+                                src={`https://www.youtube.com/embed/${video.embedId}?rel=0&modestbranding=1`}
+                                title={video.title}
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            />
+                        </div>
 
                         {/* Contenido */}
                         <div className="p-6">
@@ -139,21 +126,19 @@ const Videos = () => {
 
                             {/* Botones de acción */}
                             <div className="flex gap-3">
-                                <a
-                                    href={`https://www.youtube.com/watch?v=${video.embedId}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                <button
+                                    onClick={() => setModalVideo(video)}
                                     className="flex-1 text-center bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg transition-colors duration-200 font-semibold"
                                 >
-                                    ▶ Ver en YouTube
-                                </a>
+                                    🎬 Ver en Pantalla Completa
+                                </button>
                                 <a
-                                    href={`https://www.youtube.com/watch?v=${video.embedId}&list=${playlistId}`}
+                                    href={`https://www.youtube.com/playlist?list=${playlistId}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex-1 text-center bg-cosiaca-brown hover:bg-cosiaca-brown-dark text-white px-6 py-3 rounded-lg transition-colors duration-200 font-semibold"
                                 >
-                                    📺 Ver en Playlist
+                                    📺 Ver Playlist Completa
                                 </a>
                             </div>
                         </div>
@@ -182,6 +167,46 @@ const Videos = () => {
                     </p>
                 </div>
             </div>
+
+            {/* Modal para ver video en pantalla completa */}
+            {modalVideo && (
+                <div
+                    className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 animate-fade-in"
+                    onClick={() => setModalVideo(null)}
+                >
+                    <div
+                        className="relative w-full max-w-6xl"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* Botón cerrar */}
+                        <button
+                            onClick={() => setModalVideo(null)}
+                            className="absolute -top-12 right-0 text-white hover:text-red-500 transition-colors duration-200 text-4xl font-bold z-10"
+                            aria-label="Cerrar"
+                        >
+                            ✕
+                        </button>
+
+                        {/* Video en modal */}
+                        <div className="relative pt-[56.25%] bg-black rounded-lg overflow-hidden shadow-2xl">
+                            <iframe
+                                className="absolute inset-0 w-full h-full"
+                                src={`https://www.youtube.com/embed/${modalVideo.embedId}?autoplay=1&rel=0&modestbranding=1`}
+                                title={modalVideo.title}
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            />
+                        </div>
+
+                        {/* Info del video */}
+                        <div className="mt-4 text-white text-center">
+                            <h3 className="text-2xl font-bold mb-2">{modalVideo.title}</h3>
+                            <p className="text-white/80">{modalVideo.description}</p>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
