@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { historicalCharacters, culturalTraditions, infrastructureMilestones } from '../data/historicalData';
 import { criticalPeriod, emblematicProjects, transformationLessons } from '../data/modernHistory';
+import Timeline3D from './Timeline3D';
 
 const Timeline = () => {
     const [selectedPeriod, setSelectedPeriod] = useState(null);
@@ -495,7 +496,7 @@ const Timeline = () => {
                     De Villa de Mulas a Ciudad Inteligente
                 </p>
 
-                {/* Selector de Vista: Línea de Tiempo o Historia Ampliada */}
+                {/* Selector de Vista: Línea de Tiempo 3D o Historia Ampliada */}
                 <div className="flex justify-center gap-4 pt-4">
                     <button
                         onClick={() => setActiveView('timeline')}
@@ -505,7 +506,7 @@ const Timeline = () => {
                                 : 'bg-white text-cosiaca-brown border-2 border-cosiaca-brown/30 hover:border-cosiaca-red'
                         }`}
                     >
-                        ⏳ Línea de Tiempo
+                        🌀 Visualización 3D
                     </button>
                     <button
                         onClick={() => setActiveView('historia')}
@@ -539,7 +540,7 @@ const Timeline = () => {
                 </div>
             </header>
 
-            {/* VISTA: LÍNEA DE TIEMPO */}
+            {/* VISTA: LÍNEA DE TIEMPO 3D */}
             {activeView === 'timeline' && (
                 <>
             <div className="bg-gradient-to-br from-cosiaca-beige/50 to-cosiaca-cream/50 p-6 md:p-8 rounded-2xl shadow-xl border-2 border-cosiaca-brown/20">
@@ -567,7 +568,9 @@ const Timeline = () => {
                 </div>
             </div>
 
-            <div className="relative max-w-5xl mx-auto px-4">
+            <Timeline3D periods={filteredPeriods} />
+
+            <div className="relative max-w-5xl mx-auto px-4 hidden">
                 <div className="hidden md:block absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-cosiaca-red via-cosiaca-brown to-cosiaca-red"></div>
 
                 <div className="space-y-8">
