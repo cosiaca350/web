@@ -567,77 +567,90 @@ const Timeline = () => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-                {filteredPeriods.map((period, index) => (
-                    <div
-                        key={period.id}
-                        className="bg-gradient-to-br from-white to-cosiaca-beige/30 rounded-2xl border-2 border-cosiaca-brown/20 overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col animate-fade-in"
-                        style={{ animationDelay: `${index * 30}ms` }}
-                    >
-                        <div className={`${period.color} p-5 text-white text-center`}>
-                            <div className="text-4xl mb-2">{period.icon}</div>
-                            <div className="text-3xl font-bold">{period.year}</div>
-                            {period.date && (
-                                <div className="text-xs opacity-90 mt-1">{period.date}</div>
-                            )}
-                        </div>
+            <div className="relative max-w-5xl mx-auto px-4">
+                <div className="hidden md:block absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-cosiaca-red via-cosiaca-brown to-cosiaca-red"></div>
 
-                        <div className="p-4 flex-1 flex flex-col space-y-3">
-                            <h3 className="text-base font-anton text-cosiaca-brown leading-tight min-h-[2.5rem] line-clamp-2">
-                                {period.title}
-                            </h3>
-
-                            <div className="space-y-1.5 text-xs">
-                                <div className="flex items-center gap-2 bg-cosiaca-beige/40 px-2 py-1.5 rounded-lg">
-                                    <span className="text-sm">👥</span>
-                                    <span className="font-medium truncate text-xs">{period.population}</span>
-                                </div>
-                                {period.keyFigure && (
-                                    <div className="flex items-center gap-2 bg-cosiaca-beige/40 px-2 py-1.5 rounded-lg">
-                                        <span className="text-sm">👤</span>
-                                        <span className="font-medium text-cosiaca-brown/80 truncate text-xs">{period.keyFigure}</span>
-                                    </div>
-                                )}
+                <div className="space-y-8">
+                    {filteredPeriods.map((period, index) => (
+                        <div
+                            key={period.id}
+                            className="relative animate-fade-in"
+                            style={{ animationDelay: `${index * 50}ms` }}
+                        >
+                            <div className="hidden md:flex absolute left-4 w-9 h-9 rounded-full items-center justify-center text-xl bg-white border-4 border-cosiaca-red shadow-lg z-10">
+                                {period.icon}
                             </div>
 
-                            <p className="text-xs text-cosiaca-brown/80 leading-relaxed line-clamp-3 flex-1">
-                                {period.description}
-                            </p>
-
-                            <button
-                                onClick={() => setSelectedPeriod(selectedPeriod === period.id ? null : period.id)}
-                                className="w-full bg-cosiaca-red text-white px-3 py-2 rounded-lg hover:bg-cosiaca-brown transition-all duration-300 font-bold shadow-md hover:shadow-xl text-xs mt-auto"
-                            >
-                                {selectedPeriod === period.id ? '✕ Cerrar' : '+ Ver más'}
-                            </button>
-
-                            {selectedPeriod === period.id && (
-                                <div className="pt-3 space-y-3 border-t-2 border-cosiaca-brown/10 animate-fade-in">
-                                    <div className="bg-gradient-to-r from-cosiaca-cream/80 to-cosiaca-beige/50 p-3 rounded-xl border-l-4 border-cosiaca-red">
-                                        <h5 className="font-bold text-cosiaca-brown mb-2 flex items-center gap-2 text-xs">
-                                            <span>💬</span> Cosiaca:
-                                        </h5>
-                                        <p className="text-xs text-cosiaca-brown italic leading-relaxed">{period.details}</p>
-                                    </div>
-
-                                    <div className="bg-white p-3 rounded-xl border border-cosiaca-brown/20">
-                                        <h5 className="font-bold text-cosiaca-brown mb-2 flex items-center gap-2 text-xs">
-                                            <span>📌</span> Hitos:
-                                        </h5>
-                                        <ul className="space-y-1.5">
-                                            {period.milestones.map((milestone, idx) => (
-                                                <li key={idx} className="flex items-start gap-1.5 text-xs text-cosiaca-brown/80">
-                                                    <span className="text-cosiaca-red font-bold mt-0.5 text-xs">•</span>
-                                                    <span className="text-xs">{milestone}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
+                            <div className="md:ml-20 bg-gradient-to-br from-white to-cosiaca-beige/30 rounded-2xl border-2 border-cosiaca-brown/20 overflow-hidden hover:shadow-2xl transition-all duration-300">
+                                <div className={`${period.color} p-4 md:p-5 text-white`}>
+                                    <div className="flex items-center gap-4">
+                                        <div className="flex items-center gap-3 flex-1">
+                                            <span className="text-3xl md:hidden">{period.icon}</span>
+                                            <div>
+                                                <h3 className="text-3xl md:text-4xl font-bold">{period.year}</h3>
+                                                {period.date && (
+                                                    <p className="text-sm opacity-90">{period.date}</p>
+                                                )}
+                                            </div>
+                                        </div>
+                                        <button
+                                            onClick={() => setSelectedPeriod(selectedPeriod === period.id ? null : period.id)}
+                                            className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg transition-all duration-300 font-bold text-sm backdrop-blur-sm"
+                                        >
+                                            {selectedPeriod === period.id ? '✕' : '+'}
+                                        </button>
                                     </div>
                                 </div>
-                            )}
+
+                                <div className="p-4 md:p-6">
+                                    <h4 className="text-xl md:text-2xl font-anton text-cosiaca-brown mb-4">{period.title}</h4>
+
+                                    <div className="flex flex-wrap gap-2 mb-4">
+                                        <div className="flex items-center gap-2 bg-cosiaca-beige/40 px-3 py-2 rounded-lg text-sm">
+                                            <span>👥</span>
+                                            <span className="font-medium">{period.population}</span>
+                                        </div>
+                                        {period.keyFigure && (
+                                            <div className="flex items-center gap-2 bg-cosiaca-beige/40 px-3 py-2 rounded-lg text-sm">
+                                                <span>👤</span>
+                                                <span className="font-medium text-cosiaca-brown/80">{period.keyFigure}</span>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <p className="text-sm md:text-base text-cosiaca-brown/80 leading-relaxed mb-4">
+                                        {period.description}
+                                    </p>
+
+                                    {selectedPeriod === period.id && (
+                                        <div className="space-y-4 animate-fade-in pt-4 border-t-2 border-cosiaca-brown/10">
+                                            <div className="bg-gradient-to-r from-cosiaca-cream/80 to-cosiaca-beige/50 p-4 md:p-5 rounded-xl border-l-4 border-cosiaca-red">
+                                                <h5 className="font-bold text-cosiaca-brown mb-2 flex items-center gap-2">
+                                                    <span>💬</span> Cosiaca cuenta:
+                                                </h5>
+                                                <p className="text-sm md:text-base text-cosiaca-brown italic leading-relaxed">{period.details}</p>
+                                            </div>
+
+                                            <div className="bg-white p-4 md:p-5 rounded-xl border border-cosiaca-brown/20">
+                                                <h5 className="font-bold text-cosiaca-brown mb-3 flex items-center gap-2">
+                                                    <span>📌</span> Hitos Destacados:
+                                                </h5>
+                                                <ul className="space-y-2">
+                                                    {period.milestones.map((milestone, idx) => (
+                                                        <li key={idx} className="flex items-start gap-2 text-sm md:text-base text-cosiaca-brown/80">
+                                                            <span className="text-cosiaca-red font-bold mt-1">•</span>
+                                                            <span>{milestone}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
 
             <div className="bg-gradient-to-br from-cosiaca-red/10 to-cosiaca-brown/10 p-8 rounded-2xl border-2 border-cosiaca-brown/20 shadow-xl">
