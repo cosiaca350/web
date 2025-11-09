@@ -16,13 +16,14 @@ const Podcast = () => {
     const [progress, setProgress] = useState(0);
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
+    const [episodeDurations, setEpisodeDurations] = useState({});
 
     const podcastEpisodes = [
         {
             id: 1,
             title: "Saludo de Cosiaca",
             description: "El mítico personaje nos da la bienvenida a este viaje por la historia de Medellín con su característico humor paisa.",
-            duration: "3:15",
+            duration: "2:30",
             audioFile: "/PODCAST/_saludo_cosiaca.mp3",
             category: "Bienvenida",
             image: "https://images.pexels.com/photos/1386604/pexels-photo-1386604.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -31,7 +32,7 @@ const Podcast = () => {
             id: 2,
             title: "Saludo Cosiaca",
             description: "Un saludo especial de Cosiaca presentando la historia y el proyecto de los 350 años de Medellín.",
-            duration: "2:45",
+            duration: "2:15",
             audioFile: "/PODCAST/saludo_cosiaca.mp3",
             category: "Bienvenida",
             image: "https://images.pexels.com/photos/6044266/pexels-photo-6044266.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -40,7 +41,7 @@ const Podcast = () => {
             id: 3,
             title: "Cosiaca el Culebreo",
             description: "Una historia divertida sobre las travesuras y picardías del personaje más querido de Antioquia.",
-            duration: "12:45",
+            duration: "8:45",
             audioFile: "/PODCAST/cosiaca_el_culebreo.mp3",
             category: "Humor",
             image: "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -49,7 +50,7 @@ const Podcast = () => {
             id: 4,
             title: "El Encuentro en la Trocha",
             description: "Cosiaca nos cuenta sobre los antiguos caminos de herradura que conectaban a Medellín con el mundo exterior.",
-            duration: "8:45",
+            duration: "7:20",
             audioFile: "/PODCAST/el_encuentro_en_la_trocha.mp3",
             category: "Historia Colonial",
             image: "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -58,7 +59,7 @@ const Podcast = () => {
             id: 5,
             title: "Fernando García - Entrevista Especial",
             description: "Conversación profunda con Fernando García sobre la historia y legado de Cosiaca en la cultura antioqueña.",
-            duration: "25:30",
+            duration: "18:30",
             audioFile: "/PODCAST/fernando 2 master.mp3",
             category: "Entrevistas",
             image: "https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -67,7 +68,7 @@ const Podcast = () => {
             id: 6,
             title: "Francisco Mejía - Testimonios Históricos",
             description: "Francisco Mejía comparte testimonios y anécdotas sobre la época dorada de la comedia paisa.",
-            duration: "22:15",
+            duration: "16:45",
             audioFile: "/PODCAST/fransisco master.mp3",
             category: "Entrevistas",
             image: "https://images.pexels.com/photos/8111849/pexels-photo-8111849.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -163,6 +164,10 @@ const Podcast = () => {
             audio.addEventListener('loadedmetadata', () => {
                 setDuration(audio.duration);
                 setLoadingAudio(null);
+                setEpisodeDurations(prev => ({
+                    ...prev,
+                    [episode.id]: audio.duration
+                }));
             });
 
             audio.addEventListener('timeupdate', () => {
@@ -335,7 +340,9 @@ const Podcast = () => {
 
                             <div className="flex items-center justify-between mb-4">
                                 <span className="text-xs text-cosiaca-brown/60 font-medium bg-cosiaca-beige px-3 py-1 rounded-full">
-                                    ⏱️ {episode.duration}
+                                    ⏱️ {episodeDurations[episode.id]
+                                        ? formatTime(episodeDurations[episode.id])
+                                        : episode.duration}
                                 </span>
                                 <span className="text-xs text-cosiaca-brown/50">
                                     Episodio {episode.id}
