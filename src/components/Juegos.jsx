@@ -850,7 +850,7 @@ Y eso que no te he contado la mejor parte... Dicen que en todas las tertulias de
                                     {/* Header del chisme */}
                                     <div className="text-center space-y-3">
                                         <h3 className="text-2xl sm:text-3xl font-black text-cosiaca-brown leading-tight tracking-tight">
-                                            {currentGossip.title}
+                                            {currentGossip.character || currentGossip.title}
                                         </h3>
                                         <div className="flex items-center justify-center gap-3">
                                             <span className="inline-flex items-center gap-2 bg-cosiaca-red text-white px-4 py-1.5 rounded-full text-sm font-bold">
