@@ -332,29 +332,47 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
             </div>
 
             <div className="absolute inset-0 z-10 flex flex-col pointer-events-none">
+                {/* Barra compacta cuando está minimizada - esquina superior derecha */}
+                {isMinimized ? (
+                    <div className="absolute top-2 right-2 sm:top-3 sm:right-3 pointer-events-auto">
+                        <div className="bg-black/50 backdrop-blur-md rounded-lg p-1.5 sm:p-2 shadow-lg">
+                            <div className="flex items-center gap-1.5">
+                                <h2 className="text-[10px] sm:text-xs font-bold text-white">
+                                    ✨ 3D
+                                </h2>
+                                <button
+                                    onClick={() => setIsMinimized(false)}
+                                    className="px-1.5 py-1 rounded text-xs font-bold bg-white/20 text-white hover:bg-white/30 transition-all"
+                                    title="Expandir"
+                                >
+                                    ▼
+                                </button>
+                                <button
+                                    onClick={handleClose}
+                                    className="px-1.5 py-1 rounded text-xs font-bold bg-cosiaca-red text-white hover:bg-cosiaca-red/80 transition-all"
+                                >
+                                    ✕
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
                 <div className="flex-none pt-2 px-2 sm:pt-3 sm:px-3 pointer-events-auto">
-                    <div className={`bg-black/40 backdrop-blur-md rounded-lg sm:rounded-xl p-2 sm:p-3 max-w-3xl mx-auto shadow-lg transition-all duration-300 ${
-                        isMinimized ? 'py-1.5' : ''
-                    }`}>
+                    <div className="bg-black/40 backdrop-blur-md rounded-lg sm:rounded-xl p-2 sm:p-3 max-w-2xl mx-auto shadow-lg transition-all duration-300">
                         <div className="flex items-center justify-between gap-2">
-                            <div className="flex items-center gap-2 min-w-0 flex-1">
-                                <h2 className="text-xs sm:text-sm md:text-base font-bold text-white truncate">
+                            <div className="flex items-center gap-2 min-w-0">
+                                <h2 className="text-xs sm:text-sm font-bold text-white truncate">
                                     ✨ LÍNEA DE TIEMPO 3D
                                 </h2>
-                                {!isMinimized && (
-                                    <p className="text-white/60 text-[10px] sm:text-xs hidden lg:block">
-                                        350 años de historia
-                                    </p>
-                                )}
                             </div>
 
                             <div className="flex items-center gap-1.5 flex-shrink-0">
                                 <button
-                                    onClick={() => setIsMinimized(!isMinimized)}
+                                    onClick={() => setIsMinimized(true)}
                                     className="px-2 py-1 rounded-lg text-xs font-bold bg-white/20 text-white hover:bg-white/30 transition-all"
-                                    title={isMinimized ? 'Expandir' : 'Minimizar'}
+                                    title="Minimizar"
                                 >
-                                    {isMinimized ? '▼' : '▲'}
+                                    ▲
                                 </button>
                                 <button
                                     onClick={handleClose}
@@ -365,8 +383,6 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                             </div>
                         </div>
 
-                        {!isMinimized && (
-                        <>
 
                         <div className="mt-2 flex flex-col gap-2 border-t border-white/10 pt-2">
                             <div className="flex gap-1 sm:gap-1.5 flex-wrap justify-center">
@@ -474,10 +490,9 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                                 <span className="ml-1 sm:ml-2 hidden sm:inline">🖱️ Arrastra • 🔍 Scroll • ✨ Click</span>
                             </div>
                         </div>
-                        </>
-                        )}
                     </div>
                 </div>
+                )}
             </div>
 
             {selectedNode && (
