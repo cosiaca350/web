@@ -27,38 +27,38 @@ const Home = ({ setView }) => {
             <div className="absolute bottom-16 right-24 text-3xl lg:text-4xl xl:text-6xl animate-bounce opacity-20" style={{animationDelay: '2s'}}>🎪</div>
 
             {/* Contenido principal */}
-            <div className="relative z-10 w-full container-1920 mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center space-y-8 lg:space-y-12 xl:space-y-1920">
+            <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6">
+                <div className="text-center space-y-6">
                     
                     {/* Logo Principal */}
                     <div className="animate-fade-in">
-                        <div className="flex justify-center mb-4 sm:mb-6 lg:mb-8">
-                            <img 
-                                src="/logo-cosiaca.svg" 
+                        <div className="flex justify-center mb-4">
+                            <img
+                                src="/logo-cosiaca.svg"
                                 alt="Cosiaca 350 - Un viaje inmersivo a la historia de Medellín"
-                                className="w-64 sm:w-80 md:w-96 lg:w-[500px] xl:w-[600px] 2xl:w-[700px] h-auto"
+                                className="w-56 sm:w-64 md:w-80 lg:w-96 h-auto"
                             />
                         </div>
                     </div>
 
                     {/* Mensaje principal */}
-                    <div className="animate-fade-in-up space-y-4 lg:space-y-6">
-                        <div className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-3 sm:mb-4 lg:mb-6 animate-bounce">🎉</div>
-                        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-1920-lg font-anton text-cosiaca-principal">
+                    <div className="animate-fade-in-up space-y-3">
+                        <div className="text-4xl mb-3 animate-bounce">🎉</div>
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-anton text-cosiaca-principal">
                             ¡TODO ESTÁ LISTO!
                         </h2>
-                        <p className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-1920-base text-cosiaca-principal/80 font-montserrat leading-relaxed max-w-3xl sm:max-w-5xl xl:max-w-6xl mx-auto px-2 sm:px-4">
+                        <p className="text-sm md:text-base lg:text-lg text-cosiaca-principal/80 font-montserrat leading-relaxed max-w-3xl mx-auto px-2">
                             Un proyecto transmedia que celebra los <strong className="text-cosiaca-enfasis">350</strong> años de Medellín
                             a través de la figura histórica de <em className="text-cosiaca-acento font-semibold">José García "Cosiaca"</em>,
                             el primer comediante popular de Antioquia.
                         </p>
                     </div>
 
-                    {/* Botones principales - Posicionados más arriba */}
-                    <div className="animate-fade-in-up pt-4 lg:pt-8 space-y-4">
+                    {/* Botones principales */}
+                    <div className="animate-fade-in-up pt-4 space-y-3">
                         <button
                             onClick={() => setView('welcome')}
-                            className="font-bold py-2 sm:py-3 md:py-3 px-4 sm:px-6 md:px-8 rounded-full text-sm sm:text-base md:text-lg transition-all duration-300 transform hover:scale-105 shadow-2xl mx-auto inline-flex items-center font-montserrat border-2"
+                            className="font-bold py-2.5 px-6 rounded-full text-sm md:text-base transition-all duration-300 transform hover:scale-105 shadow-xl mx-auto inline-flex items-center font-montserrat border-2"
                             style={{
                                 backgroundColor: '#3A2B21',
                                 color: '#FFFFFF',
@@ -73,15 +73,15 @@ const Home = ({ setView }) => {
                                 e.currentTarget.style.borderColor = '#3A2B21';
                             }}
                         >
-                            <SparklesIcon className="w-4 h-4 sm:w-5 sm:h-5 mr-2" style={{ color: '#FFFFFF' }} />
+                            <SparklesIcon className="w-4 h-4 mr-2" style={{ color: '#FFFFFF' }} />
                             Comenzar el Viaje Histórico
-                            <SparklesIcon className="w-4 h-4 sm:w-5 sm:h-5 ml-2" style={{ color: '#FFFFFF' }} />
+                            <SparklesIcon className="w-4 h-4 ml-2" style={{ color: '#FFFFFF' }} />
                         </button>
 
                         <div className="flex justify-center pt-2">
                             <button
                                 onClick={() => setView('timeline')}
-                                className="font-bold py-3 px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl inline-flex items-center font-montserrat border-2"
+                                className="font-bold py-2.5 px-6 rounded-full text-sm md:text-base transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center font-montserrat border-2"
                                 style={{
                                     backgroundColor: '#C92C3D',
                                     color: '#FFFFFF',
@@ -99,36 +99,36 @@ const Home = ({ setView }) => {
                                 ⏳ Explorar Historia Completa
                             </button>
                         </div>
-                        <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-1920-base text-cosiaca-principal/60 font-montserrat mt-3 sm:mt-4 lg:mt-6">
+                        <p className="text-xs md:text-sm text-cosiaca-principal/60 font-montserrat mt-3">
                             ✨ <em>Prepárate para un viaje único por <strong className="text-cosiaca-enfasis">350</strong> años de historia paisa</em> ✨
                         </p>
                     </div>
 
                     {/* Información adicional compacta */}
-                    <div className="animate-fade-in-up pt-6 lg:pt-12">
-                        <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl lg:rounded-3xl shadow-xl border border-cosiaca-beige p-4 sm:p-6 lg:p-8 xl:p-1920 max-w-4xl sm:max-w-6xl xl:max-w-7xl mx-auto">
-                            <div className="responsive-grid text-center">
-                                <div className="space-y-2">
-                                    <div className="text-xl sm:text-2xl lg:text-3xl xl:text-5xl">📅</div>
-                                    <h3 className="font-bold text-cosiaca-principal font-montserrat text-xs sm:text-sm lg:text-base xl:text-1920-base">Período</h3>
-                                    <p className="text-cosiaca-principal/70 font-montserrat text-xs sm:text-xs lg:text-sm xl:text-base">1675 - 2025 (<strong className="text-cosiaca-enfasis">350</strong> años)</p>
+                    <div className="animate-fade-in-up pt-4">
+                        <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-cosiaca-beige p-4 md:p-6 max-w-3xl mx-auto">
+                            <div className="grid grid-cols-3 gap-4 text-center">
+                                <div className="space-y-1.5">
+                                    <div className="text-2xl">📅</div>
+                                    <h3 className="font-bold text-cosiaca-principal font-montserrat text-xs md:text-sm">Período</h3>
+                                    <p className="text-cosiaca-principal/70 font-montserrat text-xs">1675 - 2025 (<strong className="text-cosiaca-enfasis">350</strong> años)</p>
                                 </div>
-                                <div className="space-y-2">
-                                    <div className="text-xl sm:text-2xl lg:text-3xl xl:text-5xl">🎭</div>
-                                    <h3 className="font-bold text-cosiaca-principal font-montserrat text-xs sm:text-sm lg:text-base xl:text-1920-base">Personaje</h3>
-                                    <p className="text-cosiaca-acento font-montserrat font-semibold text-xs sm:text-xs lg:text-sm xl:text-base">José García "Cosiaca"</p>
+                                <div className="space-y-1.5">
+                                    <div className="text-2xl">🎭</div>
+                                    <h3 className="font-bold text-cosiaca-principal font-montserrat text-xs md:text-sm">Personaje</h3>
+                                    <p className="text-cosiaca-acento font-montserrat font-semibold text-xs">José García "Cosiaca"</p>
                                 </div>
-                                <div className="space-y-2">
-                                    <div className="text-xl sm:text-2xl lg:text-3xl xl:text-5xl">🎯</div>
-                                    <h3 className="font-bold text-cosiaca-principal font-montserrat text-xs sm:text-sm lg:text-base xl:text-1920-base">Enfoque</h3>
-                                    <p className="text-cosiaca-principal/70 font-montserrat text-xs sm:text-xs lg:text-sm xl:text-base">Humor + Historia + Tecnología</p>
+                                <div className="space-y-1.5">
+                                    <div className="text-2xl">🎯</div>
+                                    <h3 className="font-bold text-cosiaca-principal font-montserrat text-xs md:text-sm">Enfoque</h3>
+                                    <p className="text-cosiaca-principal/70 font-montserrat text-xs">Humor + Historia + Tecnología</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {/* Footer compacto */}
-                    <div className="animate-fade-in-up pt-4 lg:pt-5 space-y-1">
+                    <div className="animate-fade-in-up pt-3 space-y-1">
                         <p className="font-montserrat font-medium text-xs" style={{ color: '#3A2B21' }}>
                             Un proyecto de <strong style={{ color: '#3A2B21' }}>Núcleo Colectivo</strong>
                         </p>
