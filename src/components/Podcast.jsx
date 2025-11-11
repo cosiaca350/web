@@ -26,7 +26,7 @@ const Podcast = () => {
             duration: "2:30",
             audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/_saludo_cosiaca.mp3",
             category: "Bienvenida",
-            image: "https://images.pexels.com/photos/1386604/pexels-photo-1386604.jpeg?auto=compress&cs=tinysrgb&w=600"
+            image: "/PODCAST IMG-02.png"
         },
         {
             id: 2,
@@ -35,7 +35,7 @@ const Podcast = () => {
             duration: "2:15",
             audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/saludo_cosiaca.mp3",
             category: "Bienvenida",
-            image: "https://images.pexels.com/photos/6044266/pexels-photo-6044266.jpeg?auto=compress&cs=tinysrgb&w=600"
+            image: "/PODCAST IMG-02.png"
         },
         {
             id: 3,
@@ -44,7 +44,7 @@ const Podcast = () => {
             duration: "8:45",
             audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/cosiaca_el_culebreo.mp3",
             category: "Humor",
-            image: "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=600"
+            image: "/PODCAST IMG-02.png"
         },
         {
             id: 4,
@@ -53,7 +53,7 @@ const Podcast = () => {
             duration: "7:20",
             audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/el_encuentro_en_la_trocha.mp3.mp3",
             category: "Historia Colonial",
-            image: "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&w=600"
+            image: "/PODCAST IMG-02.png"
         },
         {
             id: 5,
@@ -62,7 +62,7 @@ const Podcast = () => {
             duration: "18:30",
             audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/fernando%202%20master.mp3",
             category: "Entrevistas",
-            image: "https://images.pexels.com/photos/7130560/pexels-photo-7130560.jpeg?auto=compress&cs=tinysrgb&w=600"
+            image: "/PODCAST IMG-02.png"
         },
         {
             id: 6,
@@ -71,7 +71,7 @@ const Podcast = () => {
             duration: "16:45",
             audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/fransisco%20master.mp3",
             category: "Entrevistas",
-            image: "https://images.pexels.com/photos/8111849/pexels-photo-8111849.jpeg?auto=compress&cs=tinysrgb&w=600"
+            image: "/PODCAST IMG-02.png"
         },
         {
             id: 7,
@@ -80,7 +80,7 @@ const Podcast = () => {
             duration: "12:30",
             audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/la_cancion_del_valle_de%20aburra.mp3",
             category: "Cultura",
-            image: "https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=600"
+            image: "/PODCAST IMG-02.png"
         },
         {
             id: 8,
@@ -89,7 +89,7 @@ const Podcast = () => {
             duration: "14:10",
             audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/la_verraquera_arriera.mp3",
             category: "Tradiciones",
-            image: "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg?auto=compress&cs=tinysrgb&w=600"
+            image: "/PODCAST IMG-02.png"
         },
         {
             id: 9,
@@ -98,7 +98,7 @@ const Podcast = () => {
             duration: "16:30",
             audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/sobre_la_medellin_de_hoy.mp3",
             category: "Actualidad",
-            image: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=600"
+            image: "/PODCAST IMG-02.png"
         },
         {
             id: 10,
@@ -107,7 +107,7 @@ const Podcast = () => {
             duration: "15:20",
             audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/sobre_la_medellin_de_los_cafetales.mp3",
             category: "Economía",
-            image: "https://images.pexels.com/photos/1105766/pexels-photo-1105766.jpeg?auto=compress&cs=tinysrgb&w=600"
+            image: "/PODCAST IMG-02.png"
         },
         {
             id: 11,
@@ -116,7 +116,7 @@ const Podcast = () => {
             duration: "18:45",
             audioFile: "https://raw.githubusercontent.com/cosiaca350/web/main/PODCAST/sobre_la_violencia_a_la_esperanza.mp3",
             category: "Transformación",
-            image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=600"
+            image: "/PODCAST IMG-02.png"
         }
     ];
 
