@@ -331,92 +331,99 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
             </div>
 
             <div className="absolute inset-0 z-10 flex flex-col pointer-events-none">
-                <div className="flex-none pt-4 px-4 pointer-events-auto">
-                    <div className="bg-black/40 backdrop-blur-lg rounded-2xl p-4 max-w-6xl mx-auto shadow-2xl">
-                        <div className="flex flex-col md:flex-row gap-3 items-center justify-between">
-                            <div>
-                                <h2 className="text-xl md:text-2xl font-anton text-white mb-1">
-                                    ✨ Línea de Tiempo Interactiva 3D
+                <div className="flex-none pt-3 px-3 pointer-events-auto">
+                    <div className="bg-black/30 backdrop-blur-md rounded-xl p-3 max-w-6xl mx-auto shadow-lg">
+                        <div className="flex flex-col md:flex-row gap-2 items-center justify-between">
+                            <div className="flex items-center gap-3">
+                                <h2 className="text-base md:text-lg font-bold text-white">
+                                    ✨ LÍNEA DE TIEMPO INTERACTIVA 3D
                                 </h2>
-                                <p className="text-white/70 text-xs">
+                                <p className="text-white/60 text-xs hidden md:block">
                                     Explora 350 años de historia de Medellín
                                 </p>
                             </div>
 
                             <button
                                 onClick={handleClose}
-                                className="px-4 py-2 rounded-full text-sm font-bold bg-cosiaca-red text-white hover:bg-cosiaca-red/80 shadow-lg transition-all"
+                                className="px-3 py-1.5 rounded-full text-xs font-bold bg-cosiaca-red text-white hover:bg-cosiaca-red/80 shadow-md transition-all"
                             >
                                 ✕ Cerrar
                             </button>
                         </div>
 
-                        <div className="mt-4 flex flex-col md:flex-row gap-3 items-center justify-between border-t border-white/20 pt-3">
-                            <div className="flex gap-2 flex-wrap justify-center">
+                        <div className="mt-2 flex flex-col md:flex-row gap-2 items-center justify-between border-t border-white/10 pt-2">
+                            <div className="flex gap-1.5 flex-wrap justify-center">
                                 <button
                                     onClick={() => { setViewMode('spiral'); setAutoRotate(true); }}
-                                    className={`px-3 py-2 rounded-full text-xs font-bold transition-all ${
+                                    className={`px-2 py-1 rounded-lg text-xs font-medium transition-all ${
                                         viewMode === 'spiral'
-                                            ? 'bg-white text-cosiaca-brown shadow-lg'
-                                            : 'bg-white/20 text-white hover:bg-white/30'
+                                            ? 'bg-white text-cosiaca-brown'
+                                            : 'bg-white/15 text-white hover:bg-white/25'
                                     }`}
+                                    title="Vista Espiral"
                                 >
                                     🌀 Espiral
                                 </button>
                                 <button
                                     onClick={() => { setViewMode('orbit'); setAutoRotate(true); }}
-                                    className={`px-3 py-2 rounded-full text-xs font-bold transition-all ${
+                                    className={`px-2 py-1 rounded-lg text-xs font-medium transition-all ${
                                         viewMode === 'orbit'
-                                            ? 'bg-white text-cosiaca-brown shadow-lg'
-                                            : 'bg-white/20 text-white hover:bg-white/30'
+                                            ? 'bg-white text-cosiaca-brown'
+                                            : 'bg-white/15 text-white hover:bg-white/25'
                                     }`}
+                                    title="Vista Órbita"
                                 >
                                     🪐 Órbita
                                 </button>
                                 <button
                                     onClick={() => { setViewMode('wave'); setAutoRotate(true); }}
-                                    className={`px-3 py-2 rounded-full text-xs font-bold transition-all ${
+                                    className={`px-2 py-1 rounded-lg text-xs font-medium transition-all ${
                                         viewMode === 'wave'
                                             ? 'bg-white text-cosiaca-brown shadow-lg'
                                             : 'bg-white/20 text-white hover:bg-white/30'
                                     }`}
+                                    title="Vista Onda"
                                 >
                                     〰️ Onda
                                 </button>
                                 <button
                                     onClick={() => { setViewMode('grid'); setAutoRotate(true); }}
-                                    className={`px-3 py-2 rounded-full text-xs font-bold transition-all ${
+                                    className={`px-2 py-1 rounded-lg text-xs font-medium transition-all ${
                                         viewMode === 'grid'
-                                            ? 'bg-white text-cosiaca-brown shadow-lg'
-                                            : 'bg-white/20 text-white hover:bg-white/30'
+                                            ? 'bg-white text-cosiaca-brown'
+                                            : 'bg-white/15 text-white hover:bg-white/25'
                                     }`}
+                                    title="Vista Red"
                                 >
                                     ⬜ Red
                                 </button>
                             </div>
 
-                            <div className="flex gap-2 flex-wrap justify-center">
+                            <div className="flex gap-1.5 flex-wrap justify-center">
                                 {categories && (
                                     <button
                                         onClick={() => setShowFilters(!showFilters)}
-                                        className="px-3 py-2 rounded-full text-xs font-bold transition-all bg-white/20 text-white hover:bg-white/30"
+                                        className="px-2 py-1 rounded-lg text-xs font-medium transition-all bg-white/15 text-white hover:bg-white/25"
+                                        title="Filtros"
                                     >
                                         {showFilters ? '✕' : '🔍'}
                                     </button>
                                 )}
                                 <button
                                     onClick={() => setAutoRotate(!autoRotate)}
-                                    className={`px-3 py-2 rounded-full text-xs font-bold transition-all ${
+                                    className={`px-2 py-1 rounded-lg text-xs font-medium transition-all ${
                                         autoRotate
-                                            ? 'bg-green-500/80 text-white'
-                                            : 'bg-white/20 text-white hover:bg-white/30'
+                                            ? 'bg-green-500/70 text-white'
+                                            : 'bg-white/15 text-white hover:bg-white/25'
                                     }`}
+                                    title={autoRotate ? 'Pausar' : 'Reproducir'}
                                 >
                                     {autoRotate ? '⏸️' : '▶️'}
                                 </button>
                                 <button
                                     onClick={resetView}
-                                    className="px-3 py-2 rounded-full text-xs font-bold transition-all bg-white/20 text-white hover:bg-white/30"
+                                    className="px-2 py-1 rounded-lg text-xs font-medium transition-all bg-white/15 text-white hover:bg-white/25"
+                                    title="Reiniciar vista"
                                 >
                                     ↺
                                 </button>
@@ -424,15 +431,15 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                         </div>
 
                         {showFilters && categories && (
-                            <div className="mt-3 pt-3 border-t border-white/20 animate-fade-in">
-                                <div className="flex flex-wrap gap-2 justify-center">
+                            <div className="mt-2 pt-2 border-t border-white/10 animate-fade-in">
+                                <div className="flex flex-wrap gap-1.5 justify-center">
                                     {categories.map(cat => (
                                         <button
                                             key={cat.id}
                                             onClick={() => setFilterCategory(cat.id)}
-                                            className={`px-3 py-1.5 rounded-full font-medium text-xs transition-all ${
+                                            className={`px-2 py-1 rounded-lg font-medium text-xs transition-all ${
                                                 filterCategory === cat.id
-                                                    ? 'bg-white text-cosiaca-brown shadow-lg'
+                                                    ? 'bg-white text-cosiaca-brown'
                                                     : 'bg-white/15 text-white hover:bg-white/25'
                                             }`}
                                         >

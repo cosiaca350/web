@@ -840,38 +840,64 @@ Y eso que no te he contado la mejor parte... Dicen que en todas las tertulias de
                             </div>
                         </div>
 
-                        {/* Input para IA */}
+                        {/* Búsqueda simple */}
                         <div className="bg-gradient-to-r from-cosiaca-beige/50 to-cosiaca-brown/10 rounded-xl p-4 sm:p-6 border-2 border-cosiaca-beige shadow-md">
-                            <div className="flex items-center justify-center gap-2 mb-3">
-                                <label className="text-cosiaca-brown font-bold text-center text-base sm:text-lg">
-                                    🤖 Pídele a Cosiaca un chisme histórico sobre:
-                                </label>
-                                <div className="flex items-center gap-1 bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-bold">
-                                    <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                                    <span>IA Activa</span>
-                                </div>
-                            </div>
+                            <label className="block text-cosiaca-brown font-bold mb-3 text-center text-base sm:text-lg">
+                                🔍 Buscar chismes sobre:
+                            </label>
                             <div className="flex flex-col sm:flex-row gap-3">
                                 <input
                                     type="text"
                                     value={customGossipTopic}
                                     onChange={(e) => setCustomGossipTopic(e.target.value)}
-                                    onKeyPress={(e) => e.key === 'Enter' && !isGeneratingGossip && generateAIGossip()}
-                                    placeholder="Escribe: Metro, Botero, café, arrieros, violencia..."
+                                    onKeyPress={(e) => {
+                                        if (e.key === 'Enter') {
+                                            const topic = customGossipTopic.trim().toLowerCase();
+                                            if (topic) {
+                                                const filtered = historicalGossip.filter(g =>
+                                                    g.title.toLowerCase().includes(topic) ||
+                                                    g.gossip.toLowerCase().includes(topic) ||
+                                                    g.period.toLowerCase().includes(topic)
+                                                );
+                                                if (filtered.length > 0) {
+                                                    setCurrentGossip(filtered[Math.floor(Math.random() * filtered.length)]);
+                                                } else {
+                                                    setCurrentGossip(getRandomGossip('all'));
+                                                }
+                                                setCustomGossipTopic('');
+                                            }
+                                        }
+                                    }}
+                                    placeholder="Ejemplo: Metro, Botero, café, arrieros..."
                                     className="flex-1 px-4 py-3 rounded-full border-2 border-cosiaca-beige focus:border-cosiaca-red focus:ring-2 focus:ring-cosiaca-red/20 focus:outline-none text-cosiaca-brown text-sm sm:text-base transition-all"
-                                    disabled={isGeneratingGossip}
                                 />
                                 <button
-                                    onClick={generateAIGossip}
-                                    disabled={isGeneratingGossip}
-                                    className="bg-cosiaca-red text-white font-bold py-3 px-6 rounded-full hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base whitespace-nowrap flex items-center justify-center gap-2"
+                                    onClick={() => {
+                                        const topic = customGossipTopic.trim().toLowerCase();
+                                        if (topic) {
+                                            const filtered = historicalGossip.filter(g =>
+                                                g.title.toLowerCase().includes(topic) ||
+                                                g.gossip.toLowerCase().includes(topic) ||
+                                                g.period.toLowerCase().includes(topic)
+                                            );
+                                            if (filtered.length > 0) {
+                                                setCurrentGossip(filtered[Math.floor(Math.random() * filtered.length)]);
+                                            } else {
+                                                setCurrentGossip(getRandomGossip('all'));
+                                            }
+                                            setCustomGossipTopic('');
+                                        } else {
+                                            setCurrentGossip(getRandomGossip('all'));
+                                        }
+                                    }}
+                                    className="bg-cosiaca-red text-white font-bold py-3 px-6 rounded-full hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm sm:text-base whitespace-nowrap flex items-center justify-center gap-2"
                                 >
                                     <SparklesIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                                    {customGossipTopic.trim() ? 'Buscar Chisme' : 'Sorpréndeme'}
+                                    {customGossipTopic.trim() ? 'Buscar' : 'Sorpréndeme'}
                                 </button>
                             </div>
                             <p className="text-xs sm:text-sm text-cosiaca-brown/60 mt-3 text-center leading-relaxed">
-                                💡 Escribe cualquier tema histórico de Medellín y Cosiaca te contará un chisme. Presiona <kbd className="px-2 py-1 bg-white rounded text-cosiaca-brown font-mono text-xs">Enter</kbd>
+                                💡 Busca por palabras clave o presiona "Sorpréndeme" para un chisme aleatorio
                             </p>
                         </div>
 
