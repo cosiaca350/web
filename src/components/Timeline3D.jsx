@@ -14,6 +14,7 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
     const [particles, setParticles] = useState([]);
     const [showFilters, setShowFilters] = useState(false);
     const [animationSpeed] = useState(0.003);
+    const [isMinimized, setIsMinimized] = useState(false);
 
     useEffect(() => {
         const particleArray = Array.from({ length: 120 }, (_, i) => ({
@@ -331,79 +332,95 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
             </div>
 
             <div className="absolute inset-0 z-10 flex flex-col pointer-events-none">
-                <div className="flex-none pt-3 px-3 pointer-events-auto">
-                    <div className="bg-black/30 backdrop-blur-md rounded-xl p-3 max-w-6xl mx-auto shadow-lg">
-                        <div className="flex flex-col md:flex-row gap-2 items-center justify-between">
-                            <div className="flex items-center gap-3">
-                                <h2 className="text-base md:text-lg font-bold text-white">
-                                    ✨ LÍNEA DE TIEMPO INTERACTIVA 3D
+                <div className="flex-none pt-2 px-2 sm:pt-3 sm:px-3 pointer-events-auto">
+                    <div className={`bg-black/40 backdrop-blur-md rounded-lg sm:rounded-xl p-2 sm:p-3 max-w-6xl mx-auto shadow-lg transition-all duration-300 ${
+                        isMinimized ? 'py-1.5' : ''
+                    }`}>
+                        <div className="flex items-center justify-between gap-2">
+                            <div className="flex items-center gap-2 min-w-0 flex-1">
+                                <h2 className="text-xs sm:text-sm md:text-base font-bold text-white truncate">
+                                    ✨ LÍNEA DE TIEMPO 3D
                                 </h2>
-                                <p className="text-white/60 text-xs hidden md:block">
-                                    Explora 350 años de historia de Medellín
-                                </p>
+                                {!isMinimized && (
+                                    <p className="text-white/60 text-[10px] sm:text-xs hidden lg:block">
+                                        350 años de historia
+                                    </p>
+                                )}
                             </div>
 
-                            <button
-                                onClick={handleClose}
-                                className="px-3 py-1.5 rounded-full text-xs font-bold bg-cosiaca-red text-white hover:bg-cosiaca-red/80 shadow-md transition-all"
-                            >
-                                ✕ Cerrar
-                            </button>
+                            <div className="flex items-center gap-1.5 flex-shrink-0">
+                                <button
+                                    onClick={() => setIsMinimized(!isMinimized)}
+                                    className="px-2 py-1 rounded-lg text-xs font-bold bg-white/20 text-white hover:bg-white/30 transition-all"
+                                    title={isMinimized ? 'Expandir' : 'Minimizar'}
+                                >
+                                    {isMinimized ? '▼' : '▲'}
+                                </button>
+                                <button
+                                    onClick={handleClose}
+                                    className="px-2 py-1 rounded-lg text-xs font-bold bg-cosiaca-red text-white hover:bg-cosiaca-red/80 transition-all"
+                                >
+                                    ✕
+                                </button>
+                            </div>
                         </div>
 
-                        <div className="mt-2 flex flex-col md:flex-row gap-2 items-center justify-between border-t border-white/10 pt-2">
-                            <div className="flex gap-1.5 flex-wrap justify-center">
+                        {!isMinimized && (
+                        <>
+
+                        <div className="mt-2 flex flex-col gap-2 border-t border-white/10 pt-2">
+                            <div className="flex gap-1 sm:gap-1.5 flex-wrap justify-center">
                                 <button
                                     onClick={() => { setViewMode('spiral'); setAutoRotate(true); }}
-                                    className={`px-2 py-1 rounded-lg text-xs font-medium transition-all ${
+                                    className={`px-1.5 sm:px-2 py-1 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium transition-all ${
                                         viewMode === 'spiral'
                                             ? 'bg-white text-cosiaca-brown'
                                             : 'bg-white/15 text-white hover:bg-white/25'
                                     }`}
                                     title="Vista Espiral"
                                 >
-                                    🌀 Espiral
+                                    🌀 <span className="hidden sm:inline">Espiral</span>
                                 </button>
                                 <button
                                     onClick={() => { setViewMode('orbit'); setAutoRotate(true); }}
-                                    className={`px-2 py-1 rounded-lg text-xs font-medium transition-all ${
+                                    className={`px-1.5 sm:px-2 py-1 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium transition-all ${
                                         viewMode === 'orbit'
                                             ? 'bg-white text-cosiaca-brown'
                                             : 'bg-white/15 text-white hover:bg-white/25'
                                     }`}
                                     title="Vista Órbita"
                                 >
-                                    🪐 Órbita
+                                    🪐 <span className="hidden sm:inline">Órbita</span>
                                 </button>
                                 <button
                                     onClick={() => { setViewMode('wave'); setAutoRotate(true); }}
-                                    className={`px-2 py-1 rounded-lg text-xs font-medium transition-all ${
+                                    className={`px-1.5 sm:px-2 py-1 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium transition-all ${
                                         viewMode === 'wave'
                                             ? 'bg-white text-cosiaca-brown shadow-lg'
                                             : 'bg-white/20 text-white hover:bg-white/30'
                                     }`}
                                     title="Vista Onda"
                                 >
-                                    〰️ Onda
+                                    〰️ <span className="hidden sm:inline">Onda</span>
                                 </button>
                                 <button
                                     onClick={() => { setViewMode('grid'); setAutoRotate(true); }}
-                                    className={`px-2 py-1 rounded-lg text-xs font-medium transition-all ${
+                                    className={`px-1.5 sm:px-2 py-1 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium transition-all ${
                                         viewMode === 'grid'
                                             ? 'bg-white text-cosiaca-brown'
                                             : 'bg-white/15 text-white hover:bg-white/25'
                                     }`}
                                     title="Vista Red"
                                 >
-                                    ⬜ Red
+                                    ⬜ <span className="hidden sm:inline">Red</span>
                                 </button>
-                            </div>
 
-                            <div className="flex gap-1.5 flex-wrap justify-center">
+                                <div className="w-px bg-white/20 mx-1 hidden sm:block"></div>
+
                                 {categories && (
                                     <button
                                         onClick={() => setShowFilters(!showFilters)}
-                                        className="px-2 py-1 rounded-lg text-xs font-medium transition-all bg-white/15 text-white hover:bg-white/25"
+                                        className="px-1.5 sm:px-2 py-1 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium transition-all bg-white/15 text-white hover:bg-white/25"
                                         title="Filtros"
                                     >
                                         {showFilters ? '✕' : '🔍'}
@@ -411,7 +428,7 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                                 )}
                                 <button
                                     onClick={() => setAutoRotate(!autoRotate)}
-                                    className={`px-2 py-1 rounded-lg text-xs font-medium transition-all ${
+                                    className={`px-1.5 sm:px-2 py-1 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium transition-all ${
                                         autoRotate
                                             ? 'bg-green-500/70 text-white'
                                             : 'bg-white/15 text-white hover:bg-white/25'
@@ -422,7 +439,7 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
                                 </button>
                                 <button
                                     onClick={resetView}
-                                    className="px-2 py-1 rounded-lg text-xs font-medium transition-all bg-white/15 text-white hover:bg-white/25"
+                                    className="px-1.5 sm:px-2 py-1 rounded-md sm:rounded-lg text-[10px] sm:text-xs font-medium transition-all bg-white/15 text-white hover:bg-white/25"
                                     title="Reiniciar vista"
                                 >
                                     ↺
@@ -432,99 +449,101 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
 
                         {showFilters && categories && (
                             <div className="mt-2 pt-2 border-t border-white/10 animate-fade-in">
-                                <div className="flex flex-wrap gap-1.5 justify-center">
+                                <div className="flex flex-wrap gap-1 sm:gap-1.5 justify-center">
                                     {categories.map(cat => (
                                         <button
                                             key={cat.id}
                                             onClick={() => setFilterCategory(cat.id)}
-                                            className={`px-2 py-1 rounded-lg font-medium text-xs transition-all ${
+                                            className={`px-1.5 sm:px-2 py-1 rounded-md sm:rounded-lg font-medium text-[10px] sm:text-xs transition-all ${
                                                 filterCategory === cat.id
                                                     ? 'bg-white text-cosiaca-brown'
                                                     : 'bg-white/15 text-white hover:bg-white/25'
                                             }`}
                                         >
-                                            {cat.icon} {cat.name}
+                                            {cat.icon} <span className="hidden sm:inline">{cat.name}</span>
                                         </button>
                                     ))}
                                 </div>
                             </div>
                         )}
 
-                        <div className="mt-3 text-center">
-                            <div className="text-white/80 text-xs">
+                        <div className="mt-2 sm:mt-3 text-center">
+                            <div className="text-white/80 text-[10px] sm:text-xs">
                                 <span className="font-bold">{periods.length}</span> eventos •
-                                <span className="ml-2">Zoom {(zoom * 100).toFixed(0)}%</span> •
-                                <span className="ml-2">🖱️ Arrastra • 🔍 Scroll • ✨ Click</span>
+                                <span className="ml-1 sm:ml-2">Zoom {(zoom * 100).toFixed(0)}%</span>
+                                <span className="ml-1 sm:ml-2 hidden sm:inline">🖱️ Arrastra • 🔍 Scroll • ✨ Click</span>
                             </div>
                         </div>
+                        </>
+                        )}
                     </div>
                 </div>
             </div>
 
             {selectedNode && (
                 <div
-                    className="absolute inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-lg animate-fade-in"
+                    className="absolute inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/80 backdrop-blur-lg animate-fade-in"
                     onClick={() => { setSelectedNode(null); setAutoRotate(true); }}
                 >
                     <div
-                        className="relative max-w-2xl w-full max-h-[90vh] overflow-y-auto bg-gradient-to-br from-white via-cosiaca-cream to-cosiaca-beige/50 rounded-3xl shadow-2xl animate-scale-in"
+                        className="relative max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto bg-gradient-to-br from-white via-cosiaca-cream to-cosiaca-beige/50 rounded-2xl sm:rounded-3xl shadow-2xl animate-scale-in"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <div className={`${selectedNode.color} p-5 text-white sticky top-0 z-10 rounded-t-3xl backdrop-blur-sm`}>
+                        <div className={`${selectedNode.color} p-3 sm:p-4 md:p-5 text-white sticky top-0 z-10 rounded-t-2xl sm:rounded-t-3xl backdrop-blur-sm`}>
                             <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-3">
-                                    <span className="text-4xl">{selectedNode.icon}</span>
+                                <div className="flex items-center gap-2 sm:gap-3">
+                                    <span className="text-2xl sm:text-3xl md:text-4xl">{selectedNode.icon}</span>
                                     <div>
-                                        <h3 className="text-3xl font-bold text-white">{selectedNode.year}</h3>
+                                        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">{selectedNode.year}</h3>
                                         {selectedNode.date && (
-                                            <p className="text-xs text-white opacity-90 mt-1">{selectedNode.date}</p>
+                                            <p className="text-[10px] sm:text-xs text-white opacity-90 mt-0.5 sm:mt-1">{selectedNode.date}</p>
                                         )}
                                     </div>
                                 </div>
                                 <button
                                     onClick={() => { setSelectedNode(null); setAutoRotate(true); }}
-                                    className="bg-white/20 hover:bg-white/30 text-white w-9 h-9 rounded-full transition-all duration-300 font-bold backdrop-blur-sm hover:scale-110 flex items-center justify-center text-lg"
+                                    className="bg-white/20 hover:bg-white/30 text-white w-8 h-8 sm:w-9 sm:h-9 rounded-full transition-all duration-300 font-bold backdrop-blur-sm hover:scale-110 flex items-center justify-center text-base sm:text-lg flex-shrink-0"
                                 >
                                     ✕
                                 </button>
                             </div>
                         </div>
 
-                        <div className="p-5 space-y-4">
-                            <h4 className="text-2xl font-anton text-cosiaca-brown leading-tight">{selectedNode.title}</h4>
+                        <div className="p-3 sm:p-4 md:p-5 space-y-3 sm:space-y-4">
+                            <h4 className="text-lg sm:text-xl md:text-2xl font-anton text-cosiaca-brown leading-tight">{selectedNode.title}</h4>
 
-                            <div className="flex flex-wrap gap-2">
-                                <div className="flex items-center gap-2 bg-cosiaca-beige/60 px-3 py-1.5 rounded-lg text-sm">
+                            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                                <div className="flex items-center gap-1.5 sm:gap-2 bg-cosiaca-beige/60 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm">
                                     <span>👥</span>
                                     <span className="font-medium">{selectedNode.population}</span>
                                 </div>
                                 {selectedNode.keyFigure && (
-                                    <div className="flex items-center gap-2 bg-cosiaca-beige/60 px-3 py-1.5 rounded-lg text-sm">
+                                    <div className="flex items-center gap-1.5 sm:gap-2 bg-cosiaca-beige/60 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm">
                                         <span>👤</span>
                                         <span className="font-medium text-cosiaca-brown/80">{selectedNode.keyFigure}</span>
                                     </div>
                                 )}
                             </div>
 
-                            <p className="text-base text-cosiaca-brown/85 leading-relaxed">
+                            <p className="text-sm sm:text-base text-cosiaca-brown/85 leading-relaxed">
                                 {selectedNode.description}
                             </p>
 
-                            <div className="bg-gradient-to-r from-cosiaca-cream to-cosiaca-beige/70 p-4 rounded-2xl border-l-4 border-cosiaca-red">
-                                <h5 className="font-bold text-cosiaca-brown mb-2 flex items-center gap-2 text-sm">
+                            <div className="bg-gradient-to-r from-cosiaca-cream to-cosiaca-beige/70 p-3 sm:p-4 rounded-xl sm:rounded-2xl border-l-4 border-cosiaca-red">
+                                <h5 className="font-bold text-cosiaca-brown mb-2 flex items-center gap-2 text-xs sm:text-sm">
                                     <span>💬</span> Cosiaca cuenta:
                                 </h5>
-                                <p className="text-sm text-cosiaca-brown italic leading-relaxed">{selectedNode.details}</p>
+                                <p className="text-xs sm:text-sm text-cosiaca-brown italic leading-relaxed">{selectedNode.details}</p>
                             </div>
 
-                            <div className="bg-white/90 p-4 rounded-2xl border border-cosiaca-brown/15">
-                                <h5 className="font-bold text-cosiaca-brown mb-3 flex items-center gap-2 text-sm">
+                            <div className="bg-white/90 p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-cosiaca-brown/15">
+                                <h5 className="font-bold text-cosiaca-brown mb-2 sm:mb-3 flex items-center gap-2 text-xs sm:text-sm">
                                     <span>📌</span> Hitos Destacados:
                                 </h5>
-                                <ul className="space-y-2">
+                                <ul className="space-y-1.5 sm:space-y-2">
                                     {selectedNode.milestones.map((milestone, idx) => (
-                                        <li key={idx} className="flex items-start gap-2 text-sm text-cosiaca-brown/80">
-                                            <span className="text-cosiaca-red font-bold mt-0.5 text-xs">●</span>
+                                        <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-cosiaca-brown/80">
+                                            <span className="text-cosiaca-red font-bold mt-0.5 text-[10px] sm:text-xs">●</span>
                                             <span className="leading-snug">{milestone}</span>
                                         </li>
                                     ))}
