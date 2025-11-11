@@ -17,7 +17,7 @@ const ElevenLabsWidget = () => {
             </header>
             
             {/* Banner Principal */}
-            <div className="bg-gradient-to-r from-cosiaca-red to-cosiaca-red/90 rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 text-center text-white">
+            <div className="bg-gradient-to-r from-cosiaca-brown to-cosiaca-brown/80 rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 text-center text-white">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight font-anton mb-4 text-white">
                     🎙️ Hablar con Cosiaca
                 </h2>
@@ -53,18 +53,18 @@ const ElevenLabsWidget = () => {
                     <h4 className="text-xl font-bold font-anton text-cosiaca-brown mb-4 text-center">
                         🎙️ "Habla conmigo"
                     </h4>
-                    <div className="grid md:grid-cols-2 gap-4 text-center">
-                        <div className="bg-white p-4 rounded-lg border border-cosiaca-beige shadow-sm">
-                            <div className="text-3xl mb-2">📞</div>
-                            <h5 className="font-bold text-cosiaca-brown mb-1.5 text-base">Cómo hablar</h5>
-                            <p className="text-cosiaca-brown/80 text-xs">
+                    <div className="grid md:grid-cols-2 gap-6 text-center">
+                        <div className="bg-white p-6 rounded-xl border border-cosiaca-beige shadow-sm">
+                            <div className="text-4xl mb-3">📞</div>
+                            <h5 className="font-bold text-cosiaca-brown mb-2 text-lg">Cómo hablar</h5>
+                            <p className="text-cosiaca-brown/80 text-sm">
                                 <strong>Oprimí el botón de llamar</strong> (icono de teléfono) para hablar con Cosiaca.
                             </p>
                         </div>
-                        <div className="bg-white p-4 rounded-lg border border-cosiaca-beige shadow-sm">
-                            <div className="text-3xl mb-2">🔊</div>
-                            <h5 className="font-bold text-cosiaca-brown mb-1.5 text-base">Cómo escuchar</h5>
-                            <p className="text-cosiaca-brown/80 text-xs">
+                        <div className="bg-white p-6 rounded-xl border border-cosiaca-beige shadow-sm">
+                            <div className="text-4xl mb-3">🔊</div>
+                            <h5 className="font-bold text-cosiaca-brown mb-2 text-lg">Cómo escuchar</h5>
+                            <p className="text-cosiaca-brown/80 text-sm">
                                 <strong>Subí el volumen</strong>, que Cosiaca te contesta con su propia voz.
                             </p>
                         </div>
@@ -94,9 +94,9 @@ const ElevenLabsWidget = () => {
                     ].map((question, index) => (
                         <div
                             key={index}
-                            className="p-3 bg-cosiaca-beige/50 rounded-lg border border-cosiaca-beige hover:bg-cosiaca-beige/70 transition-colors"
+                            className="p-4 bg-cosiaca-beige/50 rounded-lg border border-cosiaca-beige hover:bg-cosiaca-beige/70 transition-colors"
                         >
-                            <p className="text-xs text-cosiaca-brown italic">
+                            <p className="text-sm text-cosiaca-brown italic">
                                 "{question}"
                             </p>
                         </div>
@@ -139,36 +139,36 @@ const ElevenLabsWidget = () => {
                     <strong>CosiacaBot hace parte de una obra transmedia</strong> que incluye:
                 </p>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
-                    <div className="p-3 bg-white border border-cosiaca-beige rounded-lg hover:shadow-md transition-shadow">
-                        <div className="text-2xl mb-1">🎧</div>
-                        <h4 className="font-bold text-cosiaca-brown mb-0.5 text-sm">Podcast Histórico</h4>
-                        <p className="text-xs text-cosiaca-brown/70">Humor + historia paisa</p>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                    <div className="p-4 bg-white border border-cosiaca-beige rounded-lg hover:shadow-md transition-shadow">
+                        <div className="text-3xl mb-2">🎧</div>
+                        <h4 className="font-bold text-cosiaca-brown mb-1 text-base">Podcast Histórico</h4>
+                        <p className="text-sm text-cosiaca-brown/70">Humor + historia paisa</p>
                     </div>
-                    <div className="p-3 bg-white border border-cosiaca-beige rounded-lg hover:shadow-md transition-shadow">
-                        <div className="text-2xl mb-1">🎥</div>
-                        <h4 className="font-bold text-cosiaca-brown mb-0.5 text-sm">Videos IA</h4>
-                        <p className="text-xs text-cosiaca-brown/70">Clips animados y narrativos</p>
+                    <div className="p-4 bg-white border border-cosiaca-beige rounded-lg hover:shadow-md transition-shadow">
+                        <div className="text-3xl mb-2">🎥</div>
+                        <h4 className="font-bold text-cosiaca-brown mb-1 text-base">Videos IA</h4>
+                        <p className="text-sm text-cosiaca-brown/70">Clips animados y narrativos</p>
                     </div>
-                    <div className="p-3 bg-white border border-cosiaca-beige rounded-lg hover:shadow-md transition-shadow">
-                        <div className="text-2xl mb-1">📚</div>
-                        <h4 className="font-bold text-cosiaca-brown mb-0.5 text-sm">Libro Ilustrado</h4>
-                        <p className="text-xs text-cosiaca-brown/70">País de Cosiacas, Ciegos y Puritanos</p>
+                    <div className="p-4 bg-white border border-cosiaca-beige rounded-lg hover:shadow-md transition-shadow">
+                        <div className="text-3xl mb-2">📚</div>
+                        <h4 className="font-bold text-cosiaca-brown mb-1 text-base">Libro Ilustrado</h4>
+                        <p className="text-sm text-cosiaca-brown/70">País de Cosiacas, Ciegos y Puritanos</p>
                     </div>
-                    <div className="p-3 bg-white border border-cosiaca-beige rounded-lg hover:shadow-md transition-shadow">
-                        <div className="text-2xl mb-1">🕹️</div>
-                        <h4 className="font-bold text-cosiaca-brown mb-0.5 text-sm">Juegos y AR</h4>
-                        <p className="text-xs text-cosiaca-brown/70">Experiencias interactivas</p>
+                    <div className="p-4 bg-white border border-cosiaca-beige rounded-lg hover:shadow-md transition-shadow">
+                        <div className="text-3xl mb-2">🕹️</div>
+                        <h4 className="font-bold text-cosiaca-brown mb-1 text-base">Juegos y AR</h4>
+                        <p className="text-sm text-cosiaca-brown/70">Experiencias interactivas</p>
                     </div>
-                    <div className="p-3 bg-white border border-cosiaca-beige rounded-lg hover:shadow-md transition-shadow">
-                        <div className="text-2xl mb-1">💻</div>
-                        <h4 className="font-bold text-cosiaca-brown mb-0.5 text-sm">Plataforma Web</h4>
-                        <p className="text-xs text-cosiaca-brown/70">Línea de tiempo interactiva</p>
+                    <div className="p-4 bg-white border border-cosiaca-beige rounded-lg hover:shadow-md transition-shadow">
+                        <div className="text-3xl mb-2">💻</div>
+                        <h4 className="font-bold text-cosiaca-brown mb-1 text-base">Plataforma Web</h4>
+                        <p className="text-sm text-cosiaca-brown/70">Línea de tiempo interactiva</p>
                     </div>
-                    <div className="p-3 bg-white border border-cosiaca-beige rounded-lg hover:shadow-md transition-shadow">
-                        <div className="text-2xl mb-1">📱</div>
-                        <h4 className="font-bold text-cosiaca-brown mb-0.5 text-sm">Redes Sociales</h4>
-                        <p className="text-xs text-cosiaca-brown/70">Contenido cultural diario</p>
+                    <div className="p-4 bg-white border border-cosiaca-beige rounded-lg hover:shadow-md transition-shadow">
+                        <div className="text-3xl mb-2">📱</div>
+                        <h4 className="font-bold text-cosiaca-brown mb-1 text-base">Redes Sociales</h4>
+                        <p className="text-sm text-cosiaca-brown/70">Contenido cultural diario</p>
                     </div>
                 </div>
 

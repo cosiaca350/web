@@ -39,12 +39,12 @@ const Welcome = ({ setView }) => {
             action: () => setView('videos'),
             color: "from-blue-500 to-blue-600"
         },
-        {
-            icon: <BotIcon className="w-8 h-8" />,
-            title: "CosiacaBot",
+        { 
+            icon: <BotIcon className="w-8 h-8" />, 
+            title: "CosiacaBot", 
             desc: "Conversa con la historia",
             action: () => setView('cosiacabot'),
-            color: "from-cosiaca-red to-red-600"
+            color: "from-cosiaca-acento to-cosiaca-secundario"
         },
         { 
             icon: <GamepadIcon className="w-8 h-8" />, 
