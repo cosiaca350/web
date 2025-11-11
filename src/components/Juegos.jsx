@@ -799,123 +799,42 @@ Y eso que no te he contado la mejor parte... Dicen que en todas las tertulias de
                                 </div>
                             )}
 
-                        {/* Selector de Categorías Premium - Grid de tarjetas */}
-                        <div className="bg-white rounded-2xl p-6 shadow-xl border-2 border-cosiaca-beige">
-                            <h4 className="text-center text-xl sm:text-2xl font-bold text-cosiaca-brown mb-6">
-                                🕰️ Viaja en el Tiempo
-                            </h4>
-                            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-                                {[
-                                    { key: 'all', icon: '📖', label: 'Todos', color: 'from-purple-100 to-purple-200 border-purple-300' },
-                                    { key: 'colonialGossip', icon: '🏛️', label: 'Colonial', sub: '1675-1810', color: 'from-stone-100 to-amber-100 border-stone-300' },
-                                    { key: 'independenceGossip', icon: '⚔️', label: 'Independencia', sub: '1810-1850', color: 'from-red-100 to-orange-100 border-red-300' },
-                                    { key: 'coffeeBoomGossip', icon: '☕', label: 'Época del Café', sub: '1850-1900', color: 'from-amber-100 to-yellow-100 border-amber-300' },
-                                    { key: 'industrializationGossip', icon: '🏭', label: 'Industrial', sub: '1900-1950', color: 'from-slate-100 to-gray-200 border-slate-300' },
-                                    { key: 'modernGossip', icon: '🌆', label: 'Moderno', sub: '1950-2025', color: 'from-blue-100 to-cyan-100 border-blue-300' },
-                                    { key: 'characterGossip', icon: '👤', label: 'Personajes', sub: 'Famosos', color: 'from-pink-100 to-rose-100 border-pink-300' }
-                                ].map(cat => (
-                                    <button
-                                        key={cat.key}
-                                        onClick={() => { setGossipCategory(cat.key); setCurrentGossip(getRandomGossip(cat.key)); }}
-                                        className={`relative p-4 rounded-xl border-2 transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
-                                            gossipCategory === cat.key
-                                                ? 'bg-gradient-to-br from-cosiaca-red to-red-600 text-white shadow-2xl scale-105 border-red-700'
-                                                : `bg-gradient-to-br ${cat.color} text-cosiaca-brown`
-                                        }`}
-                                    >
-                                        <div className={`text-3xl mb-2 ${gossipCategory === cat.key ? '' : 'opacity-80'}`}>{cat.icon}</div>
-                                        <div className={`font-bold text-sm ${gossipCategory === cat.key ? 'text-white' : 'text-cosiaca-brown'}`}>
-                                            {cat.label}
-                                        </div>
-                                        {cat.sub && (
-                                            <div className={`text-xs mt-1 ${gossipCategory === cat.key ? 'text-white/80' : 'text-cosiaca-brown/60'}`}>
-                                                {cat.sub}
-                                            </div>
-                                        )}
-                                        {gossipCategory === cat.key && (
-                                            <div className="absolute top-2 right-2 w-3 h-3 bg-white rounded-full animate-pulse"></div>
-                                        )}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Búsqueda simple */}
-                        <div className="bg-gradient-to-r from-cosiaca-beige/50 to-cosiaca-brown/10 rounded-xl p-4 sm:p-6 border-2 border-cosiaca-beige shadow-md">
-                            <label className="block text-cosiaca-brown font-bold mb-3 text-center text-base sm:text-lg">
-                                🔍 Buscar chismes sobre:
-                            </label>
-                            <div className="flex flex-col sm:flex-row gap-3">
-                                <input
-                                    type="text"
-                                    value={customGossipTopic}
-                                    onChange={(e) => setCustomGossipTopic(e.target.value)}
-                                    onKeyPress={(e) => {
-                                        if (e.key === 'Enter') {
-                                            const topic = customGossipTopic.trim().toLowerCase();
-                                            if (topic) {
-                                                const allGossips = getAllGossips();
-                                                const filtered = allGossips.filter(g =>
-                                                    g.title?.toLowerCase().includes(topic) ||
-                                                    g.gossip?.toLowerCase().includes(topic) ||
-                                                    g.period?.toLowerCase().includes(topic)
-                                                );
-                                                if (filtered.length > 0) {
-                                                    setCurrentGossip(filtered[Math.floor(Math.random() * filtered.length)]);
-                                                } else {
-                                                    setCurrentGossip(getRandomGossip('all'));
-                                                }
-                                                setCustomGossipTopic('');
-                                            }
-                                        }
-                                    }}
-                                    placeholder="Ejemplo: Metro, Botero, café, arrieros..."
-                                    className="flex-1 px-4 py-3 rounded-full border-2 border-cosiaca-beige focus:border-cosiaca-red focus:ring-2 focus:ring-cosiaca-red/20 focus:outline-none text-cosiaca-brown text-sm sm:text-base transition-all"
-                                />
+                        {/* Acceso rápido a chismes - Diseño simplificado */}
+                        <div className="flex flex-wrap justify-center gap-3">
+                            {[
+                                { key: 'all', icon: '📖', label: 'Todos', color: 'from-cosiaca-red to-red-600' },
+                                { key: 'colonialGossip', icon: '🏛️', label: 'Colonial', color: 'from-amber-600 to-yellow-700' },
+                                { key: 'independenceGossip', icon: '⚔️', label: 'Independencia', color: 'from-red-600 to-orange-700' },
+                                { key: 'coffeeBoomGossip', icon: '☕', label: 'Café', color: 'from-amber-700 to-orange-800' },
+                                { key: 'industrializationGossip', icon: '🏭', label: 'Industrial', color: 'from-slate-600 to-gray-700' },
+                                { key: 'modernGossip', icon: '🌆', label: 'Moderno', color: 'from-blue-600 to-cyan-700' },
+                                { key: 'characterGossip', icon: '👤', label: 'Personajes', color: 'from-pink-600 to-rose-700' }
+                            ].map(cat => (
                                 <button
-                                    onClick={() => {
-                                        const topic = customGossipTopic.trim().toLowerCase();
-                                        if (topic) {
-                                            const allGossips = getAllGossips();
-                                            const filtered = allGossips.filter(g =>
-                                                g.title?.toLowerCase().includes(topic) ||
-                                                g.gossip?.toLowerCase().includes(topic) ||
-                                                g.period?.toLowerCase().includes(topic)
-                                            );
-                                            if (filtered.length > 0) {
-                                                setCurrentGossip(filtered[Math.floor(Math.random() * filtered.length)]);
-                                            } else {
-                                                setCurrentGossip(getRandomGossip('all'));
-                                            }
-                                            setCustomGossipTopic('');
-                                        } else {
-                                            setCurrentGossip(getRandomGossip('all'));
-                                        }
+                                    key={cat.key}
+                                    onClick={() => { setGossipCategory(cat.key); setCurrentGossip(getRandomGossip(cat.key)); }}
+                                    className={`group relative px-6 py-3 rounded-full font-bold text-white transition-all duration-300 transform hover:scale-110 shadow-lg overflow-hidden ${
+                                        gossipCategory === cat.key ? 'scale-110 ring-4 ring-white/50' : ''
+                                    }`}
+                                    style={{
+                                        background: gossipCategory === cat.key
+                                            ? `linear-gradient(135deg, var(--tw-gradient-stops))`
+                                            : `linear-gradient(135deg, var(--tw-gradient-stops))`,
+                                        '--tw-gradient-from': cat.color.split(' ')[0].replace('from-', ''),
+                                        '--tw-gradient-to': cat.color.split(' ')[1].replace('to-', '')
                                     }}
-                                    className="bg-cosiaca-red text-white font-bold py-3 px-6 rounded-full hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg text-sm sm:text-base whitespace-nowrap flex items-center justify-center gap-2"
                                 >
-                                    <SparklesIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                                    {customGossipTopic.trim() ? 'Buscar' : 'Sorpréndeme'}
+                                    <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                                    <span className="relative z-10 flex items-center gap-2 text-sm sm:text-base">
+                                        <span className="text-lg">{cat.icon}</span>
+                                        <span>{cat.label}</span>
+                                    </span>
                                 </button>
-                            </div>
-                            <p className="text-xs sm:text-sm text-cosiaca-brown/60 mt-3 text-center leading-relaxed">
-                                💡 Busca por palabras clave o presiona "Sorpréndeme" para un chisme aleatorio
-                            </p>
+                            ))}
                         </div>
 
-                        {/* Tarjeta de Chisme PREMIUM */}
-                        <div className={`relative rounded-3xl border-4 shadow-2xl overflow-hidden transition-all duration-500 ${
-                            readingMode
-                                ? 'bg-amber-50 border-amber-300 p-8 sm:p-12'
-                                : 'bg-gradient-to-br from-white via-amber-50/30 to-red-50/20 border-cosiaca-red/20 p-6 sm:p-8'
-                        } min-h-[400px] flex items-center justify-center`}>
-                            {/* Efectos de fondo animados */}
-                            {!readingMode && (
-                                <>
-                                    <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-cosiaca-red/5 via-transparent to-transparent rounded-full blur-3xl animate-pulse"></div>
-                                    <div className="absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-tr from-amber-200/10 via-transparent to-transparent rounded-full blur-2xl"></div>
-                                </>
-                            )}
+                        {/* Tarjeta de Chisme - Rediseño limpio */}
+                        <div className="relative rounded-2xl shadow-xl overflow-hidden bg-white border-2 border-cosiaca-beige p-6 sm:p-8 min-h-[350px] flex items-center justify-center">
 
                             {isGeneratingGossip ? (
                                 <div className="text-center z-10">
@@ -931,181 +850,84 @@ Y eso que no te he contado la mejor parte... Dicen que en todas las tertulias de
                                     </p>
                                 </div>
                             ) : currentGossip ? (
-                                <div className="w-full space-y-6 relative z-10 animate-fade-in">
-                                    {/* Header del chisme con acciones */}
-                                    <div className="flex items-start justify-between gap-4 pb-6 border-b-2 border-cosiaca-red/20">
+                                <div className="w-full space-y-4 relative z-10 animate-fade-in">
+                                    {/* Header simplificado */}
+                                    <div className="flex items-start justify-between gap-4">
                                         <div className="flex-1">
-                                            <div className={`${readingMode ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl'} font-bold text-cosiaca-brown mb-3 leading-tight`}>
+                                            <h3 className="text-xl sm:text-2xl font-bold text-cosiaca-brown mb-2 leading-tight">
                                                 {currentGossip.title}
-                                            </div>
-                                            <div className="flex flex-wrap items-center gap-3">
-                                                <span className="inline-flex items-center gap-2 bg-cosiaca-red text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                                                    📅 {currentGossip.period || currentGossip.year}
-                                                </span>
-                                                {currentGossip.character && (
-                                                    <span className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                                                        👤 {currentGossip.character}
-                                                    </span>
-                                                )}
-                                            </div>
+                                            </h3>
+                                            <span className="inline-flex items-center gap-2 bg-cosiaca-red text-white px-3 py-1 rounded-full text-xs font-bold">
+                                                📅 {currentGossip.period || currentGossip.year}
+                                            </span>
                                         </div>
-
-                                        {/* Acciones flotantes */}
-                                        <div className="flex flex-col gap-2">
-                                            <button
-                                                onClick={() => toggleFavorite(currentGossip)}
-                                                className={`p-3 rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg ${
-                                                    isFavorite(currentGossip)
-                                                        ? 'bg-red-500 text-white'
-                                                        : 'bg-white text-gray-400 hover:bg-red-100 hover:text-red-500'
-                                                }`}
-                                                title="Guardar en favoritos"
-                                            >
-                                                {isFavorite(currentGossip) ? '❤️' : '🤍'}
-                                            </button>
-                                            <button
-                                                onClick={() => shareGossip(currentGossip)}
-                                                className="p-3 bg-white rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg hover:bg-blue-50 text-cosiaca-brown"
-                                                title="Compartir chisme"
-                                            >
-                                                📤
-                                            </button>
-                                        </div>
+                                        <button
+                                            onClick={() => shareGossip(currentGossip)}
+                                            className="p-2 bg-cosiaca-beige/50 rounded-full hover:bg-cosiaca-beige transition-all text-cosiaca-brown"
+                                            title="Compartir"
+                                        >
+                                            📤
+                                        </button>
                                     </div>
 
                                     {/* Contenido del chisme */}
-                                    <div className={`bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-inner ${
-                                        readingMode ? 'text-xl leading-loose' : 'text-lg leading-relaxed'
-                                    }`}>
-                                        <div className="text-4xl mb-4 opacity-20">❝</div>
-                                        <p className="text-cosiaca-brown whitespace-pre-line">
+                                    <div className="bg-cosiaca-beige/20 rounded-xl p-4 sm:p-6">
+                                        <p className="text-base sm:text-lg text-cosiaca-brown leading-relaxed whitespace-pre-line">
                                             {currentGossip.gossip}
                                         </p>
-                                        <div className="text-4xl mt-4 text-right opacity-20">❞</div>
                                     </div>
 
-                                    {/* Dato curioso destacado */}
+                                    {/* Dato curioso compacto */}
                                     {currentGossip.funFact && (
-                                        <div className="relative overflow-hidden bg-gradient-to-r from-yellow-100 via-amber-100 to-orange-100 border-l-4 border-yellow-500 rounded-2xl p-6 shadow-lg">
-                                            <div className="absolute top-0 right-0 text-9xl opacity-5">💡</div>
-                                            <div className="relative z-10">
-                                                <div className="flex items-center gap-2 mb-2">
-                                                    <span className="text-2xl">💡</span>
-                                                    <strong className="text-yellow-800 font-bold text-lg">Dato Curioso</strong>
-                                                </div>
-                                                <p className="text-base text-cosiaca-brown leading-relaxed">
-                                                    {currentGossip.funFact}
-                                                </p>
-                                            </div>
+                                        <div className="bg-yellow-50 border-l-4 border-yellow-500 rounded-lg p-4">
+                                            <p className="text-sm text-cosiaca-brown flex items-start gap-2">
+                                                <span className="text-lg flex-shrink-0">💡</span>
+                                                <span>{currentGossip.funFact}</span>
+                                            </p>
                                         </div>
                                     )}
 
-                                    {/* Fuente histórica */}
+                                    {/* Fuente */}
                                     {currentGossip.source && (
-                                        <div className="flex items-center justify-center gap-2 text-sm text-cosiaca-brown/60 italic bg-cosiaca-beige/30 rounded-full px-6 py-3">
-                                            <span>📚</span>
-                                            <span>Fuente: {currentGossip.source}</span>
-                                        </div>
+                                        <p className="text-xs text-cosiaca-brown/60 italic text-center">
+                                            📚 Fuente: {currentGossip.source}
+                                        </p>
                                     )}
 
-                                    {/* Mensaje copiado */}
                                     {copiedToClipboard && (
-                                        <div className="fixed top-20 right-4 bg-green-500 text-white px-6 py-3 rounded-full shadow-2xl animate-fade-in font-bold z-50">
-                                            ✅ ¡Chisme copiado!
+                                        <div className="fixed top-20 right-4 bg-green-500 text-white px-4 py-2 rounded-full shadow-xl animate-fade-in font-bold z-50 text-sm">
+                                            ✅ Copiado
                                         </div>
                                     )}
                                 </div>
                             ) : (
-                                <div className="text-center z-10 space-y-6">
-                                    <div className="text-8xl mb-4 opacity-20 animate-pulse">👂</div>
-                                    <div>
-                                        <p className="text-2xl font-bold text-cosiaca-brown mb-2">
-                                            ¿Listo para el chisme?
-                                        </p>
-                                        <p className="text-lg text-cosiaca-brown/60">
-                                            Selecciona una época o usa la IA para descubrir anécdotas históricas
-                                        </p>
-                                    </div>
+                                <div className="text-center z-10 space-y-4">
+                                    <div className="text-6xl mb-3 opacity-30">👂</div>
+                                    <p className="text-xl font-bold text-cosiaca-brown">
+                                        Selecciona una época arriba
+                                    </p>
                                     <button
                                         onClick={() => setCurrentGossip(getRandomGossip('all'))}
-                                        className="bg-cosiaca-red text-white font-bold px-8 py-4 rounded-full hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-2xl text-lg"
+                                        className="bg-cosiaca-red text-white font-bold px-6 py-3 rounded-full hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg"
                                     >
-                                        🎲 Chisme Sorpresa
+                                        🎲 Chisme Aleatorio
                                     </button>
                                 </div>
                             )}
                         </div>
 
-                        {/* Botones de acción mejorados */}
-                        <div className="flex flex-wrap justify-center gap-3">
+                        {/* Botón de acción simplificado */}
+                        <div className="flex justify-center">
                             <button
                                 onClick={() => setCurrentGossip(getRandomGossip(gossipCategory))}
-                                className="group relative bg-gradient-to-r from-cosiaca-brown to-amber-800 text-white font-bold py-4 px-8 rounded-full hover:from-amber-800 hover:to-cosiaca-brown transition-all duration-300 transform hover:scale-110 shadow-2xl text-sm sm:text-base flex items-center justify-center gap-2 overflow-hidden"
+                                className="bg-cosiaca-red text-white font-bold py-3 px-8 rounded-full hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg flex items-center gap-2"
                             >
-                                <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-                                <span className="relative z-10 flex items-center gap-2">
-                                    <span className="text-2xl">🎲</span>
-                                    <span>Otro Chisme</span>
-                                </span>
-                            </button>
-                            <button
-                                onClick={() => setCurrentGossip(getRandomGossip('all'))}
-                                className="group relative bg-gradient-to-r from-cosiaca-red to-red-700 text-white font-bold py-4 px-8 rounded-full hover:from-red-700 hover:to-cosiaca-red transition-all duration-300 transform hover:scale-110 shadow-2xl text-sm sm:text-base flex items-center justify-center gap-2 overflow-hidden"
-                            >
-                                <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-                                <span className="relative z-10 flex items-center gap-2">
-                                    <span className="text-2xl">🔀</span>
-                                    <span>Chisme Sorpresa</span>
-                                </span>
+                                <span className="text-xl">🎲</span>
+                                <span>Siguiente Chisme</span>
                             </button>
                         </div>
 
-                        {/* Historial de chismes vistos */}
-                        {gossipHistory.length > 0 && (
-                            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 border-2 border-purple-200">
-                                <h5 className="text-lg font-bold text-cosiaca-brown mb-4 flex items-center gap-2">
-                                    <span>📜</span>
-                                    <span>Chismes recientes ({gossipHistory.length})</span>
-                                </h5>
-                                <div className="flex flex-wrap gap-2">
-                                    {gossipHistory.slice(0, 5).map((gossip, index) => (
-                                        <button
-                                            key={index}
-                                            onClick={() => setCurrentGossip(gossip)}
-                                            className="text-xs sm:text-sm bg-white/70 hover:bg-white border border-purple-200 text-cosiaca-brown px-3 py-2 rounded-full transition-all hover:shadow-md hover:scale-105"
-                                            title={gossip.title}
-                                        >
-                                            {gossip.title.substring(0, 30)}{gossip.title.length > 30 ? '...' : ''}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
 
-                        {/* Info adicional con diseño premium */}
-                        <div className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-50 border-2 border-blue-300 rounded-3xl p-6 sm:p-8">
-                            <div className="absolute top-0 right-0 text-9xl opacity-5">📖</div>
-                            <div className="relative z-10">
-                                <div className="flex items-center justify-center gap-3 mb-4">
-                                    <span className="text-3xl">📖</span>
-                                    <h5 className="text-xl sm:text-2xl font-bold text-blue-800">
-                                        Sobre los Chismes Históricos
-                                    </h5>
-                                </div>
-                                <p className="text-sm sm:text-base text-cosiaca-brown leading-relaxed text-center max-w-3xl mx-auto mb-4">
-                                    Todos estos chismes están basados en <strong>hechos históricos reales</strong>, documentos verificados y memoria oral paisa. Cosiaca te los cuenta con humor, pero la historia es auténtica. Cada anécdota ha sido investigada y verificada con fuentes históricas confiables.
-                                </p>
-                                <div className="flex flex-wrap justify-center gap-3 text-xs sm:text-sm text-cosiaca-brown/80">
-                                    <span className="bg-white/70 px-3 py-1 rounded-full">✅ Verificados</span>
-                                    <span className="bg-white/70 px-3 py-1 rounded-full">📚 Documentados</span>
-                                    <span className="bg-white/70 px-3 py-1 rounded-full">🎭 Con humor paisa</span>
-                                    <span className="bg-white/70 px-3 py-1 rounded-full">🏛️ 350 años de historia</span>
-                                </div>
-                                <p className="text-center text-sm font-bold text-cosiaca-brown mt-4 italic">
-                                    ¡350 años de historia dan para muchos chismes, mijito! 😉
-                                </p>
-                            </div>
-                        </div>
                     </div>
                     )}
                 </div>
