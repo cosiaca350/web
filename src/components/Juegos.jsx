@@ -799,42 +799,38 @@ Y eso que no te he contado la mejor parte... Dicen que en todas las tertulias de
                                 </div>
                             )}
 
-                        {/* Acceso rápido a chismes - Diseño simplificado */}
-                        <div className="flex flex-wrap justify-center gap-3">
-                            {[
-                                { key: 'all', icon: '📖', label: 'Todos', color: 'from-cosiaca-red to-red-600' },
-                                { key: 'colonialGossip', icon: '🏛️', label: 'Colonial', color: 'from-amber-600 to-yellow-700' },
-                                { key: 'independenceGossip', icon: '⚔️', label: 'Independencia', color: 'from-red-600 to-orange-700' },
-                                { key: 'coffeeBoomGossip', icon: '☕', label: 'Café', color: 'from-amber-700 to-orange-800' },
-                                { key: 'industrializationGossip', icon: '🏭', label: 'Industrial', color: 'from-slate-600 to-gray-700' },
-                                { key: 'modernGossip', icon: '🌆', label: 'Moderno', color: 'from-blue-600 to-cyan-700' },
-                                { key: 'characterGossip', icon: '👤', label: 'Personajes', color: 'from-pink-600 to-rose-700' }
-                            ].map(cat => (
-                                <button
-                                    key={cat.key}
-                                    onClick={() => { setGossipCategory(cat.key); setCurrentGossip(getRandomGossip(cat.key)); }}
-                                    className={`group relative px-6 py-3 rounded-full font-bold text-white transition-all duration-300 transform hover:scale-110 shadow-lg overflow-hidden ${
-                                        gossipCategory === cat.key ? 'scale-110 ring-4 ring-white/50' : ''
-                                    }`}
-                                    style={{
-                                        background: gossipCategory === cat.key
-                                            ? `linear-gradient(135deg, var(--tw-gradient-stops))`
-                                            : `linear-gradient(135deg, var(--tw-gradient-stops))`,
-                                        '--tw-gradient-from': cat.color.split(' ')[0].replace('from-', ''),
-                                        '--tw-gradient-to': cat.color.split(' ')[1].replace('to-', '')
-                                    }}
-                                >
-                                    <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-                                    <span className="relative z-10 flex items-center gap-2 text-sm sm:text-base">
-                                        <span className="text-lg">{cat.icon}</span>
-                                        <span>{cat.label}</span>
-                                    </span>
-                                </button>
-                            ))}
+                        {/* Filtros de época - Diseño mejorado */}
+                        <div className="bg-cosiaca-beige/30 rounded-2xl p-4 sm:p-6">
+                            <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+                                {[
+                                    { key: 'all', icon: '📖', label: 'Todos' },
+                                    { key: 'colonialGossip', icon: '🏛️', label: 'Colonial' },
+                                    { key: 'independenceGossip', icon: '⚔️', label: 'Independencia' },
+                                    { key: 'coffeeBoomGossip', icon: '☕', label: 'Café' },
+                                    { key: 'industrializationGossip', icon: '🏭', label: 'Industrial' },
+                                    { key: 'modernGossip', icon: '🌆', label: 'Moderno' },
+                                    { key: 'characterGossip', icon: '👤', label: 'Personajes' }
+                                ].map(cat => (
+                                    <button
+                                        key={cat.key}
+                                        onClick={() => { setGossipCategory(cat.key); setCurrentGossip(getRandomGossip(cat.key)); }}
+                                        className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full font-semibold transition-all duration-200 ${
+                                            gossipCategory === cat.key
+                                                ? 'bg-cosiaca-brown text-white shadow-lg scale-105'
+                                                : 'bg-white text-cosiaca-brown hover:bg-cosiaca-brown/10 border border-cosiaca-brown/20'
+                                        }`}
+                                    >
+                                        <span className="flex items-center gap-1.5 text-sm sm:text-base">
+                                            <span>{cat.icon}</span>
+                                            <span>{cat.label}</span>
+                                        </span>
+                                    </button>
+                                ))}
+                            </div>
                         </div>
 
-                        {/* Tarjeta de Chisme - Rediseño limpio */}
-                        <div className="relative rounded-2xl shadow-xl overflow-hidden bg-white border-2 border-cosiaca-beige p-6 sm:p-8 min-h-[350px] flex items-center justify-center">
+                        {/* Tarjeta de Chisme - Diseño elegante */}
+                        <div className="relative rounded-3xl shadow-2xl overflow-hidden bg-gradient-to-br from-white to-cosiaca-beige/20 border-2 border-cosiaca-brown/10 p-8 sm:p-10 min-h-[400px] flex items-center justify-center">
 
                             {isGeneratingGossip ? (
                                 <div className="text-center z-10">
@@ -850,80 +846,97 @@ Y eso que no te he contado la mejor parte... Dicen que en todas las tertulias de
                                     </p>
                                 </div>
                             ) : currentGossip ? (
-                                <div className="w-full space-y-4 relative z-10 animate-fade-in">
-                                    {/* Header simplificado */}
-                                    <div className="flex items-start justify-between gap-4">
-                                        <div className="flex-1">
-                                            <h3 className="text-xl sm:text-2xl font-bold text-cosiaca-brown mb-2 leading-tight">
-                                                {currentGossip.title}
-                                            </h3>
-                                            <span className="inline-flex items-center gap-2 bg-cosiaca-red text-white px-3 py-1 rounded-full text-xs font-bold">
+                                <div className="w-full space-y-6 relative z-10 animate-fade-in">
+                                    {/* Header del chisme */}
+                                    <div className="text-center space-y-3">
+                                        <h3 className="text-2xl sm:text-3xl font-black text-cosiaca-brown leading-tight tracking-tight">
+                                            {currentGossip.title}
+                                        </h3>
+                                        <div className="flex items-center justify-center gap-3">
+                                            <span className="inline-flex items-center gap-2 bg-cosiaca-red text-white px-4 py-1.5 rounded-full text-sm font-bold">
                                                 📅 {currentGossip.period || currentGossip.year}
                                             </span>
+                                            <button
+                                                onClick={() => shareGossip(currentGossip)}
+                                                className="inline-flex items-center gap-1.5 bg-cosiaca-beige hover:bg-cosiaca-brown hover:text-white px-4 py-1.5 rounded-full transition-all text-cosiaca-brown text-sm font-semibold"
+                                                title="Compartir"
+                                            >
+                                                📤 Compartir
+                                            </button>
                                         </div>
-                                        <button
-                                            onClick={() => shareGossip(currentGossip)}
-                                            className="p-2 bg-cosiaca-beige/50 rounded-full hover:bg-cosiaca-beige transition-all text-cosiaca-brown"
-                                            title="Compartir"
-                                        >
-                                            📤
-                                        </button>
                                     </div>
 
-                                    {/* Contenido del chisme */}
-                                    <div className="bg-cosiaca-beige/20 rounded-xl p-4 sm:p-6">
-                                        <p className="text-base sm:text-lg text-cosiaca-brown leading-relaxed whitespace-pre-line">
-                                            {currentGossip.gossip}
-                                        </p>
-                                    </div>
-
-                                    {/* Dato curioso compacto */}
-                                    {currentGossip.funFact && (
-                                        <div className="bg-yellow-50 border-l-4 border-yellow-500 rounded-lg p-4">
-                                            <p className="text-sm text-cosiaca-brown flex items-start gap-2">
-                                                <span className="text-lg flex-shrink-0">💡</span>
-                                                <span>{currentGossip.funFact}</span>
+                                    {/* Contenido del chisme con estilo */}
+                                    <div className="bg-white/80 backdrop-blur rounded-2xl p-6 sm:p-8 shadow-inner border border-cosiaca-brown/10">
+                                        <div className="relative">
+                                            <div className="absolute -top-2 -left-2 text-5xl text-cosiaca-brown/10">“</div>
+                                            <p className="text-base sm:text-lg text-cosiaca-brown leading-relaxed whitespace-pre-line relative z-10">
+                                                {currentGossip.gossip}
                                             </p>
+                                            <div className="absolute -bottom-4 -right-2 text-5xl text-cosiaca-brown/10">”</div>
+                                        </div>
+                                    </div>
+
+                                    {/* Dato curioso destacado */}
+                                    {currentGossip.funFact && (
+                                        <div className="bg-gradient-to-r from-yellow-50 to-amber-50 border-l-4 border-yellow-500 rounded-xl p-5 shadow-sm">
+                                            <div className="flex items-start gap-3">
+                                                <span className="text-2xl flex-shrink-0">💡</span>
+                                                <div>
+                                                    <p className="font-bold text-yellow-800 text-sm mb-1">Dato Curioso</p>
+                                                    <p className="text-sm text-cosiaca-brown leading-relaxed">{currentGossip.funFact}</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     )}
 
-                                    {/* Fuente */}
+                                    {/* Fuente con estilo */}
                                     {currentGossip.source && (
-                                        <p className="text-xs text-cosiaca-brown/60 italic text-center">
-                                            📚 Fuente: {currentGossip.source}
-                                        </p>
+                                        <div className="flex items-center justify-center gap-2 text-xs text-cosiaca-brown/60 italic">
+                                            <span>📚</span>
+                                            <span>Fuente: {currentGossip.source}</span>
+                                        </div>
                                     )}
 
                                     {copiedToClipboard && (
-                                        <div className="fixed top-20 right-4 bg-green-500 text-white px-4 py-2 rounded-full shadow-xl animate-fade-in font-bold z-50 text-sm">
-                                            ✅ Copiado
+                                        <div className="fixed top-20 right-4 bg-green-500 text-white px-5 py-3 rounded-full shadow-2xl animate-fade-in font-bold z-50 text-sm flex items-center gap-2">
+                                            ✅ ¡Copiado!
                                         </div>
                                     )}
                                 </div>
                             ) : (
-                                <div className="text-center z-10 space-y-4">
-                                    <div className="text-6xl mb-3 opacity-30">👂</div>
-                                    <p className="text-xl font-bold text-cosiaca-brown">
-                                        Selecciona una época arriba
-                                    </p>
+                                <div className="text-center z-10 space-y-5">
+                                    <div className="text-7xl mb-4 opacity-20 animate-pulse">👂</div>
+                                    <div className="space-y-2">
+                                        <p className="text-2xl font-bold text-cosiaca-brown">
+                                            ¿Listo para el chisme?
+                                        </p>
+                                        <p className="text-base text-cosiaca-brown/60">
+                                            Selecciona una época arriba para descubrir historias
+                                        </p>
+                                    </div>
                                     <button
                                         onClick={() => setCurrentGossip(getRandomGossip('all'))}
-                                        className="bg-cosiaca-red text-white font-bold px-6 py-3 rounded-full hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg"
+                                        className="bg-gradient-to-r from-cosiaca-red to-red-700 text-white font-bold px-8 py-4 rounded-full hover:from-red-700 hover:to-cosiaca-red transition-all transform hover:scale-105 shadow-xl flex items-center gap-2 mx-auto"
                                     >
-                                        🎲 Chisme Aleatorio
+                                        <span className="text-xl">🎲</span>
+                                        <span>Chisme Sorpresa</span>
                                     </button>
                                 </div>
                             )}
                         </div>
 
-                        {/* Botón de acción simplificado */}
-                        <div className="flex justify-center">
+                        {/* Botón de acción destacado */}
+                        <div className="flex justify-center pt-2">
                             <button
                                 onClick={() => setCurrentGossip(getRandomGossip(gossipCategory))}
-                                className="bg-cosiaca-red text-white font-bold py-3 px-8 rounded-full hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg flex items-center gap-2"
+                                className="group bg-gradient-to-r from-cosiaca-red to-red-700 text-white font-bold py-4 px-10 rounded-full hover:from-red-700 hover:to-cosiaca-red transition-all transform hover:scale-110 shadow-2xl flex items-center gap-3 text-lg relative overflow-hidden"
                             >
-                                <span className="text-xl">🎲</span>
-                                <span>Siguiente Chisme</span>
+                                <span className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                                <span className="relative z-10 flex items-center gap-3">
+                                    <span className="text-2xl">🎲</span>
+                                    <span>Siguiente Chisme</span>
+                                </span>
                             </button>
                         </div>
 
