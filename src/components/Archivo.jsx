@@ -99,101 +99,115 @@ const Archivo = () => {
     };
 
     return (
-        <div className="animate-fade-in max-w-6xl mx-auto text-cosiaca-brown space-y-8">
-            <header className="text-center">
-                <h1 className="text-4xl md:text-5xl font-black font-anton text-cosiaca-brown">
-                    📚 Archivo Histórico
-                </h1>
-                <p className="text-xl mt-2 text-cosiaca-brown/70 lead font-medium">
-                    <em>Fuentes documentales que nutren las historias de Cosiaca</em>
-                </p>
-            </header>
-            
-            <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige text-center">
-                <h2 className="text-2xl font-bold font-anton text-cosiaca-brown mb-4">
-                    "La Historia Vive en los Documentos"
-                </h2>
-                <p className="text-lg text-cosiaca-brown/80 lead">
-                    Cada historia que cuenta <strong>Cosiaca</strong> está respaldada por <em>documentos, fotografías y testimonios 
-                    reales</em> que hemos recopilado de los principales <strong>archivos históricos de Medellín y Antioquia</strong>.
-                </p>
-            </div>
-
-            {/* Category Tabs */}
-            <div className="flex flex-wrap justify-center gap-2 mb-8">
-                {Object.entries(archiveCategories).map(([key, category]) => (
-                    <button
-                        key={key}
-                        onClick={() => setSelectedCategory(key)}
-                        className={`px-4 py-2 rounded-full font-medium transition-all duration-300 ${
-                            selectedCategory === key
-                                ? 'bg-cosiaca-red text-white shadow-lg'
-                                : 'bg-cosiaca-beige text-cosiaca-brown hover:bg-cosiaca-beige/70'
-                        }`}
-                    >
-                        {category.title}
-                    </button>
-                ))}
-            </div>
-
-            {/* Archive Content */}
-            <div className="space-y-6">
-                <h2 className="text-3xl font-bold font-anton text-cosiaca-brown text-center mb-8">
-                    {archiveCategories[selectedCategory].title}
-                </h2>
-                
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {archiveCategories[selectedCategory].items.map((item, index) => (
-                        <div 
-                            key={index}
-                            className="bg-cosiaca-beige/30 rounded-xl border border-cosiaca-beige hover:shadow-lg transition-all duration-300 overflow-hidden"
-                        >
-                            <img 
-                                src={item.image} 
-                                alt={item.title}
-                                className="w-full h-48 object-cover"
-                            />
-                            <div className="p-6">
-                                <h3 className="text-xl font-bold text-cosiaca-brown mb-2 font-anton">
-                                    {item.title}
-                                </h3>
-                                <p className="text-cosiaca-brown/80 mb-3 leading-relaxed">
-                                    {item.description}
-                                </p>
-                                <p className="text-sm text-cosiaca-red font-bold">
-                                    <strong>Fuente:</strong> <em>{item.source}</em>
-                                </p>
-                            </div>
+        <div className="animate-fade-in max-w-6xl mx-auto text-cosiaca-brown space-y-8 relative">
+            {/* Overlay de "Próximamente" */}
+            <div className="absolute inset-0 z-10 bg-cosiaca-beige/80 backdrop-blur-md rounded-3xl flex flex-col items-center justify-center space-y-6 p-8">
+                <div className="text-center space-y-4">
+                    <div className="text-8xl animate-bounce">📚</div>
+                    <h2 className="text-5xl md:text-6xl font-black font-anton text-cosiaca-brown drop-shadow-lg">
+                        PRÓXIMAMENTE
+                    </h2>
+                    <p className="text-2xl md:text-3xl text-cosiaca-brown/80 font-medium max-w-2xl mx-auto leading-relaxed">
+                        Estamos preparando un <strong>Archivo Histórico</strong> completo con fotografías, documentos y testimonios reales de Medellín
+                    </p>
+                    <div className="pt-4">
+                        <div className="inline-block bg-cosiaca-red/20 text-cosiaca-red px-6 py-3 rounded-full font-bold text-lg border-2 border-cosiaca-red">
+                            🚧 En construcción
                         </div>
-                    ))}
+                    </div>
                 </div>
             </div>
 
-            {/* Archive Sources */}
-            <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige">
-                <h2 className="text-3xl font-bold font-anton text-cosiaca-brown mb-6 text-center">
-                    🏛️ Nuestras Fuentes
-                </h2>
-                <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-4">
-                        <h3 className="text-xl font-bold text-cosiaca-brown font-anton">📁 Archivos Principales</h3>
-                        <ul className="space-y-2 text-cosiaca-brown/80 text-lg">
-                            <li>• <strong>Archivo Histórico de Medellín</strong></li>
-                            <li>• <strong>Biblioteca Pública Piloto</strong></li>
-                            <li>• <strong>Archivo Fotográfico Biblioteca EPM</strong></li>
-                            <li>• <strong>Museo de Antioquia</strong></li>
-                            <li>• <strong>Centro de Documentación Musical</strong></li>
-                        </ul>
+            {/* Contenido difuminado en el fondo */}
+            <div className="opacity-20 pointer-events-none select-none blur-sm">
+                <header className="text-center">
+                    <h1 className="text-4xl md:text-5xl font-black font-anton text-cosiaca-brown">
+                        📚 Archivo Histórico
+                    </h1>
+                    <p className="text-xl mt-2 text-cosiaca-brown/70 lead font-medium">
+                        <em>Fuentes documentales que nutren las historias de Cosiaca</em>
+                    </p>
+                </header>
+
+                <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige text-center">
+                    <h2 className="text-2xl font-bold font-anton text-cosiaca-brown mb-4">
+                        "La Historia Vive en los Documentos"
+                    </h2>
+                    <p className="text-lg text-cosiaca-brown/80 lead">
+                        Cada historia que cuenta <strong>Cosiaca</strong> está respaldada por <em>documentos, fotografías y testimonios
+                        reales</em> que hemos recopilado de los principales <strong>archivos históricos de Medellín y Antioquia</strong>.
+                    </p>
+                </div>
+
+                <div className="flex flex-wrap justify-center gap-2 mb-8">
+                    {Object.entries(archiveCategories).map(([key, category]) => (
+                        <button
+                            key={key}
+                            className="px-4 py-2 rounded-full font-medium bg-cosiaca-beige text-cosiaca-brown"
+                            disabled
+                        >
+                            {category.title}
+                        </button>
+                    ))}
+                </div>
+
+                <div className="space-y-6">
+                    <h2 className="text-3xl font-bold font-anton text-cosiaca-brown text-center mb-8">
+                        {archiveCategories[selectedCategory].title}
+                    </h2>
+
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {archiveCategories[selectedCategory].items.map((item, index) => (
+                            <div
+                                key={index}
+                                className="bg-cosiaca-beige/30 rounded-xl border border-cosiaca-beige overflow-hidden"
+                            >
+                                <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    className="w-full h-48 object-cover"
+                                />
+                                <div className="p-6">
+                                    <h3 className="text-xl font-bold text-cosiaca-brown mb-2 font-anton">
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-cosiaca-brown/80 mb-3 leading-relaxed">
+                                        {item.description}
+                                    </p>
+                                    <p className="text-sm text-cosiaca-red font-bold">
+                                        <strong>Fuente:</strong> <em>{item.source}</em>
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                    <div className="space-y-4">
-                        <h3 className="text-xl font-bold text-cosiaca-brown font-anton">🎨 Colecciones Especiales</h3>
-                        <ul className="space-y-2 text-cosiaca-brown/80 text-lg">
-                            <li>• <em>Fondo Fotográfico Melitón Rodríguez</em></li>
-                            <li>• <em>Colección Ignacio Gómez</em></li>
-                            <li>• <em>Hemeroteca de Prensa Satírica</em></li>
-                            <li>• <em>Archivo de Memoria Oral</em></li>
-                            <li>• <em>Documentos de la Fundación</em></li>
-                        </ul>
+                </div>
+
+                <div className="bg-cosiaca-beige/30 p-8 rounded-xl shadow-2xl border border-cosiaca-beige">
+                    <h2 className="text-3xl font-bold font-anton text-cosiaca-brown mb-6 text-center">
+                        🏛️ Nuestras Fuentes
+                    </h2>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-4">
+                            <h3 className="text-xl font-bold text-cosiaca-brown font-anton">📁 Archivos Principales</h3>
+                            <ul className="space-y-2 text-cosiaca-brown/80 text-lg">
+                                <li>• <strong>Archivo Histórico de Medellín</strong></li>
+                                <li>• <strong>Biblioteca Pública Piloto</strong></li>
+                                <li>• <strong>Archivo Fotográfico Biblioteca EPM</strong></li>
+                                <li>• <strong>Museo de Antioquia</strong></li>
+                                <li>• <strong>Centro de Documentación Musical</strong></li>
+                            </ul>
+                        </div>
+                        <div className="space-y-4">
+                            <h3 className="text-xl font-bold text-cosiaca-brown font-anton">🎨 Colecciones Especiales</h3>
+                            <ul className="space-y-2 text-cosiaca-brown/80 text-lg">
+                                <li>• <em>Fondo Fotográfico Melitón Rodríguez</em></li>
+                                <li>• <em>Colección Ignacio Gómez</em></li>
+                                <li>• <em>Hemeroteca de Prensa Satírica</em></li>
+                                <li>• <em>Archivo de Memoria Oral</em></li>
+                                <li>• <em>Documentos de la Fundación</em></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
