@@ -198,19 +198,106 @@ export const characterGossip = [
     character: "Pedro Nel Gómez",
     gossip: "¿Sabías que el Maestro Pedro Nel Gómez pintó desnudos en los murales de la Alcaldía y el alcalde los mandó a tapar con cortinas? '¡Eso es inmoral!', gritó el alcalde José María Bernal. El escándalo fue nacional. Pedro Nel respondió: 'La belleza del cuerpo humano no es pecado'. Al final, destaparon los murales y hoy son tesoro de la ciudad.",
     year: "1930s-1940s",
-    source: "Archivo Museo Pedro Nel Gómez"
+    source: "Archivo Museo Pedro Nel Gómez",
+    funFact: "Pedro Nel pintó más de 2,000 obras y fue ingeniero antes que artista"
   },
   {
     character: "José García 'Cosiaca'",
     gossip: "Cosiaca fingía estar muriéndose para que las señoras del pueblo le llevaran comida y aguapanela. Una vez 'resucitó' en medio de su propio velorio porque olió sancocho. '¡Qué olor tan bueno!', gritó, asustando a medio pueblo. Después dijo: 'Es un milagro de Dios, me devolvió para probar ese sancocho'. ¡Pura picardía paisa!",
     year: "1890s-1910",
-    source: "Leyendas populares antioqueñas"
+    source: "Leyendas populares antioqueñas",
+    funFact: "Cosiaca se volvió un símbolo de la picardía y el humor paisa"
   },
   {
     character: "Fernando Botero",
     gossip: "De niño, Fernando Botero dibujaba toreros gordos en sus cuadernos del colegio. Los profesores le decían: 'Botero, esos toros están muy gordos, así no son'. Él respondía: 'Así los veo yo, padre'. Hoy esos 'gordos' valen millones de dólares. ¡Quién se ríe ahora!",
     year: "1940s-1950s",
-    source: "Biografías de Botero"
+    source: "Biografías de Botero",
+    funFact: "Botero donó 23 esculturas monumentales a Medellín en 2000"
+  },
+  {
+    character: "Débora Arango",
+    gossip: "¡Uy, qué escándalo! Débora Arango pintaba mujeres desnudas en los años 40 y la Iglesia la excomulgó. '¡Esa mujer es del diablo!', decían. Cerraron sus exposiciones, la censuraron, pero ella siguió pintando. '¿Pecado? El pecado es la ignorancia', respondía. Hoy es reconocida como una de las grandes artistas colombianas. ¡Así de berraca era!",
+    year: "1940s-1950s",
+    source: "Museo de Arte Moderno de Medellín",
+    funFact: "Fue censurada por más de 40 años, pero nunca dejó de pintar"
+  },
+  {
+    character: "Coriolano Amador",
+    gossip: "Coriolano Amador era tan cuentero que convenció a medio Medellín de que había una mina de oro debajo del Parque Berrío. Vendió 'acciones' de la mina inexistente y cuando la gente quiso excavar, dijo: 'Es que el oro solo aparece en luna llena'. Nunca lo atraparon. ¡Un genio del engaño!",
+    year: "1920s",
+    source: "Crónicas urbanas",
+    funFact: "Era conocido como 'el príncipe de los embusteros paisas'"
+  },
+  {
+    character: "Madre Laura Montoya",
+    gossip: "La Madre Laura era tan terca que cuando el obispo le dijo 'una mujer no puede fundar congregaciones religiosas', ella respondió: '¿Quién dijo que no puedo?'. Fundó la Congregación de Misioneras de María Inmaculada y Santa Catalina de Siena en 1914, trabajó con indígenas toda su vida y se volvió la primera santa colombiana. ¡La verraquer paisa hecha santa!",
+    year: "1914-1949",
+    source: "Archivo Vaticano",
+    funFact: "Fue canonizada en 2013 por el Papa Francisco"
+  },
+  {
+    character: "Gildardo Montoya",
+    gossip: "Gildardo Montoya era tan humilde que cuando le decían 'Maestro' se molestaba. 'Yo solo soy un obrero que talla piedra', decía. Sus esculturas son monumentales pero él seguía viviendo en una casa sencilla. Una vez rechazó un premio internacional porque 'no le gustaba la farándula'. ¡Paisa de corazón!",
+    year: "1970s-1990s",
+    source: "Memoria de colegas artistas",
+    funFact: "El Monumento a la Raza en La Alpujarra es su obra más famosa"
+  },
+  {
+    character: "Gonzalo Arango",
+    gossip: "Gonzalo Arango, líder del Nadaísmo, entraba a las iglesias gritando '¡Dios ha muerto!' en plena misa de los años 60. Los feligreses salían persiguiéndolo con palos. '¡Ese muchacho está endemoniado!', gritaban las señoras. Gonzalo se reía y escribía poemas sobre el escándalo. ¡Un rebelde con causa paisa!",
+    year: "1960s",
+    source: "Movimiento Nadaísta",
+    funFact: "Fundó el Nadaísmo, movimiento que revolucionó las letras colombianas"
+  },
+  {
+    character: "Rodrigo Arenas Betancourt",
+    gossip: "Rodrigo Arenas Betancourt era tan perfeccionista con sus monumentos que si alguien le hacía una crítica, rompía la escultura y empezaba de nuevo. Una vez destruyó una obra de 6 meses porque 'la nariz no le gustaba'. Sus ayudantes lloraban del trabajo perdido. ¡Pero así salían obras maestras!",
+    year: "1950s-1990s",
+    source: "Talleres de escultura",
+    funFact: "Creó el Monumento a Bolívar Desnudo que causó controversia nacional"
+  },
+  {
+    character: "Efe Gómez",
+    gossip: "Efe Gómez era tan bueno para el fútbol que en los años 30 lo querían en Europa, pero él dijo: 'Yo no me voy de Medellín por nada'. Jugaba descalzo porque 'así sentía mejor el balón'. Una vez metió 7 goles en un partido. Los rivales dijeron que era brujería. ¡Era solo talento paisa puro!",
+    year: "1930s",
+    source: "Archivo del DIM",
+    funFact: "Es considerado el mejor futbolista colombiano de la primera mitad del siglo XX"
+  },
+  {
+    character: "Manuel Mejía Vallejo",
+    gossip: "Manuel Mejía Vallejo escribía borracho y editaba sobrio. 'El trago me da las ideas, la sobriedad las pule', decía. Sus amigos escritores lo encontraban escribiendo en bares a las 3 de la mañana. Cuando ganó el Premio Rómulo Gallegos, llegó a la ceremonia con guayabera y sin corbata. '¡Yo no me disfrazo para nadie!'. ¡Escritor paisa auténtico!",
+    year: "1970s-1980s",
+    source: "Testimonios de escritores",
+    funFact: "Su novela 'Aire de Tango' ganó el Premio Rómulo Gallegos en 1973"
+  },
+  {
+    character: "Tomás Carrasquilla",
+    gossip: "Tomás Carrasquilla era tan tímido que cuando le hicieron un homenaje, se escondió en el baño y no quiso salir. Sus amigos tuvieron que sacarlo casi a rastras. '¡Yo no sirvo para esos enredos!', protestaba. Pero para escribir sobre la vida paisa, ¡no había nadie mejor! Observaba todo desde su rincón silencioso.",
+    year: "1920s-1930s",
+    source: "Biografías literarias",
+    funFact: "Es considerado el padre del costumbrismo literario antioqueño"
+  },
+  {
+    character: "Carlos E. Restrepo",
+    gossip: "Carlos E. Restrepo fue presidente de Colombia (1910-1914) pero siguió viviendo en su casa modesta de Medellín. No quiso palacio ni lujos. 'Yo soy paisa, no necesito esas vainas', decía. Cuando terminó su mandato, volvió a trabajar como abogado en su bufete de siempre. ¡Presidente humilde!",
+    year: "1910-1914",
+    source: "Historia presidencial colombiana",
+    funFact: "Fue llamado 'El Presidente de la República Conservadora'"
+  },
+  {
+    character: "Hernán Gaviria Echeverri",
+    gossip: "Hernán Gaviria era tan bromista que en el Colombiano (periódico donde trabajaba) le decían 'el loco del humor'. Inventaba noticias falsas tan bien escritas que hasta sus jefes se las creían. Una vez escribió que 'llueven ranas en Envigado' con testigos inventados. ¡A la gente le encantaba su sección de humor!",
+    year: "1950s-1960s",
+    source: "Archivo El Colombiano",
+    funFact: "Fue pionero del periodismo humorístico en Antioquia"
+  },
+  {
+    character: "Epifanio Mejía",
+    gossip: "Epifanio Mejía escribió la letra de 'Himno Antioqueño' pero era tan modesto que nunca cobró un peso por eso. Cuando le ofrecieron dinero dijo: 'Eso es un honor, no un negocio'. Vivió pobre toda su vida escribiendo poesía. Los paisas le debemos el himno más bonito de Colombia. ¡Gracias, poeta!",
+    year: "1888",
+    source: "Historia del Himno Antioqueño",
+    funFact: "El Himno Antioqueño es considerado uno de los más bellos himnos regionales"
   }
 ];
 

@@ -667,25 +667,9 @@ Y eso que no te he contado la mejor parte... Dicen que en todas las tertulias de
                             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold font-anton text-cosiaca-brown mb-2 leading-tight">
                                 👂 Chismes Históricos de Medellín
                             </h3>
-                            <p className="text-base sm:text-lg text-cosiaca-brown/70 mb-4 max-w-3xl mx-auto">
+                            <p className="text-base sm:text-lg text-cosiaca-brown/70 max-w-3xl mx-auto">
                                 Anécdotas reales, curiosas y picantes de 350 años de historia paisa
                             </p>
-
-                            {/* Estadísticas */}
-                            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-4">
-                                <div className="bg-white/70 backdrop-blur-sm rounded-xl px-3 py-2 shadow-lg">
-                                    <div className="text-xl sm:text-2xl font-bold text-cosiaca-red">{getAllGossips().length}+</div>
-                                    <div className="text-xs text-cosiaca-brown/70 font-semibold">Chismes</div>
-                                </div>
-                                <div className="bg-white/70 backdrop-blur-sm rounded-xl px-3 py-2 shadow-lg">
-                                    <div className="text-xl sm:text-2xl font-bold text-cosiaca-red">350</div>
-                                    <div className="text-xs text-cosiaca-brown/70 font-semibold">Años</div>
-                                </div>
-                                <div className="bg-white/70 backdrop-blur-sm rounded-xl px-3 py-2 shadow-lg">
-                                    <div className="text-xl sm:text-2xl font-bold text-cosiaca-red">{favoriteGossips.length}</div>
-                                    <div className="text-xs text-cosiaca-brown/70 font-semibold">Favoritos</div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
