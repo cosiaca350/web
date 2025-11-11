@@ -32,18 +32,6 @@ const Juegos = () => {
     const [showShareMenu, setShowShareMenu] = useState(false);
     const [copiedToClipboard, setCopiedToClipboard] = useState(false);
 
-    // Cerrar menú de compartir al hacer clic fuera
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (showShareMenu && !event.target.closest('.share-menu-container')) {
-                setShowShareMenu(false);
-            }
-        };
-
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, [showShareMenu]);
-
     // Trivia Data
     const triviaQuestions = [
         {
@@ -308,61 +296,18 @@ const Juegos = () => {
         return favoriteGossips.some(g => g.title === gossip.title);
     };
 
-    const shareGossip = (gossip, platform = null) => {
-        const title = gossip.character || gossip.title;
-        const text = `👂 ${title}\n\n${gossip.gossip}\n\n📅 ${gossip.period || gossip.year}\n📚 Fuente: ${gossip.source}\n\n✨ Descubre más chismes históricos de Medellín en Cosiaca 350`;
-        const url = window.location.href;
+    const shareGossip = (gossip) => {
+        const text = `${gossip.title}\n\n${gossip.gossip}\n\n📅 ${gossip.period || gossip.year}\n📚 Fuente: ${gossip.source}\n\n¡Conoce más en Cosiaca 350!`;
 
-        // Si se especifica una plataforma
-        if (platform) {
-            let shareUrl = '';
-            const encodedText = encodeURIComponent(text);
-            const encodedUrl = encodeURIComponent(url);
-
-            switch(platform) {
-                case 'whatsapp':
-                    shareUrl = `https://wa.me/?text=${encodedText}`;
-                    break;
-                case 'facebook':
-                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedText}`;
-                    break;
-                case 'twitter':
-                    const shortText = encodeURIComponent(`👂 ${title}\n\n${gossip.gossip.substring(0, 200)}...\n\n✨ Cosiaca 350`);
-                    shareUrl = `https://twitter.com/intent/tweet?text=${shortText}&url=${encodedUrl}`;
-                    break;
-                case 'telegram':
-                    shareUrl = `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`;
-                    break;
-                case 'email':
-                    const subject = encodeURIComponent(`Chisme Histórico: ${title}`);
-                    shareUrl = `mailto:?subject=${subject}&body=${encodedText}`;
-                    break;
-                case 'copy':
-                    navigator.clipboard.writeText(text);
-                    setCopiedToClipboard(true);
-                    setTimeout(() => setCopiedToClipboard(false), 3000);
-                    setShowShareMenu(false);
-                    return;
-            }
-
-            if (shareUrl) {
-                window.open(shareUrl, '_blank', 'width=600,height=400');
-                setShowShareMenu(false);
-            }
+        if (navigator.share) {
+            navigator.share({
+                title: gossip.title,
+                text: text
+            }).catch(() => {});
         } else {
-            // Si no hay plataforma, intentar usar Web Share API
-            if (navigator.share) {
-                navigator.share({
-                    title: title,
-                    text: text
-                }).catch(() => {
-                    // Si falla, mostrar el menú
-                    setShowShareMenu(true);
-                });
-            } else {
-                // Si no hay Web Share API, mostrar el menú
-                setShowShareMenu(true);
-            }
+            navigator.clipboard.writeText(text);
+            setCopiedToClipboard(true);
+            setTimeout(() => setCopiedToClipboard(false), 3000);
         }
     };
 
@@ -891,77 +836,17 @@ Y eso que no te he contado la mejor parte... Dicen que en todas las tertulias de
                                         <h3 className="text-2xl sm:text-3xl font-black text-cosiaca-brown leading-tight tracking-tight">
                                             {currentGossip.character || currentGossip.title}
                                         </h3>
-                                        <div className="flex items-center justify-center gap-3 flex-wrap">
+                                        <div className="flex items-center justify-center gap-3">
                                             <span className="inline-flex items-center gap-2 bg-cosiaca-red text-white px-4 py-1.5 rounded-full text-sm font-bold">
                                                 📅 {currentGossip.period || currentGossip.year}
                                             </span>
-
-                                            {/* Botón Compartir con menú desplegable */}
-                                            <div className="relative share-menu-container">
-                                                <button
-                                                    onClick={() => setShowShareMenu(!showShareMenu)}
-                                                    className="inline-flex items-center gap-1.5 bg-cosiaca-beige hover:bg-cosiaca-brown hover:text-white px-4 py-1.5 rounded-full transition-all text-cosiaca-brown text-sm font-semibold"
-                                                    title="Compartir"
-                                                >
-                                                    📤 Compartir
-                                                </button>
-
-                                                {/* Menú de compartir */}
-                                                {showShareMenu && (
-                                                    <div className="absolute top-full mt-2 right-0 bg-white rounded-xl shadow-2xl border-2 border-cosiaca-beige p-2 min-w-[200px] z-50 animate-fade-in">
-                                                        <div className="text-xs font-bold text-cosiaca-brown mb-2 px-2 pt-1">Compartir en:</div>
-                                                        <button
-                                                            onClick={() => shareGossip(currentGossip, 'whatsapp')}
-                                                            className="w-full flex items-center gap-2 px-3 py-2 hover:bg-green-50 rounded-lg transition-colors text-left text-sm"
-                                                        >
-                                                            <span className="text-lg">💬</span>
-                                                            <span className="font-semibold text-gray-700">WhatsApp</span>
-                                                        </button>
-                                                        <button
-                                                            onClick={() => shareGossip(currentGossip, 'facebook')}
-                                                            className="w-full flex items-center gap-2 px-3 py-2 hover:bg-blue-50 rounded-lg transition-colors text-left text-sm"
-                                                        >
-                                                            <span className="text-lg">📘</span>
-                                                            <span className="font-semibold text-gray-700">Facebook</span>
-                                                        </button>
-                                                        <button
-                                                            onClick={() => shareGossip(currentGossip, 'twitter')}
-                                                            className="w-full flex items-center gap-2 px-3 py-2 hover:bg-sky-50 rounded-lg transition-colors text-left text-sm"
-                                                        >
-                                                            <span className="text-lg">🐦</span>
-                                                            <span className="font-semibold text-gray-700">Twitter / X</span>
-                                                        </button>
-                                                        <button
-                                                            onClick={() => shareGossip(currentGossip, 'telegram')}
-                                                            className="w-full flex items-center gap-2 px-3 py-2 hover:bg-blue-50 rounded-lg transition-colors text-left text-sm"
-                                                        >
-                                                            <span className="text-lg">✈️</span>
-                                                            <span className="font-semibold text-gray-700">Telegram</span>
-                                                        </button>
-                                                        <button
-                                                            onClick={() => shareGossip(currentGossip, 'email')}
-                                                            className="w-full flex items-center gap-2 px-3 py-2 hover:bg-gray-50 rounded-lg transition-colors text-left text-sm"
-                                                        >
-                                                            <span className="text-lg">📧</span>
-                                                            <span className="font-semibold text-gray-700">Email</span>
-                                                        </button>
-                                                        <hr className="my-2 border-cosiaca-beige/30" />
-                                                        <button
-                                                            onClick={() => shareGossip(currentGossip, 'copy')}
-                                                            className="w-full flex items-center gap-2 px-3 py-2 hover:bg-cosiaca-beige/30 rounded-lg transition-colors text-left text-sm"
-                                                        >
-                                                            <span className="text-lg">📋</span>
-                                                            <span className="font-semibold text-gray-700">Copiar texto</span>
-                                                        </button>
-                                                    </div>
-                                                )}
-                                            </div>
-
-                                            {copiedToClipboard && (
-                                                <span className="inline-flex items-center gap-1 bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold animate-fade-in">
-                                                    ✓ Copiado
-                                                </span>
-                                            )}
+                                            <button
+                                                onClick={() => shareGossip(currentGossip)}
+                                                className="inline-flex items-center gap-1.5 bg-cosiaca-beige hover:bg-cosiaca-brown hover:text-white px-4 py-1.5 rounded-full transition-all text-cosiaca-brown text-sm font-semibold"
+                                                title="Compartir"
+                                            >
+                                                📤 Compartir
+                                            </button>
                                         </div>
                                     </div>
 
