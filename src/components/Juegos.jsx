@@ -854,10 +854,11 @@ Y eso que no te he contado la mejor parte... Dicen que en todas las tertulias de
                                         if (e.key === 'Enter') {
                                             const topic = customGossipTopic.trim().toLowerCase();
                                             if (topic) {
-                                                const filtered = historicalGossip.filter(g =>
-                                                    g.title.toLowerCase().includes(topic) ||
-                                                    g.gossip.toLowerCase().includes(topic) ||
-                                                    g.period.toLowerCase().includes(topic)
+                                                const allGossips = getAllGossips();
+                                                const filtered = allGossips.filter(g =>
+                                                    g.title?.toLowerCase().includes(topic) ||
+                                                    g.gossip?.toLowerCase().includes(topic) ||
+                                                    g.period?.toLowerCase().includes(topic)
                                                 );
                                                 if (filtered.length > 0) {
                                                     setCurrentGossip(filtered[Math.floor(Math.random() * filtered.length)]);
@@ -875,10 +876,11 @@ Y eso que no te he contado la mejor parte... Dicen que en todas las tertulias de
                                     onClick={() => {
                                         const topic = customGossipTopic.trim().toLowerCase();
                                         if (topic) {
-                                            const filtered = historicalGossip.filter(g =>
-                                                g.title.toLowerCase().includes(topic) ||
-                                                g.gossip.toLowerCase().includes(topic) ||
-                                                g.period.toLowerCase().includes(topic)
+                                            const allGossips = getAllGossips();
+                                            const filtered = allGossips.filter(g =>
+                                                g.title?.toLowerCase().includes(topic) ||
+                                                g.gossip?.toLowerCase().includes(topic) ||
+                                                g.period?.toLowerCase().includes(topic)
                                             );
                                             if (filtered.length > 0) {
                                                 setCurrentGossip(filtered[Math.floor(Math.random() * filtered.length)]);
