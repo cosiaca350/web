@@ -333,7 +333,7 @@ const Timeline3D = ({ periods, categories, filterCategory, setFilterCategory, st
 
             <div className="absolute inset-0 z-10 flex flex-col pointer-events-none">
                 <div className="flex-none pt-2 px-2 sm:pt-3 sm:px-3 pointer-events-auto">
-                    <div className={`bg-black/40 backdrop-blur-md rounded-lg sm:rounded-xl p-2 sm:p-3 max-w-6xl mx-auto shadow-lg transition-all duration-300 ${
+                    <div className={`bg-black/40 backdrop-blur-md rounded-lg sm:rounded-xl p-2 sm:p-3 max-w-3xl mx-auto shadow-lg transition-all duration-300 ${
                         isMinimized ? 'py-1.5' : ''
                     }`}>
                         <div className="flex items-center justify-between gap-2">
