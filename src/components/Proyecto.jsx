@@ -127,6 +127,47 @@ const Proyecto = () => {
                     </div>
                 </div>
             </section>
+
+            <section className="bg-white/90 backdrop-blur-sm p-6 sm:p-8 rounded-2xl shadow-xl border border-cosiaca-beige">
+                <h2 className="text-2xl sm:text-3xl font-bold font-anton text-cosiaca-brown mb-6 text-center">
+                    👥 Equipo
+                </h2>
+                <p className="text-center text-cosiaca-brown-light/70 mb-8 text-lg">
+                    Los artífices detrás de la Re-evolución de Cosiaca
+                </p>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="bg-cosiaca-cream/50 p-6 rounded-xl border border-cosiaca-beige hover:shadow-lg transition-all duration-300">
+                        <h3 className="font-bold text-lg text-cosiaca-brown mb-2">Manuel Palacio</h3>
+                        <p className="text-cosiaca-brown-light/80 text-sm">
+                            Director creativo y productor, diseñador visual
+                        </p>
+                    </div>
+                    <div className="bg-cosiaca-cream/50 p-6 rounded-xl border border-cosiaca-beige hover:shadow-lg transition-all duration-300">
+                        <h3 className="font-bold text-lg text-cosiaca-brown mb-2">Carlos Andrés Londoño Ruiz</h3>
+                        <p className="text-cosiaca-brown-light/80 text-sm">
+                            Director artístico y diseñador visual IA
+                        </p>
+                    </div>
+                    <div className="bg-cosiaca-cream/50 p-6 rounded-xl border border-cosiaca-beige hover:shadow-lg transition-all duration-300">
+                        <h3 className="font-bold text-lg text-cosiaca-brown mb-2">Juan Alejandro Ramírez</h3>
+                        <p className="text-cosiaca-brown-light/80 text-sm">
+                            Guion y contenido
+                        </p>
+                    </div>
+                    <div className="bg-cosiaca-cream/50 p-6 rounded-xl border border-cosiaca-beige hover:shadow-lg transition-all duration-300">
+                        <h3 className="font-bold text-lg text-cosiaca-brown mb-2">Mónica Ruíz</h3>
+                        <p className="text-cosiaca-brown-light/80 text-sm">
+                            Investigación histórica
+                        </p>
+                    </div>
+                    <div className="bg-cosiaca-cream/50 p-6 rounded-xl border border-cosiaca-beige hover:shadow-lg transition-all duration-300">
+                        <h3 className="font-bold text-lg text-cosiaca-brown mb-2">Felipe Ramírez Ángel</h3>
+                        <p className="text-cosiaca-brown-light/80 text-sm">
+                            Sonido
+                        </p>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };

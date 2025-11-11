@@ -4,7 +4,6 @@ import Home from './components/Home';
 import Welcome from './components/Welcome';
 import Proyecto from './components/Proyecto';
 import Libros from './components/Libros';
-import Team from './components/Team';
 import Redes from './components/Redes';
 import { TikTokIcon, InstagramIcon, FacebookIcon, YoutubeIcon } from './icons/Icons';
 import Videos from './components/Videos';
@@ -84,8 +83,6 @@ const App = () => {
                 return <Archivo />;
             case 'libros':
                 return user ? <Libros /> : <div className="text-center text-gray-400 mt-20">Cargando...</div>;
-            case 'team':
-                return <Team />;
             case 'videos':
                 return <Videos />;
             default:

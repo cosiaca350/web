@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-    HomeIcon, 
-    ProjectIcon, 
-    GamepadIcon, 
-    BookIcon, 
-    TeamIcon, 
-    LinkIcon, 
-    SparklesIcon, 
+import {
+    HomeIcon,
+    ProjectIcon,
+    GamepadIcon,
+    BookIcon,
+    LinkIcon,
+    SparklesIcon,
     VideoIcon,
     PodcastIcon,
     BotIcon
@@ -57,7 +56,6 @@ const Navbar = ({ view, setView }) => {
         { name: 'Libros', view: 'libros' },
         { name: 'Línea de Tiempo', view: 'timeline' },
         { name: 'Archivo', view: 'archivo' },
-        { name: 'Equipo', view: 'team' },
     ];
     
     return (
